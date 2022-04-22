@@ -1,3 +1,3 @@
-import app from "./server";
+import app from "./server.js";
 
-app.listen(4000, () => console.log("carapolla"));
+app.listen(4000, () => console.log("servidor funcionando de una puta vez!"));
