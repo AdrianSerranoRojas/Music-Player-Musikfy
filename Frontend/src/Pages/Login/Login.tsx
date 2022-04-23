@@ -30,7 +30,7 @@ function Login() {
     try {
       await singInWithGoogle();
       await syncUserData();
-    } catch (error) {
+    } catch (error:any) {
       setLoginError(error.message);
     } finally {
       setLoading(false);
@@ -44,7 +44,7 @@ function Login() {
 
     try {
       await singInWithEmailAndPassword(email, password);
-    } catch (error) {
+    } catch (error:any) {
       setLoginError(error.message);
     } finally {
       setLoading(false);

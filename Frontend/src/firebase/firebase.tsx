@@ -26,15 +26,15 @@ export function singInWithGoogle() {
   return auth.signInWithPopup(GoogleAuthProvider);
 }
 
-export function singInWithEmailAndPassword(email, password) {
+export function singInWithEmailAndPassword(email:string, password:string):any {
   return auth.signInWithEmailAndPassword(email, password);
 }
 
-export function singUpWithEmailAndPassword(email, password) {
+export function singUpWithEmailAndPassword(email: string, password: string): any {
   return auth.createUserWithEmailAndPassword(email, password);
 }
 
-export function sendPasswordResetEmail(email) {
+export function sendPasswordResetEmail(email:string):any {
   return auth.sendPasswordResetEmail(email);
 }
 

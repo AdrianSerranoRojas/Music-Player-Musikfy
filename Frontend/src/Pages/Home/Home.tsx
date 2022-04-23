@@ -6,7 +6,11 @@ import AuthContext from "../../context/AuthContext";
 
 import { getCurrentUserToken } from "../../firebase/firebase";
 
-async function fetchUserToken(setUserToken, setLoading, setError) {
+async function fetchUserToken(
+  setUserToken: any,
+  setLoading: any,
+  setError: any
+): Promise<void> {
   setLoading(true);
 
   try {
@@ -25,7 +29,7 @@ const Home = () => {
   const [loading, setLoading] = useState();
   const [error, setError] = useState();
 
-    const currentUser = useContext(AuthContext);
+  const currentUser = useContext(AuthContext);
 
   return <div>HOME</div>;
 };
