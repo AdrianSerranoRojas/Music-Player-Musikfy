@@ -9,14 +9,15 @@ import SignUp from "./Pages/SignUp/SignUp";
 
 import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
+import { onAuthStateChanged } from "firebase/auth";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
     let unsubscribeFromAuth = null;
-
-    unsubscribeFromAuth = auth.onAuthStateChanged((user) => {
+    
+    unsubscribeFromAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
       } else {

@@ -4,11 +4,11 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext";
 import Button from "../Button/Button";
 
-import { signOut } from "../../firebase/firebase";
+import { userSignOut } from "../../firebase/firebase";
 
 function AppHeader({ ...props }) {
   async function handleSignOut() {
-    await signOut();
+    await userSignOut();
   }
 
   const currentUser = useContext(AuthContext);

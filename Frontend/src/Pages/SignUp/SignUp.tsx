@@ -44,7 +44,6 @@ function SignUp() {
 
     try {
       await singUpWithEmailAndPassword(email, password);
-
       await syncUserData();
     } catch (error) {
       setSignUpError(error.message);
