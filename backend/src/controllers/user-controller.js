@@ -1,7 +1,9 @@
-import { User } from "../models";
-import { debug } from "loglevel";
+import { User } from "../models/user-model.js";
+import pkg from "loglevel";
 
-async function getUsers(req, res, next) {
+const { debug } = pkg;
+
+export async function getUsers(req, res, next) {
   try {
     const users = await User.find({})
       .select({
@@ -20,7 +22,7 @@ async function getUsers(req, res, next) {
   }
 }
 
-async function getUserDetails(req, res, next) {
+export async function getUserDetails(req, res, next) {
   const { userId } = req.params;
 
   try {
@@ -39,8 +41,8 @@ async function getUserDetails(req, res, next) {
   }
 }
 
-async function createUser(req, res, next) {
-  const { firstName, lastName, email, password, speaks } = req.body
+export async function createUser(req, res, next) {
+  const { firstName, lastName, email, password, speaks } = req.body;
   try {
     const user = await User.create({
       firstName,
@@ -64,7 +66,7 @@ async function createUser(req, res, next) {
   }
 }
 
-async function updateUser(req, res, next) {
+export async function updateUser(req, res, next) {
   const { userId } = req.params;
   const { firstName, lastName } = req.body;
 
@@ -81,7 +83,7 @@ async function updateUser(req, res, next) {
       },
       {
         new: true,
-      },
+      }
     ).select({
       firstName: 1,
       lastName: 1,
@@ -95,7 +97,7 @@ async function updateUser(req, res, next) {
   }
 }
 
-async function deleteUser(req, res, next) {
+export async function deleteUser(req, res, next) {
   const { userId } = req.params;
 
   try {
@@ -117,7 +119,7 @@ async function deleteUser(req, res, next) {
   }
 }
 
-async function signUp(req, res, next) {
+export async function signUp(req, res, next) {
   const { uid, email } = req.user;
   console.log(req.user);
   try {
@@ -135,10 +137,3 @@ async function signUp(req, res, next) {
     next(error);
   }
 }
-
-export const getUsers = getUsers;
-export const getUserDetails = getUserDetails;
-export const createUser = createUser;
-export const updateUser = updateUser;
-export const deleteUser = deleteUser;
-export const signUp = signUp;

@@ -1,11 +1,9 @@
-import * as admin from "firebase-admin";
-import config from "../config/config";
+import pkg from "firebase-admin";
+import config from "../config/config.js";
 
-export const _admin = admin.initializeApp({
-  credential: admin.credential.cert(config.firebase.certConfig),
+pkg.initializeApp({
+  credential: pkg.credential.cert(config.firebase.certConfig),
 });
 
-export const _auth = _admin.auth();
-
-export const admin = _admin;
-export const auth = _auth;
+export const auth = pkg.auth();
+export const admin = pkg;

@@ -1,12 +1,7 @@
 import { config } from "dotenv";
-import {
-  enableAll,
-  warn as _warn,
-  info as _info,
-  error as _error,
-  trace as _trace,
-  debug as _debug,
-} from "loglevel";
+import pkg from "loglevel";
+
+const { enableAll, warn, info, error, trace, debug } = pkg;
 
 config();
 
@@ -23,11 +18,11 @@ const CONFIG = {
       URL: process.env.CLIENT_URL || "http://localhost:3000",
     },
     logger: {
-      warn: _warn,
-      info: _info,
-      error: _error,
-      trace: _trace,
-      debug: _debug,
+      warn: warn,
+      info: info,
+      error: error,
+      trace: trace,
+      debug: debug,
     },
     db: {
       url: process.env.DB_URL,
@@ -55,11 +50,11 @@ const CONFIG = {
       URL: process.env.CLIENT_URL || "http://localhost:3000",
     },
     logger: {
-      warn: _warn,
-      info: _info,
-      error: _error,
-      trace: _trace,
-      debug: _debug,
+      warn: warn,
+      info: info,
+      error: error,
+      trace: trace,
+      debug: debug,
     },
     db: {
       url: process.env.DB_URL,
@@ -87,11 +82,11 @@ const CONFIG = {
       URL: process.env.CLIENT_URL || "http://localhost:3000",
     },
     logger: {
-      warn: _warn,
-      info: _info,
-      error: _error,
-      trace: _trace,
-      debug: _debug,
+      warn: warn,
+      info: info,
+      error: error,
+      trace: trace,
+      debug: debug,
     },
     db: {
       url: process.env.DB_URL,

@@ -1,6 +1,6 @@
-import { auth } from "../firebase/firebase";
+import { auth } from "../firebase/firebase.js";
 
-async function authMiddleware(req, res, next) {
+export async function authMiddleware(req, res, next) {
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith("Bearer ")
@@ -25,4 +25,3 @@ async function authMiddleware(req, res, next) {
     });
   }
 }
-export const authMiddleware = authMiddleware;

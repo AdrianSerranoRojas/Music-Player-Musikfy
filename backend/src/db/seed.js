@@ -1,10 +1,9 @@
-import { User, Product } from "../models";
-import { getSeedUsers, getSeedProducts } from "./seed-data";
+import { User } from "../models/user-model.js";
+import { Product } from "../models/product-model.js";
+import { getSeedUsers, getSeedProducts } from "./seed-data.js";
 
-async function seedProducts() {
+export async function seedProducts() {
   await Promise.all([User.deleteMany({}), Product.deleteMany({})]);
   const users = await User.insertMany([...getSeedUsers()]);
   return Product.insertMany([...getSeedProducts()]);
 }
-
-export const seedProducts = seedProducts;

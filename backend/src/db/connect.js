@@ -1,15 +1,7 @@
-import { connect as _connect } from "mongoose";
+import mongoose from "mongoose";
 
-function connect() {
-  return _connect(
-    "mongodb+srv://admin:admin@muskfycluster.uijij.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false,
-    }
-  );
+const URI = process.env.MONGODB_URL;
+
+export default function connect() {
+  return mongoose.connect(URI);
 }
-
-export default connect;

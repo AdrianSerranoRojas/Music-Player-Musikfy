@@ -1,5 +1,8 @@
-import { Schema, model } from "mongoose";
-import { isEmail } from "validator";
+import mongoose from "mongoose";
+import validator from "validator";
+
+const { Schema, model } = mongoose;
+const { isEmail } = validator;
 
 const UserSchema = new Schema(
   {
@@ -37,9 +40,7 @@ const UserSchema = new Schema(
       },
     ],
   },
-  { timestamps: true },
+  { timestamps: true }
 );
 
-const UserModel = new model("user", UserSchema);
-
-export default UserModel;
+export const User = new model("user", UserSchema);

@@ -3,9 +3,9 @@ import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
 
-import userRouter from "./routes/user-routes";
+import userRouter from "./routes/user-routes.js";
 
-import config from "./config/config"
+import config from "./config/config.js";
 
 const app = express();
 
