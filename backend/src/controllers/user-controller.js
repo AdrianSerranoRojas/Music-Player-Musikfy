@@ -21,7 +21,6 @@ export async function getUsers(req, res, next) {
     next(error);
   }
 }
-
 export async function getUserDetails(req, res, next) {
   const { userId } = req.params;
 
@@ -40,7 +39,6 @@ export async function getUserDetails(req, res, next) {
     next(error);
   }
 }
-
 export async function createUser(req, res, next) {
   const { firstName, lastName, email, password, speaks } = req.body;
   try {
@@ -65,7 +63,6 @@ export async function createUser(req, res, next) {
     next(error);
   }
 }
-
 export async function updateUser(req, res, next) {
   const { userId } = req.params;
   const { firstName, lastName } = req.body;
@@ -96,7 +93,6 @@ export async function updateUser(req, res, next) {
     next(error);
   }
 }
-
 export async function deleteUser(req, res, next) {
   const { userId } = req.params;
 
@@ -118,7 +114,6 @@ export async function deleteUser(req, res, next) {
     next(error);
   }
 }
-
 export async function signUp(req, res, next) {
   const { uid, email } = req.user;
   console.log(req.user);

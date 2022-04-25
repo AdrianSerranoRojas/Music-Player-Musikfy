@@ -29,7 +29,6 @@ function ResetPassword() {
 
   return (
     <>
-      <Header />
       <main className="container p-4 mt-5">
         <div className="row flex-column align-items-center">
           <div className="col col-lg-6">

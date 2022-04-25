@@ -1,9 +1,9 @@
-import { config } from "dotenv";
+import dotenv from "dotenv";
 import pkg from "loglevel";
 
 const { enableAll, warn, info, error, trace, debug } = pkg;
 
-config();
+dotenv.config();
 
 const ENV = process.env.NODE_ENV || "development";
 
