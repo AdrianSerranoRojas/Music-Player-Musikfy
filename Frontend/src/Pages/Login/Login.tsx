@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import "./Login.scss"
+import { BsGoogle } from "react-icons/bs";
 
 import Button from "../../components/Button/Button";
 
@@ -55,8 +57,8 @@ function Login() {
     <>
       <main className="container p-4 mt-5">
         <div className="row flex-column align-items-center">
-          <div className="col col-lg-6">
-            <section className="row row-cols-1 mb-5">
+          <div className="col col-lg-6 LogInContainer">
+            {/* <section className="row row-cols-1 mb-5">
               <div className="col">
                 <h1 className="h2">Login</h1>
                 {currentUser && (
@@ -73,9 +75,13 @@ function Login() {
                   Login With Google
                 </Button>
               </div>
-            </section>
+            </section> */}
 
             <section className="row row-cols-1 mb-3">
+              <Button className="GoogleLogIn" onClick={handleLoginWithGoogleClick}>
+                <BsGoogle />
+                Login With Google
+              </Button>
               <div className="col">
                 <h2 className="h5 mb-3">Login with email and password</h2>
               </div>
