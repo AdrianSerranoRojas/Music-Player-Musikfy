@@ -3,8 +3,11 @@ import { useContext } from "react";
 
 import AuthContext from "../../context/AuthContext";
 import Button from "../Button/Button";
+import Image from 'react-bootstrap/Image';
 
 import { userSignOut } from "../../firebase/firebase";
+
+import "./header.scss";
 
 function AppHeader({ ...props }) {
   async function handleSignOut() {
@@ -19,7 +22,7 @@ function AppHeader({ ...props }) {
         <div className="row">
           <nav className="navbar navbar-expand navbar-dark">
             <NavLink className="navbar-brand" to="/">
-              Home
+              <Image src="https://res.cloudinary.com/dhqzvelnb/image/upload/v1650974399/Logo/MusikfyLogo_oqlmpp.png" alt="profile image" />
             </NavLink>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav w-100">
