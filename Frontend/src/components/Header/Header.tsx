@@ -1,10 +1,16 @@
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 
+import "./Header.scss";
+
 import AuthContext from "../../context/AuthContext";
 import Button from "../Button/Button";
+import Image from 'react-bootstrap/Image';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 import { userSignOut } from "../../firebase/firebase";
+
+import "./header.scss";
 
 function AppHeader({ ...props }) {
   async function handleSignOut() {
@@ -19,21 +25,26 @@ function AppHeader({ ...props }) {
         <div className="row">
           <nav className="navbar navbar-expand navbar-dark">
             <NavLink className="navbar-brand" to="/">
-              Home
+              <Image src="https://res.cloudinary.com/dhqzvelnb/image/upload/v1650974399/Logo/MusikfyLogo_oqlmpp.png" alt="profile image" />
             </NavLink>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav w-100">
                 {currentUser ? (
                   <>
                     <li className="nav-item ms-auto">
-                      <NavLink className="nav-link" to="/profile">
-                        Profile
-                      </NavLink>
-                    </li>
-                    <li className="nav-item">
-                      <Button variant="outlined" onClick={handleSignOut}>
-                        Sign Out
-                      </Button>
+                    <Dropdown>
+                      <Dropdown.Toggle id="dropdown-basic" className="DropdownProfile">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4SwRYqnvSzUO1XJzADbOWDjoouV0nqZOv2w&usqp=CAU" alt="User image" className="ProfileImg"></img>
+                        {currentUser.email}
+                      </Dropdown.Toggle>
+
+                      <Dropdown.Menu className="DropdownProfileMenu">
+                        <Dropdown.Item className="DropdownProfileItem" href="/profile">Profile</Dropdown.Item>
+                        <Dropdown.Item className="DropdownProfileItem" href="/userTopTen">Top Ten</Dropdown.Item>
+                        <Dropdown.Item className="DropdownProfileItem" href="/userPlaylists">Playlists</Dropdown.Item>
+                        <Dropdown.Item className="DropdownProfileItem" onClick={handleSignOut}>Log Out</Dropdown.Item>
+                      </Dropdown.Menu>
+                    </Dropdown>
                     </li>
                   </>
                 ) : (
