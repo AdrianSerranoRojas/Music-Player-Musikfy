@@ -35,7 +35,7 @@ function AppHeader({ ...props }) {
                     <Dropdown>
                       <Dropdown.Toggle id="dropdown-basic" className="DropdownProfile">
                         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4SwRYqnvSzUO1XJzADbOWDjoouV0nqZOv2w&usqp=CAU" alt="User image" className="ProfileImg"></img>
-                        Username
+                        {currentUser.email}
                       </Dropdown.Toggle>
 
                       <Dropdown.Menu className="DropdownProfileMenu">
