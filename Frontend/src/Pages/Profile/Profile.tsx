@@ -3,7 +3,7 @@ import withLayout from "../../hoc/withLayout"
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
-import { RiEdit2Fill } from 'react-icons/ri';
+import { MdOutlineEdit } from 'react-icons/md';
 import EditInfo from "../../components/EditInfo/Editinfo";
 
 import "./profile.scss"
@@ -11,7 +11,7 @@ import "./profile.scss"
 function Profile() {
     return(
         <>
-            <div className="pageProfile">
+            <div className="pageProfile sketchy">
                 <section className="editProfile">
                     <h2 className="profileTitle">Edit profile</h2>
                     <h3 className="profileSubtitle">Email</h3>
@@ -21,7 +21,7 @@ function Profile() {
                     <h3 className="profileSubtitle">Password</h3>
                     <h4 className="profileData">*********</h4>
                     <button>
-                    <RiEdit2Fill />
+                    <MdOutlineEdit />
                     </button>
                     <h3 className="profileSubtitle">Username</h3>
                     <EditInfo 
@@ -45,12 +45,10 @@ function Profile() {
                 </section>
                 <section className="ProfileEditImg">
                     <Image className="profileImg" roundedCircle={true} src="https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1" alt="profile image" />
-                    <h5>Change image</h5>
-                    <div className="profileButtons">
-                        <Button id="profileCancel "variant="danger">Cancel</Button>
-                        <Button variant="success">Accept</Button>{' '}
-                    </div>
-
+                    <Form.Group controlId="formFile" className="mb-3">
+                        <Form.Label>Change your image</Form.Label>
+                        <Form.Control type="file" />
+                    </Form.Group>
                 </section>
             </div>
         </>

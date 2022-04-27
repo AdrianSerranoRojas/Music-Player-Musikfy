@@ -1,6 +1,7 @@
 .pageProfile {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    margin: 0 250px;
 }
 .profileTitle {
     text-align: center;
@@ -28,6 +29,4 @@ h3{
 .profileCancel{
     margin: 15px;
 }
-.editProfile {
-    border: 1px solid grey;
-}
+

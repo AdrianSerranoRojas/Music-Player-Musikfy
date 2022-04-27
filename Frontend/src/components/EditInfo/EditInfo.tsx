@@ -1,4 +1,4 @@
-import { RiEdit2Fill } from 'react-icons/ri';
+import { MdOutlineEdit } from 'react-icons/md';
 import { useState } from "react";
 import  InputEdit  from "../InputEdit/InputEdit";
 import "./EditInfo.scss";
@@ -19,7 +19,7 @@ function EditInfo({
             <>
                 <h4 className="profileData">{value}</h4>
                 <button onClick={toggleEditing}>
-                    <RiEdit2Fill />
+                    <MdOutlineEdit />
                 </button>
             </>)}
     </div>
