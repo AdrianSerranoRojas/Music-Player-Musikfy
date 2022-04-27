@@ -42,7 +42,10 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="*" element={<Home />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route
+            path="/profile"
+            element={currentUser ? <Profile /> : <Home />}
+          />
         </Routes>
       </AuthContext.Provider>
     </>
