@@ -38,7 +38,10 @@ function Profile() {
                 </section>
                 <section className="ProfileEditImg">
                     <Image className="profileImg" roundedCircle={true} src="https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1" alt="profile image" />
-                    <h5>Change image</h5>
+                    <Form.Group controlId="formFile" className="mb-3">
+                        <Form.Label>Change your image</Form.Label>
+                        <Form.Control type="file" />
+                    </Form.Group>
                     <div className="profileButtons">
                         <Button id="profileCancel "variant="danger">Cancel</Button>
                         <Button variant="success">Accept</Button>{' '}

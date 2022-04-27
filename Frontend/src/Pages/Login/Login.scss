@@ -1,8 +1,6 @@
-@use "../../../variables.scss";
-
-.LogInContainer{
-    border: 1px solid black;
-}
+@use "../../styles/Colors.scss";
+@use "../../styles/Fonts.scss";
+@use "../../styles/Border.scss";
 
 .mb-3{
     margin-top: 1rem;
@@ -12,5 +10,11 @@
     margin: auto;
     border-radius: 5%;
     border: none;
-    background-color: variables.$primary;
+    background-color: Colors.$primary;
+}
+.googleLogo{
+    margin: 10px 15px 10px 0;
+}
+main{
+    font-family: Fonts.$Vollkorn;
 }
