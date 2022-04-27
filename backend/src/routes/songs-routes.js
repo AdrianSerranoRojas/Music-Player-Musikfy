@@ -1,16 +1,10 @@
 import { Router } from "express";
 
-import { authMiddleware } from "../middleware/auth-middleware.js";
 import {
-  getUsers,
-  getUserDetails,
-  createUser,
-  updateUser,
-  deleteUser,
-  signUp,
-} from "../controllers/user-controller.js";
+  getSongs
+} from "../controllers/songs-controller.js";
 
-const UserRouter = Router();
+const songsRouter = Router();
 
 // UserRouter.use("/users", authMiddleware);
 
@@ -20,8 +14,8 @@ const UserRouter = Router();
 // UserRouter.patch("/users/:userId", updateUser);
 // UserRouter.delete("/users/:userId", deleteUser);
 
-UserRouter.post("/sign-up", authMiddleware, signUp);
 
 
+songsRouter.get("/songs",  getSongs);
 
-export default UserRouter;
+export default songsRouter;
