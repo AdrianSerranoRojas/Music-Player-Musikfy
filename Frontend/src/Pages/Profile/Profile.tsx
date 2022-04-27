@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import { RiEdit2Fill } from 'react-icons/ri';
+import EditInfo from "../../components/EditInfo/Editinfo";
 
 import "./profile.scss"
 
@@ -14,20 +15,26 @@ function Profile() {
                 <section className="editProfile">
                     <h2 className="profileTitle">Edit profile</h2>
                     <h3 className="profileSubtitle">Email</h3>
-                        <h4 className="profileData">admin@gmail.com</h4>
-                        <RiEdit2Fill />
+                    <EditInfo 
+                    value= "caxon@maquina.es"
+                    />
                     <h3 className="profileSubtitle">Password</h3>
-                        <h4 className="profileData">**********</h4>
-                        <RiEdit2Fill />
+                    <h4 className="profileData">*********</h4>
+                    <button>
+                    <RiEdit2Fill />
+                    </button>
                     <h3 className="profileSubtitle">Username</h3>
-                        <h4 className="profileData">RogerMateu2001</h4>
-                        <RiEdit2Fill />
+                    <EditInfo 
+                    value= "caxonpok"
+                    />
                     <h3 className="profileSubtitle">Birthday</h3>
-                        <h4 className="profileData">20-04-2001</h4>
-                        <RiEdit2Fill />
+                    <EditInfo 
+                    value= "08-05-1996"
+                    />
                     <h3 className="profileSubtitle">Country</h3>
-                        <h4 className="profileData">Spain</h4>
-                        <RiEdit2Fill />
+                    <EditInfo 
+                    value= "Spain"
+                    />
                     <h3 className="profileSubtitle">Gender</h3>
                     <Form.Select aria-label="Default select example">
                         <option>Select your gender</option>
