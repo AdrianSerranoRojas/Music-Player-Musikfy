@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     margin: 0 250px;
-    border: 1px solid grey;
 }
 .profileTitle {
     text-align: center;
@@ -12,11 +11,17 @@
 }
 .profileData{
     font-size: 18px;
-    margin: 15px 0 35px 20px;
+    margin: auto;
 }
 .profileImg {
     border-radius: 50%;
     width: 50%;
+}
+h5 {
+    margin-left: 15%;
+}
+h3{
+    margin-left: 3%;
 }
 .profileButtons {
     margin: 100px 0 0 50%;
@@ -24,3 +29,4 @@
 .profileCancel{
     margin: 15px;
 }
+
