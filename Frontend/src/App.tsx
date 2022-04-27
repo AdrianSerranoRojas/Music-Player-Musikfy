@@ -8,6 +8,7 @@ import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import Profile from "./Pages/Profile/Profile";
+import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 
 import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
@@ -41,6 +42,7 @@ function App() {
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="*" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>

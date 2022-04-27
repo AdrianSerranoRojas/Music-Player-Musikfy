@@ -42,6 +42,7 @@ function AppHeader({ ...props }) {
                         <Dropdown.Item className="DropdownProfileItem" href="/profile">Profile</Dropdown.Item>
                         <Dropdown.Item className="DropdownProfileItem" href="/userTopTen">Top Ten</Dropdown.Item>
                         <Dropdown.Item className="DropdownProfileItem" href="/userPlaylists">Playlists</Dropdown.Item>
+                        <Dropdown.Item className="DropdownProfileItem" href="/changePassword">Change Password</Dropdown.Item>
                         <Dropdown.Item className="DropdownProfileItem" onClick={handleSignOut}>Log Out</Dropdown.Item>
                       </Dropdown.Menu>
                     </Dropdown>
