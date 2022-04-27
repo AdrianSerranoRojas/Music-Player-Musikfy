@@ -1,12 +1,14 @@
 import { useState, useEffect, useContext } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux';
 
 import withLayout from "../../hoc/withLayout";
 
 import { createUser, usersSelector } from '../../features/users/usersSlice'
 
 import { getCurrentUserToken } from "../../firebase/firebase";
+
+import {useGetSongsQuery} from "../../services/SongApi";
 
 async function fetchUserToken(
   setUserToken: any,
@@ -36,6 +38,9 @@ const Home = () => {
   const dispatch = useDispatch()
   const use = useSelector(usersSelector)
   console.log(use);
+  
+  const {data} = useGetSongsQuery();
+  console.log(data);
   
 
   // const currentUser = useContext(AuthContext);
