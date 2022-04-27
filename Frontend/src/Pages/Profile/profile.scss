@@ -1,27 +1,30 @@
+@use "../../styles/Fonts.scss";
+
+.mainProfile{
+    margin: 0 10%;
+    font-family: Fonts.$Vollkorn;
+}
 .pageProfile {
     display: grid;
+    grid-gap: 100px;
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 250px;
 }
 .profileTitle {
-    text-align: center;
-}
-.profileSubtitle{
     font-size: 20px;
+    margin-bottom: 15px;
 }
 .profileData{
     font-size: 18px;
-    margin: auto;
 }
 .profileImg {
     border-radius: 50%;
     width: 50%;
 }
+h3{
+    margin: 0;
+}
 h5 {
     margin-left: 15%;
-}
-h3{
-    margin-left: 3%;
 }
 .profileButtons {
     margin: 100px 0 0 50%;
@@ -29,4 +32,7 @@ h3{
 .profileCancel{
     margin: 15px;
 }
-
+.gridFixer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}

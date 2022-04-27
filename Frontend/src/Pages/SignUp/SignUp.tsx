@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Form from 'react-bootstrap/Form';
+import { FcGoogle } from "react-icons/fc";
 
 import Button from "../../components/Button/Button";
 
@@ -60,7 +61,7 @@ function SignUp() {
       <main className="container p-4 mt-5">
         <div className="row flex-column align-items-center">
           <div className="col col-lg-6 sketchy">
-            <section className="row row-cols-1 mb-5">
+            <section className="row row-cols-1">
               <div className="col">
                 <h1 className="h2">Sign Up</h1>
                 {currentUser && (
@@ -69,16 +70,16 @@ function SignUp() {
                 <hr />
               </div>
               <div className="col">
-                <h2 className="h5">Sign Up with Google</h2>
-              </div>
-              <div className="col">
-                <Button onClick={handleSingInWithGoogleClick} size="lg">
-                  Sign In With Google
+                <Button onClick={handleSingInWithGoogleClick}>
+                <FcGoogle className="googleLogo"/>
+                  Sign Up With Google
                 </Button>
               </div>
+              <div className="col">
+                <h2 className="h5 mb-3">or</h2>
+              </div>
             </section>
-
-            <section className="row row-cols-1 mb-3">
+            <section className="row row-cols-1">
               <div className="col">
                 <h2 className="h5 mb-3">Sign up with your email</h2>
               </div>
@@ -175,6 +176,10 @@ function SignUp() {
             )}
             <section className="row row-cols-1 mb-5">
               <div className="col">
+                <p className="accExists">
+                  You already have a Musikfy account?
+                </p>
+                  <Link to="/login">Log in</Link>
                 <hr />
               </div>
               <div className="col">

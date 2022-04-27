@@ -6,15 +6,18 @@
     margin-top: 1rem;
 }
 .GoogleLogIn{
-    width: 60%;
     margin: auto;
     border-radius: 5%;
     border: none;
     background-color: Colors.$primary;
+    font-size: 20px;
 }
 .googleLogo{
     margin: 10px 15px 10px 0;
 }
 main{
     font-family: Fonts.$Vollkorn;
+}
+.accNotExists {
+    margin: 20px 0px 0px 0px;
 }

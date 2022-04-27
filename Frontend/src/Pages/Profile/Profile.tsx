@@ -1,47 +1,63 @@
 import withLayout from "../../hoc/withLayout"
 
-import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
+
 import { MdOutlineEdit } from 'react-icons/md';
-import EditInfo from "../../components/EditInfo/Editinfo";
+import { AiOutlineMail, AiOutlineUser } from 'react-icons/ai';
+import { RiLockPasswordLine } from 'react-icons/ri';
+import { BiCake } from 'react-icons/bi';
+import {BsHouseDoor, BsGenderAmbiguous} from 'react-icons/bs'
+
+import EditInfo from "../../components/EditInfo/EditInfo";
 
 import "./profile.scss"
 
 function Profile() {
     return(
         <>
-            <div className="pageProfile sketchy">
+            <div className="mainProfile sketchy">
+            <h1 className="h2">Log in</h1>
+            <hr />
+            <div className="pageProfile">
                 <section className="editProfile">
-                    <h2 className="profileTitle">Edit profile</h2>
-                    <h3 className="profileSubtitle">Email</h3>
-                    <EditInfo 
+                    <h3 className="profileTitle"><AiOutlineMail/> Email</h3>
+                    <EditInfo
                     value= "caxon@maquina.es"
                     />
-                    <h3 className="profileSubtitle">Password</h3>
+                    <hr />
+                    <h3 className="profileTitle"><RiLockPasswordLine/> Password</h3>
+                    <div className="gridFixer">
                     <h4 className="profileData">*********</h4>
                     <button>
                     <MdOutlineEdit />
                     </button>
-                    <h3 className="profileSubtitle">Username</h3>
-                    <EditInfo 
+                    </div>
+                    <hr />
+                    <h3 className="profileTitle"><AiOutlineUser/> Username</h3>
+                    <EditInfo
                     value= "caxonpok"
-                    />
-                    <h3 className="profileSubtitle">Birthday</h3>
-                    <EditInfo 
+                    /><hr />
+                    <h3 className="profileTitle"><BiCake/> Birthday</h3>
+                    <EditInfo
                     value= "08-05-1996"
-                    />
-                    <h3 className="profileSubtitle">Country</h3>
-                    <EditInfo 
+                    /><hr />
+                    <h3 className="profileTitle"><BsHouseDoor/> Country</h3>
+                    <EditInfo
                     value= "Spain"
-                    />
-                    <h3 className="profileSubtitle">Gender</h3>
+                    /><hr />
+                    <h3 className="profileTitle"><BsGenderAmbiguous/> Gender</h3>
+                    <div className="gridFixer">
                     <Form.Select aria-label="Default select example">
                         <option>Select your gender</option>
                         <option value="M">Male</option>
                         <option value="F">Female</option>
                         <option value="O">Other</option>
                     </Form.Select>
+                    <button>
+                    <MdOutlineEdit />
+                    </button>
+                    </div>
                 </section>
                 <section className="ProfileEditImg">
                     <Image className="profileImg" roundedCircle={true} src="https://i0.wp.com/newdoorfiji.com/wp-content/uploads/2018/03/profile-img-1.jpg?ssl=1" alt="profile image" />
@@ -50,6 +66,7 @@ function Profile() {
                         <Form.Control type="file" />
                     </Form.Group>
                 </section>
+            </div>
             </div>
         </>
     )

@@ -78,9 +78,11 @@ function Login() {
             </section> */}
 
             <section className="row row-cols-1 mb-3">
+            <h1 className="h2">Log in</h1>
+                <hr />
               <Button className="GoogleLogIn" onClick={handleLoginWithGoogleClick}>
                 <FcGoogle className="googleLogo"/>
-                Login With Google
+                Login with Google
               </Button>
               <div className="col">
                 <h2 className="h5 mb-3">or</h2>
@@ -131,6 +133,10 @@ function Login() {
             )}
             <section className="row row-cols-1 mb-5">
               <div className="col">
+              <p className="accNotExists">
+                You don't have a Musikfy account?
+              </p>
+              <Link to="/sign-up"> Sign up </Link>
                 <hr />
               </div>
               <div className="col">
