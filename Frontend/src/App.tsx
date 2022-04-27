@@ -7,6 +7,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
+import Profile from "./Pages/Profile/Profile";
 
 import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
@@ -43,6 +44,7 @@ console.log(currentUser);
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="*" element={<Home />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </AuthContext.Provider>
     </>
