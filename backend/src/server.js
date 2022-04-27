@@ -4,6 +4,7 @@ import morgan from "morgan";
 import cors from "cors";
 
 import userRouter from "./routes/user-routes.js";
+import songsRouter from "./routes/songs-routes.js";
 
 import config from "./config/config.js";
 
@@ -13,5 +14,6 @@ app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
 app.use(userRouter);
+app.use(songsRouter);
 
 export default app;

@@ -1,19 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  users: [],
+  songs: [],
 }
-
-export const usersSlice = createSlice({
-  name: 'users',
+export const songsSlice = createSlice({
+  name: 'songs',
   initialState,
   reducers: {
-    createUser: (state, action) => {
+    createSong: (state, action) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.users = [...state.users, action.payload ]
+      state.songs = [...state.songs, action.payload ]
     },
     // decrement: (state) => {
     //   state.value -= 1
@@ -24,9 +23,8 @@ export const usersSlice = createSlice({
   },
 })
 
-// Action creators are generated for each case reducer function
-export const { createUser} = usersSlice.actions
+export const { createSong} = songsSlice.actions
 
-export default usersSlice.reducer
+export default songsSlice.reducer
 
 export const usersSelector = (state) => state.users
