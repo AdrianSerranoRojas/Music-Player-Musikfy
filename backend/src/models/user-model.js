@@ -8,14 +8,14 @@ const UserSchema = new Schema(
   {
     _id: String,
 
-    firstName: {
+    userName: {
       type: String,
       trim: true,
     },
-    lastName: {
-      type: String,
-      trim: true,
-    },
+    // lastName: {
+    //   type: String,
+    //   trim: true,
+    // },
     email: {
       type: String,
       required: [true, "The email is required"],

@@ -116,7 +116,8 @@ export async function deleteUser(req, res, next) {
 }
 export async function signUp(req, res, next) {
   const { uid, email } = req.user;
-  console.log(req.user);
+
+  console.log("cagunto", req.userName);
   try {
     const user = await User.findOne({ email: email });
     if (user) {
@@ -125,6 +126,7 @@ export async function signUp(req, res, next) {
     const newUser = await User.create({
       _id: uid,
       email: email,
+      userName: userName,
     });
     debug(newUser);
     res.sendStatus(201);

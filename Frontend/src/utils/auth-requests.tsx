@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getCurrentUserToken } from "../firebase/firebase";
 
-export async function syncUserData() {
+export async function syncUserData(userName) {
   const userToken = await getCurrentUserToken();
 
   return axios({
@@ -10,5 +10,9 @@ export async function syncUserData() {
     headers: {
       authorization: `Bearer ${userToken}`,
     },
+    data: JSON.stringify({
+      userName: userName
+
+    })
   });
 }

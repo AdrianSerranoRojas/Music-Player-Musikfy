@@ -16,6 +16,7 @@ import { syncUserData } from "../../utils/auth-requests";
 
 function SignUp() {
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [signUpError, setSignUpError] = useState(null);
@@ -44,7 +45,7 @@ function SignUp() {
 
     try {
       await singUpWithEmailAndPassword(email, password);
-      await syncUserData();
+      await syncUserData(userName);
     } catch (error) {
       setSignUpError(error.message);
     } finally {
@@ -92,6 +93,18 @@ function SignUp() {
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="userName">
+                      Username
+                    </label>
+                    <input
+                      className="form-control"
+                      id="userName"
+                      type="userName"
+                      value={userName}
+                      onChange={(e) => setUserName(e.target.value)}
                     />
                   </div>
                   <div className="mb-3">
