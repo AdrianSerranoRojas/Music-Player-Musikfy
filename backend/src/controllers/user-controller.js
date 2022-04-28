@@ -1,5 +1,7 @@
 import { User } from "../models/user-model.js";
 import pkg from "loglevel";
+import fs from "fs-extra";
+import { uploadImageCloud, deleteImageCloud } from "../libs/cloudinary.js";
 
 const { debug } = pkg;
 
@@ -115,12 +117,30 @@ export async function deleteUser(req, res, next) {
   }
 }
 export async function signUp(req, res, next) {
-console.log("req>>>>>>>>>>>>", req)
-  const { uid, email } = req.user;
+  console.log("req>>>>>>>>>>>>", req.files);
+  // const { uid, email } = req.user;
+  const { uid, email } = req.body;
   const { userName } = req.body;
 
-
   try {
+    // funcion de clodinary uploadImageCloud
+    let image = null;
+
+    if (req.files?.image) {
+      const resultLoadImage = await uploadImageCloud(
+        req.files.image.tempFilePath
+
+      );
+      console.log("console.log(req.files.image.tempFilePath);",req.files.image.tempFilePath);
+
+      await fs.remove(req.files.image.tempFilePath);
+      image = {
+        url: resultLoadImage.secure_url,
+        public_id: resultLoadImage.public_id,
+      };
+    }
+    //guardar en la base de datos
+
     const user = await User.findOne({ email: email });
     if (user) {
       return res.sendStatus(200);
@@ -129,6 +149,7 @@ console.log("req>>>>>>>>>>>>", req)
       _id: uid,
       email: email,
       userName: userName,
+      image: image,
     });
     debug(newUser);
     res.sendStatus(201);

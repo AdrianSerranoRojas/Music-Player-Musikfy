@@ -2,6 +2,7 @@ import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
+import fileUpload from "express-fileupload";
 
 import userRouter from "./routes/user-routes.js";
 import songsRouter from "./routes/songs-routes.js";
@@ -13,7 +14,13 @@ const app = express();
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    tempFileDir: "./upload",
+  })
+);
 app.use(userRouter);
 app.use(songsRouter);
 

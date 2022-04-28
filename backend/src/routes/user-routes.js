@@ -20,8 +20,8 @@ const UserRouter = Router();
 // UserRouter.patch("/users/:userId", updateUser);
 // UserRouter.delete("/users/:userId", deleteUser);
 
-UserRouter.post("/sign-up", authMiddleware, signUp);
-// UserRouter.post("/sign-up",  signUp);
+// UserRouter.post("/sign-up", authMiddleware, signUp);
+ UserRouter.post("/sign-up",  signUp);
 
 
 

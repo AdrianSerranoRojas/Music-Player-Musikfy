@@ -41,6 +41,12 @@ const CONFIG = {
         client_x509_cert_url: process.env.client_x509_cert_url,
       },
     },
+
+    cloudinary: {
+      cloud_name: process.env.cloud_name,
+      api_key: process.env.api_key,
+      api_secret: process.env.api_secret,
+    },
   },
   development: {
     app: {
@@ -73,6 +79,11 @@ const CONFIG = {
         client_x509_cert_url: process.env.client_x509_cert_url,
       },
     },
+    cloudinary: {
+      cloud_name: process.env.cloud_name,
+      api_key: process.env.api_key,
+      api_secret: process.env.api_secret,
+    },
   },
   test: {
     app: {
@@ -104,6 +115,11 @@ const CONFIG = {
         auth_provider_x509_cert_url: process.env.auth_provider_x509_cert_url,
         client_x509_cert_url: process.env.client_x509_cert_url,
       },
+    },
+    cloudinary: {
+      cloud_name: process.env.cloud_name,
+      api_key: process.env.api_key,
+      api_secret: process.env.api_secret,
     },
   },
 };

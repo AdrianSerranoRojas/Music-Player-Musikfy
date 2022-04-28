@@ -26,19 +26,10 @@ const UserSchema = new Schema(
         message: (props) => `The email ${props.value} is not valid`,
       },
     },
-    speaks: [
-      {
-        type: String,
-        enum: [
-          "english",
-          "spanish",
-          "catalan",
-          "german",
-          "italian",
-          "javascript",
-        ],
-      },
-    ],
+    image: {
+      url: String,
+      public_id: String,
+    },
   },
   { timestamps: true }
 );
