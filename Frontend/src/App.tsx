@@ -13,6 +13,7 @@ import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
+import AddSong from "./Pages/addSong/addSong";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -45,6 +46,7 @@ function App() {
           <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="*" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/addSong" element={<AddSong/>} />
         </Routes>
       </AuthContext.Provider>
     </>
