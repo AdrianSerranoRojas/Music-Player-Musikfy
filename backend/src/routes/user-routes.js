@@ -21,6 +21,7 @@ const UserRouter = Router();
 // UserRouter.delete("/users/:userId", deleteUser);
 
 UserRouter.post("/sign-up", authMiddleware, signUp);
+// UserRouter.post("/sign-up",  signUp);
 
 
 

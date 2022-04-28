@@ -115,9 +115,11 @@ export async function deleteUser(req, res, next) {
   }
 }
 export async function signUp(req, res, next) {
+console.log("req>>>>>>>>>>>>", req)
   const { uid, email } = req.user;
+  const { userName } = req.body;
 
-  console.log("cagunto", req.userName);
+
   try {
     const user = await User.findOne({ email: email });
     if (user) {
