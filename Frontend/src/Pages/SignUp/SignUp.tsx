@@ -88,7 +88,7 @@ function SignUp() {
                   <div className="grid1">
                   <div className="mb-3">
                     <label className="form-label" htmlFor="email">
-                      Email
+                      Email*
                     </label>
                     <input
                       className="form-control"
@@ -100,7 +100,7 @@ function SignUp() {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="password">
-                      Password
+                      Password*
                     </label>
                     <input
                       className="form-control"
