@@ -1,0 +1,27 @@
+@use "../../styles/Border.scss";
+
+.h2{
+    text-align: center;
+    margin-top: 20px;
+}
+.gridForm{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+.grid1 {
+    margin: 5px;
+}
+.grid2 {
+    margin: 5px;
+}
+.h5{
+    text-align: center;
+}
+button{
+    margin: auto;
+    width: 100%;
+    font-size: 20px !important;
+}
+.accExists{
+    margin: 20px 0px 0px 0px;
+}

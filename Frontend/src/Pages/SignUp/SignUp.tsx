@@ -1,5 +1,7 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
+import Form from 'react-bootstrap/Form';
+import { FcGoogle } from "react-icons/fc";
 
 import Button from "../../components/Button/Button";
 
@@ -13,6 +15,8 @@ import {
 } from "../../firebase/firebase";
 
 import { syncUserData } from "../../utils/auth-requests";
+
+import "./SignUp.scss";
 
 function SignUp() {
   const [email, setEmail] = useState("");
@@ -58,8 +62,8 @@ function SignUp() {
     <>
       <main className="container p-4 mt-5">
         <div className="row flex-column align-items-center">
-          <div className="col col-lg-6">
-            <section className="row row-cols-1 mb-5">
+          <div className="col col-lg-6 sketchy">
+            <section className="row row-cols-1">
               <div className="col">
                 <h1 className="h2">Sign Up</h1>
                 {currentUser && (
@@ -68,25 +72,25 @@ function SignUp() {
                 <hr />
               </div>
               <div className="col">
-                <h2 className="h5">Sign Up with Google</h2>
-                <hr />
-              </div>
-              <div className="col">
                 <Button onClick={handleSingInWithGoogleClick}>
-                  Sign In With Google
+                <FcGoogle className="googleLogo"/>
+                  Sign Up With Google
                 </Button>
               </div>
-            </section>
-
-            <section className="row row-cols-1 mb-3">
               <div className="col">
-                <h2 className="h5 mb-3">Sign up with email and password</h2>
+                <h2 className="h5 mb-3">or</h2>
+              </div>
+            </section>
+            <section className="row row-cols-1">
+              <div className="col">
+                <h2 className="h5 mb-3">Sign up with your email</h2>
               </div>
               <div className="col">
-                <form action="#" onSubmit={handleSubmit}>
+                <form action="#" onSubmit={handleSubmit} className="gridForm">
+                  <div className="grid1">
                   <div className="mb-3">
                     <label className="form-label" htmlFor="email">
-                      Email
+                      Email*
                     </label>
                     <input
                       className="form-control"
@@ -110,7 +114,7 @@ function SignUp() {
                   </div>
                   <div className="mb-3">
                     <label className="form-label" htmlFor="password">
-                      Password
+                      Password*
                     </label>
                     <input
                       className="form-control"
@@ -120,7 +124,56 @@ function SignUp() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <Button type="submit" disabled={loading}>
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="username">
+                      Username
+                    </label>
+                    <input
+                      className="form-control"
+                      id="username"
+                      type="text"
+                      // value={username}
+                      // onChange={(e) => setUsername(e.target.value)}
+                    />
+                  </div>
+                  </div>
+                  <div className="grid2">
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="birthday">
+                      Birthday
+                    </label>
+                    <input
+                      className="form-control"
+                      id="birthday"
+                      type="date"
+                      // value={date}
+                      // onChange={(e) => setBirthday(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="country">
+                      Country
+                    </label>
+                    <input
+                      className="form-control"
+                      id="country"
+                      type="text"
+                      // value={country}
+                      // onChange={(e) => setCountry(e.target.value)}
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label className="form-label" htmlFor="gender">
+                      Gender
+                    </label>
+                    <Form.Select name="gender" id="gender">
+                      <option value="male">Male</option>
+                      <option value="female">Female</option>
+                      <option value="other">Other</option>
+                    </Form.Select>
+                  </div>
+                  </div>
+                  <Button type="submit" disabled={loading} size="lg">
                     {loading ? "Signing up..." : "Sign Up"}
                   </Button>
                 </form>
@@ -137,6 +190,10 @@ function SignUp() {
             )}
             <section className="row row-cols-1 mb-5">
               <div className="col">
+                <p className="accExists">
+                  You already have a Musikfy account?
+                </p>
+                  <Link to="/login">Log in</Link>
                 <hr />
               </div>
               <div className="col">

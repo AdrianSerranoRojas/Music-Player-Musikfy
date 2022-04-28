@@ -1,10 +1,10 @@
-@use "../../../variables.scss";
+@use "../../styles/Colors.scss";
 .DropdownProfile{
     width: 15rem;
-    background-color: variables.$primary;
+    background-color: Colors.$primary;
     border: none;
-    &:active{background-color: variables.$primary;}
-    &:hover{background-color: variables.$primary;}
+    &:active{background-color: Colors.$primary;}
+    &:hover{background-color: Colors.$primary;}
 }
 .DropdownProfileMenu{
     background-color: gray;
@@ -17,10 +17,13 @@
     }
 }
 .ProfileImg{
-    width: 15%;
+    width: 35% !important;
     margin-right: 3%;
     border-radius: 50%;
 }
 img {
     width: 40%;
+}
+.searchBig{
+    width: 55em;
 }
