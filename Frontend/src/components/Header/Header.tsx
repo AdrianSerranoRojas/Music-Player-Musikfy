@@ -12,9 +12,14 @@ import FormControl from "react-bootstrap/FormControl";
 
 import { userSignOut } from "../../firebase/firebase";
 
+import { useTranslation } from "react-i18next";
+import LanguageSelect from "../LanguageSelect/LanguageSelect";
+
 import "./header.scss";
 
 function AppHeader({ ...props }) {
+  const { t } = useTranslation();
+
   async function handleSignOut() {
     await userSignOut();
   }
@@ -26,6 +31,9 @@ function AppHeader({ ...props }) {
       <div className="container-fluid">
         <div className="row">
           <nav className="navbar navbar-expand navbar-dark">
+            <div className="language-select">
+              <LanguageSelect />
+            </div>
             <NavLink className="navbar-brand" to="/">
               <Image
                 src="https://res.cloudinary.com/dhqzvelnb/image/upload/v1651072060/Logo/MusikfyLogo-green_ysbv6t.png"
@@ -63,7 +71,7 @@ function AppHeader({ ...props }) {
                             className="DropdownProfileItem"
                             href="/profile"
                           >
-                            Profile
+                            {t('Profile')}
                           </Dropdown.Item>
                           <Dropdown.Item
                             className="DropdownProfileItem"
