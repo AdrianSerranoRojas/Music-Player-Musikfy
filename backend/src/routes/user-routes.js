@@ -21,6 +21,7 @@ UserRouter.get("/user/:userId", getUserDetails);
 // UserRouter.delete("/users/:userId", deleteUser);
 
 UserRouter.post("/sign-up", authMiddleware, signUp);
+UserRouter.patch("/user/:userId", updateUser);
 // UserRouter.post("/sign-up",  signUp);
 
 export default UserRouter;

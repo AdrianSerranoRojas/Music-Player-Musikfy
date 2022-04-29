@@ -1,22 +1,26 @@
 import { useRef, useEffect } from "react";
 
-
-function InputEdit({value}){
-    const handleSubmit = () => console.log("cambiar user value del redux")
-    return(
+function InputEdit({ value, setEditUser, setIsEditing, keye, editUser }) {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsEditing(false);
+  };
+  return (
     <form action="" className="inputForm">
-        <input
+      <input
         type="text"
         placeholder={value}
-        />
-        <button
+        onChange={(e) => setEditUser(editUser =>({...editUser, [keye]: e.target.value }))}
+      />
+      <button
         type="submit"
         style={{ display: "none" }}
         onClick={handleSubmit}
         name=""
         value=""
-        />
-  </form>)
+      />
+    </form>
+  );
 }
 
 export default InputEdit;

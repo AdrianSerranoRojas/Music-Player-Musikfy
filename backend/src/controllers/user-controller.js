@@ -67,7 +67,8 @@ export async function createUser(req, res, next) {
 }
 export async function updateUser(req, res, next) {
   const { userId } = req.params;
-  const { firstName, lastName } = req.body;
+  const { userName, country, birthday, gender } = req.body.editUser;
+  console.log(req.body);
 
   try {
     const updatedUser = await User.findOneAndUpdate(
@@ -76,17 +77,16 @@ export async function updateUser(req, res, next) {
       },
       {
         $set: {
-          firstName: firstName,
-          lastName: lastName,
+          userName: userName,
+          country: country,
+          birthday: birthday,
+          gender: gender,
         },
       },
       {
         new: true,
       }
-    ).select({
-      firstName: 1,
-      lastName: 1,
-    });
+    ).select();
 
     res.status(200).send({
       data: updatedUser,

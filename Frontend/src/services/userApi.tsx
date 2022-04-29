@@ -11,9 +11,16 @@ export const userApi = createApi({
     getUser: builder.query({
       query: (uid) => `/user/${uid}`,
     }),
+    updateUser:builder.mutation({
+        query:({uid, ...patch})=>({
+            url:`user/${uid}`,
+            method:"PATCH",
+            body:patch
+        })
+    })
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetUsersQuery, useGetUserQuery } = userApi;
+export const { useGetUsersQuery, useGetUserQuery, useUpdateUserMutation } = userApi;
