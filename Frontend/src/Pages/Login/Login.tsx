@@ -46,6 +46,7 @@ function Login() {
 
     try {
       await singInWithEmailAndPassword(email, password);
+      
     } catch (error:any) {
       setLoginError(error.message);
     } finally {

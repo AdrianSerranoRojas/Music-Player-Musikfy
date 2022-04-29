@@ -15,7 +15,7 @@ const UserRouter = Router();
 // UserRouter.use("/users", authMiddleware);
 
 // UserRouter.get("/users", getUsers);
-// UserRouter.get("/users/:userId", getUserDetails);
+UserRouter.get("/user/:userId", getUserDetails);
 // UserRouter.post("/users/", createUser);
 // UserRouter.patch("/users/:userId", updateUser);
 // UserRouter.delete("/users/:userId", deleteUser);

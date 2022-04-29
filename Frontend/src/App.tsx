@@ -15,8 +15,11 @@ import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 import AddSong from "./Pages/addSong/addSong";
 
+
+
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
+  console.log(currentUser);
 
   useEffect(() => {
     let unsubscribeFromAuth = null;

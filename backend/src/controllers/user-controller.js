@@ -30,7 +30,7 @@ export async function getUserDetails(req, res, next) {
     const user = await User.findOne({
       _id: userId,
     })
-      .select("-password -__v -createdAt -updatedAt")
+      .select()
       .lean()
       .exec();
 
