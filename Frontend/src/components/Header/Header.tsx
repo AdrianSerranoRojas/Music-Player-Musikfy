@@ -5,10 +5,10 @@ import "./Header.scss";
 
 import AuthContext from "../../context/AuthContext";
 import Button from "../Button/Button";
-import Image from 'react-bootstrap/Image';
-import Dropdown from 'react-bootstrap/Dropdown';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
+import Image from "react-bootstrap/Image";
+import Dropdown from "react-bootstrap/Dropdown";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
 
 import { userSignOut } from "../../firebase/firebase";
 
@@ -27,35 +27,76 @@ function AppHeader({ ...props }) {
         <div className="row">
           <nav className="navbar navbar-expand navbar-dark">
             <NavLink className="navbar-brand" to="/">
-              <Image src="https://res.cloudinary.com/dhqzvelnb/image/upload/v1651072060/Logo/MusikfyLogo-green_ysbv6t.png" alt="profile image" />
+              <Image
+                src="https://res.cloudinary.com/dhqzvelnb/image/upload/v1651072060/Logo/MusikfyLogo-green_ysbv6t.png"
+                alt="profile image"
+              />
             </NavLink>
             <Form className="d-flex">
-            <FormControl
-              type="search"
-              placeholder="Search"
-              className="me-2 searchBig"
-              aria-label="Search"
-            />
-          </Form>
+              <FormControl
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+            </Form>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav w-100">
                 {currentUser ? (
                   <>
                     <li className="nav-item ms-auto">
-                    {currentUser.email}
-                    <Dropdown>
-                      <Dropdown.Toggle id="dropdown-basic" className="DropdownProfile">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4SwRYqnvSzUO1XJzADbOWDjoouV0nqZOv2w&usqp=CAU" alt="User image" className="ProfileImg"></img>
-                      </Dropdown.Toggle>
+                      {currentUser.email}
+                      <Dropdown>
+                        <Dropdown.Toggle
+                          id="dropdown-basic"
+                          className="DropdownProfile"
+                        >
+                          <img
+                            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4SwRYqnvSzUO1XJzADbOWDjoouV0nqZOv2w&usqp=CAU"
+                            alt="User image"
+                            className="ProfileImg"
+                          ></img>
+                        </Dropdown.Toggle>
 
-                      <Dropdown.Menu className="DropdownProfileMenu">
-                        <Dropdown.Item className="DropdownProfileItem" href="/profile">Profile</Dropdown.Item>
-                        <Dropdown.Item className="DropdownProfileItem" href="/userTopTen">Top Ten</Dropdown.Item>
-                        <Dropdown.Item className="DropdownProfileItem" href="/userPlaylists">Playlists</Dropdown.Item>
-                        <Dropdown.Item className="DropdownProfileItem" href="/changePassword">Change Password</Dropdown.Item>
-                        <Dropdown.Item className="DropdownProfileItem" onClick={handleSignOut}>Log Out</Dropdown.Item>
-                      </Dropdown.Menu>
-                    </Dropdown>
+                        <Dropdown.Menu className="DropdownProfileMenu">
+                          <Dropdown.Item
+                            className="DropdownProfileItem"
+                            href="/profile"
+                          >
+                            Profile
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="DropdownProfileItem"
+                            href="/addSong"
+                          >
+                            Upload Song
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="DropdownProfileItem"
+                            href="/userTopTen"
+                          >
+                            Top Ten
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="DropdownProfileItem"
+                            href="/userPlaylists"
+                          >
+                            Playlists
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="DropdownProfileItem"
+                            href="/changePassword"
+                          >
+                            Change Password
+                          </Dropdown.Item>
+                          <Dropdown.Item
+                            className="DropdownProfileItem"
+                            onClick={handleSignOut}
+                          >
+                            Log Out
+                          </Dropdown.Item>
+                        </Dropdown.Menu>
+                      </Dropdown>
                     </li>
                   </>
                 ) : (

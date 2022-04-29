@@ -119,8 +119,9 @@ export async function deleteUser(req, res, next) {
 export async function signUp(req, res, next) {
   console.log("req>>>>>>>>>>>>", req.files);
   // const { uid, email } = req.user;
-  const { uid, email } = req.body;
-  const { userName } = req.body;
+  const { uid, email } = req.user;
+  console.log(req.body);
+  const { userName, birthday, gender, country } = req.body.userData;
 
   try {
     // funcion de clodinary uploadImageCloud
@@ -129,9 +130,11 @@ export async function signUp(req, res, next) {
     if (req.files?.image) {
       const resultLoadImage = await uploadImageCloud(
         req.files.image.tempFilePath
-
       );
-      console.log("console.log(req.files.image.tempFilePath);",req.files.image.tempFilePath);
+      console.log(
+        "console.log(req.files.image.tempFilePath);",
+        req.files.image.tempFilePath
+      );
 
       await fs.remove(req.files.image.tempFilePath);
       image = {
@@ -149,6 +152,9 @@ export async function signUp(req, res, next) {
       _id: uid,
       email: email,
       userName: userName,
+      gender: gender,
+      birthday: birthday,
+      country: country,
       image: image,
     });
     debug(newUser);
