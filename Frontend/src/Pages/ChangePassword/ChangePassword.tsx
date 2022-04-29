@@ -1,17 +1,28 @@
 import withLayout from "../../hoc/withLayout";
 import { Formik } from 'formik';
 import { changePassword, reauthenticate } from "../../firebase/firebase";
+import { useState, useEffect } from "react";
 
 import "./ChangePassword.scss";
 
-async function handleSubmit(values) {
-    event.preventDefault();
-    if(values.newPassword != values.newPasswordConfirm){
-        return;
+const ChangePassword = () => {
+    const [message, setMessage] = useState("");
+
+    async function handleSubmit(values) {
+        event.preventDefault();
+        if(values.newPassword != values.newPasswordConfirm){
+            return;
+        }
+        reauthenticate(values.currentPassword).then(()=> {changePassword(values.newPassword)
+        setMessage("contraseña cambiada correctamente")
+        setTimeout(()=> setMessage(""), 2000)
+        }).catch(()=> {
+            setMessage("contraseña incorrecta");
+            setTimeout(()=> setMessage(""), 2000);
+        });
     }
-    reauthenticate(values.currentPassword).then(()=> changePassword(values.newPassword)).catch(()=> console.log("contraseña incorrecta"));
-}
-const ChangePassword = () => (<div>
+
+    return(<div>
     <h1>Change Your Password</h1>
     <Formik
     initialValues={{ currentPassword: '', newPassword: '' , newPasswordConfirm: ''}}
@@ -29,15 +40,13 @@ const ChangePassword = () => (<div>
         if (values.newPassword.length < 6){
             errors.newPassword = 'this password is too short';
         }
-        // if (message != ""){
-        //     errors.currentPassword = 'contraseña actual incorrecta';
-        // }
         return errors;
         }}
-    onSubmit={(values) => {
-        console.log(values);
-        console.log("caradepolla");
-        }}
+    // onSubmit={(values) => {
+    //     console.log(values);
+    //     console.log("caradepolla");
+    //     }}
+    onSubmit={handleSubmit}
     >
       {({
         values,
@@ -78,6 +87,7 @@ const ChangePassword = () => (<div>
                 />
                 </label>
                 {errors.newPassword && touched.newPassword && errors.newPassword}
+                {message}
                 <button type="submit">
                 Submit
                 </button>
@@ -85,7 +95,9 @@ const ChangePassword = () => (<div>
         </form>
       )}
     </Formik>
-  </div>
-);
+    </div>
+    );
+}
+
 
 export default withLayout(ChangePassword);
