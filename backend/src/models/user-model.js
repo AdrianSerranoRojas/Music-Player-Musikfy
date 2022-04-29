@@ -12,10 +12,18 @@ const UserSchema = new Schema(
       type: String,
       trim: true,
     },
-    // lastName: {
-    //   type: String,
-    //   trim: true,
-    // },
+    gender: {
+      type: String,
+      trim: true,
+    },
+    birthday: {
+      type: String,
+      trim: true,
+    },
+    country: {
+      type: String,
+      trim: true,
+    },
     email: {
       type: String,
       required: [true, "The email is required"],

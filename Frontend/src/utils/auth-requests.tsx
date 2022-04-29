@@ -1,12 +1,12 @@
 import axios from "axios";
 import { getCurrentUserToken } from "../firebase/firebase";
 
-export async function syncUserData(userName = "") {
+export async function syncUserData(userData = "") {
   const userToken = await getCurrentUserToken();
-  console.log(userName);
+  console.log(userData);
 
   var data = JSON.stringify({
-    userName: userName,
+    userData: userData,
   });
 
   var config = {
