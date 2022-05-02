@@ -5,6 +5,7 @@ import withLayout from "../../hoc/withLayout";
 import { createUser, usersSelector } from "../../features/users/usersSlice";
 import { getCurrentUserToken } from "../../firebase/firebase";
 import { useGetSongsQuery } from "../../services/songApi";
+
 async function fetchUserToken(
   setUserToken: any,
   setLoading: any,
@@ -36,7 +37,9 @@ const Home = () => {
   const [imaeValuue, setImaeValuue] = useState();
   const [file, setFile] = useState(null)
   const [data2, setData] = useState({email:"",uid:""})
+
   // const currentUser = useContext(AuthContext);
+
   const currentUserAAA = (e) => {
     setImaeValuue(e.target.files[0]);
     console.log("qqqqq",imaeValuue);
