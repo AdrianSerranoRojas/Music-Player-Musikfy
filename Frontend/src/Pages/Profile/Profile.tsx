@@ -44,7 +44,9 @@ function Profile() {
                 <AiOutlineUser /> Username
               </h3>
               <EditInfo
-                value={data.data.userName}
+                value={
+                  editUser.userName ? editUser.userName : data.data.userName
+                }
                 setEditUser={setEditUser}
                 keye="userName"
               />
