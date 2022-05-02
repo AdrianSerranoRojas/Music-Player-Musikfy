@@ -41,12 +41,7 @@ const Home = () => {
 
   return (
     <div>
-      <button
-        type="submit"
-        onClick={() => dispatch(createUser({ username: "pepito" }))}
-      >
-        click
-      </button>
+      
     </div>
   );
 };

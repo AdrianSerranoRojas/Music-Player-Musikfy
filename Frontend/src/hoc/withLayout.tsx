@@ -2,20 +2,22 @@ import React from "react";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import SideBar from "../components/sideBar";
 
-function getDisplayName(WrappedComponent : any) {
+function getDisplayName(WrappedComponent: any) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
 
-function withLayout(WrappedComponent : any) {
+function withLayout(WrappedComponent: any) {
   WrappedComponent.displayName = `withLayout(${getDisplayName(
-    WrappedComponent,
+    WrappedComponent
   )})`;
 
   function WrapperComponent({ ...props }) {
     return (
       <>
         <Header />
+        <SideBar />
           <WrappedComponent {...props} />
         <Footer />
       </>

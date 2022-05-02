@@ -1,0 +1,76 @@
+@use "../../styles/Colors.scss";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.navBar {
+  visibility: hidden;
+}
+
+.menuBars {
+  display: none;
+}
+
+.navMenu {
+  position: fixed;
+  align-items: center;
+  left: 0;
+  width: 63px;
+  height: 40vh;
+  background-color: green;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  box-shadow: 0px 0px 20px #d4d4d4;
+  transition: 0.3s ease;
+}
+
+.navMenu:hover {
+  width: 190px;
+}
+
+.navMenuItems {
+  padding: 10px;
+  display: flexbox;
+}
+
+.nav-text {
+  font-size: 25px;
+  padding: 10px;
+  width: 30px;
+  color: white;
+}
+
+.nav-text a {
+  align-items: center;
+  justify-content: center;
+  display: flexbox;
+  border-radius: 4px;
+  text-decoration: none;
+  height: 100%;
+}
+
+// .nav-text a {
+//     text-decoration: none;
+//     color: rgb(255, 255, 255);
+//     font-size: 18px;
+//     width: 95%;
+//     height: 100%;
+//     display: flex;
+//     align-items: center;
+//     padding: 0 16px;
+//     border-radius: 4px;
+// }
+
+.nav-text a:hover {
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+}
+
+span {
+  margin-left: 16px;
+}
