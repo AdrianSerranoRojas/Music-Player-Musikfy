@@ -44,27 +44,27 @@ function Profile() {
                 <AiOutlineUser /> Username
               </h3>
               <EditInfo
-                value={data.data.userName}
+                value={editUser.userName ? editUser.userName : data.data.userName}
                 setEditUser={setEditUser}
-                keye="userName"
+                control="userName"
               />
               <hr />
               <h3 className="profileTitle">
                 <BiCake /> Birthday
               </h3>
               <EditInfo
-                value={data.data.birthday}
+                value={editUser.birthday ? editUser.birthday : data.data.birthday}
                 setEditUser={setEditUser}
-                keye="birthday"
+                control="birthday"
               />
               <hr />
               <h3 className="profileTitle">
                 <BsHouseDoor /> Country
               </h3>
               <EditInfo
-                value={data.data.country}
+                value={editUser.country ? editUser.country : data.data.country}
                 setEditUser={setEditUser}
-                keye="country"
+                control="country"
               />
               <hr />
               <h3 className="profileTitle">

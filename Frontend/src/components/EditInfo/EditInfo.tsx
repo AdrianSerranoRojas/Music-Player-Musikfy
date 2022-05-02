@@ -3,7 +3,7 @@ import { useState } from "react";
 import InputEdit from "../InputEdit/InputEdit";
 import "./EditInfo.scss";
 
-function EditInfo({ value, setEditUser, keye, editUser }) {
+function EditInfo({ value, setEditUser, control, editUser }) {
   const [isEditing, setIsEditing] = useState(false);
   const toggleEditing = () => setIsEditing(true);
   return (
@@ -13,7 +13,7 @@ function EditInfo({ value, setEditUser, keye, editUser }) {
           value={value}
           setEditUser={setEditUser}
           setIsEditing={setIsEditing}
-          keye={keye}
+          control={control}
           editUser={editUser}
         />
       ) : (

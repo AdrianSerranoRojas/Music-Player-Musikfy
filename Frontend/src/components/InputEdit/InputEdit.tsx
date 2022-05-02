@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 
-function InputEdit({ value, setEditUser, setIsEditing, keye, editUser }) {
+function InputEdit({ value, setEditUser, setIsEditing, control, editUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsEditing(false);
@@ -10,7 +10,7 @@ function InputEdit({ value, setEditUser, setIsEditing, keye, editUser }) {
       <input
         type="text"
         placeholder={value}
-        onChange={(e) => setEditUser(editUser =>({...editUser, [keye]: e.target.value }))}
+        onChange={(e) => setEditUser(editUser =>({...editUser, [control]: e.target.value }))}
       />
       <button
         type="submit"
