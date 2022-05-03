@@ -15,9 +15,15 @@ import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 import AddSong from "./Pages/addSong/addSong";
 
+// THEME PROVIDER >>>
 
+// <<<<<THEME PROVIDER
 
-function App() {
+export default function App() {
+  // THEME PROVIDER >>>
+
+  // <<<<<THEME PROVIDER
+
   const [currentUser, setCurrentUser] = useState(null);
   console.log(currentUser);
 
@@ -39,8 +45,11 @@ function App() {
     };
   }, [currentUser]);
 
+  // THEME PROVIDER
+
   return (
     <>
+      
       <AuthContext.Provider value={currentUser}>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -59,5 +68,3 @@ function App() {
     </>
   );
 }
-
-export default App;

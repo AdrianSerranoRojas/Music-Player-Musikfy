@@ -3,6 +3,8 @@ import { useContext } from "react";
 
 import "./Header.scss";
 
+import ColorMode from "../ColorMode/ColorMode";
+
 import AuthContext from "../../context/AuthContext";
 import Button from "../Button/Button";
 import Image from "react-bootstrap/Image";
@@ -26,6 +28,7 @@ function AppHeader({ ...props }) {
       <div className="container-fluid">
         <div className="row">
           <nav className="navbar navbar-expand navbar-dark">
+          <ColorMode />
             <NavLink className="navbar-brand" to="/">
               <Image
                 src="https://res.cloudinary.com/dhqzvelnb/image/upload/v1651072060/Logo/MusikfyLogo-green_ysbv6t.png"
