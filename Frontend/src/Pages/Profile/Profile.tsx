@@ -17,7 +17,7 @@ function Profile() {
     return(
         <>
             <div className="mainProfile sketchy">
-            <h1 className="h2">Log in</h1>
+            <h1 className="h2">Profile page</h1>
             <hr />
             <div className="pageProfile">
                 <section className="editProfile">

@@ -3,6 +3,7 @@ import axios from "axios";
 
 import withLayout from "../../hoc/withLayout";
 import AuthContext from "../../context/AuthContext";
+import MusicPlayer from "../../components/MusicPlayer/MusicPlayer"
 
 import { getCurrentUserToken } from "../../firebase/firebase";
 
@@ -31,7 +32,11 @@ const Home = () => {
 
   const currentUser = useContext(AuthContext);
 
-  return <div>HOME</div>;
-};
+  return(
+  <>
+    <div>HOME</div>
+    <MusicPlayer />
+  </>
+  )};
 
 export default withLayout(Home);
