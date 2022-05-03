@@ -1,6 +1,6 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-
+import CssBaseline from "@mui/material/CssBaseline";
 import { amber, deepOrange, grey } from "@mui/material/colors";
 
 export const ColorModeContext = React.createContext({
@@ -54,6 +54,7 @@ export default function ToggleColorMode({ children }) {
 
   return (
     <ColorModeContext.Provider value={colorMode}>
+      <CssBaseline />
       <ThemeProvider theme={theme}>{children}</ThemeProvider>
     </ColorModeContext.Provider>
   );

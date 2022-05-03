@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SideBar from "../components/sideBar";
+import MyAppBar from "../components/MyAppBar/MyAppBar";
 
 
 function getDisplayName(WrappedComponent: any) {
@@ -18,10 +19,11 @@ function withLayout(WrappedComponent: any) {
   function WrapperComponent({ ...props }) {
     return (
       <>
-          <Header />
-          <SideBar />
-          <WrappedComponent {...props} />
-          <Footer />
+        <MyAppBar />
+        <Header />
+        <SideBar />
+        <WrappedComponent {...props} />
+        <Footer />
       </>
     );
   }
