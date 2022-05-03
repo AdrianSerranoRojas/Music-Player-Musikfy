@@ -116,6 +116,7 @@ export async function deleteUser(req, res, next) {
     next(error);
   }
 }
+
 export async function signUp(req, res, next) {
   console.log("req>>>>>>>>>>>>", req.files);
   // const { uid, email } = req.user;
