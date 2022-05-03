@@ -1,12 +1,14 @@
 import React from "react";
-
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import SideBar from "../components/sideBar";
 
+
 function getDisplayName(WrappedComponent: any) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
+
+
 
 function withLayout(WrappedComponent: any) {
   WrappedComponent.displayName = `withLayout(${getDisplayName(
@@ -16,10 +18,10 @@ function withLayout(WrappedComponent: any) {
   function WrapperComponent({ ...props }) {
     return (
       <>
-        <Header />
-        <SideBar />
+          <Header />
+          <SideBar />
           <WrappedComponent {...props} />
-        <Footer />
+          <Footer />
       </>
     );
   }

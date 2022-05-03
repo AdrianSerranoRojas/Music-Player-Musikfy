@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 
 import usersSlice from "../features/users/usersSlice";
 
-import { songApi } from "../services/SongApi";
+import { songApi } from "../services/songApi";
 import { userApi } from "../services/userApi";
 
 import { setupListeners } from "@reduxjs/toolkit/query";

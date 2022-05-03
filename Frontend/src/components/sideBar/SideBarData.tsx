@@ -1,38 +1,42 @@
 import React from "react";
 
-import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
+import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import PlaylistAddOutlinedIcon from '@mui/icons-material/PlaylistAddOutlined';
+import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
+import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
+
+
 
 export const SideBarData = [
     {
         title: 'Profile',
         path: '/profile',
-        icon: <AiIcons.AiFillProfile />,
+        icon: <PermIdentityOutlinedIcon />,
         cName: 'nav-text'
     },
     {
         title: 'Home',
         path: '/',
-        icon: <AiIcons.AiFillHome />,
+        icon: <HomeOutlinedIcon />,
         cName: 'nav-text'
     },
     {
         title: 'Sign-up',
         path: '/sign-up',
-        icon: <AiIcons.AiFillHeart />,
+        icon: <VpnKeyOutlinedIcon />,
         cName: 'nav-text'
     },
     {
         title: 'Add Song',
         path: '/addSong',
-        icon: <AiIcons.AiFillAudio />,
+        icon: <PlaylistAddOutlinedIcon />,
         cName: 'nav-text'
     },
     {
         title: 'Contact',
         path: '/',
-        icon: <IoIcons.IoMdHelpCircle />,
+        icon: <AlternateEmailOutlinedIcon />,
         cName: 'nav-text'
     },
 ]
