@@ -18,7 +18,6 @@ export async function syncUserData(userData = "") {
     },
     data: data,
   };
-
   return axios(config)
     .then(function (response) {
       console.log(JSON.stringify(response.data));

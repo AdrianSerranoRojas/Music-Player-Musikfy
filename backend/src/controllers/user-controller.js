@@ -71,6 +71,24 @@ export async function updateUser(req, res, next) {
   console.log(req.body);
 
   try {
+
+        let image = null;
+
+        if (req.files?.image) {
+          const resultLoadImage = await uploadImageCloud(
+            req.files.image.tempFilePath
+          );
+          console.log(
+            "console.log(req.files.image.tempFilePath);",
+            req.files.image.tempFilePath
+          );
+
+          await fs.remove(req.files.image.tempFilePath);
+          image = {
+            url: resultLoadImage.secure_url,
+            public_id: resultLoadImage.public_id,
+          };
+        }
     const updatedUser = await User.findOneAndUpdate(
       {
         _id: userId,
@@ -81,6 +99,7 @@ export async function updateUser(req, res, next) {
           country: country,
           birthday: birthday,
           gender: gender,
+          image: image,
         },
       },
       {
@@ -117,8 +136,7 @@ export async function deleteUser(req, res, next) {
   }
 }
 export async function signUp(req, res, next) {
-  console.log("req>>>>>>>>>>>>", req.files);
-  // const { uid, email } = req.user;
+
   const { uid, email } = req.user;
   console.log(req.body);
   const { userName, birthday, gender, country } = req.body.userData;
