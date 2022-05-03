@@ -8,6 +8,8 @@ import {
   signOut,
   sendPasswordResetEmail,
   updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider
 } from "firebase/auth";
 import { get } from "immer/dist/internal";
 
@@ -76,4 +78,13 @@ export function changePassword(
     console.log(user);
     console.log(newPassword);
     updatePassword(user, newPassword).then(() => console.log("contraseña cambiada")).catch(() => console.log("contraseña no cambiada"))
+  }
+
+  export async function reauthenticate(password){
+    const user = auth.currentUser;
+    const credential = EmailAuthProvider.credential(
+      auth.currentUser.email,
+      password
+  )
+      return (reauthenticateWithCredential(user, credential))
   }
