@@ -6,20 +6,31 @@
   padding: 0;
 }
 
-.navBar {
-  visibility: hidden;
-}
+// .navBar {
+//   visibility: hidden;
+// }
 
-.menuBars {
-  display: none;
+// .navBar image {
+//   position: relative;
+// }
+
+// .menuBars {
+//   display: none;
+// }
+
+.navMenuItems {
+  padding: 10px;
+  display: flexbox;
+  justify-content:baseline;
 }
 
 .navMenu {
+  top: 0;
   position: fixed;
   align-items: center;
   left: 0;
   width: 63px;
-  height: 40vh;
+  height: 100vh;
   background-color: green;
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -34,9 +45,13 @@
   width: 190px;
 }
 
-.navMenuItems {
-  padding: 10px;
-  display: flexbox;
+
+
+.logo img {
+  margin-bottom: 130px;
+  height: 100px;
+  width: 120px;
+  margin-left: 62px;
 }
 
 .nav-text {
@@ -73,5 +88,20 @@
 }
 
 span {
+
   margin-left: 16px;
 }
+
+.iconsBot {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ProfileImg2 {
+  margin-top: 100px;
+  width: 7rem;
+  height: 9rem;
+}
+
+
