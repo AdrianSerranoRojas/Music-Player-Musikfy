@@ -4,11 +4,15 @@ import withLayout from "../../hoc/withLayout";
 import Image from "react-bootstrap/Image";
 import Form from "react-bootstrap/Form";
 
-import { MdOutlineEdit } from "react-icons/md";
-import { AiOutlineMail, AiOutlineUser } from "react-icons/ai";
-import { RiLockPasswordLine } from "react-icons/ri";
-import { BiCake } from "react-icons/bi";
-import { BsHouseDoor, BsGenderAmbiguous } from "react-icons/bs";
+import EditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
+import PersonOutlineIcon from '@mui/icons-material/PersonOutline';
+import MailOutlinedIcon from '@mui/icons-material/MailOutlined';
+import LockIcon from '@mui/icons-material/Lock';
+import CakeIcon from '@mui/icons-material/Cake';
+import HomeIcon from '@mui/icons-material/Home';
+import TransgenderIcon from '@mui/icons-material/Transgender';
+
+
 
 import { useGetUserQuery, useUpdateUserMutation } from "../../services/userApi";
 import AuthContext from "../../context/AuthContext";
@@ -60,7 +64,7 @@ function Profile() {
           <div className="pageProfile">
             <section className="editProfile">
               <h3 className="profileTitle">
-                <AiOutlineUser /> Username
+                <PersonOutlineIcon /> Username
               </h3>
               <EditInfo
                 value={
@@ -71,7 +75,7 @@ function Profile() {
               />
               <hr />
               <h3 className="profileTitle">
-                <BiCake /> Birthday
+                <CakeIcon /> Birthday
               </h3>
               <EditInfo
                 value={
@@ -82,7 +86,7 @@ function Profile() {
               />
               <hr />
               <h3 className="profileTitle">
-                <BsHouseDoor /> Country
+                <HomeIcon /> Country
               </h3>
               <EditInfo
                 value={editUser.country ? editUser.country : data.data.country}
@@ -91,7 +95,7 @@ function Profile() {
               />
               <hr />
               <h3 className="profileTitle">
-                <BsGenderAmbiguous /> Gender
+                <TransgenderIcon /> Gender
               </h3>
               <div className="gridFixer">
                 <Form.Select aria-label="Default select example">
@@ -101,7 +105,7 @@ function Profile() {
                   <option value="O">Other</option>
                 </Form.Select>
                 <button>
-                  <MdOutlineEdit />
+                  <EditOutlinedIcon />
                 </button>
               </div>
             </section>
