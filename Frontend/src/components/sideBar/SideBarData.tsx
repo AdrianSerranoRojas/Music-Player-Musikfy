@@ -1,42 +1,73 @@
-import React from "react";
-
-import PermIdentityOutlinedIcon from '@mui/icons-material/PermIdentityOutlined';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import PlaylistAddOutlinedIcon from '@mui/icons-material/PlaylistAddOutlined';
-import AlternateEmailOutlinedIcon from '@mui/icons-material/AlternateEmailOutlined';
-import VpnKeyOutlinedIcon from '@mui/icons-material/VpnKeyOutlined';
 
 
+import DashboardOutlined from '@mui/icons-material/DashboardOutlined';
+import Person from '@mui/icons-material/Person';
+import Forum from '@mui/icons-material/Forum';
+import Analytics from '@mui/icons-material/Analytics';
+import FolderOpen from '@mui/icons-material/FolderOpen';
+import BorderColor from '@mui/icons-material/BorderColor';
+import Search from '@mui/icons-material/Search';
 
-export const SideBarData = [
-    {
-        title: 'Profile',
-        path: '/profile',
-        icon: <PermIdentityOutlinedIcon />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Home',
-        path: '/',
-        icon: <HomeOutlinedIcon />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Sign-up',
-        path: '/sign-up',
-        icon: <VpnKeyOutlinedIcon />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Add Song',
-        path: '/addSong',
-        icon: <PlaylistAddOutlinedIcon />,
-        cName: 'nav-text'
-    },
-    {
-        title: 'Contact',
-        path: '/',
-        icon: <AlternateEmailOutlinedIcon />,
-        cName: 'nav-text'
-    },
-]
+const navbarList = [
+  {
+    icon: Search,
+    desc: 'Search',
+    secondDesc: '',
+    badge: 0,
+    subList: [],
+  },
+  {
+    icon: DashboardOutlined,
+    desc: 'Dashboard',
+    secondDesc: '',
+    badge: 0,
+    subList: [],
+  },
+  {
+    icon: Person,
+    desc: 'User',
+    secondDesc: '',
+    badge: 5,
+    subList: [],
+    path: "/profile"
+  },
+  {
+    icon: Forum,
+    desc: 'Forum',
+    secondDesc: 'Message from andi',
+    badge: 1,
+    subList: [
+      {
+        desc: 'chat',
+        badge: 2,
+      },
+      {
+        desc: 'reminder',
+        badge: 0,
+      },
+    ],
+  },
+  {
+    icon: Analytics,
+    desc: 'Analytics',
+    secondDesc: '',
+    badge: 0,
+    subList: [],
+  },
+  {
+    icon: FolderOpen,
+    desc: 'Folder',
+    secondDesc: '',
+    badge: 0,
+    subList: [],
+  },
+  {
+    icon: BorderColor,
+    desc: 'Edit',
+    secondDesc: '',
+    badge: 0,
+    subList: [],
+  },
+];
+
+export default navbarList;
