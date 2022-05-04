@@ -6,10 +6,9 @@ import FolderOpen from "@mui/icons-material/FolderOpen";
 import BorderColor from "@mui/icons-material/BorderColor";
 import Search from "@mui/icons-material/Search";
 
-
-
 const navbarList = [
   {
+    keye: 1,
     icon: Search,
     desc: "Search",
     secondDesc: "",
@@ -18,6 +17,7 @@ const navbarList = [
     path: "/home",
   },
   {
+    keye: 2,
     icon: DashboardOutlined,
     desc: "Dashboard",
     secondDesc: "",
@@ -26,6 +26,7 @@ const navbarList = [
     path: "/home",
   },
   {
+    keye: 3,
     icon: Person,
     desc: "User",
     secondDesc: "",
@@ -34,6 +35,7 @@ const navbarList = [
     path: "/profile",
   },
   {
+    keye: 4,
     icon: Forum,
     path: "/home",
     desc: "Forum",
@@ -51,6 +53,7 @@ const navbarList = [
     ],
   },
   {
+    keye: 5,
     icon: Analytics,
     path: "/home",
     desc: "Analytics",
@@ -59,6 +62,7 @@ const navbarList = [
     subList: [],
   },
   {
+    keye: 6,
     icon: FolderOpen,
     path: "/home",
     desc: "Folder",
@@ -67,6 +71,7 @@ const navbarList = [
     subList: [],
   },
   {
+    keye: 7,
     icon: BorderColor,
     path: "/home",
     desc: "Edit",

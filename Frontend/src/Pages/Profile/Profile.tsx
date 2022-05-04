@@ -55,7 +55,6 @@ function Profile() {
   });
 
   const insertFile = async () => {
-    
     //   const newFile = new FormData();
     //   newFile.append("file", file, file.name);
     //   newFile.append("type", file.type);

@@ -53,8 +53,6 @@ export default function SideNavbar() {
 
   const navigate = useNavigate();
 
-
-
   const drawerContent = (
     <>
       <Box
@@ -115,12 +113,13 @@ export default function SideNavbar() {
         </Button>
       </Box>
 
-      <List dense={true}>
+      <List dense={true} >
         {navbarList.map((key, index) => (
           <>
-            {index === 0 ? (
+        {/* {index === 0 ? (
               <>
                 <Tooltip
+                  key={`1+${key.keye}`}
                   title={open ? key.desc : ""}
                   placement={"right"}
                   componentsProps={{
@@ -135,6 +134,7 @@ export default function SideNavbar() {
                   }}
                 >
                   <ListItemButton
+                    key={`2+${key.keye}`}
                     onClick={toogleOpenSearch}
                     sx={{
                       margin: "6px 14px",
@@ -143,19 +143,25 @@ export default function SideNavbar() {
                       backgroundColor: "#26284687",
                     }}
                   >
-                    <ListItemIcon sx={{ minWidth: "46px" }}>
+                    <ListItemIcon
+                      sx={{ minWidth: "46px" }}
+                      key={`3+${key.keye}`}
+                    >
                       <Badge
+                        key={`4+${key.keye}`}
                         badgeContent={key.badge}
                         color="secondary"
                         variant="dot"
                       >
                         <key.icon
+                          key={`5+${key.keye}`}
                           sx={{ fontSize: "20px", color: "lightgray" }}
                         />
                       </Badge>
                     </ListItemIcon>
 
                     <InputBase
+                      key={`6+${key.keye}`}
                       inputRef={refFocus}
                       margin="dense"
                       fullWidth={true}
@@ -178,10 +184,11 @@ export default function SideNavbar() {
                     ></InputBase>
                   </ListItemButton>
                 </Tooltip>
-                <Divider variant="middle" light={true} />
+                <Divider variant="middle" light={true} key={`7+${key.keye}`} />
               </>
-            ) : (
-              <Tooltip
+            ) : ( */}
+        {/* <Tooltip
+                key={`8+${key.keye}`}
                 title={open ? key.desc : ""}
                 placement={"right"}
                 componentsProps={{
@@ -194,8 +201,9 @@ export default function SideNavbar() {
                     },
                   },
                 }}
-              >
-                <ListItemButton
+              > */}
+        {/* <ListItemButton
+                  key={`9+${key.keye}`}
                   sx={{
                     margin: "6px 14px",
                     padding: "10px",
@@ -205,18 +213,26 @@ export default function SideNavbar() {
                     },
                   }}
                   onClick={() => navigate(`${key.path}`)}
-                >
-                  <ListItemIcon sx={{ minWidth: "46px" }}>
+                > */}
+        {/* <ListItemIcon
+                    key={`10+${key.keye}`}
+                    sx={{ minWidth: "46px" }}
+                  >
                     <Badge
+                      key={`11+${key.keye}`}
                       badgeContent={key.badge}
                       color="secondary"
                       variant="dot"
                     >
-                      <key.icon sx={{ fontSize: "20px", color: "lightgray" }} />
+                      <key.icon
+                        key={`12+${key.keye}`}
+                        sx={{ fontSize: "20px", color: "lightgray" }}
+                      />
                     </Badge>
-                  </ListItemIcon>
+                  </ListItemIcon> */}
 
-                  <ListItemText
+        {/* <ListItemText
+                    key={`13+${key.keye}`}
                     primary={key.desc}
                     primaryTypographyProps={{
                       variant: "body2",
@@ -229,9 +245,10 @@ export default function SideNavbar() {
                       whiteSpace: "nowrap",
                       minWidth: "126px",
                     }}
-                  />
-                  {key.badge !== 0 ? (
+                  /> */}
+        {/* {key.badge !== 0 ? (
                     <Chip
+                      key={`14+${key.keye}`}
                       label={key.badge}
                       color={"secondary"}
                       size="small"
@@ -239,13 +256,13 @@ export default function SideNavbar() {
                     />
                   ) : (
                     <></>
-                  )}
-                </ListItemButton>
-              </Tooltip>
-            )}
-          </>
+                  )} */}
+        {/* </ListItemButton> */}
+        {/* </Tooltip> */}
+        {/* )} */}
+        </>
         ))}
-        <Divider variant="middle" light={true} />
+        {/* <Divider key={123} variant="middle" light={true} /> */}
       </List>
 
       <Box
@@ -299,7 +316,7 @@ export default function SideNavbar() {
             Web Designer
           </Typography>
         </Box>
-        <IconButton contained sx={{ color: "ligthgray" }}>
+        <IconButton sx={{ color: "ligthgray" }}>
           <ExitToAppIcon />
         </IconButton>
       </Box>
