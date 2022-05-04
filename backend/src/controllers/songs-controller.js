@@ -63,7 +63,10 @@ import {Songs} from "../models/songs-model.js";
 
 export async function getSongs(req, res, next) {
   try {
-    const songs = await Songs.find({}).lean().exec();
+    const songs = await Songs.find().select({
+      songUrl: 1,
+      songName: 1
+    }).lean().exec();
 
     res.status(200).send({
       data: songs,

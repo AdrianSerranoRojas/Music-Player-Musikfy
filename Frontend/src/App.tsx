@@ -9,6 +9,7 @@ import SignUp from "./Pages/SignUp/SignUp";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import Profile from "./Pages/Profile/Profile";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
+import PlaySong from "./Pages/PlaySong/PlaySong";
 
 import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
@@ -18,7 +19,6 @@ import AddSong from "./Pages/addSong/addSong";
 export default function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
-  console.log(currentUser);
 
   useEffect(() => {
     let unsubscribeFromAuth = null;
@@ -53,6 +53,8 @@ export default function App() {
             element={currentUser ? <Profile /> : <Home />}
           />
           <Route path="/addSong" element={<AddSong />} />
+          <Route path="/playSong" element={<PlaySong />} />
+
         </Routes>
       </AuthContext.Provider>
     </>
