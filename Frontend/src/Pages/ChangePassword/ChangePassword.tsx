@@ -12,7 +12,7 @@ async function handleSubmit(values) {
     reauthenticate(values.currentPassword).then(()=> changePassword(values.newPassword)).catch(()=> console.log("contraseña incorrecta"));
 }
 const ChangePassword = () => (<div>
-    <h1>Change Your Password</h1>
+    <h1 className="h1ChangePsw">Change Your Password</h1>
     <Formik
     initialValues={{ currentPassword: '', newPassword: '' , newPasswordConfirm: ''}}
     validate={values => {
@@ -78,7 +78,7 @@ const ChangePassword = () => (<div>
                 />
                 </label>
                 {errors.newPassword && touched.newPassword && errors.newPassword}
-                <button type="submit">
+                <button className="buttChangePsw" type="submit">
                 Submit
                 </button>
             </div>

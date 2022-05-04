@@ -14,6 +14,7 @@ import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 import AddSong from "./Pages/addSong/addSong";
+import Main from "./Pages/Main/Main";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -47,6 +48,7 @@ function App() {
           <Route path="*" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/addSong" element={<AddSong/>} />
+          <Route path="/main" element={<Main/>}/>
         </Routes>
       </AuthContext.Provider>
     </>

@@ -6,6 +6,10 @@ import AuthContext from "../../context/AuthContext";
 import MusicPlayer from "../../components/MusicPlayer/MusicPlayer"
 
 import { getCurrentUserToken } from "../../firebase/firebase";
+import SongCard from "../../components/SongCard/SongCard";
+import LikesCard from "../../components/MainCards/LikesCard/LikesCard"
+import Box from "@mui/material/Box";
+import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 
 async function fetchUserToken(
   setUserToken: any,
@@ -34,7 +38,10 @@ const Home = () => {
 
   return(
   <>
-    <div>HOME</div>
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+      <LikesCard/>
+      <PlaylistsCard />
+    </Box>
     <MusicPlayer />
   </>
   )};

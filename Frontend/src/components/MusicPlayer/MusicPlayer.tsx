@@ -36,9 +36,7 @@ function MusicPlayer() {
 
     return(
         <div className='musicPlayer'>
-            <div className='fixVert'>
-                <img src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg" alt="juice" />
-            </div>
+                <img src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg" alt="juice" className='imgMP'/>
             <div className='fixVert'>
                 Lucid Dreams<br />
                 <span className='author'>Juice WRLD</span>

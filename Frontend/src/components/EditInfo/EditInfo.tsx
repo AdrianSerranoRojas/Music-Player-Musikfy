@@ -18,7 +18,7 @@ function EditInfo({
             ) : (
             <>
                 <h4 className="profileData">{value}</h4>
-                <button onClick={toggleEditing}>
+                <button onClick={toggleEditing} className="buttonEditInfo">
                     <MdOutlineEdit />
                 </button>
             </>)}
