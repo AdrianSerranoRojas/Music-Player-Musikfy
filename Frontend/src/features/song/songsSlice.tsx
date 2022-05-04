@@ -1,18 +1,17 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useGetSongsQuery } from '../../services/songApi';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useGetSongsQuery } from "../../services/songApi";
+import axios from "axios";
 
 const initialState = {
   currentSong: {
     isPlaying: false,
-  }
-}
-export const fetchSongs = createAsyncThunk("songs/fetchSongs",
-() => {
+  },
+};
+export const fetchSongs = createAsyncThunk("songs/fetchSongs", () => {
   return axios.get("http://localhost:4000/songs");
-})
+});
 export const songsSlice = createSlice({
-  name: 'songs',
+  name: "songs",
   initialState,
   reducers: {
     // addSong: (state, action) => {
@@ -24,7 +23,8 @@ export const songsSlice = createSlice({
     // },
     addCurrentSong: (state, action) => {
       state.currentSong.isPlaying = action.payload;
-    }
+      return state;
+    },
 
     // decrement: (state) => {
     //   state.value -= 1
@@ -37,11 +37,10 @@ export const songsSlice = createSlice({
     [fetchSongs.fulfilled]: (state, action) => {
       console.log("payload");
       console.log(state);
-    }
-  }
-})
+    },
+  },
+});
 
-export const { addCurrentSong} = songsSlice.actions
+export const { addCurrentSong } = songsSlice.actions;
 
-
-export const songsSelector = (state) => state.songs
+export const songsSelector = (state) => state.songs;
