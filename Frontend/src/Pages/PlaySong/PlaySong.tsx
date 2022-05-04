@@ -4,12 +4,14 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentSong, songsSelector } from "../../features/song/songsSlice";
 import { useGetSongsQuery } from "../../services/songApi";
+import { Button } from "@material-ui/core";
+import {  GrFavorite } from "react-icons/gr";
 
 const PlaySong = () => {
   const dispatch = useDispatch();
   const [songList, setSongList] = useState([]);
 
-  const [currentSong, setCurrentSong] = useState("song1");
+  const [currentSong, setCurrentSong] = useState();
 
   // useEffect(() => {
   //   axios
@@ -56,12 +58,27 @@ const PlaySong = () => {
     dispatch(addCurrentSong(!currentSong.isPlaying));
     // setCurrentSong(currentSong => ({...currentSong, isPlaying: !isPlaying}));
   };
+  const handleSelect = (song) => {
+    console.log(song);
+    setCurrentSong(song)
+     console.log("esto es pa setear el currentsong carapolla",currentSong);
+    
+  };
 
   return (
     <>
       {isSuccess &&
-        data.data.map((song) => {
-          return <h1>{song.songName}</h1>;
+        data.data.map((song, index) => {
+          return (
+
+
+            <button key={index} name={song.songName} onClick={(e) => handleSelect(e.target.name)}>
+              {song.songName}
+              <Button variant="outlined" color="primary" >
+              <GrFavorite />
+</Button>
+            </button>
+          );
         })}
       <div>
         {/* Show state of song on website */}

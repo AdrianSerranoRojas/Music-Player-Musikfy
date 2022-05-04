@@ -16,6 +16,7 @@ import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 import AddSong from "./Pages/addSong/addSong";
 import Main from "./Pages/Main/Main";
+import {NotFound} from "./components/NotFound/NotFound"
 
 export default function App() {
 
@@ -48,7 +49,7 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/changePassword" element={<ChangePassword />} />
-          <Route path="*" element={<Home />} />
+          <Route path="*" element={<NotFound />} />
           <Route
             path="/profile"
             element={currentUser ? <Profile /> : <Home />}
