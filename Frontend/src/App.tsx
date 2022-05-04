@@ -16,9 +16,8 @@ import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 import AddSong from "./Pages/addSong/addSong";
 
+export default function App() {
 
-
-function App() {
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -61,5 +60,3 @@ function App() {
     </>
   );
 }
-
-export default App;

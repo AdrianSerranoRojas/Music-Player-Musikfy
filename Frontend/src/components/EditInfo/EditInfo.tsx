@@ -1,4 +1,4 @@
-import { MdOutlineEdit } from "react-icons/md";
+import EditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import { useState } from "react";
 import InputEdit from "../InputEdit/InputEdit";
 import "./EditInfo.scss";
@@ -20,7 +20,7 @@ function EditInfo({ value, setEditUser, control, editUser }) {
         <>
           <h4 className="profileData">{value}</h4>
           <button onClick={toggleEditing}>
-            <MdOutlineEdit />
+            <EditOutlinedIcon />
           </button>
         </>
       )}
