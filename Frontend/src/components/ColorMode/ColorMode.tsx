@@ -25,7 +25,6 @@ export default function ColorMode() {
         p: 3,
       }}
     >
-      {theme.palette.mode} mode
       <IconButton
         sx={{ ml: 1 }}
         onClick={colorMode.toggleColorMode}

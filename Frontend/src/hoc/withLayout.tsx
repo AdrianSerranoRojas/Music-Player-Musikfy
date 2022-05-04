@@ -19,8 +19,8 @@ function withLayout(WrappedComponent: any) {
   function WrapperComponent({ ...props }) {
     return (
       <>
-        <MyAppBar />
-        <Header />
+        {/* <MyAppBar />
+        <Header /> */}
         <SideBar />
         <WrappedComponent {...props} />
         <Footer />
