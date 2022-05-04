@@ -1,26 +1,15 @@
 import withLayout from "../../hoc/withLayout";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useGetSongsQuery } from "../../services/songApi";
-import { addSong, songsSelector, fetchSongs } from "../../features/song/songsSlice";
+import axios from "axios";
 
 const PlaySong = () => {
   const [songList, setSongList ] = useState([]);
   
-  const dispatch = useDispatch();
-  dispatch(fetchSongs());
-  // const [getSongs] = useGetSongsQuery();
-  // console.log(getSongs());
-  // useGetSongsQuery().unwrap().then((fulfilled) => {
-  //   dispatch(addSong("carapolla"))
-  // })
-
-  // const carapolla = useSelector(songsSelector);
-  // console.log(carapolla);
+  useEffect(()=>{
+    axios.get("http://localhost:4000/songs").then((response)=> setSongList(response.data.data))
+    console.log(songList);
+  }, [])
   
-  // const datos = useSelector(songsSelector);
-
-  // console.log(data.data);
 
     const [currentSong, setCurrentSong] = useState({
         audio: new Audio("https://res.cloudinary.com/carapolla/video/upload/v1651577947/songs/aplauso_sape4x.mp3"),
@@ -50,9 +39,10 @@ const PlaySong = () => {
       };
 
       return (
-
-        // {arraySong.map((song) =>
-        //   (<songItem/>))}
+        <>
+        {songList && songList.map((song) =>{
+          return(<h1>{song.songName}</h1>)
+        })}
         <div>
           {/* Show state of song on website */}
           <p>
@@ -66,6 +56,7 @@ const PlaySong = () => {
             Play | Pause
           </button>
         </div>
+        </>
       );
 
 }

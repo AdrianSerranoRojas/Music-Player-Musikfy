@@ -1,0 +1,23 @@
+.musicPlayer {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 8fr 1fr 2fr;
+}
+.iconsMusic {
+    margin: 0px 20px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+.author {
+    color: rgb(0, 0, 0)
+}
+.fixVert{
+    padding-top: 25px;
+}
+.imgMP {
+    width: 100%;
+}

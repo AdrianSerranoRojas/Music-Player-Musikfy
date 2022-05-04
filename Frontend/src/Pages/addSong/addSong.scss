@@ -1,6 +1,9 @@
 @use "../../styles/Fonts.scss";
 
 .mainAddSong{
-    margin: 0 10%;
+    margin: 0 20%;
     font-family: Fonts.$Vollkorn;
+}
+input{
+    padding: 16px 40px !important;
 }

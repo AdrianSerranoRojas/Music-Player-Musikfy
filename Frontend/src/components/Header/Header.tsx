@@ -28,10 +28,7 @@ function AppHeader({ ...props }) {
         <div className="row">
           <nav className="navbar navbar-expand navbar-dark">
             <NavLink className="navbar-brand" to="/">
-              <Image
-                src="https://res.cloudinary.com/dhqzvelnb/image/upload/v1651072060/Logo/MusikfyLogo-green_ysbv6t.png"
-                alt="profile image"
-              />
+              <Image src="https://res.cloudinary.com/dhqzvelnb/image/upload/v1651072060/Logo/MusikfyLogo-green_ysbv6t.png" alt="profile image" className="imgHeader"/>
             </NavLink>
             <Form className="d-flex">
               <FormControl
