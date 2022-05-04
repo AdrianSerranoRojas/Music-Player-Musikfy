@@ -1,70 +1,76 @@
+import DashboardOutlined from "@mui/icons-material/DashboardOutlined";
+import Person from "@mui/icons-material/Person";
+import Forum from "@mui/icons-material/Forum";
+import Analytics from "@mui/icons-material/Analytics";
+import FolderOpen from "@mui/icons-material/FolderOpen";
+import BorderColor from "@mui/icons-material/BorderColor";
+import Search from "@mui/icons-material/Search";
 
 
-import DashboardOutlined from '@mui/icons-material/DashboardOutlined';
-import Person from '@mui/icons-material/Person';
-import Forum from '@mui/icons-material/Forum';
-import Analytics from '@mui/icons-material/Analytics';
-import FolderOpen from '@mui/icons-material/FolderOpen';
-import BorderColor from '@mui/icons-material/BorderColor';
-import Search from '@mui/icons-material/Search';
 
 const navbarList = [
   {
     icon: Search,
-    desc: 'Search',
-    secondDesc: '',
+    desc: "Search",
+    secondDesc: "",
     badge: 0,
     subList: [],
+    path: "/home",
   },
   {
     icon: DashboardOutlined,
-    desc: 'Dashboard',
-    secondDesc: '',
+    desc: "Dashboard",
+    secondDesc: "",
     badge: 0,
     subList: [],
+    path: "/home",
   },
   {
     icon: Person,
-    desc: 'User',
-    secondDesc: '',
+    desc: "User",
+    secondDesc: "",
     badge: 5,
     subList: [],
-    path: "/profile"
+    path: "/profile",
   },
   {
     icon: Forum,
-    desc: 'Forum',
-    secondDesc: 'Message from andi',
+    path: "/home",
+    desc: "Forum",
+    secondDesc: "Message from andi",
     badge: 1,
     subList: [
       {
-        desc: 'chat',
+        desc: "chat",
         badge: 2,
       },
       {
-        desc: 'reminder',
+        desc: "reminder",
         badge: 0,
       },
     ],
   },
   {
     icon: Analytics,
-    desc: 'Analytics',
-    secondDesc: '',
+    path: "/home",
+    desc: "Analytics",
+    secondDesc: "",
     badge: 0,
     subList: [],
   },
   {
     icon: FolderOpen,
-    desc: 'Folder',
-    secondDesc: '',
+    path: "/home",
+    desc: "Folder",
+    secondDesc: "",
     badge: 0,
     subList: [],
   },
   {
     icon: BorderColor,
-    desc: 'Edit',
-    secondDesc: '',
+    path: "/home",
+    desc: "Edit",
+    secondDesc: "",
     badge: 0,
     subList: [],
   },

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { useState, useRef } from "react";
 import { useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
 
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -25,6 +26,8 @@ import Logo from "./Logo.js";
 import navbarList from "./SideBarData";
 import StyledAvatar from "./StyledAvatar";
 
+import ColorMode from "../ColorMode/ColorMode";
+
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
 const marginIconButton = 14;
@@ -47,6 +50,10 @@ export default function SideNavbar() {
       refFocus.current.focus();
     }, 500);
   }
+
+  const navigate = useNavigate();
+
+
 
   const drawerContent = (
     <>
@@ -152,7 +159,7 @@ export default function SideNavbar() {
                       inputRef={refFocus}
                       margin="dense"
                       fullWidth={true}
-                      placeholder="Search"
+                      placeholder={key.desc}
                       sx={{
                         fontSize: "0.875rem",
                         lineHeight: "1.43em",
@@ -180,7 +187,7 @@ export default function SideNavbar() {
                 componentsProps={{
                   tooltip: {
                     sx: {
-                      backgroundColor: "gray",
+                      backgroundColor: "secondary",
                       color: "white",
                       marginLeft: "22px !important",
                       boxShadow: "0px 0px 22px -2px rgba(0,0,0,0.20)",
@@ -197,6 +204,7 @@ export default function SideNavbar() {
                       backgroundColor: "#26284687",
                     },
                   }}
+                  onClick={() => navigate(`${key.path}`)}
                 >
                   <ListItemIcon sx={{ minWidth: "46px" }}>
                     <Badge
@@ -251,6 +259,7 @@ export default function SideNavbar() {
           borderTop: "1px solid lightgray",
         }}
       >
+        <ColorMode />
         <Box
           sx={{
             display: "flex",
@@ -321,7 +330,7 @@ export default function SideNavbar() {
             borderRight: "0px",
             borderRadius: "0px 16px 16px 0px",
             boxShadow: theme.shadows[8],
-            backgroundColor: open ? "#11101D" : "#11101D",
+            backgroundColor: open ? "secondary" : "secondary",
             transition: theme.transitions.create("width", {
               easing: theme.transitions.easing.sharp,
               duration: open

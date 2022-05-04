@@ -68,27 +68,21 @@ export async function createUser(req, res, next) {
 export async function updateUser(req, res, next) {
   const { userId } = req.params;
   const { userName, country, birthday, gender } = req.body.editUser;
+
   console.log(req.body);
-
+  let imageURL = null;
   try {
+    const { image } = req.body;
+    const newImage = image[0];
 
-        let image = null;
-
-        if (req.files?.image) {
-          const resultLoadImage = await uploadImageCloud(
-            req.files.image.tempFilePath
-          );
-          console.log(
-            "console.log(req.files.image.tempFilePath);",
-            req.files.image.tempFilePath
-          );
-
-          await fs.remove(req.files.image.tempFilePath);
-          image = {
-            url: resultLoadImage.secure_url,
-            public_id: resultLoadImage.public_id,
-          };
-        }
+    if (newImage) {
+      const resultLoadImage = await uploadImageCloud(newImage);
+      // await fs.remove(req.files.image.tempFilePath);
+      imageURL = {
+        url: resultLoadImage.secure_url,
+        public_id: resultLoadImage.public_id,
+      };
+    }
     const updatedUser = await User.findOneAndUpdate(
       {
         _id: userId,
@@ -99,7 +93,7 @@ export async function updateUser(req, res, next) {
           country: country,
           birthday: birthday,
           gender: gender,
-          image: image,
+          image: imageURL,
         },
       },
       {
@@ -136,7 +130,6 @@ export async function deleteUser(req, res, next) {
   }
 }
 export async function signUp(req, res, next) {
-
   const { uid, email } = req.user;
   console.log(req.body);
   const { userName, birthday, gender, country } = req.body.userData;
