@@ -35,6 +35,9 @@ const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
 
+
+
+
 export default function SideNavbar() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -194,7 +197,7 @@ export default function SideNavbar() {
                     },
                   },
                 }}
-              >
+                >
                 <ListItemButton
                   sx={{
                     margin: "6px 14px",
@@ -248,6 +251,7 @@ export default function SideNavbar() {
         <Divider variant="middle" light={true} />
       </List>
 
+      <ColorMode />
       <Box
         sx={{
           display: "flex",
@@ -259,7 +263,6 @@ export default function SideNavbar() {
           borderTop: "1px solid lightgray",
         }}
       >
-        <ColorMode />
         <Box
           sx={{
             display: "flex",
@@ -284,7 +287,9 @@ export default function SideNavbar() {
               color: "lightgray",
             }}
           >
-            Usuario
+
+
+
           </Typography>
           <Typography
             component="span"
