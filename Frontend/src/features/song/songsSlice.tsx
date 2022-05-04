@@ -1,19 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { useGetSongsQuery } from '../../services/songApi';
+import axios from 'axios';
 
 const initialState = {
   songs: [],
 }
+export const fetchSongs = createAsyncThunk("songs/fetchSongs",
+() => {
+  return axios.get("http://localhost:4000/songs");
+})
 export const songsSlice = createSlice({
   name: 'songs',
   initialState,
   reducers: {
-    createSong: (state, action) => {
+    addSong: (state, action) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the Immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.songs = [...state.songs, action.payload ]
     },
+
     // decrement: (state) => {
     //   state.value -= 1
     // },
@@ -21,10 +28,16 @@ export const songsSlice = createSlice({
     //   state.value += action.payload
     // },
   },
+  extraReducers: {
+    [fetchSongs.fulfilled]: (state, action) => {
+      console.log("payload");
+      console.log(state);
+    }
+  }
 })
 
-export const { createSong} = songsSlice.actions
+export const { addSong} = songsSlice.actions
 
 export default songsSlice.reducer
 
-export const usersSelector = (state) => state.users
+export const songsSelector = (state) => state.songs
