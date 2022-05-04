@@ -34,9 +34,6 @@ const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
 
-
-
-
 export default function SideNavbar() {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -115,13 +112,13 @@ export default function SideNavbar() {
         </Button>
       </Box>
 
-      <List dense={true} >
+      <List dense={true}>
         {navbarList.map((key, index) => (
-          <>
-        {/* {index === 0 ? (
-              <>
+          <div key={index}>
+            {index === 0 ? (
+              <div key={index}>
                 <Tooltip
-                  key={`1+${key.keye}`}
+                  key={`1+${key.key + index}`}
                   title={open ? key.desc : ""}
                   placement={"right"}
                   componentsProps={{
@@ -136,7 +133,7 @@ export default function SideNavbar() {
                   }}
                 >
                   <ListItemButton
-                    key={`2+${key.keye}`}
+                    key={`2+${key.key + index}`}
                     onClick={toogleOpenSearch}
                     sx={{
                       margin: "6px 14px",
@@ -147,23 +144,23 @@ export default function SideNavbar() {
                   >
                     <ListItemIcon
                       sx={{ minWidth: "46px" }}
-                      key={`3+${key.keye}`}
+                      key={`3+${key.key + index}`}
                     >
                       <Badge
-                        key={`4+${key.keye}`}
+                        key={`4+${key.key + index}`}
                         badgeContent={key.badge}
                         color="secondary"
                         variant="dot"
                       >
                         <key.icon
-                          key={`5+${key.keye}`}
+                          key={`5+${key.key + index}`}
                           sx={{ fontSize: "20px", color: "lightgray" }}
                         />
                       </Badge>
                     </ListItemIcon>
 
                     <InputBase
-                      key={`6+${key.keye}`}
+                      key={`6+${key.key + index}`}
                       inputRef={refFocus}
                       margin="dense"
                       fullWidth={true}
@@ -186,11 +183,15 @@ export default function SideNavbar() {
                     ></InputBase>
                   </ListItemButton>
                 </Tooltip>
-                <Divider variant="middle" light={true} key={`7+${key.keye}`} />
-              </>
-            ) : ( */}
-        {/* <Tooltip
-                key={`8+${key.keye}`}
+                <Divider
+                  variant="middle"
+                  light={true}
+                  key={`7+${key.key + index}`}
+                />
+              </div>
+            ) : (
+              <Tooltip
+                key={`8+${key.key + index}`}
                 title={open ? key.desc : ""}
                 placement={"right"}
                 componentsProps={{
@@ -203,7 +204,7 @@ export default function SideNavbar() {
                     },
                   },
                 }}
-                >
+              >
                 <ListItemButton
                   sx={{
                     margin: "6px 14px",
@@ -214,26 +215,26 @@ export default function SideNavbar() {
                     },
                   }}
                   onClick={() => navigate(`${key.path}`)}
-                > */}
-        {/* <ListItemIcon
-                    key={`10+${key.keye}`}
+                >
+                  <ListItemIcon
+                    key={`10+${key.key + index}`}
                     sx={{ minWidth: "46px" }}
                   >
                     <Badge
-                      key={`11+${key.keye}`}
+                      key={`11+${key.key + index}`}
                       badgeContent={key.badge}
                       color="secondary"
                       variant="dot"
                     >
                       <key.icon
-                        key={`12+${key.keye}`}
+                        key={`12+${key.key + index}`}
                         sx={{ fontSize: "20px", color: "lightgray" }}
                       />
                     </Badge>
-                  </ListItemIcon> */}
+                  </ListItemIcon>
 
-        {/* <ListItemText
-                    key={`13+${key.keye}`}
+                  <ListItemText
+                    key={`13+${key.key + index}`}
                     primary={key.desc}
                     primaryTypographyProps={{
                       variant: "body2",
@@ -246,24 +247,24 @@ export default function SideNavbar() {
                       whiteSpace: "nowrap",
                       minWidth: "126px",
                     }}
-                  /> */}
-        {/* {key.badge !== 0 ? (
+                  />
+                  {key.badge !== 0 ? (
                     <Chip
-                      key={`14+${key.keye}`}
+                      key={`14+${key.key + index}`}
                       label={key.badge}
                       color={"secondary"}
                       size="small"
                       sx={{ height: "auto" }}
                     />
                   ) : (
-                    <></>
-                  )} */}
-        {/* </ListItemButton> */}
-        {/* </Tooltip> */}
-        {/* )} */}
-        </>
+                    <div key={index}></div>
+                  )}
+                </ListItemButton>
+              </Tooltip>
+            )}
+          </div>
         ))}
-        {/* <Divider key={123} variant="middle" light={true} /> */}
+        <Divider key={123} variant="middle" light={true} />
       </List>
 
       <ColorMode />
@@ -301,11 +302,7 @@ export default function SideNavbar() {
               fontWeight: 500,
               color: "lightgray",
             }}
-          >
-
-
-
-          </Typography>
+          ></Typography>
           <Typography
             component="span"
             variant="body2"

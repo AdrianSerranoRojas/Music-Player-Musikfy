@@ -21,7 +21,7 @@ function withLayout(WrappedComponent: any) {
       <>
         {/* <MyAppBar />
         <Header /> */}
-        {/* <SideBar /> */}
+        <SideBar />
         <WrappedComponent {...props} />
         <Footer />
       </>
