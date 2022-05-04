@@ -23,7 +23,7 @@ const ChangePassword = () => {
     }
 
     return(<div>
-    <h1>Change Your Password</h1>
+    <h1 className="h1ChangePsw">Change Your Password</h1>
     <Formik
     initialValues={{ currentPassword: '', newPassword: '' , newPasswordConfirm: ''}}
     validate={values => {

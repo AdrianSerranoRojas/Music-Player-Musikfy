@@ -114,7 +114,7 @@ function SignUp() {
           <div className="col col-lg-6 sketchy">
             <section className="row row-cols-1">
               <div className="col">
-                <h1 className="h2">Sign Up</h1>
+                <h1 className="h1 h1SingUp">Sign Up</h1>
                 {currentUser && (
                   <p className="font-bold">Hello {currentUser.email}</p>
                 )}
@@ -237,7 +237,7 @@ function SignUp() {
             {signUpError && (
               <section className="row row-cols-1 mb-3 border py-3 bg-light">
                 <div className="col">
-                  <h2 className="h5">Something went wrong</h2>
+                  <h2 className="h2 h2SignUp">Something went wrong</h2>
                   <hr />
                   <p className="mt-3">{signUpError}</p>
                 </div>
