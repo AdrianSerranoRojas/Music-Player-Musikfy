@@ -321,7 +321,7 @@ export default function SideNavbar() {
             borderRight: "0px",
             borderRadius: "0px 16px 16px 0px",
             boxShadow: theme.shadows[8],
-            backgroundColor: open ? "#11101D" : "#11101D",
+            backgroundColor: open ? "secondary" : "secondary",
             transition: theme.transitions.create("width", {
               easing: theme.transitions.easing.sharp,
               duration: open
