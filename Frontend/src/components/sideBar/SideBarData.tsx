@@ -1,4 +1,6 @@
 import DashboardOutlined from "@mui/icons-material/DashboardOutlined";
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import HomeIcon from '@mui/icons-material/Home';
 import Person from "@mui/icons-material/Person";
 import Forum from "@mui/icons-material/Forum";
 import Analytics from "@mui/icons-material/Analytics";
@@ -14,7 +16,6 @@ const navbarList = [
     secondDesc: "",
     badge: 0,
     subList: [],
-    path: "/home",
   },
   {
     keye: 2,
@@ -39,18 +40,9 @@ const navbarList = [
     icon: Forum,
     path: "/home",
     desc: "Forum",
-    secondDesc: "Message from andi",
+    secondDesc: "Message from Bob",
     badge: 1,
-    subList: [
-      {
-        desc: "chat",
-        badge: 2,
-      },
-      {
-        desc: "reminder",
-        badge: 0,
-      },
-    ],
+    subList: [],
   },
   {
     keye: 5,

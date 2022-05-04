@@ -15,6 +15,7 @@ import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 import AddSong from "./Pages/addSong/addSong";
+import Main from "./Pages/Main/Main";
 
 export default function App() {
 
@@ -54,7 +55,7 @@ export default function App() {
           />
           <Route path="/addSong" element={<AddSong />} />
           <Route path="/playSong" element={<PlaySong />} />
-
+          <Route path="/main" element={<Main/>}/>
         </Routes>
       </AuthContext.Provider>
     </>

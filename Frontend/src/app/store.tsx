@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import usersSlice from "../features/users/usersSlice";
+import {songsSlice} from "../features/song/songsSlice";
 
 import { songApi } from "../services/songApi";
 import { userApi } from "../services/userApi";
@@ -10,6 +11,7 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 export const store = configureStore({
   reducer: {
     usersState: usersSlice,
+    songs: songsSlice.reducer,
     [songApi.reducerPath]: songApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
   },
