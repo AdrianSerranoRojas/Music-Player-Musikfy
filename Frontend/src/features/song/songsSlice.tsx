@@ -1,24 +1,30 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { useGetSongsQuery } from '../../services/songApi';
-import axios from 'axios';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { useGetSongsQuery } from "../../services/songApi";
+import axios from "axios";
 
 const initialState = {
-  songs: [],
-}
-export const fetchSongs = createAsyncThunk("songs/fetchSongs",
-() => {
+  currentSong: {
+    isPlaying: false,
+    audio:"",
+  },
+};
+export const fetchSongs = createAsyncThunk("songs/fetchSongs", () => {
   return axios.get("http://localhost:4000/songs");
-})
+});
 export const songsSlice = createSlice({
-  name: 'songs',
+  name: "songs",
   initialState,
   reducers: {
-    addSong: (state, action) => {
-      // Redux Toolkit allows us to write "mutating" logic in reducers. It
-      // doesn't actually mutate the state because it uses the Immer library,
-      // which detects changes to a "draft state" and produces a brand new
-      // immutable state based off those changes
-      state.songs = [...state.songs, action.payload ]
+    // addSong: (state, action) => {
+    //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
+    //   // doesn't actually mutate the state because it uses the Immer library,
+    //   // which detects changes to a "draft state" and produces a brand new
+    //   // immutable state based off those changes
+    //   state.songs = [...state.songs, action.payload ]
+    // },
+    addCurrentSong: (state, action) => {
+      state.currentSong = action.payload;
+      return state;
     },
 
     // decrement: (state) => {
@@ -32,12 +38,10 @@ export const songsSlice = createSlice({
     [fetchSongs.fulfilled]: (state, action) => {
       console.log("payload");
       console.log(state);
-    }
-  }
-})
+    },
+  },
+});
 
-export const { addSong} = songsSlice.actions
+export const { addCurrentSong } = songsSlice.actions;
 
-export default songsSlice.reducer
-
-export const songsSelector = (state) => state.songs
+export const songsSelector = (state) => state.songs;

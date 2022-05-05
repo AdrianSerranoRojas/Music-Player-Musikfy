@@ -1,8 +1,7 @@
 import * as React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
-
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -23,10 +22,14 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 import Logo from "./Logo.js";
-import navbarList from "./SideBarData";
+import navbarList, { navbarListLogout } from "./SideBarData";
 import StyledAvatar from "./StyledAvatar";
 
 import ColorMode from "../ColorMode/ColorMode";
+
+import AuthContext from "../../context/AuthContext";
+import { userSignOut } from "../../firebase/firebase";
+
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -35,7 +38,12 @@ const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
 
-export default function SideNavbar() {
+export default function SideNavbar({...props}) {
+  async function handleSignOut() {
+    await userSignOut();
+  }
+
+  const currentUser = useContext(AuthContext);
   const theme = useTheme();
   const [open, setOpen] = useState(false);
   const refFocus = useRef();
@@ -52,8 +60,6 @@ export default function SideNavbar() {
   }
 
   const navigate = useNavigate();
-
-
 
   const drawerContent = (
     <>
@@ -114,19 +120,93 @@ export default function SideNavbar() {
           ></MenuIcon>
         </Button>
       </Box>
+      {currentUser ? (
+        <List dense={true}>
+          {navbarList.map((key, index) => (
+            <div key={index}>
+              {index === 0 ? (
+                <div key={index}>
+                  <Tooltip
+                    key={`1+${key.key + index}`}
+                    title={open ? key.desc : ""}
+                    placement={"right"}
+                    componentsProps={{
+                      tooltip: {
+                        sx: {
+                          backgroundColor: "gray",
+                          color: "white",
+                          marginLeft: "22px !important",
+                          boxShadow: "0px 0px 22px -2px rgba(0,0,0,0.20)",
+                        },
+                      },
+                    }}
+                  >
+                    <ListItemButton
+                      key={`2+${key.key + index}`}
+                      onClick={toogleOpenSearch}
+                      sx={{
+                        margin: "6px 14px",
+                        padding: "10px",
+                        borderRadius: "8px",
+                        backgroundColor: "#26284687",
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{ minWidth: "46px" }}
+                        key={`3+${key.key + index}`}
+                      >
+                        <Badge
+                          key={`4+${key.key + index}`}
+                          badgeContent={key.badge}
+                          color="secondary"
+                          variant="dot"
+                        >
+                          <key.icon
+                            key={`5+${key.key + index}`}
+                            sx={{ fontSize: "20px", color: "lightgray" }}
+                          />
+                        </Badge>
+                      </ListItemIcon>
 
-      <List dense={true}>
-        {navbarList.map((key, index) => (
-          <>
-            {index === 0 ? (
-              <>
+                      <InputBase
+                        key={`6+${key.key + index}`}
+                        inputRef={refFocus}
+                        margin="dense"
+                        fullWidth={true}
+                        placeholder={key.desc}
+                        sx={{
+                          fontSize: "0.875rem",
+                          lineHeight: "1.43em",
+                          "& .MuiInputBase-input": {
+                            color: "lightgray",
+                            padding: 0,
+                          },
+                        }}
+                        componentsProps={{
+                          input: {
+                            sx: {
+                              padding: 0,
+                            },
+                          },
+                        }}
+                      ></InputBase>
+                    </ListItemButton>
+                  </Tooltip>
+                  <Divider
+                    variant="middle"
+                    light={true}
+                    key={`7+${key.key + index}`}
+                  />
+                </div>
+              ) : (
                 <Tooltip
+                  key={`8+${key.key + index}`}
                   title={open ? key.desc : ""}
                   placement={"right"}
                   componentsProps={{
                     tooltip: {
                       sx: {
-                        backgroundColor: "gray",
+                        backgroundColor: "secondary",
                         color: "white",
                         marginLeft: "22px !important",
                         boxShadow: "0px 0px 22px -2px rgba(0,0,0,0.20)",
@@ -135,119 +215,224 @@ export default function SideNavbar() {
                   }}
                 >
                   <ListItemButton
-                    onClick={toogleOpenSearch}
                     sx={{
                       margin: "6px 14px",
                       padding: "10px",
                       borderRadius: "8px",
-                      backgroundColor: "#26284687",
+                      "&:hover": {
+                        backgroundColor: "#26284687",
+                      },
                     }}
+                    onClick={() => navigate(`${key.path}`)}
                   >
-                    <ListItemIcon sx={{ minWidth: "46px" }}>
+                    <ListItemIcon
+                      key={`10+${key.key + index}`}
+                      sx={{ minWidth: "46px" }}
+                    >
                       <Badge
+                        key={`11+${key.key + index}`}
                         badgeContent={key.badge}
                         color="secondary"
                         variant="dot"
                       >
                         <key.icon
+                          key={`12+${key.key + index}`}
                           sx={{ fontSize: "20px", color: "lightgray" }}
                         />
                       </Badge>
                     </ListItemIcon>
 
-                    <InputBase
-                      inputRef={refFocus}
-                      margin="dense"
-                      fullWidth={true}
-                      placeholder={key.desc}
+                    <ListItemText
+                      key={`13+${key.key + index}`}
+                      primary={key.desc}
+                      primaryTypographyProps={{
+                        variant: "body2",
+                      }}
                       sx={{
-                        fontSize: "0.875rem",
-                        lineHeight: "1.43em",
-                        "& .MuiInputBase-input": {
-                          color: "lightgray",
-                          padding: 0,
-                        },
+                        display: "inline",
+                        margin: "0px",
+                        overflowX: "hidden",
+                        color: "lightgray",
+                        whiteSpace: "nowrap",
+                        minWidth: "126px",
                       }}
-                      componentsProps={{
-                        input: {
-                          sx: {
-                            padding: 0,
-                          },
-                        },
-                      }}
-                    ></InputBase>
+                    />
+                    {key.badge !== 0 ? (
+                      <Chip
+                        key={`14+${key.key + index}`}
+                        label={key.badge}
+                        color={"secondary"}
+                        size="small"
+                        sx={{ height: "auto" }}
+                      />
+                    ) : (
+                      <div key={index}></div>
+                    )}
                   </ListItemButton>
                 </Tooltip>
-                <Divider variant="middle" light={true} />
-              </>
-            ) : (
-              <Tooltip
-                title={open ? key.desc : ""}
-                placement={"right"}
-                componentsProps={{
-                  tooltip: {
-                    sx: {
-                      backgroundColor: "secondary",
-                      color: "white",
-                      marginLeft: "22px !important",
-                      boxShadow: "0px 0px 22px -2px rgba(0,0,0,0.20)",
-                    },
-                  },
-                }}
-              >
-                <ListItemButton
-                  sx={{
-                    margin: "6px 14px",
-                    padding: "10px",
-                    borderRadius: "8px",
-                    "&:hover": {
-                      backgroundColor: "#26284687",
+              )}
+            </div>
+          ))}
+          <Divider key={123} variant="middle" light={true} />
+        </List>
+      ) : (
+        <List dense={true}>
+          {navbarListLogout.map((key, index) => (
+            <div key={index}>
+              {index === 0 ? (
+                <div key={index}>
+                  <Tooltip
+                    key={`1+${key.key + index}`}
+                    title={open ? key.desc : ""}
+                    placement={"right"}
+                    componentsProps={{
+                      tooltip: {
+                        sx: {
+                          backgroundColor: "gray",
+                          color: "white",
+                          marginLeft: "22px !important",
+                          boxShadow: "0px 0px 22px -2px rgba(0,0,0,0.20)",
+                        },
+                      },
+                    }}
+                  >
+                    <ListItemButton
+                      key={`2+${key.key + index}`}
+                      onClick={toogleOpenSearch}
+                      sx={{
+                        margin: "6px 14px",
+                        padding: "10px",
+                        borderRadius: "8px",
+                        backgroundColor: "#26284687",
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{ minWidth: "46px" }}
+                        key={`3+${key.key + index}`}
+                      >
+                        <Badge
+                          key={`4+${key.key + index}`}
+                          badgeContent={key.badge}
+                          color="secondary"
+                          variant="dot"
+                        >
+                          <key.icon
+                            key={`5+${key.key + index}`}
+                            sx={{ fontSize: "20px", color: "lightgray" }}
+                          />
+                        </Badge>
+                      </ListItemIcon>
+
+                      <InputBase
+                        key={`6+${key.key + index}`}
+                        inputRef={refFocus}
+                        margin="dense"
+                        fullWidth={true}
+                        placeholder={key.desc}
+                        sx={{
+                          fontSize: "0.875rem",
+                          lineHeight: "1.43em",
+                          "& .MuiInputBase-input": {
+                            color: "lightgray",
+                            padding: 0,
+                          },
+                        }}
+                        componentsProps={{
+                          input: {
+                            sx: {
+                              padding: 0,
+                            },
+                          },
+                        }}
+                      ></InputBase>
+                    </ListItemButton>
+                  </Tooltip>
+                  <Divider
+                    variant="middle"
+                    light={true}
+                    key={`7+${key.key + index}`}
+                  />
+                </div>
+              ) : (
+                <Tooltip
+                  key={`8+${key.key + index}`}
+                  title={open ? key.desc : ""}
+                  placement={"right"}
+                  componentsProps={{
+                    tooltip: {
+                      sx: {
+                        backgroundColor: "secondary",
+                        color: "white",
+                        marginLeft: "22px !important",
+                        boxShadow: "0px 0px 22px -2px rgba(0,0,0,0.20)",
+                      },
                     },
                   }}
-                  onClick={() => navigate(`${key.path}`)}
                 >
-                  <ListItemIcon sx={{ minWidth: "46px" }}>
-                    <Badge
-                      badgeContent={key.badge}
-                      color="secondary"
-                      variant="dot"
-                    >
-                      <key.icon sx={{ fontSize: "20px", color: "lightgray" }} />
-                    </Badge>
-                  </ListItemIcon>
-
-                  <ListItemText
-                    primary={key.desc}
-                    primaryTypographyProps={{
-                      variant: "body2",
-                    }}
+                  <ListItemButton
                     sx={{
-                      display: "inline",
-                      margin: "0px",
-                      overflowX: "hidden",
-                      color: "lightgray",
-                      whiteSpace: "nowrap",
-                      minWidth: "126px",
+                      margin: "6px 14px",
+                      padding: "10px",
+                      borderRadius: "8px",
+                      "&:hover": {
+                        backgroundColor: "#26284687",
+                      },
                     }}
-                  />
-                  {key.badge !== 0 ? (
-                    <Chip
-                      label={key.badge}
-                      color={"secondary"}
-                      size="small"
-                      sx={{ height: "auto" }}
-                    />
-                  ) : (
-                    <></>
-                  )}
-                </ListItemButton>
-              </Tooltip>
-            )}
-          </>
-        ))}
-        <Divider variant="middle" light={true} />
-      </List>
+                    onClick={() => navigate(`${key.path}`)}
+                  >
+                    <ListItemIcon
+                      key={`10+${key.key + index}`}
+                      sx={{ minWidth: "46px" }}
+                    >
+                      <Badge
+                        key={`11+${key.key + index}`}
+                        badgeContent={key.badge}
+                        color="secondary"
+                        variant="dot"
+                      >
+                        <key.icon
+                          key={`12+${key.key + index}`}
+                          sx={{ fontSize: "20px", color: "lightgray" }}
+                        />
+                      </Badge>
+                    </ListItemIcon>
 
+                    <ListItemText
+                      key={`13+${key.key + index}`}
+                      primary={key.desc}
+                      primaryTypographyProps={{
+                        variant: "body2",
+                      }}
+                      sx={{
+                        display: "inline",
+                        margin: "0px",
+                        overflowX: "hidden",
+                        color: "lightgray",
+                        whiteSpace: "nowrap",
+                        minWidth: "126px",
+                      }}
+                    />
+                    {key.badge !== 0 ? (
+                      <Chip
+                        key={`14+${key.key + index}`}
+                        label={key.badge}
+                        color={"secondary"}
+                        size="small"
+                        sx={{ height: "auto" }}
+                      />
+                    ) : (
+                      <div key={index}></div>
+                    )}
+                  </ListItemButton>
+                </Tooltip>
+              )}
+            </div>
+          ))}
+          <Divider key={123} variant="middle" light={true} />
+        </List>
+      )}
+
+      <ColorMode />
       <Box
         sx={{
           display: "flex",
@@ -259,7 +444,6 @@ export default function SideNavbar() {
           borderTop: "1px solid lightgray",
         }}
       >
-        <ColorMode />
         <Box
           sx={{
             display: "flex",
@@ -284,7 +468,7 @@ export default function SideNavbar() {
               color: "lightgray",
             }}
           >
-            Usuario
+            {currentUser ? (currentUser.email.substring(0, currentUser.email.lastIndexOf("@"))) : "Not logged in"}
           </Typography>
           <Typography
             component="span"
@@ -296,11 +480,12 @@ export default function SideNavbar() {
               color: "lightgray",
             }}
           >
-            Web Designer
+            {currentUser ? ("Logged in") : ""}
           </Typography>
         </Box>
-        <IconButton contained sx={{ color: "ligthgray" }}>
-          <ExitToAppIcon />
+        <IconButton onClick={handleSignOut} sx={{ color: "lightgray" }}>
+          <ExitToAppIcon></ExitToAppIcon>
+
         </IconButton>
       </Box>
     </>
@@ -350,7 +535,8 @@ export default function SideNavbar() {
           margin: "6px 14px",
         }}
       >
-        <Typography>Toggle Button</Typography>
+
+        <Typography></Typography>
         <Switch
           checked={open}
           onChange={() => setOpen((prevOpen) => !prevOpen)}

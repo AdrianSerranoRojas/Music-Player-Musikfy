@@ -1,78 +1,117 @@
 import DashboardOutlined from "@mui/icons-material/DashboardOutlined";
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+import HomeIcon from '@mui/icons-material/Home';
 import Person from "@mui/icons-material/Person";
 import Forum from "@mui/icons-material/Forum";
 import Analytics from "@mui/icons-material/Analytics";
 import FolderOpen from "@mui/icons-material/FolderOpen";
 import BorderColor from "@mui/icons-material/BorderColor";
 import Search from "@mui/icons-material/Search";
-
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import LockIcon from '@mui/icons-material/Lock';
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
 
 
 const navbarList = [
   {
+    key: 1,
     icon: Search,
     desc: "Search",
     secondDesc: "",
     badge: 0,
     subList: [],
-    path: "/home",
   },
   {
+    key: 2,
     icon: DashboardOutlined,
     desc: "Dashboard",
     secondDesc: "",
     badge: 0,
     subList: [],
-    path: "/home",
+    path: "/",
   },
   {
+    key: 3,
     icon: Person,
-    desc: "User",
+    desc: "Profile",
     secondDesc: "",
-    badge: 5,
+    badge: 0,
     subList: [],
     path: "/profile",
   },
   {
-    icon: Forum,
-    path: "/home",
-    desc: "Forum",
-    secondDesc: "Message from andi",
-    badge: 1,
-    subList: [
-      {
-        desc: "chat",
-        badge: 2,
-      },
-      {
-        desc: "reminder",
-        badge: 0,
-      },
-    ],
-  },
-  {
-    icon: Analytics,
-    path: "/home",
-    desc: "Analytics",
+    key: 4,
+    icon: LockIcon,
+    path: "/changePassword",
+    desc: "Change Password",
     secondDesc: "",
     badge: 0,
     subList: [],
   },
   {
+    key: 5,
+    icon: LibraryMusicIcon,
+    path: "/addSong",
+    desc: "Add Song",
+    secondDesc: "",
+    badge: 1,
+    subList: [],
+  },
+  {
+    key: 6,
+    icon: Analytics,
+    path: "/",
+    desc: "Top Ten",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+  },
+  {
+    key: 7,
     icon: FolderOpen,
-    path: "/home",
+    path: "/",
     desc: "Folder",
     secondDesc: "",
     badge: 0,
     subList: [],
   },
   {
-    icon: BorderColor,
-    path: "/home",
-    desc: "Edit",
+    key: 8,
+    icon: PlaylistPlayIcon,
+    path: "/",
+    desc: "Playlist",
+    secondDesc: "",
+    badge: 5,
+    subList: [],
+  },
+];
+
+export const navbarListLogout = [
+  {
+    key: 1,
+    icon: Search,
+    desc: "Search",
     secondDesc: "",
     badge: 0,
     subList: [],
+  },
+  {
+    key: 2,
+    icon: Person,
+    desc: "Register",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+    path: "/signUp",
+  },
+  {
+    key: 3,
+    icon: VpnKeyIcon,
+    desc: "Login",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+    path: "/login",
   },
 ];
 

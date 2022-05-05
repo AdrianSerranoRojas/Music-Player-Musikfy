@@ -4,18 +4,13 @@ import Footer from "../components/Footer";
 import SideBar from "../components/sideBar";
 import MyAppBar from "../components/MyAppBar/MyAppBar";
 
-
 function getDisplayName(WrappedComponent: any) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
 }
-
-
-
 function withLayout(WrappedComponent: any) {
   WrappedComponent.displayName = `withLayout(${getDisplayName(
     WrappedComponent
   )})`;
-
   function WrapperComponent({ ...props }) {
     return (
       <>
@@ -23,12 +18,10 @@ function withLayout(WrappedComponent: any) {
         <Header /> */}
         <SideBar />
         <WrappedComponent {...props} />
-        <Footer />
+        {/* <Footer /> */}
       </>
     );
   }
-
   return WrapperComponent;
 }
-
 export default withLayout;

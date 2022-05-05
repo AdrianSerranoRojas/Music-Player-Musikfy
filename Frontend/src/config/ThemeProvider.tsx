@@ -36,11 +36,16 @@ export default function ToggleColorMode({ children }) {
               }
             : {
                 // palette values for dark mode
-                primary: deepOrange,
+                primary: {
+                  main: "#0f0",
+                },
+                secondary: {
+                  main: "#e600f5",
+                },
                 divider: deepOrange[700],
                 background: {
-                  default: deepOrange[900],
-                  paper: deepOrange[900],
+                  default: "#111111",
+                  paper: "#212121",
                 },
                 text: {
                   primary: "#fff",

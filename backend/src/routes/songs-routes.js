@@ -1,8 +1,6 @@
 import { Router } from "express";
 
-import {
-  getSongs
-} from "../controllers/songs-controller.js";
+import { getSongs, getTags } from "../controllers/songs-controller.js";
 
 const songsRouter = Router();
 
@@ -14,8 +12,8 @@ const songsRouter = Router();
 // UserRouter.patch("/users/:userId", updateUser);
 // UserRouter.delete("/users/:userId", deleteUser);
 
+songsRouter.get("/jsmediatags", getTags);
 
-
-songsRouter.get("/songs",  getSongs);
+songsRouter.get("/songs", getSongs);
 
 export default songsRouter;

@@ -55,7 +55,6 @@ function Profile() {
   });
 
   const insertFile = async () => {
-    
     //   const newFile = new FormData();
     //   newFile.append("file", file, file.name);
     //   newFile.append("type", file.type);
@@ -80,8 +79,8 @@ function Profile() {
   return (
     <>
       {isSuccess && (
-        <div className="mainProfile sketchy">
-          <h1 className="h2">Log in</h1>
+        <div className="mainProfile ">
+          <h1 className="h2">Profile</h1>
           <hr />
           <div className="pageProfile">
             <section className="editProfile">
@@ -94,6 +93,7 @@ function Profile() {
                 }
                 setEditUser={setEditUser}
                 control="userName"
+                editUser={undefined}
               />
               <hr />
               <h3 className="profileTitle">
@@ -105,6 +105,7 @@ function Profile() {
                 }
                 setEditUser={setEditUser}
                 control="birthday"
+                editUser={undefined}
               />
               <hr />
               <h3 className="profileTitle">
@@ -114,6 +115,7 @@ function Profile() {
                 value={editUser.country ? editUser.country : data.data.country}
                 setEditUser={setEditUser}
                 control="country"
+                editUser={undefined}
               />
               <hr />
               <h3 className="profileTitle">
@@ -145,7 +147,7 @@ function Profile() {
               />
               <button type="submit" onClick={insertFile}>
                 uploadimage
-              </button> 
+              </button>
 
               {/* <div>
                 <div className="dropzone" {...getRootProps()}>
@@ -164,7 +166,6 @@ function Profile() {
                   <button onClick={insertFile}> submit</button>
                 )}
               </div> */}
-
 
               <button onClick={() => updateUser({ uid, editUser, image })}>
                 Confirm Changes
