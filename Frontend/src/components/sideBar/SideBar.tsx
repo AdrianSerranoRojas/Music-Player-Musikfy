@@ -30,7 +30,6 @@ import ColorMode from "../ColorMode/ColorMode";
 import AuthContext from "../../context/AuthContext";
 import { userSignOut } from "../../firebase/firebase";
 
-
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
 const marginIconButton = 14;
@@ -38,7 +37,7 @@ const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
 
-export default function SideNavbar({...props}) {
+export default function SideNavbar({ ...props }) {
   async function handleSignOut() {
     await userSignOut();
   }
@@ -453,7 +452,7 @@ export default function SideNavbar({...props}) {
             alignContent: "center",
           }}
         >
-          <StyledAvatar />
+          <StyledAvatar currentUser={currentUser} />
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
           <Typography
@@ -468,7 +467,12 @@ export default function SideNavbar({...props}) {
               color: "lightgray",
             }}
           >
-            {currentUser ? (currentUser.email.substring(0, currentUser.email.lastIndexOf("@"))) : "Not logged in"}
+            {currentUser
+              ? currentUser.email.substring(
+                  0,
+                  currentUser.email.lastIndexOf("@")
+                )
+              : "Not logged in"}
           </Typography>
           <Typography
             component="span"
@@ -480,11 +484,11 @@ export default function SideNavbar({...props}) {
               color: "lightgray",
             }}
           >
-            {currentUser ? ("Logged in") : ""}
+            {currentUser ? "Logged in" : ""}
           </Typography>
         </Box>
-        <IconButton sx={{ color: "ligthgray" }}>
-          <ExitToAppIcon onClick={handleSignOut}></ExitToAppIcon>
+        <IconButton sx={{ color: "ligthgray" }} onClick={handleSignOut}>
+          <ExitToAppIcon></ExitToAppIcon>
         </IconButton>
       </Box>
     </>
