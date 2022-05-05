@@ -24,7 +24,7 @@ const navbarList = [
     secondDesc: "",
     badge: 0,
     subList: [],
-    path: "/home",
+    path: "/",
   },
   {
     key: 3,
@@ -38,7 +38,7 @@ const navbarList = [
   {
     key: 4,
     icon: Forum,
-    path: "/home",
+    path: "/addSong",
     desc: "Forum",
     secondDesc: "Message from Bob",
     badge: 1,
@@ -47,7 +47,7 @@ const navbarList = [
   {
     key: 5,
     icon: Analytics,
-    path: "/home",
+    path: "/",
     desc: "Analytics",
     secondDesc: "",
     badge: 0,
@@ -56,7 +56,7 @@ const navbarList = [
   {
     key: 6,
     icon: FolderOpen,
-    path: "/home",
+    path: "/",
     desc: "Folder",
     secondDesc: "",
     badge: 0,
@@ -65,11 +65,49 @@ const navbarList = [
   {
     key: 7,
     icon: BorderColor,
-    path: "/home",
+    path: "/",
     desc: "Edit",
     secondDesc: "",
     badge: 0,
     subList: [],
+  },
+  {
+    key: 8,
+    icon: BorderColor,
+    path: "/signUp",
+    desc: "Sign Up",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+  },
+];
+
+export const navbarListLogout = [
+  {
+    key: 1,
+    icon: Search,
+    desc: "Search",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+  },
+  {
+    key: 2,
+    icon: DashboardOutlined,
+    desc: "Login",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+    path: "/login",
+  },
+  {
+    key: 3,
+    icon: Person,
+    desc: "User",
+    secondDesc: "",
+    badge: 5,
+    subList: [],
+    path: "/signUp",
   },
 ];
 

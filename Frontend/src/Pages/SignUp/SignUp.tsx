@@ -2,10 +2,9 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
-
 import { Formik, Form } from "formik";
 
-import Button from "../../components/Button/Button";
+import Button from "@mui/material/Button";
 import SelectField from "../../components/SelectField/SelectField";
 import Input from "../../components/Input";
 
@@ -223,8 +222,8 @@ function SignUp() {
                         </div>
                       </div>
                       <Button
-                        submitButton
-                        block
+                        type="submit"
+                        variant="contained"
                         disabled={isValidating || !isValid}
                       >
                         Submit
