@@ -7,6 +7,7 @@ import Analytics from "@mui/icons-material/Analytics";
 import FolderOpen from "@mui/icons-material/FolderOpen";
 import BorderColor from "@mui/icons-material/BorderColor";
 import Search from "@mui/icons-material/Search";
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
 
 
@@ -62,6 +63,14 @@ const navbarList = [
     icon: LibraryMusicIcon,
     path: "/addSong",
     desc: "Add Song",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+  },
+  {
+    icon: VpnKeyIcon,
+    path: "/Login",
+    desc: "Login",
     secondDesc: "",
     badge: 0,
     subList: [],

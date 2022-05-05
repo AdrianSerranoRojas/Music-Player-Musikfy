@@ -287,9 +287,7 @@ export default function SideNavbar() {
               color: "lightgray",
             }}
           >
-
-
-
+            User not logged in
           </Typography>
           <Typography
             component="span"
@@ -355,7 +353,9 @@ export default function SideNavbar() {
           margin: "6px 14px",
         }}
       >
-        <Typography>Toggle Button</Typography>
+        <Typography>
+
+        </Typography>
         <Switch
           checked={open}
           onChange={() => setOpen((prevOpen) => !prevOpen)}
