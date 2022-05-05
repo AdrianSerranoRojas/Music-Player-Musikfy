@@ -483,8 +483,9 @@ export default function SideNavbar({...props}) {
             {currentUser ? ("Logged in") : ""}
           </Typography>
         </Box>
-        <IconButton sx={{ color: "ligthgray" }}>
-          <ExitToAppIcon onClick={handleSignOut}></ExitToAppIcon>
+        <IconButton onClick={handleSignOut} sx={{ color: "lightgray" }}>
+          <ExitToAppIcon></ExitToAppIcon>
+
         </IconButton>
       </Box>
     </>
@@ -534,6 +535,7 @@ export default function SideNavbar({...props}) {
           margin: "6px 14px",
         }}
       >
+
         <Typography></Typography>
         <Switch
           checked={open}
