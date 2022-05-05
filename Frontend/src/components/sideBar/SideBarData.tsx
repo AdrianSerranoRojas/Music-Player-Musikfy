@@ -8,6 +8,9 @@ import FolderOpen from "@mui/icons-material/FolderOpen";
 import BorderColor from "@mui/icons-material/BorderColor";
 import Search from "@mui/icons-material/Search";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
+import LockIcon from '@mui/icons-material/Lock';
+import PlaylistPlayIcon from '@mui/icons-material/PlaylistPlay';
+
 
 const navbarList = [
   {
@@ -30,32 +33,41 @@ const navbarList = [
   {
     key: 3,
     icon: Person,
-    desc: "User",
+    desc: "Profile",
     secondDesc: "",
-    badge: 5,
+    badge: 0,
     subList: [],
     path: "/profile",
   },
   {
     key: 4,
-    icon: Forum,
-    path: "/addSong",
-    desc: "Forum",
-    secondDesc: "Message from Bob",
-    badge: 1,
-    subList: [],
-  },
-  {
-    key: 5,
-    icon: Analytics,
-    path: "/",
-    desc: "Analytics",
+    icon: LockIcon,
+    path: "/changePassword",
+    desc: "Change Password",
     secondDesc: "",
     badge: 0,
     subList: [],
   },
   {
+    key: 5,
+    icon: LibraryMusicIcon,
+    path: "/addSong",
+    desc: "Add Song",
+    secondDesc: "",
+    badge: 1,
+    subList: [],
+  },
+  {
     key: 6,
+    icon: Analytics,
+    path: "/",
+    desc: "Top Ten",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+  },
+  {
+    key: 7,
     icon: FolderOpen,
     path: "/",
     desc: "Folder",
@@ -64,21 +76,12 @@ const navbarList = [
     subList: [],
   },
   {
-    key: 7,
-    icon: BorderColor,
-    path: "/",
-    desc: "Edit",
-    secondDesc: "",
-    badge: 0,
-    subList: [],
-  },
-  {
     key: 8,
-    icon: BorderColor,
-    path: "/signUp",
-    desc: "Sign Up",
+    icon: PlaylistPlayIcon,
+    path: "/",
+    desc: "Playlist",
     secondDesc: "",
-    badge: 0,
+    badge: 5,
     subList: [],
   },
 ];
@@ -94,21 +97,21 @@ export const navbarListLogout = [
   },
   {
     key: 2,
-    icon: DashboardOutlined,
+    icon: Person,
+    desc: "Register",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+    path: "/signUp",
+  },
+  {
+    key: 3,
+    icon: VpnKeyIcon,
     desc: "Login",
     secondDesc: "",
     badge: 0,
     subList: [],
     path: "/login",
-  },
-  {
-    key: 3,
-    icon: Person,
-    desc: "User",
-    secondDesc: "",
-    badge: 5,
-    subList: [],
-    path: "/signUp",
   },
 ];
 

@@ -538,6 +538,7 @@ export default function SideNavbar({ ...props }) {
           margin: "6px 14px",
         }}
       >
+
         <Typography></Typography>
         <Switch
           checked={open}

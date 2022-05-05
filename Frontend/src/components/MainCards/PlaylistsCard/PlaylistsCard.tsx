@@ -7,9 +7,10 @@ import Typography from "@mui/material/Typography";
 function PlaylistsCard() {
     return(
         <Box>
-            <Typography variant='h5' align="center">
+            <Typography variant='h5' align='center' fontFamily='Vollkorn, serif'>
                 Most liked Playlists!
             </Typography>
+            <hr />
                 <ImageList sx={{ width: 750, height: 440 }} cols={3}>
                     <ImageListItem>
                     <Typography variant='subtitle1' align='center'>
