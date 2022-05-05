@@ -35,7 +35,7 @@ function MusicPlayer() {
     }
 
     return(
-        <div className='musicPlayer'>
+        <Box className='musicPlayer' sx={{ml: 8.5}}>
                 <img src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg" alt="juice" className='imgMP'/>
             <div className='fixVert'>
                 Lucid Dreams<br />
@@ -118,7 +118,7 @@ function MusicPlayer() {
             <VolumeUpRounded htmlColor={lightIconColor} />
         </Stack>
         </div>
-        </div>
+        </Box>
     )
 }
 

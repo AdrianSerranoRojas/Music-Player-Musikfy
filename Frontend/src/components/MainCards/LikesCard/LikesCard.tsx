@@ -8,9 +8,10 @@ function LikesCard() {
     return(
         <>
         <Box>
-            <Typography variant='h5'>
+            <Typography variant='h5' align='center' fontFamily='Vollkorn, serif'>
                 Most liked Songs!
             </Typography>
+            <hr />
             <SongCard />
             <SongCard />
             <SongCard />

@@ -33,7 +33,7 @@ function addSong() {
                     </form>
                 </Col>
                 <Col>
-                    <img src="https://res.cloudinary.com/carapolla/image/upload/v1651140381/usersPictures/no_image_xselbo.png" alt="no image" />
+                    <img src="https://res.cloudinary.com/carapolla/image/upload/v1651140381/usersPictures/no_image_xselbo.png" alt="no image" className="imgAddSong" />
                     <Form.Group controlId="formFile" className="mb-3">
                         <Form.Label>Select your image</Form.Label>
                         <Form.Control type="file" />
