@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addCurrentSong, songsSelector } from "../../features/song/songsSlice";
 import { useGetSongsQuery } from "../../services/songApi";
 import { Button } from "@material-ui/core";
-import {  GrFavorite } from "react-icons/gr";
+import { GrFavorite } from "react-icons/gr";
 
 const PlaySong = () => {
   const dispatch = useDispatch();
@@ -60,9 +60,8 @@ const PlaySong = () => {
   };
   const handleSelect = (song) => {
     console.log(song);
-    setCurrentSong(song)
-     console.log("esto es pa setear el currentsong carapolla",currentSong);
-    
+    setCurrentSong(song);
+    console.log("esto es pa setear el currentsong carapolla", currentSong);
   };
 
   return (
@@ -70,13 +69,15 @@ const PlaySong = () => {
       {isSuccess &&
         data.data.map((song, index) => {
           return (
-
-
-            <button key={index} name={song.songName} onClick={(e) => handleSelect(e.target.name)}>
+            <button
+              key={index}
+              name={song.songName}
+              onClick={(e) => handleSelect(e.target.name)}
+            >
               {song.songName}
-              <Button variant="outlined" color="primary" >
-              <GrFavorite />
-</Button>
+              <Button variant="outlined" color="primary">
+                <GrFavorite />
+              </Button>
             </button>
           );
         })}
