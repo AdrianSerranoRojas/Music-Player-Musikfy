@@ -10,6 +10,7 @@ import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import Profile from "./Pages/Profile/Profile";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import PlaySong from "./Pages/PlaySong/PlaySong";
+import MainTemplate from "./Pages/MainTemplate/MainTemplate"
 
 import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
@@ -56,6 +57,7 @@ export default function App() {
           <Route path="/addSong" element={<AddSong />} />
           <Route path="/playSong" element={<PlaySong />} />
           <Route path="/main" element={<Main />} />
+          <Route path="/mainTemplate" element={<MainTemplate />} />
         </Routes>
       </AuthContext.Provider>
     </>
