@@ -1,6 +1,24 @@
 // import db from "../models";
 // import { logger } from "../config/config";
-import {Songs} from "../models/songs-model.js";
+import { Songs } from "../models/songs-model.js";
+
+import jsmediatags from "jsmediatags";
+
+export function getTags(req, res, next) {
+  new jsmediatags.Reader(
+    "https://res.cloudinary.com/carapolla/video/upload/v1651744987/songs/los-chikos-del-maiz-los-hijos-de-ivan-drago-con-pablo-hasel_1_obauwx.mp3"
+  )
+    .setTagsToRead()
+    .read({
+      onSuccess: function (tag) {
+        console.log(tag);
+      },
+      onError: function (error) {
+        console.log(":(", error.type, error.info);
+      },
+    });
+}
+
 // import fs from "fs-extra";
 
 // import { uploadImageCloud, deleteImageCloud } from "../libs/cloudinary";
@@ -63,10 +81,13 @@ import {Songs} from "../models/songs-model.js";
 
 export async function getSongs(req, res, next) {
   try {
-    const songs = await Songs.find().select({
-      songUrl: 1,
-      songName: 1
-    }).lean().exec();
+    const songs = await Songs.find()
+      .select({
+        songUrl: 1,
+        songName: 1,
+      })
+      .lean()
+      .exec();
 
     res.status(200).send({
       data: songs,
@@ -75,10 +96,6 @@ export async function getSongs(req, res, next) {
     next(error);
   }
 }
-
-
-
-
 
 // async function getSingleSong(req, res, next) {
 //   const { productId } = req.params;
@@ -154,4 +171,3 @@ export async function getSongs(req, res, next) {
 //     next(error);
 //   }
 // }
-

@@ -79,8 +79,8 @@ function Profile() {
   return (
     <>
       {isSuccess && (
-        <div className="mainProfile sketchy">
-          <h1 className="h2">Log in</h1>
+        <div className="mainProfile ">
+          <h1 className="h2">Profile</h1>
           <hr />
           <div className="pageProfile">
             <section className="editProfile">
@@ -88,17 +88,25 @@ function Profile() {
                 <PersonOutlineIcon /> Username
               </h3>
               <EditInfo
-                value={editUser.userName ? editUser.userName : data.data.userName}
+                value={
+                  editUser.userName ? editUser.userName : data.data.userName
+                }
                 setEditUser={setEditUser}
-                control="userName" editUser={undefined}              />
+                control="userName"
+                editUser={undefined}
+              />
               <hr />
               <h3 className="profileTitle">
                 <CakeIcon /> Birthday
               </h3>
               <EditInfo
-                value={editUser.birthday ? editUser.birthday : data.data.birthday}
+                value={
+                  editUser.birthday ? editUser.birthday : data.data.birthday
+                }
                 setEditUser={setEditUser}
-                control="birthday" editUser={undefined}              />
+                control="birthday"
+                editUser={undefined}
+              />
               <hr />
               <h3 className="profileTitle">
                 <HomeIcon /> Country
@@ -106,7 +114,9 @@ function Profile() {
               <EditInfo
                 value={editUser.country ? editUser.country : data.data.country}
                 setEditUser={setEditUser}
-                control="country" editUser={undefined}              />
+                control="country"
+                editUser={undefined}
+              />
               <hr />
               <h3 className="profileTitle">
                 <TransgenderIcon /> Gender
@@ -137,7 +147,7 @@ function Profile() {
               />
               <button type="submit" onClick={insertFile}>
                 uploadimage
-              </button> 
+              </button>
 
               {/* <div>
                 <div className="dropzone" {...getRootProps()}>
@@ -156,7 +166,6 @@ function Profile() {
                   <button onClick={insertFile}> submit</button>
                 )}
               </div> */}
-
 
               <button onClick={() => updateUser({ uid, editUser, image })}>
                 Confirm Changes

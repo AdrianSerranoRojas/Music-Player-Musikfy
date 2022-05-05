@@ -7,10 +7,11 @@ import Analytics from "@mui/icons-material/Analytics";
 import FolderOpen from "@mui/icons-material/FolderOpen";
 import BorderColor from "@mui/icons-material/BorderColor";
 import Search from "@mui/icons-material/Search";
+import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
 const navbarList = [
   {
-    keye: 1,
+    key: 1,
     icon: Search,
     desc: "Search",
     secondDesc: "",
@@ -18,16 +19,16 @@ const navbarList = [
     subList: [],
   },
   {
-    keye: 2,
+    key: 2,
     icon: DashboardOutlined,
     desc: "Dashboard",
     secondDesc: "",
     badge: 0,
     subList: [],
-    path: "/home",
+    path: "/",
   },
   {
-    keye: 3,
+    key: 3,
     icon: Person,
     desc: "User",
     secondDesc: "",
@@ -36,40 +37,78 @@ const navbarList = [
     path: "/profile",
   },
   {
-    keye: 4,
+    key: 4,
     icon: Forum,
-    path: "/home",
+    path: "/addSong",
     desc: "Forum",
     secondDesc: "Message from Bob",
     badge: 1,
     subList: [],
   },
   {
-    keye: 5,
+    key: 5,
     icon: Analytics,
-    path: "/home",
+    path: "/",
     desc: "Analytics",
     secondDesc: "",
     badge: 0,
     subList: [],
   },
   {
-    keye: 6,
+    key: 6,
     icon: FolderOpen,
-    path: "/home",
+    path: "/",
     desc: "Folder",
     secondDesc: "",
     badge: 0,
     subList: [],
   },
   {
-    keye: 7,
+    key: 7,
     icon: BorderColor,
-    path: "/home",
+    path: "/",
     desc: "Edit",
     secondDesc: "",
     badge: 0,
     subList: [],
+  },
+  {
+    key: 8,
+    icon: BorderColor,
+    path: "/signUp",
+    desc: "Sign Up",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+  },
+];
+
+export const navbarListLogout = [
+  {
+    key: 1,
+    icon: Search,
+    desc: "Search",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+  },
+  {
+    key: 2,
+    icon: DashboardOutlined,
+    desc: "Login",
+    secondDesc: "",
+    badge: 0,
+    subList: [],
+    path: "/login",
+  },
+  {
+    key: 3,
+    icon: Person,
+    desc: "User",
+    secondDesc: "",
+    badge: 5,
+    subList: [],
+    path: "/signUp",
   },
 ];
 

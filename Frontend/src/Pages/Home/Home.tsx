@@ -65,9 +65,9 @@ const Home = () => {
       >
         click
       </button> */}
+      <PlaylistsCard />
       <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
       <LikesCard/>
-      <PlaylistsCard />
       </Box>
       <MusicPlayer />
     </div>

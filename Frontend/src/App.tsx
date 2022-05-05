@@ -10,16 +10,16 @@ import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import Profile from "./Pages/Profile/Profile";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import PlaySong from "./Pages/PlaySong/PlaySong";
+import MainTemplate from "./Pages/MainTemplate/MainTemplate"
 
 import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 import AddSong from "./Pages/addSong/addSong";
 import Main from "./Pages/Main/Main";
-import {NotFound} from "./components/NotFound/NotFound"
+import { NotFound } from "./components/NotFound/NotFound";
 
 export default function App() {
-
   const [currentUser, setCurrentUser] = useState(null);
 
   useEffect(() => {
@@ -45,7 +45,7 @@ export default function App() {
       <AuthContext.Provider value={currentUser}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/signUp" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/changePassword" element={<ChangePassword />} />
@@ -56,7 +56,8 @@ export default function App() {
           />
           <Route path="/addSong" element={<AddSong />} />
           <Route path="/playSong" element={<PlaySong />} />
-          <Route path="/main" element={<Main/>}/>
+          <Route path="/main" element={<Main />} />
+          <Route path="/mainTemplate" element={<MainTemplate />} />
         </Routes>
       </AuthContext.Provider>
     </>

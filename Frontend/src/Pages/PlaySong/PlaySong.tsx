@@ -4,7 +4,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { addCurrentSong, songsSelector } from "../../features/song/songsSlice";
 import { useGetSongsQuery } from "../../services/songApi";
-import { Button } from "@material-ui/core";
+import { Button } from "@mui/material";
 import { GrFavorite } from "react-icons/gr";
 
 const PlaySong = () => {
@@ -12,6 +12,8 @@ const PlaySong = () => {
   const [songList, setSongList] = useState([]);
 
   const [currentSong, setCurrentSong] = useState();
+
+  
 
   // useEffect(() => {
   //   axios
