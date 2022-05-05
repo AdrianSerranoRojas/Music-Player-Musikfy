@@ -28,6 +28,8 @@ import StyledAvatar from "./StyledAvatar";
 import ColorMode from "../ColorMode/ColorMode";
 
 import AuthContext from "../../context/AuthContext";
+import { userSignOut } from "../../firebase/firebase";
+
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -36,7 +38,11 @@ const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
 
-export default function SideNavbar() {
+export default function SideNavbar({...props}) {
+  async function handleSignOut() {
+    await userSignOut();
+  }
+
   const currentUser = useContext(AuthContext);
   const theme = useTheme();
   const [open, setOpen] = useState(false);
@@ -462,7 +468,7 @@ export default function SideNavbar() {
               color: "lightgray",
             }}
           >
-            User not logged in
+            {currentUser ? (currentUser.email.substring(0, currentUser.email.lastIndexOf("@"))) : "Not logged in"}
           </Typography>
           <Typography
             component="span"
@@ -474,11 +480,11 @@ export default function SideNavbar() {
               color: "lightgray",
             }}
           >
-            Web Designer
+            {currentUser ? ("Logged in") : ""}
           </Typography>
         </Box>
         <IconButton sx={{ color: "ligthgray" }}>
-          <ExitToAppIcon />
+          <ExitToAppIcon onClick={handleSignOut}></ExitToAppIcon>
         </IconButton>
       </Box>
     </>
