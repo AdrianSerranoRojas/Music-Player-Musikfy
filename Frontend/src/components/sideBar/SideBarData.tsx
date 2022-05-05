@@ -9,10 +9,9 @@ import BorderColor from "@mui/icons-material/BorderColor";
 import Search from "@mui/icons-material/Search";
 import VpnKeyIcon from '@mui/icons-material/VpnKey';
 
-
-
 const navbarList = [
   {
+    key: 1,
     icon: Search,
     desc: "Search",
     secondDesc: "",
@@ -20,14 +19,16 @@ const navbarList = [
     subList: [],
   },
   {
-    icon: HomeIcon,
-    desc: "Home",
+    key: 2,
+    icon: DashboardOutlined,
+    desc: "Dashboard",
     secondDesc: "",
     badge: 0,
     subList: [],
     path: "/home",
   },
   {
+    key: 3,
     icon: Person,
     desc: "User",
     secondDesc: "",
@@ -36,6 +37,7 @@ const navbarList = [
     path: "/profile",
   },
   {
+    key: 4,
     icon: Forum,
     path: "/home",
     desc: "Forum",
@@ -44,6 +46,7 @@ const navbarList = [
     subList: [],
   },
   {
+    key: 5,
     icon: Analytics,
     path: "/home",
     desc: "Analytics",
@@ -52,6 +55,7 @@ const navbarList = [
     subList: [],
   },
   {
+    key: 6,
     icon: FolderOpen,
     path: "/home",
     desc: "Folder",
@@ -60,9 +64,10 @@ const navbarList = [
     subList: [],
   },
   {
-    icon: LibraryMusicIcon,
-    path: "/addSong",
-    desc: "Add Song",
+    key: 7,
+    icon: BorderColor,
+    path: "/home",
+    desc: "Edit",
     secondDesc: "",
     badge: 0,
     subList: [],

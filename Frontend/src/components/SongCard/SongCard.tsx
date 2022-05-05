@@ -1,4 +1,4 @@
-import { useTheme } from '@mui/material/styles';
+import { useTheme, useEffect } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -12,7 +12,32 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { height } from '@mui/system';
 
 
-function SongCard() {
+function SongCard({songName, songUrl}) {
+  // const [songList, setSongList ] = useState([]);
+
+  // useEffect(()=>{
+  //   axios.get("http://localhost:4000/songs").then((response)=> setSongList(response.data.data))
+  //   console.log(songList);
+  // }, [])
+
+  // const playPause = () => {
+
+  //   // Get state of song
+  //   let isPlaying = currentSong.isPlaying;
+
+  //   if (isPlaying) {
+  //     // Pause the song if it is playing
+  //     currentSong.audio.pause();
+  //   } else {
+
+  //     // Play the song if it is paused
+  //     currentSong.audio.play();
+  //   }
+
+  //   // Change the state of song
+  //   setCurrentSong(currentSong => ({...currentSong, isPlaying: !isPlaying}));
+  //   };
+
     const theme = useTheme();
     return(
         <Card variant="outlined" sx={{ display: 'flex', height: 110 }}>
@@ -25,7 +50,7 @@ function SongCard() {
       <Box sx={{ display: 'flex', flexDirection: 'column' }}>
         <CardContent sx={{ flex: '1 0 auto' }}>
           <Typography component="div" variant="h5">
-            Live From Space
+            {songName}
           </Typography>
           <Typography variant="subtitle1" color="text.secondary" component="div">
             Mac Miller
@@ -36,7 +61,7 @@ function SongCard() {
         </CardContent>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-          <IconButton aria-label="play/pause">
+          <IconButton aria-label="play/pause" onClick={setCurrentSong({songUrl})>
             <PlayArrowIcon sx={{ height: 38, width: 38 }} />
           </IconButton>
           <IconButton>

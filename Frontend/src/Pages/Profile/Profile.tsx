@@ -55,7 +55,6 @@ function Profile() {
   });
 
   const insertFile = async () => {
-    
     //   const newFile = new FormData();
     //   newFile.append("file", file, file.name);
     //   newFile.append("type", file.type);
@@ -89,23 +88,17 @@ function Profile() {
                 <PersonOutlineIcon /> Username
               </h3>
               <EditInfo
-                value={
-                  editUser.userName ? editUser.userName : data.data.userName
-                }
+                value={editUser.userName ? editUser.userName : data.data.userName}
                 setEditUser={setEditUser}
-                control="userName"
-              />
+                control="userName" editUser={undefined}              />
               <hr />
               <h3 className="profileTitle">
                 <CakeIcon /> Birthday
               </h3>
               <EditInfo
-                value={
-                  editUser.birthday ? editUser.birthday : data.data.birthday
-                }
+                value={editUser.birthday ? editUser.birthday : data.data.birthday}
                 setEditUser={setEditUser}
-                control="birthday"
-              />
+                control="birthday" editUser={undefined}              />
               <hr />
               <h3 className="profileTitle">
                 <HomeIcon /> Country
@@ -113,8 +106,7 @@ function Profile() {
               <EditInfo
                 value={editUser.country ? editUser.country : data.data.country}
                 setEditUser={setEditUser}
-                control="country"
-              />
+                control="country" editUser={undefined}              />
               <hr />
               <h3 className="profileTitle">
                 <TransgenderIcon /> Gender
