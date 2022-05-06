@@ -5,7 +5,7 @@ import axios from "axios";
 const initialState = {
   currentSong: {
     isPlaying: false,
-    audio:"",
+    audio: "",
   },
 };
 export const fetchSongs = createAsyncThunk("songs/fetchSongs", () => {
@@ -26,6 +26,10 @@ export const songsSlice = createSlice({
       state.currentSong = action.payload;
       return state;
     },
+    updateIsPlaying: (state, action) => {
+      state.currentSong.isPlaying = action.payload;
+      return state;
+    },
 
     // decrement: (state) => {
     //   state.value -= 1
@@ -42,6 +46,6 @@ export const songsSlice = createSlice({
   },
 });
 
-export const { addCurrentSong } = songsSlice.actions;
+export const { addCurrentSong, updateIsPlaying } = songsSlice.actions;
 
 export const songsSelector = (state) => state.songs;

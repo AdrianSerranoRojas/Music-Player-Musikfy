@@ -12,6 +12,7 @@ import SongCard from "../../components/SongCard/SongCard";
 import LikesCard from "../../components/MainCards/LikesCard/LikesCard"
 import Box from "@mui/material/Box";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
+import PlayerH5 from "../PlayerH5";
 
 async function fetchUserToken(
   setUserToken: any,
@@ -70,6 +71,7 @@ const Home = () => {
       <LikesCard/>
       </Box>
       <MusicPlayer />
+      <PlayerH5/>
     </div>
   );
 };
