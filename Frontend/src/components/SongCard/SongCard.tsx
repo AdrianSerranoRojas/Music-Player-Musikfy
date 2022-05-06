@@ -9,9 +9,11 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import AddIcon from '@mui/icons-material/Add';
 import { height } from "@mui/system";
 import { addCurrentSong, songsSelector } from "../../features/song/songsSlice";
 import { useDispatch, useSelector } from "react-redux";
+import DropdownAddPlaylist from "../Dropdown/AddPlaylist/AddPlaylist";
 
 function SongCard({ songName, songUrl }) {
   const theme = useTheme();
@@ -49,14 +51,18 @@ function SongCard({ songName, songUrl }) {
           </Typography>
         </CardContent>
       </Box>
-      <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-        <IconButton onClick={()=>handleClick(songUrl)} aria-label="play/pause">
+      <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+        <IconButton aria-label="play/pause">
           <PlayArrowIcon sx={{ height: 38, width: 38 }} />
         </IconButton>
         <IconButton>
-          <FavoriteIcon sx={{ height: 30, width: 30 }} />
+          <FavoriteIcon sx={{ height: 30, width: 30 }}/>
+        </IconButton>
+        <IconButton>
+          <AddIcon sx={{ height: 30, width: 30 }}/>
         </IconButton>
       </Box>
+      <DropdownAddPlaylist />
     </Card>
   );
 }

@@ -103,7 +103,7 @@ function MusicPlayer() {
   // }
 
   return (
-    <div className="musicPlayer">
+    <Box className='musicPlayer' sx={{ml: 8.5}}>
       <img
         src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg"
         alt="juice"
@@ -214,9 +214,9 @@ function MusicPlayer() {
           />
           <VolumeUpRounded htmlColor={lightIconColor} />
         </Stack>
-      </div>
-    </div>
-  );
+        </div>
+        </Box>
+    )
 }
 
 export default MusicPlayer;

@@ -14,6 +14,8 @@ import Box from "@mui/material/Box";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 import PlayerH5 from "../PlayerH5";
 
+import "./Home.scss"
+
 async function fetchUserToken(
   setUserToken: any,
   setLoading: any,
@@ -66,9 +68,22 @@ const Home = () => {
       >
         click
       </button> */}
-      <PlaylistsCard />
-      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)' }}>
-      <LikesCard/>
+      <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', ml: 10, mr:10,  gap: 5 }}>
+        <Box sx={{
+          bgcolor: 'white',
+          boxShadow: 4,
+          borderRadius: 1,
+          p: 2}}>
+          <LikesCard/>
+        </Box>
+        <Box sx={{
+          bgcolor: 'white',
+          boxShadow: 4,
+          borderRadius: 1,
+          p: 2,
+          pl: 6}}>
+          <PlaylistsCard />
+        </Box>
       </Box>
       <MusicPlayer />
       <PlayerH5/>
