@@ -50,6 +50,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import { useDispatch, useSelector } from 'react-redux';
+import "react-h5-audio-player/lib/styles.css";
 
   const PlayerH5 = ({ layoutDisplay, src, title, ...otherProps }) => {
   const currentSong = useSelector((state) => state.songs.currentSong);
@@ -59,28 +60,39 @@ import { useDispatch, useSelector } from 'react-redux';
   
   useEffect(() => {
     if (currentSong) {
-      console.log("dew", player.current.audio);
       player.current.audio.current.pause();
     } else {
       player.current.audio.current.play();
     }
-    console.log("url", currentSong.audio);
   }, [currentSong]);
 
   
   // make a reduxstate
   return (
     <AudioPlayer
-      src={currentSong.audio}
-      header={title}
-  //  togglePlay={(e) => console.log(e)}
-      onPlay={(e) => console.log(e)}
-      onPause={(e) => console.log(e)}
-      onEnded={() => console.log("onEnded")}
-      onError={() => console.log("onError")}
-      style={{ backgroundColor: "#000" }}
-      layout={layoutDisplay}
-      ref={player}
+  //     src={currentSong.audio}
+  //     header={title}
+  // //  togglePlay={(e) => console.log(e)}
+  //     onPlay={(e) => console.log(e)}
+  //     onPause={(e) => console.log(e)}
+  //     onEnded={() => console.log("onEnded")}
+  //     onError={() => console.log("onError")}
+  //     style={{ backgroundColor: "#000" }}
+  //     layout={layoutDisplay}
+  //     ref={player}
+        style={{ borderRadius: "1rem", textAlign: "center" }}
+        autoPlay
+        // layout="horizontal"
+        src={currentSong.audio}
+        onPlay={(e) => console.log("onPlay")}
+        showSkipControls={true}
+        showJumpControls={false}
+        header={`Now playing: Rap malo`}
+        footer="All music from: www.bensound.com"
+        ref={player}
+        // onClickPrevious={handleClickPrevious}
+        // onClickNext={handleClickNext}
+        // onEnded={handleClickNext}
     />
   );
 };

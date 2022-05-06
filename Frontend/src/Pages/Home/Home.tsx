@@ -85,7 +85,6 @@ const Home = () => {
           <PlaylistsCard />
         </Box>
       </Box>
-      <MusicPlayer />
       <PlayerH5/>
     </div>
   );
