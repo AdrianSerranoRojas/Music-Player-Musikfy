@@ -12,6 +12,7 @@ import SongCard from "../../components/SongCard/SongCard";
 import LikesCard from "../../components/MainCards/LikesCard/LikesCard"
 import Box from "@mui/material/Box";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
+import PlayerH5 from "../PlayerH5";
 
 import "./Home.scss"
 import { styled } from "@mui/material/styles";
@@ -127,8 +128,8 @@ const Home = () => {
           <PlaylistsCard />
         </Widget>
       </Box>
-      <MusicPlayer />
       <WallPaper />
+      <PlayerH5/>
     </div>
   );
 };

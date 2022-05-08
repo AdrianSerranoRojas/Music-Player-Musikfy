@@ -18,9 +18,10 @@ import DropdownAddPlaylist from "../Dropdown/AddPlaylist/AddPlaylist";
 function SongCard({ songName, songUrl }) {
   const theme = useTheme();
   const dispatch = useDispatch();
+  console.log(songUrl);
 
-  const handleClick = (songUrl) => {
-    dispatch(addCurrentSong({isPlaying: true, audio:songUrl}));
+  const handleClick = () => {
+    dispatch(addCurrentSong({isPlaying: true, audio: songUrl}));
   };
   return (
     <Card variant="outlined" sx={{ display: "flex", height: 110 }}>
@@ -52,7 +53,7 @@ function SongCard({ songName, songUrl }) {
         </CardContent>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-        <IconButton aria-label="play/pause">
+        <IconButton aria-label="play/pause" onClick={handleClick}>
           <PlayArrowIcon sx={{ height: 38, width: 38 }} />
         </IconButton>
         <IconButton>
