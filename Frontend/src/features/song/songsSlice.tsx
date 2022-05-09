@@ -3,6 +3,15 @@ import { useGetSongsQuery } from "../../services/songApi";
 import axios from "axios";
 
 const initialState = {
+  newSong: {
+    songFile: "",
+    songImage: "",
+    songName: "",
+    songArtist: "",
+    songAlbum: "",
+    songGenre: "",
+    userSong: "",
+  },
   currentSong: {
     isPlaying: false,
     audio: "",
@@ -15,19 +24,16 @@ export const songsSlice = createSlice({
   name: "songs",
   initialState,
   reducers: {
-    // addSong: (state, action) => {
-    //   // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    //   // doesn't actually mutate the state because it uses the Immer library,
-    //   // which detects changes to a "draft state" and produces a brand new
-    //   // immutable state based off those changes
-    //   state.songs = [...state.songs, action.payload ]
-    // },
-    addCurrentSong: (state, action) => {
-      state.currentSong = action.payload;
+    addSongFile: (state, action) => {
+      state.newSong.songFile = action.payload;
       return state;
     },
-    updateIsPlaying: (state, action) => {
-      state.currentSong.isPlaying = action.payload;
+    updateSongFile: (state, action) => {
+      state.newSong.push = action.payload;
+      return state;
+    },
+    addCurrentSong: (state, action) => {
+      state.currentSong = action.payload;
       return state;
     },
 
@@ -46,6 +52,7 @@ export const songsSlice = createSlice({
   },
 });
 
-export const { addCurrentSong, updateIsPlaying } = songsSlice.actions;
+export const { addCurrentSong, addSongFile, updateSongFile } =
+  songsSlice.actions;
 
 export const songsSelector = (state) => state.songs;

@@ -14,6 +14,9 @@ import { useDropzone } from "react-dropzone";
 
 import * as Yup from "yup";
 
+import { useDispatch } from "react-redux";
+import { addSongFile, updateSongFile } from "../../features/song/songsSlice";
+
 const songSchema = Yup.object().shape({
   songName: Yup.string()
     .min(2, "The songName is too short!")
@@ -25,6 +28,7 @@ const songSchema = Yup.object().shape({
 });
 
 function AddDetailsSongForm() {
+  const dispatch = useDispatch();
   let signUpError = false;
 
   const optionsGenre = [
