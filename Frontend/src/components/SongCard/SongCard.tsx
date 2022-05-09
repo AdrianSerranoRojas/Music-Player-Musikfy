@@ -1,3 +1,4 @@
+import React from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -14,6 +15,10 @@ import { height } from "@mui/system";
 import { addCurrentSong, songsSelector } from "../../features/song/songsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import DropdownAddPlaylist from "../Dropdown/AddPlaylist/AddPlaylist";
+import ListItemButton from "@mui/material/ListItemButton";
+import List from "@mui/material/List";
+import Collapse from "@mui/material/Collapse";
+import ListItemIcon from '@mui/material/ListItemIcon';
 
 function SongCard({ songName, songUrl }) {
   const theme = useTheme();
@@ -23,6 +28,13 @@ function SongCard({ songName, songUrl }) {
   const handleClick = () => {
     dispatch(addCurrentSong({isPlaying: true, audio: songUrl}));
   };
+
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
   return (
     <Card variant="outlined" sx={{ display: "flex", height: 110 }}>
       <CardMedia
@@ -59,11 +71,17 @@ function SongCard({ songName, songUrl }) {
         <IconButton>
           <FavoriteIcon sx={{ height: 30, width: 30 }}/>
         </IconButton>
-        <IconButton>
-          <AddIcon sx={{ height: 30, width: 30 }}/>
-        </IconButton>
+            <IconButton onClick={handleOpen}>
+                <AddIcon sx={{ height: 30, width: 30 }}/>
+            </IconButton>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+                <ListItemButton sx={{ pl: 4 }}>
+                    <DropdownAddPlaylist />
+                </ListItemButton>
+            </List>
+        </Collapse>
       </Box>
-      <DropdownAddPlaylist />
     </Card>
   );
 }

@@ -135,13 +135,8 @@ const Home = () => {
         >
           <LikesCard />
         </Widget>
-        <Widget
-          sx={{
-            boxShadow: 4,
-            p: 2,
-            pl: 6,
-          }}
-        >
+        <Widget sx={{
+          boxShadow: 4}}>
           <PlaylistsCard />
         </Widget>
       </Box>
