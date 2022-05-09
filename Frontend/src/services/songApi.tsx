@@ -20,7 +20,7 @@ export const songApi = createApi({
       query: () => `/songs`,
     }),
     getMySongs: builder.query({
-      query: (userId) => `/songs/${userId}`,
+      query: () => `/mySongs`,
     }),
     createSong: builder.mutation({
       query: (body) => ({
@@ -34,4 +34,5 @@ export const songApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetSongsQuery, useCreateSongMutation } = songApi;
+export const { useGetSongsQuery, useCreateSongMutation, useGetMySongsQuery } =
+  songApi;

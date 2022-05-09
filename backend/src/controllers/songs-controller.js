@@ -74,6 +74,29 @@ export async function getSongs(req, res, next) {
     next(error);
   }
 }
+export async function getMySongs(req, res, next) {
+  // const { uid } = req.user;
+  const { uid, email } = req.user;
+
+  try {
+    const songs = await Songs.find({
+      songUser: {
+        userId: uid,
+        email: email,
+      },
+    })
+      .select()
+      .lean()
+      .exec();
+
+    res.status(200).send({
+      data: songs,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 // async function getSingleSong(req, res, next) {
 //   const { productId } = req.params;
 

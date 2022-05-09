@@ -6,12 +6,14 @@ import {
   getSongs,
   getTags,
   createSong,
+  getMySongs,
 } from "../controllers/songs-controller.js";
 
 const songsRouter = Router();
 
 songsRouter.get("/jsmediatags", getTags);
 songsRouter.get("/songs", getSongs);
+songsRouter.get("/mySongs", authMiddleware, getMySongs);
 songsRouter.post("/songs", authMiddleware, createSong);
 
 // UserRouter.use("/users", authMiddleware);
