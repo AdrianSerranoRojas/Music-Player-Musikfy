@@ -9,7 +9,8 @@ function LikesCard() {
 
   return (
     <>
-      <Box>
+      <Box sx={{maxwidth: 750,
+            maxheight: 440}}>
         <Typography variant="h5" align='center' fontFamily='Vollkorn, serif'>Most liked Songs!</Typography>
         {isSuccess &&
           data.data.map((song, index) => {

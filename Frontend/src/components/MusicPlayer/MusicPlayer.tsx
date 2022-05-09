@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import {
   IoPlayOutline,
   IoPlaySkipForwardOutline,
@@ -16,7 +16,7 @@ import VolumeUp from "@mui/icons-material/VolumeUp";
 import { VolumeDownRounded, VolumeUpRounded } from "@mui/icons-material";
 import { styled, Typography, useTheme } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
-import { addCurrentSong, songsSelector } from "../../features/song/songsSlice";
+import { addCurrentSong, songsSelector,updateIsPlaying } from "../../features/song/songsSlice";
 
 import "./MusicPlayer.scss";
 
@@ -40,26 +40,53 @@ function MusicPlayer() {
   }
   const currentSong = useSelector((state) => state.songs.currentSong);
 
-  const songToPlay = new Audio(currentSong.audio);
+  console.log("<<<<<<<<<<<", currentSong);
+  const songToPlay = useRef(new Audio(currentSong.audio));
 
-  const handlePlaySong = async() => {
-    if (currentSong.isPlaying === false) {
-      await songToPlay.pause();
-      console.log("carapolla false",  songToPlay);
-      console.log( "song pause",songToPlay.pause());
-    } else if (currentSong.isPlaying === true) {
-      await songToPlay.play();
-      console.log( "song play",songToPlay.play());
-      console.log("carapolla tu",  songToPlay);
+  useEffect(() => {
+    if (currentSong.isPlaying === true) {
+      // songToPlay.current.audio.pause();
+      console.log("is true",songToPlay.current.play());
+      
+    } else if (currentSong.isPlaying === false) {
+      // songToPlay.current.play();
+      
+      console.log("is false",songToPlay);
+      console.log("este el pause AAAA",songToPlay.current.pause());
     }
-    dispatch(
-      addCurrentSong({
-        isPlaying: !currentSong.isPlaying,
-        audio: currentSong.audio,
-      })
-    );
+  }, [currentSong]);
+
+  // const antoñito =  useRef()
+  // const songToPlay = useRef(
+  //   new Audio(
+  //     "https://res.cloudinary.com/carapolla/video/upload/v1651577947/songs/aplauso_sape4x.mp3"
+  //   )
+  // );
+  // const songToPlay = useRef(
+  //   new Audio( currentSong ))
+
+  const handlePlaySong = () => {
+    // const songToPlay = new Audio(currentSong);
+    // if (currentSong.isPlaying === false) {
+    //   songToPlay.current.pause();
+    //   console.log("csongToPlay.current.play", songToPlay.current.play());
+    //   console.log("song pause", songToPlay.current.pause());
+
+      //  songToPlay.pause();
+      // console.log("csongToPlay.current.play", songToPlay.play());
+      // console.log("song pause", songToPlay.pause());
+    // } else if (currentSong.isPlaying === true) {
+    //   songToPlay.current.play();
+    //   console.log("songToPlay.current.play", songToPlay.current.play());
+    //   console.log("songToPlay", songToPlay);
+      //  songToPlay.play();
+      // console.log("songToPlay.current.play", songToPlay.play());
+      // console.log("songToPlay", songToPlay);
+      dispatch(
+        updateIsPlaying(!currentSong.isPlaying)
+      );
+    // }
     // currentSong.audio.play()
-    
   };
 
   // const handlePauseSong = () => {
