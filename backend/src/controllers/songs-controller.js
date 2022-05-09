@@ -1,6 +1,7 @@
 // import db from "../models";
 // import { logger } from "../config/config";
 import { Songs } from "../models/songs-model.js";
+import { uploadSongCloud, deleteImageCloud } from "../libs/cloudinary.js";
 
 import jsmediatags from "jsmediatags";
 
@@ -11,6 +12,7 @@ export function getTags(req, res, next) {
     .setTagsToRead()
     .read({
       onSuccess: function (tag) {
+        res.send(tag);
         console.log(tag);
       },
       onError: function (error) {
@@ -18,66 +20,37 @@ export function getTags(req, res, next) {
       },
     });
 }
+export async function createSong(req, res, next) {
+  const body = req.body;
+  console.log(body);
 
-// import fs from "fs-extra";
+  let imageURL = null;
+  try {
+    const { image } = req.body;
+    const newImage = image[0];
 
-// import { uploadImageCloud, deleteImageCloud } from "../libs/cloudinary";
-
-// async function createSong(req, res, next) {
-//   let image = null;
-
-//   const { title, price, img, shortDescription, longDescription, unitsInStock } =
-//     req.body.newSong;
-
-//   //   const uid = req.body.uid;
-//   const song = req.body.song;
-
-//   console.log("song", song);
-//   //   console.log(req.file.image);
-
-//   try {
-//     if (req.file.deleteSongCloud) {
-//       console.log("if pasado", song);
-//       const resultLoadSong = await uploadSongCloud(req.file.image.tempFilePath);
-//       await fs.remove(req.file.song.tempFilePath);
-//       song = {
-//         url: resultLoadSong.secure_url,
-//         // public_id: resultLoadImage.public_id,
-//       };
-//     }
-
-//     const product = await db.Product.create({
-//       // title: title,
-//       // price: price,
-//       song: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/S._tuberosum-5.JPG/375px-S._tuberosum-5.JPG",
-//       shortDescription: shortDescription,
-//       longDescription: longDescription,
-//       unitsInStock: unitsInStock,
-//       quantity: 0,
-//       isFavorite: false,
-//       author: {
-//         email: email,
-//         id: uid,
-//       },
-//       votes: {
-//         upVotes: {
-//           upperLimit: 10,
-//           currentValue: 0,
-//         },
-//         downVotes: {
-//           lowerLimit: 10,
-//           currentValue: 0,
-//         },
-//       },
-//     });
-
-//     res.status(201).send({
-//       data: song._id,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// }
+    if (newImage) {
+      const resultLoadImage = await uploadSongCloud(newImage);
+      // await fs.remove(req.files.image.tempFilePath);
+      imageURL = {
+        url: resultLoadImage.secure_url,
+        public_id: resultLoadImage.public_id,
+      };
+    }
+    // guardar en la base de datos
+    // const song = await Song.findOne({ nameSong: nameSong });
+    // if (song) {
+    //   return res.sendStatus(200);
+    // }
+    // const newUser = await Song.create({
+    //   image: image,
+    // });
+    // debug(newUser);
+    res.sendStatus(201);
+  } catch (error) {
+    next(error);
+  }
+}
 
 export async function getSongs(req, res, next) {
   try {

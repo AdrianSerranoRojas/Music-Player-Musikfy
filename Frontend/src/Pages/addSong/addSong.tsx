@@ -1,18 +1,59 @@
 import * as React from "react";
+import { makeStyles } from "@mui/styles";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import Slider from "@mui/material/Slider";
-import IconButton from "@mui/material/IconButton";
-import Stack from "@mui/material/Stack";
-import PauseRounded from "@mui/icons-material/PauseRounded";
-import PlayArrowRounded from "@mui/icons-material/PlayArrowRounded";
-import FastForwardRounded from "@mui/icons-material/FastForwardRounded";
-import FastRewindRounded from "@mui/icons-material/FastRewindRounded";
-import VolumeUpRounded from "@mui/icons-material/VolumeUpRounded";
-import VolumeDownRounded from "@mui/icons-material/VolumeDownRounded";
+import Paper from "@mui/material/Paper";
+import Stepper from "@mui/material/Stepper";
+import Step from "@mui/material/Step";
+import StepLabel from "@mui/material/StepLabel";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+
+import AddSongForm from "../../components/AddSongForm/AddSongForm";
+import AddDetailsSongForm from "../../components/AddSongForm/AddDetailsSongForm";
+import ReviewUploadSong from "../../components/AddSongForm/ReviewUploadSong";
 
 import withLayout from "../../hoc/withLayout";
+
+const useStyles = makeStyles((theme) => ({
+  appBar: {
+    position: "relative",
+  },
+  layout: {
+    width: "auto",
+    marginLeft: theme.spacing(2),
+    marginRight: theme.spacing(2),
+    paddingLeft: theme.spacing(2),
+    paddingRight: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+      maxWidth: 600,
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(3),
+    marginBottom: theme.spacing(3),
+    padding: theme.spacing(2),
+    [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+      marginTop: theme.spacing(6),
+      marginBottom: theme.spacing(6),
+      padding: theme.spacing(3),
+    },
+  },
+  stepper: {
+    padding: theme.spacing(3, 0, 5),
+  },
+  buttons: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+  button: {
+    marginTop: theme.spacing(3),
+    marginLeft: theme.spacing(1),
+  },
+}));
 
 const WallPaper = styled("div")({
   position: "absolute",
@@ -49,9 +90,10 @@ const WallPaper = styled("div")({
 const Widget = styled("div")(({ theme }) => ({
   padding: 16,
   borderRadius: 16,
-  width: 343,
+  width: "80%",
   maxWidth: "100%",
-  margin: "auto",
+  height: 800,
+  marginLeft: "12.5%",
   position: "relative",
   zIndex: 1,
   backgroundColor:
@@ -59,61 +101,115 @@ const Widget = styled("div")(({ theme }) => ({
   backdropFilter: "blur(40px)",
 }));
 
-const CoverImage = styled("div")({
-  width: 100,
-  height: 100,
-  objectFit: "cover",
-  overflow: "hidden",
-  flexShrink: 0,
-  borderRadius: 8,
-  backgroundColor: "rgba(0,0,0,0.08)",
-  "& > img": {
-    width: "100%",
-  },
-});
+const steps = ["Upload file", "Refill details", "Review Song"];
 
-const TinyText = styled(Typography)({
-  fontSize: "0.75rem",
-  opacity: 0.38,
-  fontWeight: 500,
-  letterSpacing: 0.2,
-});
+function getStepContent(step) {
+  switch (step) {
+    case 0:
+      return <AddSongForm />;
+    case 1:
+      return <AddDetailsSongForm />;
+    case 2:
+      return <ReviewUploadSong />;
+    default:
+      throw new Error("Unknown step");
+  }
+}
 
 function AddSong() {
-  const theme = useTheme();
-  const duration = 200; // seconds
-  const [position, setPosition] = React.useState(32);
-  const [paused, setPaused] = React.useState(false);
+  const [activeStep, setActiveStep] = React.useState(0);
 
-  function formatDuration(value: number) {
-    const minute = Math.floor(value / 60);
-    const secondLeft = value - minute * 60;
-    return `${minute}:${secondLeft < 9 ? `0${secondLeft}` : secondLeft}`;
-  }
-  const mainIconColor = theme.palette.mode === "dark" ? "#fff" : "#000";
-  const lightIconColor =
-    theme.palette.mode === "dark" ? "rgba(255,255,255,0.4)" : "rgba(0,0,0,0.4)";
+  const classes = useStyles();
+
+  const handleNext = () => {
+    setActiveStep(activeStep + 1);
+  };
+
+  const handleBack = () => {
+    setActiveStep(activeStep - 1);
+  };
+
+  const theme = useTheme();
+
   return (
     <Box sx={{ width: "100%", overflow: "hidden" }}>
       <Widget>
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Box sx={{ ml: 1.5, minWidth: 0 }}>
-            
-            {/* <Typography
-              variant="caption"
-              color="text.secondary"
-              fontWeight={500}
+        <div className={classes.layout}>
+          <Paper className={classes.paper}>
+            <Tooltip
+              title={`<Typography color="textPrimary" variant="h4">`}
+              placement="top"
+              arrow
             >
-              Jun Pulse
-            </Typography>
-            <Typography noWrap>
-              <b>คนเก่าเขาทำไว้ดี (Can&apos;t win)</b>
-            </Typography>
-            <Typography noWrap letterSpacing={-0.25}>
-              Chilling Sunday &mdash; คนเก่าเขาทำไว้ดี
-            </Typography> */}
-          </Box>
-        </Box>
+              <Typography component="h1" variant="h4" align="center">
+                Upload Song
+              </Typography>
+            </Tooltip>
+            <Stepper activeStep={activeStep} className={classes.stepper}>
+              {steps.map((label) => (
+                <Step key={label}>
+                  <Tooltip title={`<StepLabel>`} placement="top" arrow>
+                    <StepLabel>{label}</StepLabel>
+                  </Tooltip>
+                </Step>
+              ))}
+            </Stepper>
+            <React.Fragment>
+              {activeStep === steps.length ? (
+                <React.Fragment>
+                  <Tooltip
+                    title={`<Typography color="textPrimary" variant="h5">`}
+                    placement="left"
+                    arrow
+                  >
+                    <Typography variant="h5" gutterBottom>
+                      Thank you for your order.
+                    </Typography>
+                  </Tooltip>
+                  <Tooltip
+                    title={`<Typography color="textPrimary" variant="subtitle1">`}
+                    placement="left"
+                    arrow
+                  >
+                    <Typography variant="subtitle1">
+                      Your order number is #2001539. We have emailed your order
+                      confirmation, and will send you an update when your order
+                      has shipped.
+                    </Typography>
+                  </Tooltip>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  {getStepContent(activeStep)}
+                  <div className={classes.buttons}>
+                    {activeStep !== 0 && (
+                      <Tooltip title={`<Button variant="text">`} arrow>
+                        <Button onClick={handleBack} className={classes.button}>
+                          Back
+                        </Button>
+                      </Tooltip>
+                    )}
+                    <Tooltip
+                      title={`<Button color="primary" variant="contained">`}
+                      arrow
+                    >
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleNext}
+                        className={classes.button}
+                      >
+                        {activeStep === steps.length - 1
+                          ? "Place order"
+                          : "Next"}
+                      </Button>
+                    </Tooltip>
+                  </div>
+                </React.Fragment>
+              )}
+            </React.Fragment>
+          </Paper>
+        </div>
       </Widget>
       <WallPaper />
     </Box>

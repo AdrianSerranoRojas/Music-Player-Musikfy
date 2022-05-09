@@ -15,6 +15,13 @@ export const uploadImageCloud = async (filePath) => {
   });
 };
 
+export const uploadSongCloud = async (filePath) => {
+  console.log("aaaaaaaaaaaaaaaa", config.cloudinary.cloud_name);
+  return await cloudinary.v2.uploader.upload(filePath, {
+    folder: "songs",
+  });
+};
+
 // es el nombre de la carpeta de cloudinary no tiene que ver con el nombre de la base de datos de mongo, que se llaman igual
 
 export const deleteImageCloud = async (id) => {
