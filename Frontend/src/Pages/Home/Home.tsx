@@ -34,7 +34,7 @@ async function fetchUserToken(
 }
 
 const WallPaper = styled("div")({
-  position: "absolute",
+  position: "fixed",
   width: "100%",
   height: "100%",
   top: 0,
@@ -46,7 +46,7 @@ const WallPaper = styled("div")({
       content: '""',
       width: "140%",
       height: "140%",
-      position: "absolute",
+      position: "fixed",
       top: "-40%",
       right: "-50%",
       background:
@@ -56,7 +56,7 @@ const WallPaper = styled("div")({
   content: '""',
   width: "140%",
   height: "140%",
-  position: "absolute",
+  position: "fixed",
   bottom: "-50%",
   left: "-30%",
   background:
@@ -99,6 +99,14 @@ const Home = () => {
       };
     };
 
+    const styles = {
+      stickToBottom: {
+        width: '100%',
+        position: 'sticky',
+        bottom: 0,
+      },
+    };
+
   return (
     <div>
       <input
@@ -129,7 +137,11 @@ const Home = () => {
         </Widget>
       </Box>
       <WallPaper />
-      <PlayerH5/>
+      <Widget sx={{
+          boxShadow: 4,
+          mt: 16}}>
+            <PlayerH5/>
+          </Widget>
     </div>
   );
 };

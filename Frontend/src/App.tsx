@@ -19,6 +19,7 @@ import AddSong from "./Pages/addSong/addSong";
 import Main from "./Pages/Main/Main";
 import { NotFound } from "./components/NotFound/NotFound";
 import  PlayerH5  from "./Pages/PlayerH5";
+import MySongs from "./Pages/MySongs/MySongs";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -60,6 +61,7 @@ export default function App() {
           <Route path="/main" element={<Main />} />
           <Route path="/mainTemplate" element={<MainTemplate />} />
           <Route path="/h5" element={<PlayerH5 />} />
+          <Route path="/mySongs" element={<MySongs />} />
         </Routes>
       </AuthContext.Provider>
     </>
