@@ -11,7 +11,7 @@ const Widget = styled("div")(({ theme }) => ({
   width: "80%",
   maxWidth: "100%",
   height: "70vh",
-  marginTop: "5%",
+  marginTop: "4%",
   marginLeft: "12.5%",
   position: "relative",
   zIndex: 1,
