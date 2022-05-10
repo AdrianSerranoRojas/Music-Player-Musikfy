@@ -5,7 +5,7 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCardSmall from "../../components/MainCards/PlaylistsCardSmall/PlaylistsCardSmall";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
-import PlayerH5 from "../PlayerH5";
+import PlayerH5 from "../../components/PlayerH5/PlayerH5";
 
 import "../MySongs/MySongs.scss"
 import withLayout from "../../hoc/withLayout";

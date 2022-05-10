@@ -2,20 +2,14 @@ import { useState, useCallback, useEffect, useContext } from "react";
 
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-
 import { useDropzone } from "react-dropzone";
-
 import { useCreateSongMutation } from "../../services/songApi";
-
 import { CardMedia } from "@mui/material";
 
-// import { useDispatch } from "react-redux";
-// import { addSongFile, updateSongFile } from "../../features/song/songsSlice";
-
 function AddSongForm() {
-  // const dispatch = useDispatch();
   let signUpError = false;
   const [image, setImage] = useState([]);
+
   const onDrop = useCallback((acceptedFiles, rejectFiles) => {
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
@@ -43,14 +37,6 @@ function AddSongForm() {
   const insertFile = async () => {
     await createSong(image);
   };
-
-  useEffect(() => {
-    console.log(image);
-  }, [image]);
-
-  useEffect(() => {
-    console.log(result);
-  }, [result]);
 
   return (
     <>

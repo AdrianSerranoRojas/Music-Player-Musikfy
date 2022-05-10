@@ -5,7 +5,7 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
-import PlayerH5 from "../PlayerH5";
+import PlayerH5 from "../../components/PlayerH5/PlayerH5";
 import SettingsIcon from "@mui/icons-material/Settings";
 
 import "../MySongs/MySongs.scss";
