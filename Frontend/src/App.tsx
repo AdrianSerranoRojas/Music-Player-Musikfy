@@ -17,6 +17,7 @@ import AddSong from "./Pages/addSong/addSong";
 import MySongs from "./Pages/MySongs/MySongs";
 import SinglePlaylist from "./Pages/Playlists/SinglePlaylist";
 import Playlists from "./Pages/Playlists/Playlists";
+import Filter from "./Pages/Filter/Filter";
 
 import { NotFound } from "./components/NotFound/NotFound";
 
@@ -55,6 +56,8 @@ export default function App() {
           <Route path="/mySongs" element={<MySongs />} />
           <Route path="/playlist" element={<SinglePlaylist />} />
           <Route path="/playlists" element={<Playlists />} />
+          <Route path="/filter" element={<Filter />} />
+
         </Routes>
       </AuthContext.Provider>
     </>

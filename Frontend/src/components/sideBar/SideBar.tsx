@@ -177,7 +177,7 @@ export default function SideNavbar({ ...props }) {
                           fontSize: "0.875rem",
                           lineHeight: "1.43em",
                           "& .MuiInputBase-input": {
-                            color: "lightgray",
+                            color: "gray",
                             padding: 0,
                           },
                         }}
@@ -330,7 +330,7 @@ export default function SideNavbar({ ...props }) {
                         placeholder={key.desc}
                         sx={{
                           fontSize: "0.875rem",
-                          lineHeight: "1.43em",
+                          lineHeight: "11.43em",
                           "& .MuiInputBase-input": {
                             color: "lightgray",
                             padding: 0,
