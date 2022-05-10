@@ -77,7 +77,7 @@ const navbarList = [
   {
     key: 8,
     icon: PlaylistPlayIcon,
-    path: "/",
+    path: "/Playlist",
     desc: "Playlist",
     secondDesc: "",
     badge: 5,

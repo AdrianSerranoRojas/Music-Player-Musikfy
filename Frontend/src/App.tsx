@@ -10,7 +10,6 @@ import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import Profile from "./Pages/Profile/Profile";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import PlaySong from "./Pages/PlaySong/PlaySong";
-import MainTemplate from "./Pages/MainTemplate/MainTemplate";
 
 import { auth } from "./firebase/firebase";
 import AuthContext from "./context/AuthContext";
@@ -18,7 +17,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import AddSong from "./Pages/addSong/addSong";
 import Main from "./Pages/Main/Main";
 import { NotFound } from "./components/NotFound/NotFound";
-import  PlayerH5  from "./Pages/PlayerH5";
+import PlayerH5 from "./Pages/PlayerH5";
 import MySongs from "./Pages/MySongs/MySongs";
 import SinglePlaylist from "./Pages/Playlists/SinglePlaylist";
 import Playlists from "./Pages/Playlists/Playlists";
@@ -61,7 +60,6 @@ export default function App() {
           <Route path="/addSong" element={<AddSong />} />
           <Route path="/playSong" element={<PlaySong />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/mainTemplate" element={<MainTemplate />} />
           <Route path="/h5" element={<PlayerH5 />} />
           <Route path="/mySongs" element={<MySongs />} />
           <Route path="/playlist" element={<SinglePlaylist />} />
