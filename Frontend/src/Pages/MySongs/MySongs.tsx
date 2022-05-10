@@ -54,7 +54,7 @@ function MySongs() {
                   <SongCard
                     key={index}
                     songName={song.songName}
-                    songUrl={song.songUrl}
+                    songUrl={song.songFile.url}
                   />
                 );
               })}
