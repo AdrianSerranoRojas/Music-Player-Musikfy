@@ -82,10 +82,7 @@ export function getTags(req, res, next) {
 export async function getSongs(req, res, next) {
   try {
     const songs = await Songs.find()
-      .select({
-        songUrl: 1,
-        songName: 1,
-      })
+      .select()
       .lean()
       .exec();
 

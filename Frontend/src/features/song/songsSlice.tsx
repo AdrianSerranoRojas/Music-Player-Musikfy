@@ -3,10 +3,10 @@ import { useGetSongsQuery } from "../../services/songApi";
 import axios from "axios";
 
 const initialState = {
-  currentSong: {
+  currentSong: [{
     isPlaying: false,
     audio: "",
-  },
+  }],
 };
 export const fetchSongs = createAsyncThunk("songs/fetchSongs", () => {
   return axios.get("http://localhost:4000/songs");
@@ -22,10 +22,15 @@ export const songsSlice = createSlice({
     //   // immutable state based off those changes
     //   state.songs = [...state.songs, action.payload ]
     // },
-    addCurrentSong: (state, action) => {
-      state.currentSong = action.payload;
+    addFirstCurrentSong: (state, action) => {
+      state.currentSong = action.payload
       return state;
     },
+    addCurrentSong: (state, action) => {
+      state.currentSong = [...state.currentSong, action.payload]
+      return state;
+    },
+
     updateIsPlaying: (state, action) => {
       state.currentSong.isPlaying = action.payload;
       return state;
@@ -46,6 +51,6 @@ export const songsSlice = createSlice({
   },
 });
 
-export const { addCurrentSong, updateIsPlaying } = songsSlice.actions;
+export const { addCurrentSong, updateIsPlaying, addFirstCurrentSong } = songsSlice.actions;
 
 export const songsSelector = (state) => state.songs;
