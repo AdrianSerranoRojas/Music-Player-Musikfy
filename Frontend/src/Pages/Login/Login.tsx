@@ -1,20 +1,14 @@
 import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import "./Login.scss"
-
+import "./Login.scss";
 import { FcGoogle } from "react-icons/fc";
-
-import Button from "../../components/Button/Button";
-
+import { Button } from "@mui/material";
 import withLayout from "../../hoc/withLayout";
-
 import AuthContext from "../../context/AuthContext";
-
 import {
   singInWithGoogle,
   singInWithEmailAndPassword,
 } from "../../firebase/firebase";
-
 import { syncUserData } from "../../utils/auth-requests";
 
 function Login() {
@@ -27,13 +21,11 @@ function Login() {
 
   async function handleLoginWithGoogleClick(e) {
     e.preventDefault();
-
     setLoading(true);
-
     try {
       await singInWithGoogle();
       await syncUserData();
-    } catch (error:any) {
+    } catch (error: any) {
       setLoginError(error.message);
     } finally {
       setLoading(false);
@@ -42,13 +34,10 @@ function Login() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
     setLoading(true);
-
     try {
       await singInWithEmailAndPassword(email, password);
-      
-    } catch (error:any) {
+    } catch (error: any) {
       setLoginError(error.message);
     } finally {
       setLoading(false);
@@ -59,31 +48,16 @@ function Login() {
     <>
       <main className="container p-4 mt-5">
         <div className="row flex-column align-items-center">
-          <div className="col col-lg-6 sketchy">
-            {/* <section className="row row-cols-1 mb-5">
-              <div className="col">
-                <h1 className="h2">Login</h1>
-                {currentUser && (
-                  <p className="font-bold">Hello {currentUser.email}</p>
-                )}
-                <hr />
-              </div>
-              <div className="col">
-                <h2 className="h5">Login with Google</h2>
-                <hr />
-              </div>
-              <div className="col">
-                <Button onClick={handleLoginWithGoogleClick}>
-                  Login With Google
-                </Button>
-              </div>
-            </section> */}
-
+          <div className="col col-lg-6">
             <section className="row row-cols-1 mb-3">
-            <h1 className="h2">Log in</h1>
-                <hr />
-              <Button className="GoogleLogIn" onClick={handleLoginWithGoogleClick}>
-                <FcGoogle className="googleLogo"/>
+              <h1 className="h2">Log in</h1>
+              <hr />
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleLoginWithGoogleClick}
+              >
+                <FcGoogle className="googleLogo" />
                 Login with Google
               </Button>
               <div className="col">
@@ -118,7 +92,12 @@ function Login() {
                       onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
-                  <Button type="submit" disabled={loading}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    color="primary"
+                    disabled={loading}
+                  >
                     {loading ? "Logging in..." : "Login"}
                   </Button>
                 </form>
@@ -135,10 +114,10 @@ function Login() {
             )}
             <section className="row row-cols-1 mb-5">
               <div className="col">
-              <p className="accNotExists">
-                You don't have a Musikfy account?
-              </p>
-              <Link to="/sign-up"> Sign up </Link>
+                <p className="accNotExists">
+                  You don't have a Musikfy account?
+                </p>
+                <Link to="/sign-up"> Sign up </Link>
                 <hr />
               </div>
               <div className="col">

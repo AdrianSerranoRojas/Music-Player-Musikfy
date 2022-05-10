@@ -1,31 +1,22 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, useContext } from "react";
 
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-
 import { useDropzone } from "react-dropzone";
-
 import { useCreateSongMutation } from "../../services/songApi";
-
 import { CardMedia } from "@mui/material";
-import Uicontrols from "../../components/UIcontrols/UIcontrols"
 
 function AddSongForm() {
   let signUpError = false;
-
-  const handleSubmit = (values) => {
-    console.log(values);
-  };
-
   const [image, setImage] = useState([]);
 
   const onDrop = useCallback((acceptedFiles, rejectFiles) => {
     acceptedFiles.forEach((file) => {
       const reader = new FileReader();
+      reader.readAsDataURL(file);
       reader.onload = () => {
         setImage((prevState) => [...prevState, reader.result]);
       };
-      reader.readAsDataURL(file);
       console.log("el reader", reader);
     });
 
@@ -44,12 +35,8 @@ function AddSongForm() {
   const [createSong, result] = useCreateSongMutation();
 
   const insertFile = async () => {
-    await createSong({ image });
+    await createSong(image);
   };
-
-  useEffect(() => {
-    console.log(image);
-  }, [image]);
 
   return (
     <>
@@ -91,12 +78,11 @@ function AddSongForm() {
           </Button>
         )}
       </div>
-      {signUpError && (
+      {result.isSuccess && (
         <section className="row row-cols-1 mb-3 border py-3 bg-light">
           <div className="col">
-            <h2 className="h2 h2SignUp">Something went wrong</h2>
+            <h2 className="h2 h2SignUp">Congrats</h2>
             <hr />
-            <p className="mt-3">{signUpError}</p>
           </div>
         </section>
       )}

@@ -33,26 +33,26 @@ function Profile() {
   const [file, setFile] = useState(null);
   const [image, setImage] = useState([]);
 
-  const onDrop = useCallback((acceptedFiles, rejectFiles) => {
-    acceptedFiles.forEach((file) => {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setImage((prevState) => [...prevState, reader.result]);
-      };
-      reader.readAsDataURL(file);
-      console.log("el reader", reader);
-    });
+  // const onDrop = useCallback((acceptedFiles, rejectFiles) => {
+  //   acceptedFiles.forEach((file) => {
+  //     const reader = new FileReader();
+  //     reader.onload = () => {
+  //       setImage((prevState) => [...prevState, reader.result]);
+  //     };
+  //     reader.readAsDataURL(file);
+  //     console.log("el reader", reader);
+  //   });
 
-    console.log("acceptedFiles", acceptedFiles);
-    console.log("rejectFiles", rejectFiles);
-  }, []);
+  //   console.log("acceptedFiles", acceptedFiles);
+  //   console.log("rejectFiles", rejectFiles);
+  // }, []);
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({
-    onDrop,
-    accept: {
-      "image/*": [".jpeg", ".png"],
-    },
-  });
+  // const { getRootProps, getInputProps, isDragActive } = useDropzone({
+  //   onDrop,
+  //   accept: {
+  //     "image/*": [".jpeg", ".png"],
+  //   },
+  // });
 
   const insertFile = async () => {
     //   const newFile = new FormData();

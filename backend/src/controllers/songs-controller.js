@@ -1,7 +1,10 @@
 // import db from "../models";
-// import { logger } from "../config/config";
 import { Songs } from "../models/songs-model.js";
-import { uploadSongCloud, deleteImageCloud } from "../libs/cloudinary.js";
+import {
+  uploadSongCloud,
+  deleteImageCloud,
+  uploadImageCloud,
+} from "../libs/cloudinary.js";
 
 import jsmediatags from "jsmediatags";
 
@@ -21,18 +24,17 @@ export function getTags(req, res, next) {
     });
 }
 export async function createSong(req, res, next) {
+  const { uid, email } = req.user;
   const body = req.body;
-  console.log(body);
-
-  let imageURL = null;
+  let songFile = null;
   try {
-    const { image } = req.body;
-    const newImage = image[0];
+    const newImage = req.body[0];
 
     if (newImage) {
+      console.log("newImage");
       const resultLoadImage = await uploadSongCloud(newImage);
       // await fs.remove(req.files.image.tempFilePath);
-      imageURL = {
+      songFile = {
         url: resultLoadImage.secure_url,
         public_id: resultLoadImage.public_id,
       };
@@ -42,23 +44,45 @@ export async function createSong(req, res, next) {
     // if (song) {
     //   return res.sendStatus(200);
     // }
-    // const newUser = await Song.create({
-    //   image: image,
-    // });
-    // debug(newUser);
-    res.sendStatus(201);
+    const newSong = await Songs.create({
+      songFile: songFile,
+      songUser: {
+        userId: uid,
+        email: email,
+      },
+    });
+    console.log(newSong);
+    res.sendStatus(200);
   } catch (error) {
     next(error);
   }
 }
-
 export async function getSongs(req, res, next) {
   try {
     const songs = await Songs.find()
-      .select({
-        songUrl: 1,
-        songName: 1,
-      })
+      .select()
+      .lean()
+      .exec();
+
+    res.status(200).send({
+      data: songs,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+export async function getMySongs(req, res, next) {
+  // const { uid } = req.user;
+  const { uid, email } = req.user;
+
+  try {
+    const songs = await Songs.find({
+      songUser: {
+        userId: uid,
+        email: email,
+      },
+    })
+      .select()
       .lean()
       .exec();
 

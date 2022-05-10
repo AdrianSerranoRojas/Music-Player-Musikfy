@@ -12,7 +12,7 @@ import SkipNextIcon from "@mui/icons-material/SkipNext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import AddIcon from '@mui/icons-material/Add';
 import { height } from "@mui/system";
-import { addCurrentSong, songsSelector } from "../../features/song/songsSlice";
+import { addCurrentSong, addFirstCurrentSong, songsSelector } from "../../features/song/songsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import DropdownAddPlaylist from "../Dropdown/AddPlaylist/AddPlaylist";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -23,11 +23,19 @@ import FavIcon from "../FavIcon/FavIcon";
 
 function SongCard({ songName, songUrl }) {
   const theme = useTheme();
+  const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
   console.log(songUrl);
 
   const handleClick = () => {
-    dispatch(addCurrentSong({isPlaying: true, audio: songUrl}));
+    console.log(currentSong);
+    if(currentSong[0].audio === ""){
+      console.log("carapolla!");
+      dispatch(addFirstCurrentSong([{isPlaying: true, audio: songUrl}]))
+    }
+    else{
+      dispatch(addCurrentSong({isPlaying: true, audio: songUrl}));
+    }
   };
 
   const [open, setOpen] = React.useState(false);

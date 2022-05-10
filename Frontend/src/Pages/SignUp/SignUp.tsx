@@ -40,22 +40,12 @@ const userSchema = Yup.object().shape({
 });
 
 function SignUp() {
-  const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [country, setCountry] = useState("");
-  const [birthday, setBirthday] = useState();
-  const [gender, setGender] = useState();
-  const [loading, setLoading] = useState(false);
   const [signUpError, setSignUpError] = useState(null);
-
   const currentUser = useContext(AuthContext);
 
   async function handleSingInWithGoogleClick(e) {
     e.preventDefault();
-
     setLoading(true);
-
     try {
       await singInWithGoogle();
       await syncUserData();
@@ -110,7 +100,7 @@ function SignUp() {
     <>
       <main className="container p-4 mt-5">
         <div className="row flex-column align-items-center">
-          <div className="col col-lg-6 sketchy">
+          <div className="col col-lg-6">
             <section className="row row-cols-1">
               <div className="col">
                 <h1 className="h1 h1SingUp">Sign Up</h1>
@@ -120,13 +110,14 @@ function SignUp() {
                 <hr />
               </div>
               <div className="col">
-                <Button onClick={handleSingInWithGoogleClick}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  onClick={handleSingInWithGoogleClick}
+                >
                   <FcGoogle className="googleLogo" />
                   Sign Up With Google
                 </Button>
-              </div>
-              <div className="col">
-                <h2 className="h5 mb-3">or</h2>
               </div>
             </section>
             <section className="row row-cols-1">
@@ -224,6 +215,7 @@ function SignUp() {
                       <Button
                         type="submit"
                         variant="contained"
+                        color="primary"
                         disabled={isValidating || !isValid}
                       >
                         Submit
