@@ -22,6 +22,7 @@ import  PlayerH5  from "./Pages/PlayerH5";
 import MySongs from "./Pages/MySongs/MySongs";
 import SinglePlaylist from "./Pages/Playlists/SinglePlaylist";
 import Playlists from "./Pages/Playlists/Playlists";
+import FavoriteSongs from "./Pages/FavoriteSongs/FavoriteSongs";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -66,6 +67,7 @@ export default function App() {
           <Route path="/mySongs" element={<MySongs />} />
           <Route path="/playlist" element={<SinglePlaylist />} />
           <Route path="/playlists" element={<Playlists />} />
+          <Route path="/favSongs" element={<FavoriteSongs />} />
         </Routes>
       </AuthContext.Provider>
     </>

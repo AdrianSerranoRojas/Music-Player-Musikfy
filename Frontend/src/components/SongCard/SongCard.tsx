@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -19,6 +19,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
 import ListItemIcon from '@mui/material/ListItemIcon';
+import FavIcon from "../FavIcon/FavIcon";
 
 function SongCard({ songName, songUrl }) {
   const theme = useTheme();
@@ -68,12 +69,10 @@ function SongCard({ songName, songUrl }) {
         <IconButton aria-label="play/pause" onClick={handleClick}>
           <PlayArrowIcon sx={{ height: 38, width: 38 }} />
         </IconButton>
-        <IconButton>
-          <FavoriteIcon sx={{ height: 30, width: 30 }}/>
+        <FavIcon/>
+        <IconButton onClick={handleOpen}>
+          <AddIcon sx={{ height: 30, width: 30 }}/>
         </IconButton>
-            <IconButton onClick={handleOpen}>
-                <AddIcon sx={{ height: 30, width: 30 }}/>
-            </IconButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
                 <ListItemButton sx={{ pl: 4 }}>
