@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
-const PlaylistSchema = new Schema(
+const PlaylistsSchema = new Schema(
   {
     style: {
       type: String,
@@ -31,5 +31,5 @@ const PlaylistSchema = new Schema(
 // esto creo que es para hacer varias listas por nombre
 // PlaylistSchema.index({ name: 'text' });
 
-export const PlaylistModel = new model('playlist', PlaylistSchema);
+export const Playlists = new model('playlists', PlaylistsSchema);
 
