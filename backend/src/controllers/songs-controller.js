@@ -74,7 +74,7 @@ export async function getSongsFilter(req, res, next) {
 
   try {
     const songs = await Songs.find({
-      songName: new RegExp("^" + filter , "i"),
+      songName: new RegExp(filter, "i"),
     })
       .select()
       .lean()

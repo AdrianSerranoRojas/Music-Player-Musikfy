@@ -29,7 +29,8 @@ import ColorMode from "../ColorMode/ColorMode";
 
 import AuthContext from "../../context/AuthContext";
 import { userSignOut } from "../../firebase/firebase";
-import { useGetSongsFilteredQuery } from "../../services/songApi";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilterSong, songsSelector } from "../../features/song/songsSlice";
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -38,11 +39,12 @@ const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
 
-
 export default function SideNavbar({ ...props }) {
   async function handleSignOut() {
     await userSignOut();
   }
+  const dispatch = useDispatch();
+  const { filterSong } = useSelector(songsSelector);
 
   const currentUser = useContext(AuthContext);
   const theme = useTheme();
@@ -63,9 +65,8 @@ export default function SideNavbar({ ...props }) {
   const navigate = useNavigate();
 
   const handleSearch = (filter) => {
-    // const { data } = useGetSongsFilteredQuery(filter);
-    console.log(filter);
-    // console.log(data);
+    dispatch(setFilterSong(filter));
+    console.log(filterSong);
   };
 
   const drawerContent = (

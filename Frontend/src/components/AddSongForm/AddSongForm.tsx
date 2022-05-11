@@ -1,19 +1,20 @@
 import { useState, useCallback, useEffect, useContext } from "react";
-
-import Box from "@mui/material/Box";
-import { Button } from "@mui/material";
-
-import { CardMedia } from "@mui/material";
-import { TextField } from "@mui/material";
-
 import { Link } from "react-router-dom";
 
 import { Formik, Form } from "formik";
+import * as Yup from "yup";
 import SelectField from "../../components/SelectField/SelectField";
 import SelectFieldMulty from "../../components/SelectFieldMulty/SelectFieldMulty";
-import * as Yup from "yup";
+
+import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import { Button } from "@mui/material";
+import { CardMedia } from "@mui/material";
+import { TextField } from "@mui/material";
 
 import { useDropzone } from "react-dropzone";
+
+// import useData from "./useData";
 
 import { useDispatch } from "react-redux";
 import { addSongFile, updateSongFile } from "../../features/song/songsSlice";
@@ -127,50 +128,53 @@ function AddSongForm() {
                       ))}
                   </div>
                   {/* dropzone */}
-                  <Box
-                    sx={{
-                      display: "grid",
-                      gridTemplateColumns: { sm: "1fr 1fr" },
-                      gap: 2,
-                      marginTop: 2,
-                    }}
-                  >
-                    <TextField
-                      id="songName"
-                      name="songName"
-                      label="songName"
-                      value={values.songName}
-                      onChange={handleChange}
-                      error={touched.songName && Boolean(errors.songName)}
-                      helperText={touched.songName && errors.songName}
-                    />
-                    <TextField
-                      id="songArtist"
-                      name="songArtist"
-                      label="songArtist"
-                      value={values.songArtist}
-                      onChange={handleChange}
-                      onBlur={submitForm}
-                      error={touched.songArtist && Boolean(errors.songArtist)}
-                      helperText={touched.songArtist && errors.songArtist}
-                    />
-                    <TextField
-                      id="songAlbum"
-                      name="songAlbum"
-                      label="songAlbum"
-                      value={values.songAlbum}
-                      onChange={handleChange}
-                      onBlur={submitForm}
-                      error={touched.songAlbum && Boolean(errors.songAlbum)}
-                      helperText={touched.songAlbum && errors.songAlbum}
-                    />
-                    <SelectField
-                      name="gender"
-                      options={optionsGenre}
-                      placeholder={"Gender"}
-                      submitForm={submitForm}
-                    />
-                  </Box>
+                  {values.files && (
+                    <Box
+                      sx={{
+                        display: "grid",
+                        gridTemplateColumns: { sm: "1fr 1fr" },
+                        gap: 2,
+                        marginTop: 2,
+                      }}
+                    >
+                      <TextField
+                        id="songName"
+                        name="songName"
+                        label="songName"
+                        value={values.songName}
+                        onChange={handleChange}
+                        placeholder={values.files[0].name}
+                        error={touched.songName && Boolean(errors.songName)}
+                        helperText={touched.songName && errors.songName}
+                      />
+                      <TextField
+                        id="songArtist"
+                        name="songArtist"
+                        label="songArtist"
+                        value={values.songArtist}
+                        onChange={handleChange}
+                        onBlur={submitForm}
+                        error={touched.songArtist && Boolean(errors.songArtist)}
+                        helperText={touched.songArtist && errors.songArtist}
+                      />
+                      <TextField
+                        id="songAlbum"
+                        name="songAlbum"
+                        label="songAlbum"
+                        value={values.songAlbum}
+                        onChange={handleChange}
+                        onBlur={submitForm}
+                        error={touched.songAlbum && Boolean(errors.songAlbum)}
+                        helperText={touched.songAlbum && errors.songAlbum}
+                      />
+                      <SelectField
+                        name="gender"
+                        options={optionsGenre}
+                        placeholder={"Gender"}
+                        submitForm={submitForm}
+                      />
+                    </Box>
+                  )}
                 </div>
                 <Button
                   type="submit"
@@ -184,19 +188,8 @@ function AddSongForm() {
           </Formik>
         </div>
       </section>
-      {signUpError && (
-        <section className="row row-cols-1 mb-3 border py-3 bg-light">
-          <div className="col">
-            <h2 className="h2 h2SignUp">Something went wrong</h2>
-            <hr />
-            <p className="mt-3">{signUpError}</p>
-          </div>
-        </section>
-      )}
     </>
   );
 }
 
 export default AddSongForm;
-
-

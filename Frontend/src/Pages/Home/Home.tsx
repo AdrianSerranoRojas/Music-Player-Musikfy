@@ -3,6 +3,7 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 
 import "./Home.scss";
+import SearchSongListing from "../../components/SearchSongListing/SearchSongListing";
 
 // async function fetchUserToken(
 //   setUserToken: any,
@@ -23,6 +24,7 @@ import "./Home.scss";
 const Home = () => {
   return (
     <div>
+      <SearchSongListing />
       <LikesCard />
       <PlaylistsCard />
     </div>
