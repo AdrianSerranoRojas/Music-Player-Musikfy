@@ -83,7 +83,7 @@ return (
             boxShadow: 4,
             p: 2}}
             className='bottomSticky'>
-        <PlayerH5/>
+        
     </Widget>
     </>
 
