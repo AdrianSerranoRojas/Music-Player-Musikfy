@@ -31,8 +31,8 @@ import "react-h5-audio-player/lib/styles.css";
         onPlay={(e) => console.log("onPlay")}
         showSkipControls={true}
         showJumpControls={false}
-        header={`Now playing: añadir nombre a la lista`}
-        footer="musikfy"
+        header={`Now playing: ${currentSong[trackIndex].songName}`}
+        footer={`Artist: ${currentSong[trackIndex].songArtist}`}
         ref={player}
         onClickPrevious={handleClickPrevious}
         onClickNext={handleClickNext}
