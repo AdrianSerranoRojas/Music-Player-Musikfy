@@ -46,13 +46,21 @@ const initialValues = {
 };
 
 const UploadComponent = (props) => {
-  const { setFieldValue } = props;
+  const { setFieldValue, setImage } = props;
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     accept: {
       "audio/*": [".mp3"],
     },
     onDrop: (acceptedFiles) => {
+      acceptedFiles.forEach((file) => {
+        const reader = new FileReader();
+        reader.onload = () => {
+          setImage((prevState) => [...prevState, reader.result]);
+        };
+        reader.readAsDataURL(file);
+        console.log("el reader", reader);
+      });
       setFieldValue("files", acceptedFiles);
     },
   });
@@ -74,12 +82,12 @@ const UploadComponent = (props) => {
 function AddSongForm() {
   let signUpError = false;
   const [image, setImage] = useState([]);
-
-  const handleSubmit = (values) => {
-    console.log(values);
-  };
-
   const [createSong, result] = useCreateSongMutation();
+
+  const handleSubmit = async (values) => {
+    console.log(values);
+    await createSong(image);
+  };
 
   const insertFile = async () => {
     await createSong(image);
@@ -119,7 +127,10 @@ function AddSongForm() {
                   <div className="form-group">
                     <label htmlFor="file">Multiple files upload</label>
 
-                    <UploadComponent setFieldValue={setFieldValue} />
+                    <UploadComponent
+                      setFieldValue={setFieldValue}
+                      setImage={setImage}
+                    />
                     {values.files &&
                       values.files.map((file, i) => (
                         <li key={i}>
@@ -153,7 +164,7 @@ function AddSongForm() {
                         label="songArtist"
                         value={values.songArtist}
                         onChange={handleChange}
-                        onBlur={submitForm}
+                        // onBlur={submitForm}
                         error={touched.songArtist && Boolean(errors.songArtist)}
                         helperText={touched.songArtist && errors.songArtist}
                       />
@@ -163,7 +174,7 @@ function AddSongForm() {
                         label="songAlbum"
                         value={values.songAlbum}
                         onChange={handleChange}
-                        onBlur={submitForm}
+                        // onBlur={submitForm}
                         error={touched.songAlbum && Boolean(errors.songAlbum)}
                         helperText={touched.songAlbum && errors.songAlbum}
                       />
@@ -171,7 +182,7 @@ function AddSongForm() {
                         name="gender"
                         options={optionsGenre}
                         placeholder={"Gender"}
-                        submitForm={submitForm}
+                        // submitForm={submitForm}
                       />
                     </Box>
                   )}
@@ -179,7 +190,7 @@ function AddSongForm() {
                 <Button
                   type="submit"
                   variant="contained"
-                  disabled={isValidating || !isValid}
+                  disabled={isValidating || !isValid || !values.files}
                 >
                   Submit Details
                 </Button>

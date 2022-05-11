@@ -4,10 +4,6 @@ const { Schema, model } = mongoose;
 
 const SongsSchema = new Schema(
   {
-    songName: {
-      type: String,
-      trim: true,
-    },
     songFile: {
       url: String,
       public_id: String,
@@ -15,6 +11,11 @@ const SongsSchema = new Schema(
     songUser: {
       userId: String,
       email: String,
+    },
+    songData: {
+      title: String,
+      artist: String,
+      album: String,
     },
   },
   { timestamps: true }
