@@ -38,15 +38,15 @@ function DropdownAddPlaylist() {
 
 return (
     <div>
-        <FormControl sx={{ m: 1, width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
+        <FormControl sx={{ width: 300 }}>
+        <InputLabel id="demo-multiple-checkbox-label">Add to a Playlist</InputLabel>
         <Select
             labelId="demo-multiple-checkbox-label"
             id="demo-multiple-checkbox"
             multiple
             value={personName}
             onChange={handleChange}
-            input={<OutlinedInput label="Tag" />}
+            input={<OutlinedInput label="Add" />}
             renderValue={(selected) => selected.join(', ')}
             MenuProps={MenuProps}
         >
