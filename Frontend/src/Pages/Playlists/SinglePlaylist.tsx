@@ -124,7 +124,7 @@ function SinglePlaylist() {
         }}
         className="bottomSticky"
       >
-        <PlayerH5 />
+        
       </Widget>
     </>
   );
