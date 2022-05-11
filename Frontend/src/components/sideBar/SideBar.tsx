@@ -29,6 +29,7 @@ import ColorMode from "../ColorMode/ColorMode";
 
 import AuthContext from "../../context/AuthContext";
 import { userSignOut } from "../../firebase/firebase";
+import { useGetSongsFilteredQuery } from "../../services/songApi";
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -36,6 +37,7 @@ const marginIconButton = 14;
 const iconFontSize = 20;
 const drawerWidthClose =
   (paddingIconButton + marginIconButton) * 2 + iconFontSize;
+
 
 export default function SideNavbar({ ...props }) {
   async function handleSignOut() {
@@ -59,6 +61,12 @@ export default function SideNavbar({ ...props }) {
   }
 
   const navigate = useNavigate();
+
+  const handleSearch = (filter) => {
+    // const { data } = useGetSongsFilteredQuery(filter);
+    console.log(filter);
+    // console.log(data);
+  };
 
   const drawerContent = (
     <>
@@ -169,6 +177,7 @@ export default function SideNavbar({ ...props }) {
 
                       <InputBase
                         key={`6+${key.key + index}`}
+                        onChange={(e) => handleSearch(e.target.value)}
                         inputRef={refFocus}
                         margin="dense"
                         fullWidth={true}
