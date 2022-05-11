@@ -1,7 +1,8 @@
 import Header from "../components/Header";
-import SideBar from "../components/sideBar";
+import SideBar from "../components/SideBar/SideBar";
 import PlayerH5 from "../components/PlayerH5/PlayerH5";
 import { styled } from "@mui/material/styles";
+
 
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "scroll",
@@ -66,6 +67,7 @@ const WallPaper = styled("div")({
     transform: "rotate(30deg)",
   },
 });
+
 
 function getDisplayName(WrappedComponent: any) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
