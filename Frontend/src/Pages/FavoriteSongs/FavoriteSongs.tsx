@@ -5,7 +5,6 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
-import PlayerH5 from "../PlayerH5";
 import SettingsIcon from '@mui/icons-material/Settings';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -83,13 +82,6 @@ return (
                 </Box>
         </Widget>
     </Box>
-    <WallPaper />
-    <Widget sx={{
-            boxShadow: 4,
-            p: 2}}
-            className='bottomSticky'>
-        <PlayerH5/>
-    </Widget>
     </>
 
 );
