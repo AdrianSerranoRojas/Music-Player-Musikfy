@@ -17,6 +17,9 @@ const initialState = {
     {
       isPlaying: false,
       audio: "",
+      songName: "",
+      songArtist: "",
+      songGenre: ""
     },
   ],
 };

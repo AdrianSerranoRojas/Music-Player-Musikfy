@@ -5,8 +5,8 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
-import SettingsIcon from "@mui/icons-material/Settings";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import SettingsIcon from '@mui/icons-material/Settings';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 
 import withLayout from "../../hoc/withLayout";
 
@@ -104,15 +104,7 @@ function FavoriteSongs() {
               })}
           </Box>
         </Widget>
-      </Box>
-      <WallPaper />
-      <Widget
-        sx={{
-          boxShadow: 4,
-          p: 2,
-        }}
-        className="bottomSticky"
-      ></Widget>
+    </Box>
     </>
   );
 }

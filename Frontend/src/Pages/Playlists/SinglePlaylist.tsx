@@ -116,16 +116,6 @@ function SinglePlaylist() {
           </Box>
         </Widget>
       </Box>
-      {/* <WallPaper /> */}
-      <Widget
-        sx={{
-          boxShadow: 4,
-          p: 2,
-        }}
-        className="bottomSticky"
-      >
-        <PlayerH5 />
-      </Widget>
     </>
   );
 }
