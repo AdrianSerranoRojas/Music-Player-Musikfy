@@ -2,24 +2,21 @@ import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 const PlaylistsSchema = new Schema(
   {
-    name: {
+    playlistName: {
       type: String,
-      required: [true, 'The name is required'],
       trim: true,
-      unique: true
     },
     playListImg: {
       type: String
     },
-    users: {
-      type: Number,
-      default:[]
-    },
-    songs: {
+    author: {
       type: String,
-      type: [{ type: String, user: 'userName' }],
-      default: []
+      ref: 'users'
     },
+    // songs: [{
+    //   type: Schema.Types.ObjectId,
+    //   ref: 'songs'
+    // }],
     // userFollowedSong: {
     //   type: [{ type: String, user: 'userName' }],
     //   default: []

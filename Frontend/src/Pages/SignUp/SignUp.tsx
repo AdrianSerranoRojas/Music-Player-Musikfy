@@ -51,8 +51,6 @@ function SignUp() {
       await syncUserData();
     } catch (error) {
       setSignUpError(error.message);
-    } finally {
-      setLoading(false);
     }
   }
 
@@ -71,7 +69,6 @@ function SignUp() {
       country: values.country,
     };
     // e.preventDefault();
-    setLoading(true);
 
     try {
       await singUpWithEmailAndPassword(values.email, values.password);
@@ -80,8 +77,6 @@ function SignUp() {
       await syncUserData(valuesToSend);
     } catch (error) {
       setSignUpError(error.message);
-    } finally {
-      setLoading(false);
     }
   };
 

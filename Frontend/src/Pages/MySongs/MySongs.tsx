@@ -4,7 +4,7 @@ import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetMySongsQuery } from "../../services/songApi";
-import "../MySongs/MySongs.scss";
+import "./MySongs.scss";
 import withLayout from "../../hoc/withLayout";
 
 function MySongs() {

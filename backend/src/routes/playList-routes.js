@@ -1,8 +1,9 @@
 import { Router } from "express";
 
-// import { authMiddleware } from "../middleware/auth-middleware.js";
+import { authMiddleware } from "../middleware/auth-middleware.js";
 import {
   getPlayList,
+  createPlaylist,
   // getUserPlayList,
   // createUser,
   // updateUser,
@@ -18,7 +19,7 @@ playListRouter.get("/playlist", getPlayList);
 
 
 // playListRouter.patch("playlist/:userId", updateUser);
-// playListRouter.post("/playlist",  signUp);
+playListRouter.post("/playlist", authMiddleware, createPlaylist);
 // playListRouter.post("/playlist", authMiddleware, signUp);
 
 export default playListRouter;

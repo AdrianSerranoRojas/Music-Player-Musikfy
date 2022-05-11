@@ -27,10 +27,13 @@ export default function App() {
     unsubscribeFromAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
+        console.log(currentUser);
+        
       } else {
         setCurrentUser(null);
       }
     });
+
     return () => {
       if (unsubscribeFromAuth) {
         unsubscribeFromAuth();

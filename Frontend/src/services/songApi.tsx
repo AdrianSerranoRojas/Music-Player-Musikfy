@@ -29,10 +29,13 @@ export const songApi = createApi({
         body,
       }),
     }),
+    getPlaylists: builder.query({
+      query: () => `/playlist`,
+    })
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetSongsQuery, useCreateSongMutation, useGetMySongsQuery } =
+export const { useGetSongsQuery, useCreateSongMutation, useGetMySongsQuery, useGetPlaylistsQuery } =
   songApi;
