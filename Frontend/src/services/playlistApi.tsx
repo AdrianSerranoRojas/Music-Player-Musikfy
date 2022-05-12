@@ -26,10 +26,28 @@ export const playlistApi = createApi({
         body,
       }),
     }),
+    updatePlaylist: builder.mutation({
+      query: (id,body) => ({
+        url: `/playlists/${id}`,
+        method: "PUT",
+        body: body,
+      }),
+    }),
+    deletePlaylist: builder.mutation({
+      query: (id) => ({
+        url: `/playlists/${id}`,
+        method: "DELETE",
+        body: id,
+      }),
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const {  useGetPlaylistsQuery, useCreatePlaylistMutation } =
-  playlistApi;
+export const {
+  useGetPlaylistsQuery,
+  useCreatePlaylistMutation,
+  useDeletePlaylistMutation,
+  useUpdatePlaylistMutation,
+} = playlistApi;

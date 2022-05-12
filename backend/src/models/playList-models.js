@@ -49,10 +49,10 @@ const PlaylistSchema = new Schema(
   //     ],
   //     maxLength: [200, "Playlist description cannot exceed 200 characters"],
   //   },
-  //   songs: {
-  //     type: [{ type: Schema.Types.ObjectId, ref: "Song" }],
-  //     default: [],
-  //   },
+    songs: {
+      type: [{ type: Schema.Types.ObjectId, ref: "Song" }],
+      default: [],
+    },
   //   genre: {
   //     type: String,
   //     enum: {
