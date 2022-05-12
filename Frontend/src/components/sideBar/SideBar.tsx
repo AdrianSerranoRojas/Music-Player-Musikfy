@@ -29,6 +29,8 @@ import ColorMode from "../ColorMode/ColorMode";
 
 import AuthContext from "../../context/AuthContext";
 import { userSignOut } from "../../firebase/firebase";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilterSong, songsSelector } from "../../features/song/songsSlice";
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -41,6 +43,8 @@ export default function SideNavbar({ ...props }) {
   async function handleSignOut() {
     await userSignOut();
   }
+  const dispatch = useDispatch();
+  const { filterSong } = useSelector(songsSelector);
 
   const currentUser = useContext(AuthContext);
   const theme = useTheme();
@@ -59,6 +63,11 @@ export default function SideNavbar({ ...props }) {
   }
 
   const navigate = useNavigate();
+
+  const handleSearch = (filter) => {
+    dispatch(setFilterSong(filter));
+    console.log(filterSong);
+  };
 
   const drawerContent = (
     <>
@@ -169,6 +178,7 @@ export default function SideNavbar({ ...props }) {
 
                       <InputBase
                         key={`6+${key.key + index}`}
+                        onChange={(e) => handleSearch(e.target.value)}
                         inputRef={refFocus}
                         margin="dense"
                         fullWidth={true}
@@ -177,7 +187,7 @@ export default function SideNavbar({ ...props }) {
                           fontSize: "0.875rem",
                           lineHeight: "1.43em",
                           "& .MuiInputBase-input": {
-                            color: "lightgray",
+                            color: "gray",
                             padding: 0,
                           },
                         }}
@@ -330,7 +340,7 @@ export default function SideNavbar({ ...props }) {
                         placeholder={key.desc}
                         sx={{
                           fontSize: "0.875rem",
-                          lineHeight: "1.43em",
+                          lineHeight: "11.43em",
                           "& .MuiInputBase-input": {
                             color: "lightgray",
                             padding: 0,

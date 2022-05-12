@@ -20,6 +20,7 @@
     "clsx": "^1.1.1",
     "firebase": "^9.6.11",
     "formik": "^2.2.9",
+    "jsmediatags": "^3.9.7",
     "react": "^18.0.0",
     "react-beautiful-dnd": "^13.1.0",
     "react-bootstrap": "^2.3.0",
@@ -36,6 +37,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@types/jsmediatags": "^3.9.3",
     "@types/react": "^18.0.0",
     "@types/react-beautiful-dnd": "^13.1.2",
     "@types/react-dom": "^18.0.0",

@@ -22,7 +22,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import FavIcon from "../FavIcon/FavIcon";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function SongCard({ songName, songUrl }) {
+function SongCard({ songName, songUrl, songArtist }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
@@ -32,10 +32,10 @@ function SongCard({ songName, songUrl }) {
     console.log(currentSong);
     if(currentSong[0].audio === ""){
       console.log("carapolla!");
-      dispatch(addFirstCurrentSong([{isPlaying: true, audio: songUrl}]))
+      dispatch(addFirstCurrentSong([{isPlaying: true, audio: songUrl, songName: songName, songArtist: songArtist}]))
     }
     else{
-      dispatch(addCurrentSong({isPlaying: true, audio: songUrl}));
+      dispatch(addCurrentSong({isPlaying: true, audio: songUrl, songName: songName, songArtist: songArtist}));
     }
   };
 
@@ -66,7 +66,7 @@ function SongCard({ songName, songUrl }) {
             color="text.secondary"
             component="div"
           >
-            Mac Miller
+            {songArtist}
           </Typography>
           <Typography
             variant="subtitle2"

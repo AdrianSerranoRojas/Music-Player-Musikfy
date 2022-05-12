@@ -9,49 +9,72 @@ import {
 import jsmediatags from "jsmediatags";
 
 export function getTags(req, res, next) {
-  new jsmediatags.Reader(
-    "https://res.cloudinary.com/carapolla/video/upload/v1651744987/songs/los-chikos-del-maiz-los-hijos-de-ivan-drago-con-pablo-hasel_1_obauwx.mp3"
-  )
-    .setTagsToRead()
-    .read({
-      onSuccess: function (tag) {
-        res.send(tag);
-        console.log(tag);
-      },
-      onError: function (error) {
-        console.log(":(", error.type, error.info);
-      },
-    });
+  new jsmediatags.Reader(req.body.file).setTagsToRead().read({
+    onSuccess: function (tag) {
+      res.send(tag);
+      console.log(tag);
+    },
+    onError: function (error) {
+      console.log(":(", error.type, error.info);
+    },
+  });
 }
+
+async function step1Cloudinary(newImage) {
+  const resultLoadImage = await uploadSongCloud(newImage);
+  return {
+    url: resultLoadImage.secure_url,
+    public_id: resultLoadImage.public_id,
+  };
+}
+
+async function step2DataFile(songFile) {
+  return new Promise((resolve, reject) => {
+    new jsmediatags.Reader(songFile).setTagsToRead().read({
+      onSuccess: resolve,
+      onError: reject,
+    });
+  });
+}
+
+async function astep3CreateDB(songFile, songUser, songData) {
+  const newSong = await Songs.create({
+    songFile: songFile,
+    songUser: songUser,
+    songData: songData,
+  });
+  console.log(newSong);
+}
+
 export async function createSong(req, res, next) {
   const { uid, email } = req.user;
-  const body = req.body;
-  let songFile = null;
+  console.log(req.body);
+  const songUser = {
+    userId: uid,
+    email: email,
+  };
+
   try {
     const newImage = req.body[0];
-
     if (newImage) {
-      console.log("newImage");
-      const resultLoadImage = await uploadSongCloud(newImage);
-      // await fs.remove(req.files.image.tempFilePath);
-      songFile = {
-        url: resultLoadImage.secure_url,
-        public_id: resultLoadImage.public_id,
-      };
+      var songFile = await step1Cloudinary(newImage);
     }
+    // get data file
+    const tag = await step2DataFile(songFile.url);
+    const songData = {
+      title: tag?.tags?.title,
+      artist: tag?.tags?.artist,
+      album: tag?.tags?.album,
+    };
+
+    astep3CreateDB(songFile, songUser, songData);
+    // console.log("reader", songData)
     // guardar en la base de datos
     // const song = await Song.findOne({ nameSong: nameSong });
     // if (song) {
     //   return res.sendStatus(200);
     // }
-    const newSong = await Songs.create({
-      songFile: songFile,
-      songUser: {
-        userId: uid,
-        email: email,
-      },
-    });
-    console.log(newSong);
+    console.log(songData);
     res.sendStatus(200);
   } catch (error) {
     next(error);
@@ -59,10 +82,7 @@ export async function createSong(req, res, next) {
 }
 export async function getSongs(req, res, next) {
   try {
-    const songs = await Songs.find()
-      .select()
-      .lean()
-      .exec();
+    const songs = await Songs.find().select().lean().exec();
 
     res.status(200).send({
       data: songs,
@@ -71,6 +91,26 @@ export async function getSongs(req, res, next) {
     next(error);
   }
 }
+
+export async function getSongsFilter(req, res, next) {
+  const { filter } = req.params;
+
+  try {
+    const songs = await Songs.find({
+      songName: new RegExp(filter, "i"),
+    })
+      .select()
+      .lean()
+      .exec();
+    console.log(songs);
+    res.status(200).send({
+      data: songs,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+
 export async function getMySongs(req, res, next) {
   // const { uid } = req.user;
   const { uid, email } = req.user;

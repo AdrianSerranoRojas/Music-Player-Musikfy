@@ -3,6 +3,7 @@ import { useGetSongsQuery } from "../../services/songApi";
 import axios from "axios";
 
 const initialState = {
+  filterSong: "",
   newSong: {
     songFile: "",
     songImage: "",
@@ -16,6 +17,9 @@ const initialState = {
     {
       isPlaying: false,
       audio: "",
+      songName: "",
+      songArtist: "",
+      songGenre: ""
     },
   ],
 };
@@ -42,6 +46,9 @@ export const songsSlice = createSlice({
       state.currentSong = [...state.currentSong, action.payload];
       return state;
     },
+    setFilterSong: (state, action) => {
+      state.filterSong = action.payload;
+    },
   },
   extraReducers: {
     [fetchSongs.fulfilled]: (state, action) => {
@@ -56,6 +63,7 @@ export const {
   addSongFile,
   updateSongFile,
   addFirstCurrentSong,
+  setFilterSong,
 } = songsSlice.actions;
 
 export const songsSelector = (state) => state.songs;

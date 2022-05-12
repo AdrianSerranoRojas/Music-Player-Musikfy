@@ -1,16 +1,15 @@
 import { useEffect } from "react";
+import { useSelector } from "react-redux";
+
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import SongCard from "../../components/SongCard/SongCard";
-import {
-  useGetMySongsQuery,
-  useGetSongsFilteredQuery,
-} from "../../services/songApi";
-import "../MySongs/MySongs.scss";
-import withLayout from "../../hoc/withLayout";
 
-function MySongs() {
+import SongCard from "../../components/SongCard/SongCard";
+import { useGetSongsFilteredQuery } from "../../services/songApi";
+import { songsSelector } from "../../features/song/songsSlice";
+
+function SearchSongListing() {
   const Widget = styled("div")(({ theme }) => ({
     padding: 16,
     borderRadius: 16,
@@ -26,8 +25,8 @@ function MySongs() {
     backdropFilter: "blur(40px)",
   }));
 
-   const { data, isLoading, isSuccess } = useGetMySongsQuery();
-  // const { data, isLoading, isSuccess } = useGetSongsFilteredQuery("basote");
+  const { filterSong } = useSelector(songsSelector);
+  const { data, isLoading, isSuccess } = useGetSongsFilteredQuery(filterSong);
 
   useEffect(() => {
     console.log(data);
@@ -35,13 +34,13 @@ function MySongs() {
 
   return (
     <>
-      <Box sx={{ pt: 15 }}>
+      <Box sx={{ pt: 5 }}>
         <Widget
           sx={{
             boxShadow: 4,
             p: 2,
             maxwidth: 750,
-            maxheight: 440,
+            maxheight: 200,
           }}
         >
           <Box>
@@ -50,7 +49,7 @@ function MySongs() {
               align="center"
               fontFamily="Vollkorn, serif"
             >
-              My Songs!
+              Songs!
             </Typography>
             {isSuccess &&
               data.data.map((song, index) => {
@@ -69,4 +68,4 @@ function MySongs() {
   );
 }
 
-export default withLayout(MySongs);
+export default SearchSongListing;
