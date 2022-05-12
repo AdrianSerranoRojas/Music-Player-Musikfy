@@ -51,6 +51,7 @@ export async function createPlaylist(req, res, next) {
 
 export async function createPlaylist2(req, res, next) {
   // const { title, description, genre, private, image } = req.body.playlist;
+  console.log(req);
   const { title, description, genre, image } = req.body.playlist;
   const { uid } = req.user;
   try {

@@ -3,14 +3,20 @@ import Card from '@mui/material/Card';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import Typography from "@mui/material/Typography";
-import {useGetPlaylistsQuery} from "../../../services/songApi";
+import {useGetPlaylistsQuery, useCreatePlaylistMutation} from "../../../services/songApi";
 
 function PlaylistsCard() {
     const { data, isLoading, isSuccess } = useGetPlaylistsQuery();
+    const [createPlaylist, result] = useCreatePlaylistMutation();
+    async function handleCreatePlaylist(arg) {
+        console.log(arg);
+        await createPlaylist(arg);
+    }
     return(
         <Box>
             <Typography variant='h5' align='center' fontFamily='Vollkorn, serif'>
                 Most liked Playlists!
+                <button onClick={() => handleCreatePlaylist("playlist carapolla")}>Create Playlist</button>
             </Typography>
             <hr />
                 <ImageList sx={{ width: 800, height: 460 }} cols={4}>
