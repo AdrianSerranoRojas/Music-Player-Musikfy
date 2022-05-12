@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import ImageList from "@mui/material/ImageList";
@@ -6,23 +7,29 @@ import Typography from "@mui/material/Typography";
 import {
   useGetPlaylistsQuery,
   useCreatePlaylistMutation,
-} from "../../../services/songApi";
+} from "../../../services/playlistApi";
 
 function PlaylistsCard() {
   const { data, isLoading, isSuccess } = useGetPlaylistsQuery();
   const [createPlaylist, result] = useCreatePlaylistMutation();
-  async function handleCreatePlaylist(arg) {
-    console.log(arg);
-    await createPlaylist(arg);
-    console.log(result);
+  const [playlistName, setPlaylistName] = useState("List");
+
+  async function handleCreatePlaylist() {
+    await createPlaylist({ title: playlistName });
   }
+
+  const handleChange = (e) => {
+    setPlaylistName(e.target.value);
+  };
+
   return (
     <Box>
       <Typography variant="h5" align="center" fontFamily="Vollkorn, serif">
         Most liked Playlists!
-        <button onClick={() => handleCreatePlaylist("playlist carapolla")}>
-          Create Playlist
-        </button>
+        <div>
+          <input type="text" onChange={(e) => handleChange(e)} />
+          <button onClick={handleCreatePlaylist}>Create Playlist</button>
+        </div>
       </Typography>
       <hr />
       <ImageList sx={{ width: 800, height: 460 }} cols={4}>
@@ -31,12 +38,9 @@ function PlaylistsCard() {
             return (
               <ImageListItem key={index}>
                 <Typography variant="subtitle1" align="center">
-                  {playlist.playlistName}
+                  {playlist.title}
                 </Typography>
-                <Typography variant="subtitle2" align="center">
-                  23 songs
-                </Typography>
-                <img src={playlist.playlistImg} alt="hola" />
+                {/* <img src={playlist.playlistImg} alt="hola" /> */}
               </ImageListItem>
             );
           })}

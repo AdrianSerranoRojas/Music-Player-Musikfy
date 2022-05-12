@@ -34,10 +34,10 @@ const PlaylistSchema = new Schema(
   {
     title: {
       type: String,
-      required: [true, "Please enter title to the playlist"],
-      trim: true,
-      minLength: [2, "Playlist title needs to have at least 2 characters"],
-      maxLength: [50, "Playlist title cannot exceed 50 characters"],
+      // required: [true, "Please enter title to the playlist"],
+      // trim: true,
+      // minLength: [2, "Playlist title needs to have at least 2 characters"],
+      // maxLength: [50, "Playlist title cannot exceed 50 characters"],
     },
   //   description: {
   //     type: String,
