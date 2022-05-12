@@ -21,6 +21,7 @@ import Playlists from "./Pages/Playlists/Playlists";
 import { NotFound } from "./components/NotFound/NotFound";
 
 export default function App() {
+  console.log("Juan eres un carapolla!");
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     let unsubscribeFromAuth = null;
