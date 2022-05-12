@@ -82,7 +82,7 @@ function withLayout(WrappedComponent: any) {
         <Widget>
           <WrappedComponent {...props} />
         </Widget>
-        <SideBar />
+        {/* <SideBar /> */}
         <Widget2>
           <PlayerH5
             layoutDisplay={undefined}
