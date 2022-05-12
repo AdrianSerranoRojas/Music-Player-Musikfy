@@ -5,7 +5,6 @@ import { useGetSongsQuery } from "../../../services/songApi";
 
 function LikesCard() {
   const { data, isLoading, isSuccess } = useGetSongsQuery();
-  console.log(data);
 
   return (
     <>

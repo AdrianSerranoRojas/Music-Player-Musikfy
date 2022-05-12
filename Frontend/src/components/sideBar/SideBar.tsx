@@ -1,5 +1,5 @@
 import * as React from "react";
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import Box from "@mui/material/Box";
@@ -31,7 +31,6 @@ import AuthContext from "../../context/AuthContext";
 import { userSignOut } from "../../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterSong, songsSelector } from "../../features/song/songsSlice";
-import { useGetUserQuery } from "../../services/userApi";
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -46,24 +45,18 @@ export default function SideNavbar({ ...props }) {
   }
   const dispatch = useDispatch();
   const { filterSong } = useSelector(songsSelector);
+
   const currentUser = useContext(AuthContext);
-  useEffect(() => {
-    console.log(currentUser);
-  }, [currentUser]);
   const theme = useTheme();
-  const [close, setClose] = useState(true);
+  const [open, setOpen] = useState(true);
   const refFocus = useRef();
 
-  const uid = currentUser.uid;
-  const {data:user} = useGetUserQuery(uid);
-  console.log(user);
-
   function toogleOpen() {
-    setClose(!close);
+    setOpen(!open);
   }
 
   function toogleOpenSearch() {
-    setClose(false);
+    setOpen(false);
     setTimeout(() => {
       refFocus.current.focus();
     }, 500);
@@ -94,7 +87,7 @@ export default function SideNavbar({ ...props }) {
         <Box
           sx={{
             flexShrink: 0,
-            display: close ? "none" : { xs: "none", sm: "initial" },
+            display: open ? "none" : { xs: "none", sm: "initial" },
             marginBottom: "9px",
           }}
         >
@@ -110,7 +103,7 @@ export default function SideNavbar({ ...props }) {
             fontWeight: 600,
             color: "lightgray",
             width: "154px",
-            marginLeft: close ? "0px" : "8px",
+            marginLeft: open ? "0px" : "8px",
             paddingBottom: "3px",
           }}
         >
@@ -124,14 +117,14 @@ export default function SideNavbar({ ...props }) {
             padding: "10px",
             color: "gray",
             borderRadius: "8px",
-            backgroundColor: close ? "transparent" : "transparent",
+            backgroundColor: open ? "transparent" : "transparent",
             "&:hover": {
               backgroundColor: "#26284687",
             },
           }}
         >
           <MenuIcon
-            sx={{ fontSize: "20px", color: close ? "lightgray" : "lightGray" }}
+            sx={{ fontSize: "20px", color: open ? "lightgray" : "lightGray" }}
           ></MenuIcon>
         </Button>
       </Box>
@@ -143,7 +136,7 @@ export default function SideNavbar({ ...props }) {
                 <div key={index}>
                   <Tooltip
                     key={`1+${key.key + index}`}
-                    title={close ? key.desc : ""}
+                    title={open ? key.desc : ""}
                     placement={"right"}
                     componentsProps={{
                       tooltip: {
@@ -217,7 +210,7 @@ export default function SideNavbar({ ...props }) {
               ) : (
                 <Tooltip
                   key={`8+${key.key + index}`}
-                  title={close ? key.desc : ""}
+                  title={open ? key.desc : ""}
                   placement={"right"}
                   componentsProps={{
                     tooltip: {
@@ -299,7 +292,7 @@ export default function SideNavbar({ ...props }) {
                 <div key={index}>
                   <Tooltip
                     key={`1+${key.key + index}`}
-                    title={close ? key.desc : ""}
+                    title={open ? key.desc : ""}
                     placement={"right"}
                     componentsProps={{
                       tooltip: {
@@ -372,7 +365,7 @@ export default function SideNavbar({ ...props }) {
               ) : (
                 <Tooltip
                   key={`8+${key.key + index}`}
-                  title={close ? key.desc : ""}
+                  title={open ? key.desc : ""}
                   placement={"right"}
                   componentsProps={{
                     tooltip: {
@@ -515,30 +508,30 @@ export default function SideNavbar({ ...props }) {
     <Box sx={{ display: "flex" }}>
       <Drawer
         variant="permanent"
-        close={close}
+        open={open}
         sx={{
-          width: close
+          width: open
             ? { xs: "0px", sm: drawerWidthClose }
             : { xs: drawerWidthClose, sm: drawerWidthOpen },
           transition: theme.transitions.create("width", {
             easing: theme.transitions.easing.sharp,
-            duration: close
+            duration: open
               ? theme.transitions.duration.leavingScreen
               : theme.transitions.duration.enteringScreen,
           }),
           "& .MuiDrawer-paper": {
             justifyContent: "space-between",
             overflowX: "hidden",
-            width: close
+            width: open
               ? { xs: "0px", sm: drawerWidthClose }
               : { xs: drawerWidthClose, sm: drawerWidthOpen },
             borderRight: "0px",
             borderRadius: "0px 16px 16px 0px",
             boxShadow: theme.shadows[8],
-            backgroundColor: close ? "secondary" : "secondary",
+            backgroundColor: open ? "secondary" : "secondary",
             transition: theme.transitions.create("width", {
               easing: theme.transitions.easing.sharp,
-              duration: close
+              duration: open
                 ? theme.transitions.duration.leavingScreen
                 : theme.transitions.duration.enteringScreen,
             }),
@@ -557,8 +550,8 @@ export default function SideNavbar({ ...props }) {
       >
         <Typography></Typography>
         <Switch
-          checked={close}
-          onChange={() => setClose((prevOpen) => !prevOpen)}
+          checked={open}
+          onChange={() => setOpen((prevOpen) => !prevOpen)}
         ></Switch>
       </Box>
     </Box>
