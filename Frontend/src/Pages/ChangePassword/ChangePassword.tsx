@@ -4,6 +4,7 @@ import { changePassword, reauthenticate } from "../../firebase/firebase";
 import { useState, useEffect } from "react";
 
 import "./ChangePassword.scss";
+import { Button, TextField, Typography } from "@mui/material";
 
 const ChangePassword = () => {
   const [message, setMessage] = useState("");
@@ -28,6 +29,7 @@ const ChangePassword = () => {
   return (
     <div>
       <h1 className="h1ChangePsw">Change Your Password</h1>
+      <hr />
       <Formik
         initialValues={{
           currentPassword: "",
@@ -43,10 +45,10 @@ const ChangePassword = () => {
             errors.currentPassword = "Required";
           }
           if (values.newPassword !== values.newPasswordConfirm) {
-            errors.newPassword = "new password doesnt match";
+            errors.newPassword = <Typography sx={{ color: 'error.main' }}>New password doesnt match</Typography>;
           }
           if (values.newPassword.length < 6) {
-            errors.newPassword = "this password is too short";
+            errors.newPassword = <Typography sx={{ color: 'error.main' }}>This password is too short</Typography>;
           }
           return errors;
         }}
@@ -68,7 +70,9 @@ const ChangePassword = () => {
             <div className="inputContainer">
               <label className="inputItem">
                 Current Password
-                <input
+                <TextField
+                  label="Current Password"
+                  variant="outlined"
                   type="password"
                   name="currentPassword"
                   onChange={handleChange}
@@ -78,7 +82,9 @@ const ChangePassword = () => {
               </label>
               <label className="inputItem">
                 New Password
-                <input
+                <TextField
+                label="New Password"
+                variant="outlined"
                   type="password"
                   name="newPassword"
                   onChange={handleChange}
@@ -88,7 +94,9 @@ const ChangePassword = () => {
               </label>
               <label className="inputItem">
                 Confirm New Password
-                <input
+                <TextField
+                label="Confirm Password"
+                variant="outlined"
                   type="password"
                   name="newPasswordConfirm"
                   onChange={handleChange}
@@ -98,7 +106,7 @@ const ChangePassword = () => {
               </label>
               {errors.newPassword && touched.newPassword && errors.newPassword}
               {message}
-              <button type="submit">Submit</button>
+              <Button sx={{mt: 5}} variant="contained" type="submit">Submit</Button>
             </div>
           </form>
         )}

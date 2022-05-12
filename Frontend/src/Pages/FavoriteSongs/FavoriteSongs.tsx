@@ -5,7 +5,6 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
-import PlayerH5 from "../PlayerH5";
 import SettingsIcon from '@mui/icons-material/Settings';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 
@@ -62,17 +61,12 @@ function FavoriteSongs() {
 return (
     <>
     <Box>
-        <Widget sx={{
-            boxShadow: 4,
-            p: 2,
-            maxwidth: 750,
-            maxheight: 440}}>
             <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)'}}>
-                <FavoriteIcon sx={{ height: 270, width: 270, ml: 5, mt: 5 }}/>
-            <Box sx={{mt:15}}>
+                <FavoriteIcon sx={{ height: 270, width: 270, ml: 25, mt: 5 }}/>
+            <Box sx={{mt:15, mr:35}}>
                 <Typography variant="h2" align='center' fontFamily='Vollkorn, serif'>Songs you like!</Typography>
                 <Typography variant="h4" align='center' fontFamily='Vollkorn, serif'>31 Songs</Typography>
-                <SettingsIcon sx={{ml: 22}}/>
+                <SettingsIcon sx={{ml: 27}}/>
             </Box>
         </Box>
                 <Box sx={{mt:1}}>
@@ -81,15 +75,7 @@ return (
                     return <SongCard key={index} songName={song.songName} songUrl={song.songUrl} />;
                     })}
                 </Box>
-        </Widget>
     </Box>
-    <WallPaper />
-    <Widget sx={{
-            boxShadow: 4,
-            p: 2}}
-            className='bottomSticky'>
-        <PlayerH5/>
-    </Widget>
     </>
 
 );

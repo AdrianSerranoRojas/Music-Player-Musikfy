@@ -5,6 +5,7 @@ import { Button } from "@mui/material";
 import { useDropzone } from "react-dropzone";
 import { useCreateSongMutation } from "../../services/songApi";
 import { CardMedia } from "@mui/material";
+import Typography from '@mui/material/Typography';
 
 function AddSongForm() {
   let signUpError = false;
@@ -40,9 +41,10 @@ function AddSongForm() {
 
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <h1 className="h1 h1SingUp">Upload Song</h1>
+      <Box>
+        <Typography variant="h3" align="center">Upload Song</Typography>
       </Box>
+      <hr />
       {/* DROPZONE */}
       <div>
         <div className="dropzone" {...getRootProps()}>

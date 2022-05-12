@@ -5,11 +5,11 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCardSmall from "../../components/MainCards/PlaylistsCardSmall/PlaylistsCardSmall";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
-import PlayerH5 from "../../components/PlayerH5/PlayerH5";
 
 import "../MySongs/MySongs.scss"
 import withLayout from "../../hoc/withLayout";
 import SettingsIcon from '@mui/icons-material/Settings';
+import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 
 function Playlists() {
     const WallPaper = styled("div")({
@@ -60,8 +60,7 @@ function Playlists() {
 
 return (
     <>
-    <Box>
-        <Widget sx={{
+    <Box sx={{
             boxShadow: 4,
             p: 2,
             maxwidth: 750,
@@ -74,16 +73,14 @@ return (
             </Box>
         </Box>
                 <Box sx={{mt:1}}>
-                    <PlaylistsCardSmall/>
+                    <PlaylistsCard/>
                 </Box>
-        </Widget>
     </Box>
     <WallPaper />
     <Widget sx={{
             boxShadow: 4,
             p: 2}}
             className='bottomSticky'>
-        <PlayerH5/>
     </Widget>
     </>
 

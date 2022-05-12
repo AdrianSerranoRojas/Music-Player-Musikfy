@@ -1,8 +1,9 @@
 import withLayout from "../../hoc/withLayout";
 import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
-import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 
 import "./Home.scss";
+import Box from "@mui/material/Box";
+import PlaylistsCardSmall from "../../components/MainCards/PlaylistsCardSmall/PlaylistsCardSmall";
 
 // async function fetchUserToken(
 //   setUserToken: any,
@@ -22,10 +23,10 @@ import "./Home.scss";
 
 const Home = () => {
   return (
-    <div>
+    <Box sx={{display:'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap:4 }}>
       <LikesCard />
-      <PlaylistsCard />
-    </div>
+      <PlaylistsCardSmall />
+    </Box>
   );
 };
 export default withLayout(Home);

@@ -20,6 +20,7 @@ import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
 import ListItemIcon from '@mui/material/ListItemIcon';
 import FavIcon from "../FavIcon/FavIcon";
+import DeleteIcon from '@mui/icons-material/Delete';
 
 function SongCard({ songName, songUrl }) {
   const theme = useTheme();
@@ -45,7 +46,10 @@ function SongCard({ songName, songUrl }) {
   };
 
   return (
-    <Card variant="outlined" sx={{ display: "flex", height: 110 }}>
+    <>
+    <Card
+      variant="outlined"
+      sx={{ display: "flex", height: 110 }}>
       <CardMedia
         component="img"
         sx={{ width: 110, height: 110 }}
@@ -78,6 +82,9 @@ function SongCard({ songName, songUrl }) {
           <PlayArrowIcon sx={{ height: 38, width: 38 }} />
         </IconButton>
         <FavIcon/>
+        <IconButton>
+          <DeleteIcon sx={{ height: 30, width: 30 }}/>
+        </IconButton>
         <IconButton onClick={handleOpen}>
           <AddIcon sx={{ height: 30, width: 30 }}/>
         </IconButton>
@@ -89,7 +96,8 @@ function SongCard({ songName, songUrl }) {
             </List>
         </Collapse>
       </Box>
-    </Card>
+      </Card>
+    </>
   );
 }
 
