@@ -18,6 +18,7 @@ import MySongs from "./Pages/MySongs/MySongs";
 import SinglePlaylist from "./Pages/Playlists/SinglePlaylist";
 import Playlists from "./Pages/Playlists/Playlists";
 import { NotFound } from "./components/NotFound/NotFound";
+import { AddShoppingCart } from "@mui/icons-material";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);
@@ -31,13 +32,13 @@ export default function App() {
         setCurrentUser(null);
       }
     });
-
     return () => {
       if (unsubscribeFromAuth) {
         unsubscribeFromAuth();
       }
     };
   }, [currentUser]);
+
   return (
     <>
       <AuthContext.Provider value={currentUser}>
@@ -45,17 +46,35 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/changePassword" element={<ChangePassword />} />
+          <Route
+            path="/reset-password"
+            element={currentUser ? <ResetPassword /> : <Home />}
+          />
+          <Route
+            path="/changePassword"
+            element={currentUser ? <ChangePassword /> : <Home />}
+          />
           <Route path="*" element={<NotFound />} />
           <Route
             path="/profile"
             element={currentUser ? <Profile /> : <Home />}
           />
-          <Route path="/addSong" element={<AddSong />} />
-          <Route path="/mySongs" element={<MySongs />} />
-          <Route path="/playlist" element={<SinglePlaylist />} />
-          <Route path="/playlists" element={<Playlists />} />
+          <Route
+            path="/addSong"
+            element={currentUser ? <AddSong /> : <Home />}
+          />
+          <Route
+            path="/mySongs"
+            element={currentUser ? <MySongs /> : <Home />}
+          />
+          <Route
+            path="/playlist"
+            element={currentUser ? <SinglePlaylist /> : <Home />}
+          />
+          <Route
+            path="/playlists"
+            element={currentUser ? <Playlists /> : <Home />}
+          />
         </Routes>
       </AuthContext.Provider>
     </>
