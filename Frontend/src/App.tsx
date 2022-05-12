@@ -19,12 +19,28 @@ import SinglePlaylist from "./Pages/Playlists/SinglePlaylist";
 import Playlists from "./Pages/Playlists/Playlists";
 import Filter from "./Pages/Filter/Filter";
 import FavoriteSongs from "./Pages/FavoriteSongs/FavoriteSongs";
+import PlayerH5 from "./components/PlayerH5/PlayerH5";
+import { styled } from "@mui/material/styles";
 
 import { NotFound } from "./components/NotFound/NotFound";
 import Playlists2 from "./components/PlaylistModal/PlaylistModal";
 import DnDSongs from "./components/DragAndDrop/DragAndDrop";
 
 export default function App() {
+  const Widget2 = styled("div")(({ theme }) => ({
+    overflowX: "hidden",
+    padding: 16,
+    borderRadius: 16,
+    width: "80%",
+    maxWidth: "100%",
+    height: "15%",
+    marginLeft: "12.5%",
+    position: "relative",
+    zIndex: 1,
+    backgroundColor:
+      theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
+    backdropFilter: "blur(40px)",
+  }));
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     let unsubscribeFromAuth = null;
@@ -64,6 +80,9 @@ export default function App() {
 
           <Route path="/favSongs" element={<FavoriteSongs />} />
         </Routes>
+        <Widget2>
+          <PlayerH5 />
+        </Widget2>
       </AuthContext.Provider>
     </>
   );

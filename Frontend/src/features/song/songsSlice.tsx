@@ -22,6 +22,7 @@ const initialState = {
       songGenre: ""
     },
   ],
+  trackIndex: 0,
 };
 export const fetchSongs = createAsyncThunk("songs/fetchSongs", () => {
   return axios.get("http://localhost:4000/songs");
@@ -49,6 +50,9 @@ export const songsSlice = createSlice({
     setFilterSong: (state, action) => {
       state.filterSong = action.payload;
     },
+    setTrackIndex: (state, action) => {
+      state.trackIndex = action.payload;
+    }
   },
   extraReducers: {
     [fetchSongs.fulfilled]: (state, action) => {
@@ -64,6 +68,7 @@ export const {
   updateSongFile,
   addFirstCurrentSong,
   setFilterSong,
+  setTrackIndex,
 } = songsSlice.actions;
 
 export const songsSelector = (state) => state.songs;

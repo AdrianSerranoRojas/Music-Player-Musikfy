@@ -29,7 +29,6 @@ function SearchSongListing() {
   const { data, isLoading, isSuccess } = useGetSongsFilteredQuery(filterSong);
 
   useEffect(() => {
-    console.log(data);
   }, [data]);
 
   return (

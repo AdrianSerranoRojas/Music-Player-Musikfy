@@ -1,6 +1,6 @@
 import Header from "../components/Header";
 import SideBar from "../components/SideBar/SideBar";
-import PlayerH5 from "../components/PlayerH5/PlayerH5";
+// import PlayerH5 from "../components/PlayerH5/PlayerH5";
 import { styled } from "@mui/material/styles";
 
 
@@ -82,14 +82,10 @@ function withLayout(WrappedComponent: any) {
         <Widget>
           <WrappedComponent {...props} />
         </Widget>
-        {/* <SideBar /> */}
-        <Widget2>
-          <PlayerH5
-            layoutDisplay={undefined}
-            src={undefined}
-            title={undefined}
-          />
-        </Widget2>
+        <SideBar />
+        {/* <Widget2>
+          <PlayerH5/>
+        </Widget2> */}
         <WallPaper />
       </>
     );
