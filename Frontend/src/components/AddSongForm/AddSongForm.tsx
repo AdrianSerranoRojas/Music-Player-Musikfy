@@ -24,8 +24,7 @@ const songSchema = Yup.object().shape({
   files: Yup.mixed().required(),
   songName: Yup.string()
     .min(2, "The songName is too short!")
-    .max(50, "The songName is too long!")
-    .required("The songName is required"),
+    .max(50, "The songName is too long!"),
   songArtist: Yup.string()
     .min(2, "The songArtist is too short!")
     .max(50, "The songArtist is too long!"),

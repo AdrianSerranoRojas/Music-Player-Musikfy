@@ -16,6 +16,10 @@ const SongsSchema = new Schema(
       title: String,
       artist: String,
       album: String,
+      picture: {
+        pictureUrl: String,
+        picturePublic_id: String,
+      },
     },
   },
   { timestamps: true }

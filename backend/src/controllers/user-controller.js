@@ -110,12 +110,10 @@ export async function updateUser(req, res, next) {
 }
 export async function deleteUser(req, res, next) {
   const { userId } = req.params;
-
   try {
     const result = await User.deleteOne({
       _id: userId,
     }).lean();
-
     if (result.ok === 1 && result.deletedCount === 1) {
       res.status(200).send({
         data: "User removed",
