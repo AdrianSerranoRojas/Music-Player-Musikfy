@@ -30,7 +30,7 @@ export const songApi = createApi({
       }),
     }),
     getPlaylists: builder.query({
-      query: () => `/playlist`,
+      query: () => `/playlists/all`,
     })
   }),
 });
