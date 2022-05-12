@@ -8,7 +8,6 @@ import "react-h5-audio-player/lib/styles.css";
   const currentSong = useSelector((state) => state.songs.currentSong);
   const player = useRef();
   const [trackIndex, setTrackIndex] = useState(0);
-  console.log(currentSong);
 
   const handleClickPrevious = () => {
     setTrackIndex((currentTrack) =>

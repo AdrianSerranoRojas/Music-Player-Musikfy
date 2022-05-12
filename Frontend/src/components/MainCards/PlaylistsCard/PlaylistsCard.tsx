@@ -7,7 +7,6 @@ import {useGetPlaylistsQuery} from "../../../services/songApi";
 
 function PlaylistsCard() {
     const { data, isLoading, isSuccess } = useGetPlaylistsQuery();
-    console.log(data);
     return(
         <Box>
             <Typography variant='h5' align='center' fontFamily='Vollkorn, serif'>
