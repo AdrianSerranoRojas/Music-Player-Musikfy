@@ -34,9 +34,9 @@ export const songApi = createApi({
     }),
     createPlaylist: builder.mutation({
       query: (body) => ({
-        url: `/playlists/`,
+        url: `/playlists`,
         method: "POST",
-        body,
+        body: { data: body },
       }),
     }),
   }),

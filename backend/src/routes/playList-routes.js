@@ -37,22 +37,30 @@ const playlistRouter = Router();
 // playListRouter.post("/playlist", authMiddleware, signUp);
 playlistRouter.put("/top", authMiddleware, bestListSongs);
 // playlistRouter.get("/all", authMiddleware, fetchPlaylists);
-playlistRouter.get("/all",getPlayList );
-playlistRouter.post("/", authMiddleware, createPlaylist2);
+playlistRouter.get("/playlists/all", getPlayList);
+playlistRouter.post("/playlists", authMiddleware, createPlaylist2);
 // playlistRouter.get("/",  createPlaylist2);
-playlistRouter.patch("/songs/:id", authMiddleware, removeSongFromPlaylist);
-playlistRouter.get("/public/:id", authMiddleware, fetchPublicPlaylists);
-playlistRouter.get("/playlist/:id", authMiddleware, getSongsByPlaylistId);
-playlistRouter.patch("/order-songs/:id", authMiddleware, orderPlaylistsSongs);
-playlistRouter.patch("/order/:id", authMiddleware, orderMyPlaylists);
-playlistRouter.get("/my-lists/:id", authMiddleware, fetchMyPlaylists);
-playlistRouter.get("/sort-playlists", authMiddleware, sortPlaylistsByLikes);
-playlistRouter.get("/my-favorite-lists/:id", authMiddleware,getMyFavoritePlaylists);
-playlistRouter.patch("/follow/:id", authMiddleware, followPlaylist);
-playlistRouter.patch( "/cancel-follow/:id",authMiddleware, cancelFollowPlaylist);
-playlistRouter.patch("/add/:id", authMiddleware, addSongToPlaylist);
-playlistRouter.get("/:id", authMiddleware, getPlaylistById);
-playlistRouter.patch("/:id", authMiddleware, updatePlaylist);
-playlistRouter.put("/:id", authMiddleware, removePlaylistById);
+// playlistRouter.patch("/songs/:id", authMiddleware, removeSongFromPlaylist);
+// playlistRouter.get("/public/:id", authMiddleware, fetchPublicPlaylists);
+// playlistRouter.get("/playlist/:id", authMiddleware, getSongsByPlaylistId);
+// playlistRouter.patch("/order-songs/:id", authMiddleware, orderPlaylistsSongs);
+// playlistRouter.patch("/order/:id", authMiddleware, orderMyPlaylists);
+// playlistRouter.get("/my-lists/:id", authMiddleware, fetchMyPlaylists);
+// playlistRouter.get("/sort-playlists", authMiddleware, sortPlaylistsByLikes);
+// playlistRouter.get(
+//   "/my-favorite-lists/:id",
+//   authMiddleware,
+//   getMyFavoritePlaylists
+// );
+// playlistRouter.patch("/follow/:id", authMiddleware, followPlaylist);
+// playlistRouter.patch(
+//   "/cancel-follow/:id",
+//   authMiddleware,
+//   cancelFollowPlaylist
+// );
+// playlistRouter.patch("/add/:id", authMiddleware, addSongToPlaylist);
+// playlistRouter.get("/:id", authMiddleware, getPlaylistById);
+// playlistRouter.patch("/:id", authMiddleware, updatePlaylist);
+// playlistRouter.put("/:id", authMiddleware, removePlaylistById);
 
 export default playlistRouter;

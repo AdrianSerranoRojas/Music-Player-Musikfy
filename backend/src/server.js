@@ -24,6 +24,6 @@ app.use(
 );
 app.use(userRouter);
 app.use(songsRouter);
-app.use( "/playlists",playlistRouter)
+app.use(playlistRouter)
 
 export default app;

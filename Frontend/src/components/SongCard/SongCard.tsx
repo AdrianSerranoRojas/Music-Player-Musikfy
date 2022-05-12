@@ -24,7 +24,6 @@ function SongCard({ songName, songUrl }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
-  console.log(songUrl);
 
   const handleClick = () => {
     console.log(currentSong);

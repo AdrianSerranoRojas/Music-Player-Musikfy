@@ -51,34 +51,34 @@ export async function createPlaylist(req, res, next) {
 
 export async function createPlaylist2(req, res, next) {
   // const { title, description, genre, private, image } = req.body.playlist;
-  console.log(req);
-  const { title, description, genre, image } = req.body.playlist;
-  const { uid } = req.user;
-  try {
-    const newPlaylist = await db.Playlist.create({
-      title,
-      description,
-      genre: genre,
-      playlistImage: image,
-      // private,
-      owner: uid,
-    });
-    await db.User.findOneAndUpdate(
-      { firebase_id: uid },
-      {
-        $push: {
-          myPlaylists: [{ _id: newPlaylist._id }],
-          myFavoritePlaylists: [{ _id: newPlaylist._id }],
-        },
-      }
-    );
-    res.status(200).send({
-      message: "OK",
-    });
-    // res.json({message: "hi playlist"})
-  } catch (error) {
-    next(error);
-  }
+  console.log(req.body);
+  // const { title, description, genre, image } = req.body.playlist;
+  // const { uid } = req.user;
+  // try {
+  //   const newPlaylist = await db.Playlist.create({
+  //     title,
+  //     description,
+  //     genre: genre,
+  //     playlistImage: image,
+  //     // private,
+  //     owner: uid,
+  //   });
+  //   await db.User.findOneAndUpdate(
+  //     { firebase_id: uid },
+  //     {
+  //       $push: {
+  //         myPlaylists: [{ _id: newPlaylist._id }],
+  //         myFavoritePlaylists: [{ _id: newPlaylist._id }],
+  //       },
+  //     }
+  //   );
+  //   res.status(200).send({
+  //     message: "OK",
+  //   });
+  //   // res.json({message: "hi playlist"})
+  // } catch (error) {
+  //   next(error);
+  // }
 }
 
 export async function fetchMyPlaylists(req, res, next) {
