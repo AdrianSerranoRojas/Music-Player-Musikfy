@@ -9,7 +9,6 @@ import SelectFieldMulty from "../../components/SelectFieldMulty/SelectFieldMulty
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-import { CardMedia } from "@mui/material";
 import { TextField } from "@mui/material";
 
 import { useDropzone } from "react-dropzone";
@@ -19,6 +18,8 @@ import { useDropzone } from "react-dropzone";
 import { useDispatch } from "react-redux";
 import { addSongFile, updateSongFile } from "../../features/song/songsSlice";
 import { useCreateSongMutation } from "../../services/songApi";
+import { CardMedia } from "@mui/material";
+import Typography from '@mui/material/Typography';
 
 const songSchema = Yup.object().shape({
   files: Yup.mixed().required(),
@@ -94,8 +95,8 @@ function AddSongForm() {
 
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
-        <h1 className="h1 h1SingUp">Upload Song</h1>
+      <Box>
+        <Typography variant="h3" align="center">Upload Song</Typography>
       </Box>
       <section className="row row-cols-1">
         <div className="col">

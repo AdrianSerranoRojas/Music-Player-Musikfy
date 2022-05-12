@@ -1,8 +1,9 @@
 import withLayout from "../../hoc/withLayout";
 import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
-import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 
 import "./Home.scss";
+import Box from "@mui/material/Box";
+import PlaylistsCardSmall from "../../components/MainCards/PlaylistsCardSmall/PlaylistsCardSmall";
 import SearchSongListing from "../../components/SearchSongListing/SearchSongListing";
 
 // async function fetchUserToken(
@@ -23,11 +24,11 @@ import SearchSongListing from "../../components/SearchSongListing/SearchSongList
 
 const Home = () => {
   return (
-    <div>
+    <Box sx={{display:'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap:4 }}>
       <SearchSongListing />
       <LikesCard />
-      <PlaylistsCard />
-    </div>
+      <PlaylistsCardSmall />
+    </Box>
   );
 };
 export default withLayout(Home);
