@@ -49,8 +49,12 @@ const PlaylistSchema = new Schema(
   //     ],
   //     maxLength: [200, "Playlist description cannot exceed 200 characters"],
   //   },
+  fans: {
+    type: [{ type: Schema.Types.ObjectId, ref: "users" }],
+    default: [],
+  },
     songs: {
-      type: [{ type: Schema.Types.ObjectId, ref: "Song" }],
+      type: [{ type: Schema.Types.ObjectId, ref: "song" }],
       default: [],
     },
   //   genre: {

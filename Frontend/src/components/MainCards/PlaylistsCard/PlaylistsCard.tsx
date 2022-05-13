@@ -12,28 +12,23 @@ import {
 } from "../../../services/playlistApi";
 
 function PlaylistsCard() {
-  const { data, isLoading, isSuccess } = useGetPlaylistsQuery();
+  const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
   const [createPlaylist, result] = useCreatePlaylistMutation();
-  const [deletePlaylist, resultDelete] = useDeletePlaylistMutation
-  ();
-  const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation
-  ();
-
-  
+  const [deletePlaylist, resultDelete] = useDeletePlaylistMutation();
+  const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation();
   const [playlistName, setPlaylistName] = useState("List");
 
   async function handleCreatePlaylist() {
     await createPlaylist({ title: playlistName });
+    refetch();
   }
-  async function   handleDeletePlaylist(playlistName) {
-    console.log(playlistName.playlist._id);
-    await deletePlaylist(playlistName.playlist._id)
+  async function handleDeletePlaylist(playlistName) {
+    await deletePlaylist(playlistName.playlist._id);
+    refetch();
   }
-  async function   handleUpdatePlaylist (playlistName) {
-    console.log(playlistName.playlist._id);
-    await updatePlaylist(playlistName.playlist._id)
+  async function handleUpdatePlaylist(playlistName) {
+    await updatePlaylist(playlistName.playlist._id);
   }
-  
 
   const handleChange = (e) => {
     setPlaylistName(e.target.value);
@@ -57,12 +52,19 @@ function PlaylistsCard() {
                 <Typography variant="subtitle1" align="center">
                   {playlist.title}
                 </Typography>
-                <button className="btn btn-warning" 
-                onClick={() =>handleDeletePlaylist({playlist})}>delete</button>
+                <button
+                  className="btn btn-warning"
+                  onClick={() => handleDeletePlaylist({ playlist })}
+                >
+                  delete
+                </button>
                 {/* <img src={playlist.playlistImg} alt="hola" /> */}
-                <button className="btn btn-primary mt-2" 
-                onClick={() =>handleUpdatePlaylist({playlist})}>update</button>
-                
+                <button
+                  className="btn btn-primary mt-2"
+                  onClick={() => handleUpdatePlaylist({ playlist })}
+                >
+                  update
+                </button>
               </ImageListItem>
             );
           })}

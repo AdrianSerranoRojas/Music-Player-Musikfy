@@ -166,8 +166,9 @@ export async function orderPlaylistsSongs(req, res, next) {
 }
 export async function  updatePlaylistById (req, res, next) {
   const { id } = req.params;
-  const { userId } = req.body
+  // const {bodyUpdate } = req.body
   console.log("este ni se si sale",id);
+  // const playlistUpdate = await Playlists.findOneAndUpdate(id,req.body )
 }
 export async function removePlaylistById(req, res, next) {
   const { id } = req.params;
@@ -183,18 +184,18 @@ export async function removePlaylistById(req, res, next) {
     //   },
     //   { new: true }
     // );
-    const playlistsRemove = await Playlists.findByIdAndDelete(id);
+    const playlistsRemove = await Playlists.findByIdAndDelete(id,{new: true})
+    .lean()
+    .exec();
     // .select({
     //   songUrl: 1,
     //   songName: 1,
     // })
-    // .lean()
-    // .exec();
     // res.status(200).send({
     //   data: playlists,
-    // res.status(200).send({
-    //   message: "OK",
-    // });
+    res.status(200).send({
+      message: "OK",
+    });
   } catch (err) {
     console.log(err);
   }

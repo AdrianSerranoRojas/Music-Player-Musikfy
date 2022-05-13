@@ -5,14 +5,25 @@ import { useGetSongsQuery } from "../../../services/songApi";
 
 function LikesCard() {
   const { data, isLoading, isSuccess } = useGetSongsQuery();
+  //  console.log("<<<<<<<<<<<<<<",data.data);
+
+
   return (
     <>
-      <Box sx={{maxwidth: 750,
-            maxheight: 440}}>
-        <Typography variant="h5" align='center' fontFamily='Vollkorn, serif'>Most liked Songs!</Typography>
+      <Box sx={{ maxwidth: 750, maxheight: 440 }}>
+        <Typography variant="h5" align="center" fontFamily="Vollkorn, serif">
+          Most liked Songs!
+        </Typography>
         {isSuccess &&
           data.data.map((song, index) => {
-            return <SongCard key={index} songName={song.songName} songUrl={song.songFile.url} />;
+            return (
+              <SongCard
+                songName={song?.songData?.title}
+                songUrl={song.songFile.url}
+                key={index}
+                // id={song._id}
+              />
+            );
           })}
       </Box>
     </>

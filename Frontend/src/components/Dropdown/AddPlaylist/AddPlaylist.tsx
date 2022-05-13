@@ -1,4 +1,5 @@
-import * as React from "react";
+import  React from "react";
+import {useNavigate} from "react-router-dom"
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,6 +13,7 @@ import {
   useUpdatePlaylistMutation
 } from "../../../services/playlistApi";
 
+
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
@@ -24,7 +26,8 @@ const MenuProps = {
 };
 
 function DropdownAddPlaylist() {
-  const { data, isLoading, isSuccess } = useGetPlaylistsQuery();
+  const navigate = useNavigate();
+  const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
   const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation
   ();
   const [personName, setPersonName] = React.useState([]);
@@ -42,8 +45,8 @@ function DropdownAddPlaylist() {
     console.log(name._id);
     const body= {song:["unaCancion"]}
     console.log(body);
-    
     updatePlaylist(name._id,body)
+    refetch()
   };
   return (
     <div>

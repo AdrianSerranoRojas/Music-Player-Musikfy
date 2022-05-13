@@ -15,9 +15,12 @@ export const playlistApi = createApi({
       return headers;
     },
   }),
+  // tagTypes: ['Playlist',"playlist"],
   endpoints: (builder) => ({
+
     getPlaylists: builder.query({
       query: () => `/playlists/all`,
+      // providesTags: ['Playlist',"playlist"],
     }),
     createPlaylist: builder.mutation({
       query: (body) => ({
@@ -27,17 +30,17 @@ export const playlistApi = createApi({
       }),
     }),
     updatePlaylist: builder.mutation({
-      query: (id,body) => ({
+      query: (id,...patch) => ({
         url: `/playlists/${id}`,
         method: "PUT",
-        body: body,
+        body: patch,
       }),
     }),
     deletePlaylist: builder.mutation({
       query: (id) => ({
         url: `/playlists/${id}`,
         method: "DELETE",
-        body: id,
+        // body: id,
       }),
     }),
   }),
