@@ -57,7 +57,7 @@ function PlaylistsCard() {
                     </Typography>
                         <img src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg" alt="hola" />
                     </ImageListItem>
-                    <ImageListItem>
+                    {/* <ImageListItem>
                     <Typography variant='subtitle1' align='center'>
                         Sad Playlist
                     </Typography>
@@ -65,7 +65,7 @@ function PlaylistsCard() {
                         23 songs
                     </Typography>
                         <img src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg" alt="hola" />
-                    </ImageListItem>
+                    </ImageListItem> */}
                 </ImageList>
             </Box>
     )

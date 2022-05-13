@@ -1,49 +1,28 @@
-import { useState, useCallback, useEffect, useContext } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
-import { Formik, Form } from "formik";
-import * as Yup from "yup";
-import SelectField from "../../components/SelectField/SelectField";
-import SelectFieldMulty from "../../components/SelectFieldMulty/SelectFieldMulty";
-
-import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-import { TextField } from "@mui/material";
-
 import { useDropzone } from "react-dropzone";
 
-// import useData from "./useData";
-
-import { useDispatch } from "react-redux";
-import { addSongFile, updateSongFile } from "../../features/song/songsSlice";
 import { useCreateSongMutation } from "../../services/songApi";
 import { CardMedia } from "@mui/material";
-import Typography from '@mui/material/Typography';
+import Typography from "@mui/material/Typography";
+import { styled } from "@mui/material/styles";
 
-const songSchema = Yup.object().shape({
-  files: Yup.mixed().required(),
-  songName: Yup.string()
-    .min(2, "The songName is too short!")
-    .max(50, "The songName is too long!"),
-  songArtist: Yup.string()
-    .min(2, "The songArtist is too short!")
-    .max(50, "The songArtist is too long!"),
-});
-
-const optionsGenre = [
-  { value: "Rock", label: "Rock" },
-  { value: "Rap", label: "Rap" },
-  { value: "Pop", label: "Pop" },
-];
-
-const initialValues = {
-  files: null,
-  songName: "",
-  songArtist: "",
-  genre: "",
-  songAlbum: "",
-};
+const Widget = styled("div")(({ theme }) => ({
+  overflowX: "hidden",
+  padding: 16,
+  borderRadius: 16,
+  width: "80%",
+  maxWidth: "100%",
+  marginTop: "4%",
+  marginLeft: "12.5%",
+  position: "relative",
+  zIndex: 1,
+  backgroundColor:
+    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
+  backdropFilter: "blur(40px)",
+}));
 
 const UploadComponent = (props) => {
   const { setFieldValue, setImage } = props;
@@ -80,7 +59,6 @@ const UploadComponent = (props) => {
 };
 
 function AddSongForm() {
-  let signUpError = false;
   const [image, setImage] = useState([]);
   const [createSong, result] = useCreateSongMutation();
 
@@ -96,109 +74,42 @@ function AddSongForm() {
   return (
     <>
       <Box>
-        <Typography variant="h3" align="center">Upload Song</Typography>
+        <Typography variant="h3" align="center">
+          Upload Song
+        </Typography>
       </Box>
-      <section className="row row-cols-1">
-        <div className="col">
-          <h2 className="h5 mb-3">upload your own songs</h2>
-        </div>
-        <div className="col">
-          <Formik
-            onSubmit={(values) => {
-              handleSubmit(values);
-            }}
-            initialValues={initialValues}
-            validationSchema={songSchema}
-          >
-            {({
-              setFieldValue,
-              handleChange,
-              handleSubmit,
-              submitForm,
-              errors,
-              values,
-              touched,
-              isValidating,
-              isValid,
-            }) => (
-              <Form>
-                <div className="grid1">
-                  {/* dropzone */}
-                  <div className="form-group">
-                    <label htmlFor="file">Multiple files upload</label>
+      {/* DROPZONE */}
 
-                    <UploadComponent
-                      setFieldValue={setFieldValue}
-                      setImage={setImage}
-                    />
-                    {values.files &&
-                      values.files.map((file, i) => (
-                        <li key={i}>
-                          {`File:${file.name} Type:${file.type} Size:${file.size} bytes`}{" "}
-                        </li>
-                      ))}
-                  </div>
-                  {/* dropzone */}
-                  {values.files && (
-                    <Box
-                      sx={{
-                        display: "grid",
-                        gridTemplateColumns: { sm: "1fr 1fr" },
-                        gap: 2,
-                        marginTop: 2,
-                      }}
-                    >
-                      <TextField
-                        id="songName"
-                        name="songName"
-                        label="songName"
-                        value={values.songName}
-                        onChange={handleChange}
-                        placeholder={values.files[0].name}
-                        error={touched.songName && Boolean(errors.songName)}
-                        helperText={touched.songName && errors.songName}
-                      />
-                      <TextField
-                        id="songArtist"
-                        name="songArtist"
-                        label="songArtist"
-                        value={values.songArtist}
-                        onChange={handleChange}
-                        // onBlur={submitForm}
-                        error={touched.songArtist && Boolean(errors.songArtist)}
-                        helperText={touched.songArtist && errors.songArtist}
-                      />
-                      <TextField
-                        id="songAlbum"
-                        name="songAlbum"
-                        label="songAlbum"
-                        value={values.songAlbum}
-                        onChange={handleChange}
-                        // onBlur={submitForm}
-                        error={touched.songAlbum && Boolean(errors.songAlbum)}
-                        helperText={touched.songAlbum && errors.songAlbum}
-                      />
-                      <SelectField
-                        name="gender"
-                        options={optionsGenre}
-                        placeholder={"Gender"}
-                        // submitForm={submitForm}
-                      />
-                    </Box>
-                  )}
-                </div>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  disabled={isValidating || !isValid || !values.files}
-                >
-                  Submit Details
-                </Button>
-              </Form>
-            )}
-          </Formik>
+      <Widget className="dropzone" {...getRootProps()}>
+        <input type="text" placeholder="as" {...getInputProps()} />
+        {isDragActive ? "Drag active" : "You can drop your files"}
+      </Widget>
+      {image.length > 0 && (
+        <div>
+          {image.map((image, index) => (
+            <CardMedia
+              component="img"
+              height="140"
+              image={image}
+              key={index}
+              alt="green iguana"
+            />
+            // <img src={image} key={index} />
+          ))}
         </div>
-      </section>
+      )}
+      {image.length > 0 ? (
+        <Button onClick={insertFile} variant="contained" color="primary">
+          Upload Song
+        </Button>
+      ) : (
+        <Button
+          onClick={insertFile}
+          variant="contained"
+          color="primary"
+          disabled
+        />
+      )}
     </>
   );
 }

@@ -1,4 +1,5 @@
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
@@ -31,17 +32,15 @@ const userSchema = Yup.object().shape({
     .min(2, "The password is too short!")
     .max(50, "The password is too long!")
     .required("The password is required"),
-  country: Yup.string()
-    .min(2, "The country is too short!")
-    .max(50, "The country is too long!"),
-  birthday: Yup.date(),
-  gender: Yup.object(),
   email: Yup.string().email("Invalid email").required("Required"),
 });
 
 function SignUp() {
+  const navigate = useNavigate();
+  const [isSuccess, setIsSuccess] = useState(false);
   const [signUpError, setSignUpError] = useState(null);
   const currentUser = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
 
   async function handleSingInWithGoogleClick(e) {
     e.preventDefault();
@@ -53,35 +52,25 @@ function SignUp() {
       setSignUpError(error.message);
     } finally {
       setLoading(false);
+      setIsSuccess(true);
     }
   }
-
-  const optionsGender = [
-    { value: "Male", label: "Male" },
-    { value: "Female", label: "Female" },
-    { value: "Other", label: "Other" },
-  ];
 
   const handleSubmit = async (values) => {
     console.log(values);
     let valuesToSend = {
-      birthday: values.birthday,
-      gender: values.gender.value,
       userName: values.userName,
-      country: values.country,
     };
-    // e.preventDefault();
-    setLoading(true);
 
     try {
       await singUpWithEmailAndPassword(values.email, values.password);
       console.log(values);
-
       await syncUserData(valuesToSend);
     } catch (error) {
       setSignUpError(error.message);
     } finally {
       setLoading(false);
+      setIsSuccess(true);
     }
   };
 
@@ -89,9 +78,6 @@ function SignUp() {
     email: "",
     userName: "",
     password: "",
-    country: "",
-    birthday: "",
-    gender: "",
     loading: true,
     signUpError: null,
   };
@@ -178,40 +164,6 @@ function SignUp() {
                           errorMessage={errors.userName}
                         />
                       </div>
-                      <div className="grid2">
-                        <Input
-                          type="date"
-                          label="Birthday"
-                          id="birthday"
-                          value={values.birthday}
-                          placeholder="Birthday"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          hasErrorMessage={touched.birthday}
-                          errorMessage={errors.birthday}
-                        />
-                        <Input
-                          type="text"
-                          label="Country"
-                          id="country"
-                          value={values.country}
-                          placeholder="Country"
-                          handleChange={handleChange}
-                          handleBlur={handleBlur}
-                          hasErrorMessage={touched.country}
-                          errorMessage={errors.country}
-                        />
-                        <div className="mb-3">
-                          <label className="form-label" htmlFor="gender">
-                            Gender
-                          </label>
-                          <SelectField
-                            name="gender"
-                            options={optionsGender}
-                            placeholder={"Gender"}
-                          />
-                        </div>
-                      </div>
                       <Button
                         type="submit"
                         variant="contained"
@@ -246,6 +198,7 @@ function SignUp() {
             </section>
           </div>
         </div>
+        {isSuccess && navigate("/")}
       </main>
     </>
   );
