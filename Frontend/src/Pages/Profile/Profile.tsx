@@ -9,10 +9,23 @@ import AuthContext from "../../context/AuthContext";
 import EditInfo from "../../components/EditInfo/EditInfo";
 import "./profile.scss";
 import { Button } from "@mui/material";
-import ChangePassword from "../../components/ChangePassword/ChangePassword";
-import BasicModal from "../../components/BasicModal/BasicModal";
 import LockIcon from "@mui/icons-material/Lock";
 import { styled } from "@mui/material/styles";
+
+const Widget = styled("div")(({ theme }) => ({
+  overflowX: "hidden",
+  padding: 16,
+  borderRadius: 16,
+  width: "80%",
+  maxWidth: "100%",
+  marginTop: "4%",
+  marginLeft: "12.5%",
+  position: "relative",
+  zIndex: 1,
+  backgroundColor:
+    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
+  backdropFilter: "blur(40px)",
+}));
 
 function Profile() {
   const currentUser = useContext(AuthContext);
@@ -46,29 +59,11 @@ function Profile() {
     updateUser({ uid, editUser, image });
   };
 
-  const Widget = styled("div")(({ theme }) => ({
-    overflowX: "hidden",
-    padding: 16,
-    borderRadius: 16,
-    width: "80%",
-    maxWidth: "100%",
-    marginTop: "4%",
-    marginLeft: "12.5%",
-    position: "relative",
-    zIndex: 1,
-    backgroundColor:
-      theme.palette.mode === "dark"
-        ? "rgba(0,0,0,0.6)"
-        : "rgba(255,255,255,0.4)",
-    backdropFilter: "blur(40px)",
-  }));
   return (
     <>
       {isSuccess && (
         <Widget>
-          <h1>
-            Profile <PersonOutlineIcon />
-          </h1>
+          <h1>Profile</h1>
           <hr />
           <h3>User name</h3>
           <EditInfo
@@ -79,7 +74,7 @@ function Profile() {
           />
           <hr />
           <h3>Image</h3>
-          {user?.data?.image?.url ||
+          {user?.data?.image?.url &&
             (image.length > 0 && (
               <Image
                 className="profileImg"
@@ -89,10 +84,10 @@ function Profile() {
               />
             ))}
           <div>
-            <div className="dropzone" {...getRootProps()}>
+            <Widget className="dropzone" {...getRootProps()}>
               <input type="text" placeholder="as" {...getInputProps()} />
               {isDragActive ? "Drag active" : "You can drop your files"}
-            </div>
+            </Widget>
           </div>
           <hr />
           <h3>Submit</h3>

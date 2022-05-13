@@ -22,7 +22,7 @@ const Widget = styled("div")(({ theme }) => ({
 }));
 
 function AddSongForm() {
-  let signUpError = false;
+
   const [image, setImage] = useState([]);
 
   const onDrop = useCallback((acceptedFiles, rejectFiles) => {

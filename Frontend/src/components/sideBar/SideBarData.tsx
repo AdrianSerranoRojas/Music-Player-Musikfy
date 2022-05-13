@@ -11,10 +11,6 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import LockIcon from "@mui/icons-material/Lock";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 
-
-
-
-
 const navbarList = [
   {
     key: 1,
