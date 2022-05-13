@@ -1,8 +1,8 @@
-import EditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
+import EditOutlinedIcon from '@mui/icons-material/ModeEditOutlined';
 import { useState } from "react";
 import InputEdit from "../InputEdit/InputEdit";
 import "./EditInfo.scss";
-import { IconButton } from "@mui/material";
+import { IconButton } from '@mui/material';
 
 function EditInfo({ value, setEditUser, control, editUser }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -11,7 +11,6 @@ function EditInfo({ value, setEditUser, control, editUser }) {
     <div className="EditInfoContainer">
       {isEditing ? (
         <InputEdit
-        disabled={false}
           value={value}
           setEditUser={setEditUser}
           setIsEditing={setIsEditing}
@@ -20,14 +19,7 @@ function EditInfo({ value, setEditUser, control, editUser }) {
         />
       ) : (
         <>
-          <InputEdit
-            disabled
-            value={value}
-            setEditUser={setEditUser}
-            setIsEditing={setIsEditing}
-            control={control}
-            editUser={editUser}
-          />
+          <h4 className="profileData">{value}</h4>
           <IconButton onClick={toggleEditing}>
             <EditOutlinedIcon />
           </IconButton>

@@ -24,7 +24,7 @@ import { styled } from "@mui/material/styles";
 
 import { NotFound } from "./components/NotFound/NotFound";
 import Playlists2 from "./components/PlaylistModal/PlaylistModal";
-import { AddShoppingCart } from "@mui/icons-material";
+import DnDSongs from "./components/DragAndDrop/DragAndDrop";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({
@@ -47,7 +47,6 @@ export default function App() {
     unsubscribeFromAuth = onAuthStateChanged(auth, (user) => {
       if (user) {
         setCurrentUser(user);
-        console.log(currentUser);
       } else {
         setCurrentUser(null);
       }
@@ -58,7 +57,6 @@ export default function App() {
       }
     };
   }, [currentUser]);
-
   return (
     <>
       <AuthContext.Provider value={currentUser}>
@@ -66,40 +64,21 @@ export default function App() {
           <Route path="/" element={<Home />} />
           <Route path="/signUp" element={<SignUp />} />
           <Route path="/login" element={<Login />} />
-          <Route
-            path="/reset-password"
-            element={currentUser ? <ResetPassword /> : <Home />}
-          />
-          <Route
-            path="/changePassword"
-            element={currentUser ? <ChangePassword /> : <Home />}
-          />
+          <Route path="/reset-password" element={<ResetPassword />} />
+          <Route path="/changePassword" element={<ChangePassword />} />
           <Route path="*" element={<NotFound />} />
           <Route
             path="/profile"
             element={currentUser ? <Profile /> : <Home />}
           />
           <Route path="/addSong" element={<AddSong />} />
+          <Route path="/mySongs" element={<MySongs />} />
+          <Route path="/playlist" element={<SinglePlaylist />} />
+          <Route path="/playlists" element={<Playlists />} />
           <Route path="/playlists2" element={<Playlists2 />} />
           <Route path="/filter" element={<Filter />} />
 
           <Route path="/favSongs" element={<FavoriteSongs />} />
-          <Route
-            path="/addSong"
-            element={currentUser ? <AddSong /> : <Home />}
-          />
-          <Route
-            path="/mySongs"
-            element={currentUser ? <MySongs /> : <Home />}
-          />
-          <Route
-            path="/playlist"
-            element={currentUser ? <SinglePlaylist /> : <Home />}
-          />
-          <Route
-            path="/playlists"
-            element={currentUser ? <Playlists /> : <Home />}
-          />
         </Routes>
         <Widget2>
           <PlayerH5 />

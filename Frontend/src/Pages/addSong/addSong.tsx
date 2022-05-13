@@ -3,13 +3,11 @@ import withLayout from "../../hoc/withLayout";
 import { styled } from "@mui/material/styles";
 
 const Widget = styled("div")(({ theme }) => ({
-  overflowX: "hidden",
   padding: 16,
   borderRadius: 16,
-  width: "80%",
+  width: 830,
   maxWidth: "100%",
-  marginTop: "4%",
-  marginLeft: "12.5%",
+  margin: "auto",
   position: "relative",
   zIndex: 1,
   backgroundColor:

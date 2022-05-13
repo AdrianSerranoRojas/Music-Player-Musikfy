@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Login.scss";
 import { FcGoogle } from "react-icons/fc";
@@ -13,12 +12,12 @@ import {
 import { syncUserData } from "../../utils/auth-requests";
 
 function Login() {
-  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState(null);
-  const [isSuccess, setIsSuccess] = useState(false);
+
+  const currentUser = useContext(AuthContext);
 
   async function handleLoginWithGoogleClick(e) {
     e.preventDefault();
@@ -30,7 +29,6 @@ function Login() {
       setLoginError(error.message);
     } finally {
       setLoading(false);
-      setIsSuccess(true);
     }
   }
 
@@ -43,7 +41,6 @@ function Login() {
       setLoginError(error.message);
     } finally {
       setLoading(false);
-      setIsSuccess(true);
     }
   }
 
@@ -63,8 +60,9 @@ function Login() {
                 <FcGoogle className="googleLogo" />
                 Login with Google
               </Button>
-              <hr />
-              <hr />
+              <div className="col">
+                <h2 className="h5 mb-3">or</h2>
+              </div>
               <div className="col">
                 <h2 className="h5 mb-3">Login with email and password</h2>
               </div>
@@ -128,7 +126,6 @@ function Login() {
             </section>
           </div>
         </div>
-        {isSuccess && navigate("/")}
       </main>
     </>
   );

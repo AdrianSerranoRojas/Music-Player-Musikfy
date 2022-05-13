@@ -67,7 +67,7 @@ export async function createUser(req, res, next) {
 }
 export async function updateUser(req, res, next) {
   const { userId } = req.params;
-  const { userName } = req.body.editUser;
+  const { userName, country, birthday, gender } = req.body.editUser;
 
   console.log(req.body);
   let imageURL = null;
@@ -90,6 +90,9 @@ export async function updateUser(req, res, next) {
       {
         $set: {
           userName: userName,
+          country: country,
+          birthday: birthday,
+          gender: gender,
           image: imageURL,
         },
       },

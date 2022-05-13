@@ -1,31 +1,16 @@
 import { useRef, useEffect } from "react";
-import { TextField } from "@mui/material";
 
-function InputEdit({
-  value,
-  setEditUser,
-  setIsEditing,
-  control,
-  editUser,
- disabled
-}) {
+function InputEdit({ value, setEditUser, setIsEditing, control, editUser }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsEditing(false);
   };
   return (
     <form action="" className="inputForm">
-      <TextField
-        disabled={disabled}
+      <input
         type="text"
         placeholder={value}
-        onChange={(e) =>
-          setEditUser((editUser) => ({
-            ...editUser,
-            [control]: e.target.value,
-          }))
-        }
-        onBlur={() => setIsEditing(false)}
+        onChange={(e) => setEditUser(editUser =>({...editUser, [control]: e.target.value }))}
       />
       <button
         type="submit"
