@@ -5,6 +5,7 @@ import "./Home.scss";
 import Box from "@mui/material/Box";
 import PlaylistsCardSmall from "../../components/MainCards/PlaylistsCardSmall/PlaylistsCardSmall";
 import SearchSongListing from "../../components/SearchSongListing/SearchSongListing";
+import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 
 // async function fetchUserToken(
 //   setUserToken: any,
@@ -27,7 +28,7 @@ const Home = () => {
     <Box sx={{display:'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap:4 }}>
       <SearchSongListing />
       <LikesCard />
-      <PlaylistsCardSmall />
+      <PlaylistsCard />
     </Box>
   );
 };

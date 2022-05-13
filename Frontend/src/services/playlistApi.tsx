@@ -15,12 +15,9 @@ export const playlistApi = createApi({
       return headers;
     },
   }),
-  // tagTypes: ['Playlist',"playlist"],
   endpoints: (builder) => ({
-
     getPlaylists: builder.query({
       query: () => `/playlists/all`,
-      // providesTags: ['Playlist',"playlist"],
     }),
     createPlaylist: builder.mutation({
       query: (body) => ({

@@ -9,7 +9,6 @@ cloudinary.config({
 });
 
 export const uploadImageCloud = async (filePath) => {
-  console.log("aaaaaaaaaaaaaaaa", config.cloudinary.cloud_name);
   return await cloudinary.v2.uploader.upload(filePath, {
     folder: "usersPictures",
     resource_type: "auto",
@@ -17,7 +16,6 @@ export const uploadImageCloud = async (filePath) => {
 };
 
 export const uploadSongCloud = async (filePath) => {
-  console.log("bbbbbbbbbbbb", config.cloudinary.cloud_name);
   return await cloudinary.v2.uploader.upload(filePath, {
     folder: "songs",
     resource_type: "auto",
