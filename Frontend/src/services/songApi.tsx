@@ -19,6 +19,9 @@ export const songApi = createApi({
     getSongs: builder.query({
       query: () => `/songs`,
     }),
+    getSong: builder.query({
+      query: (id) => `/songs/${id}`,
+    }),
     getSongsFiltered: builder.query({
       query: (filter) => `/songs/${filter}`,
     }),
@@ -32,10 +35,23 @@ export const songApi = createApi({
         body,
       }),
     }),
+    likeSong: builder.mutation({
+      query: ({ uid, ...patch }) => ({
+        url: `/like/${uid}`,
+        method: "PATCH",
+        body: patch,
+      }),
+    }),
   }),
 });
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetSongsQuery, useCreateSongMutation, useGetMySongsQuery, useGetSongsFilteredQuery } =
-  songApi;
+export const {
+  useGetSongsQuery,
+  useCreateSongMutation,
+  useGetMySongsQuery,
+  useGetSongsFilteredQuery,
+  useLikeSongMutation,
+  useGetSongQuery,
+} = songApi;
