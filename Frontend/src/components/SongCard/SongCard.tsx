@@ -76,7 +76,7 @@ function SongCard({ songName, songUrl, songArtist }) {
           </Typography>
         </CardContent>
       </Box>
-      {/* <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
         <IconButton aria-label="play/pause" onClick={handleClick}>
           <PlayArrowIcon sx={{ height: 38, width: 38 }} />
         </IconButton>
@@ -94,7 +94,7 @@ function SongCard({ songName, songUrl, songArtist }) {
                 </ListItemButton>
             </List>
         </Collapse>
-      </Box> */}
+      </Box>
       </Card>
     </>
   );
