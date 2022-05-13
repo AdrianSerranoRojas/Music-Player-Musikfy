@@ -11,7 +11,6 @@ const PlayerH5 = ({ layoutDisplay, src, title, ...otherProps }) => {
   const player = useRef(trackIndex);
   const dispatch = useDispatch();
   // const [trackIndex, setTrackIndex] = useState(0);
-  console.log(trackIndex);
 
   const handleClickPrevious = () => {
     dispatch(setTrackIndex(trackIndex === 0 ? currentSong.length - 1 : trackIndex - 1));

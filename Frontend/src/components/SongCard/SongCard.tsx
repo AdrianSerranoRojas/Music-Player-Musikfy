@@ -10,9 +10,10 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import AddIcon from '@mui/icons-material/Add';
 import { height } from "@mui/system";
-import { addCurrentSong, addFirstCurrentSong, songsSelector } from "../../features/song/songsSlice";
+import { addCurrentSong, addFirstCurrentSong, songsSelector, addPlayQueue } from "../../features/song/songsSlice";
 import { useDispatch, useSelector } from "react-redux";
 import DropdownAddPlaylist from "../Dropdown/AddPlaylist/AddPlaylist";
 import ListItemButton from "@mui/material/ListItemButton";
@@ -27,16 +28,17 @@ function SongCard({ songName, songUrl, songArtist }) {
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
 
-  const handleClick = () => {
-    console.log(currentSong);
+  const handlePlay = () => {
     if(currentSong[0].audio === ""){
-      console.log("carapolla!");
-      dispatch(addFirstCurrentSong([{isPlaying: true, audio: songUrl, songName: songName, songArtist: songArtist}]))
+      dispatch(addFirstCurrentSong([{isPlaying: true, audio: songUrl, songName: songName, songArtist: songArtist}]));
     }
     else{
-      dispatch(addCurrentSong({isPlaying: true, audio: songUrl, songName: songName, songArtist: songArtist}));
+      dispatch(addPlayQueue({isPlaying: true, audio: songUrl, songName: songName, songArtist: songArtist}));
     }
   };
+  const handleQueue = () => {
+    dispatch(addCurrentSong({isPlaying: true, audio: songUrl, songName: songName, songArtist: songArtist}));
+  }
 
   const [open, setOpen] = React.useState(false);
 
@@ -77,8 +79,11 @@ function SongCard({ songName, songUrl, songArtist }) {
         </CardContent>
       </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', pl: 1, pb: 1 }}>
-        <IconButton aria-label="play/pause" onClick={handleClick}>
+        <IconButton aria-label="play/pause" onClick={handlePlay}>
           <PlayArrowIcon sx={{ height: 38, width: 38 }} />
+        </IconButton>
+        <IconButton aria-label="play/pause" onClick={handleQueue}>
+          <QueueMusicIcon sx={{ height: 38, width: 38 }} />
         </IconButton>
         <FavIcon/>
         <IconButton>
