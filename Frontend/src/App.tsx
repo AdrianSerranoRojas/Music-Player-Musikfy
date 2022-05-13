@@ -17,12 +17,10 @@ import AddSong from "./Pages/addSong/addSong";
 import MySongs from "./Pages/MySongs/MySongs";
 import SinglePlaylist from "./Pages/Playlists/SinglePlaylist";
 import Playlists from "./Pages/Playlists/Playlists";
-
 import { NotFound } from "./components/NotFound/NotFound";
 import { AddShoppingCart } from "@mui/icons-material";
 
 export default function App() {
-  console.log("Juan eres un carapolla!");
   const [currentUser, setCurrentUser] = useState(null);
   useEffect(() => {
     let unsubscribeFromAuth = null;

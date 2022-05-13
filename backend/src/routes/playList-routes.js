@@ -20,6 +20,7 @@ import {
   followPlaylist,
   cancelFollowPlaylist,
   addSongToPlaylist,
+  updatePlaylistById
   // getUserPlayList,
   // createUser,
   // updateUser,
@@ -39,6 +40,9 @@ playlistRouter.put("/top", authMiddleware, bestListSongs);
 // playlistRouter.get("/all", authMiddleware, fetchPlaylists);
 playlistRouter.get("/playlists/all", getPlayList);
 playlistRouter.post("/playlists", authMiddleware, createPlaylist2);
+playlistRouter.put("/playlists/:id", authMiddleware, removePlaylistById);
+playlistRouter.delete("/playlists/:id", authMiddleware, updatePlaylistById);
+
 // playlistRouter.get("/",  createPlaylist2);
 // playlistRouter.patch("/songs/:id", authMiddleware, removeSongFromPlaylist);
 // playlistRouter.get("/public/:id", authMiddleware, fetchPublicPlaylists);

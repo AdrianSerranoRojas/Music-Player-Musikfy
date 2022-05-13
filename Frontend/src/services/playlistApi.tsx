@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getCurrentUserToken } from "../firebase/firebase";
 
 // Define a service using a base URL and expected endpoints
-export const songApi = createApi({
-  reducerPath: "songApi",
+export const playlistApi = createApi({
+  reducerPath: "playlistApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:4000",
     prepareHeaders: async (headers, { getState }) => {
@@ -16,17 +16,28 @@ export const songApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getSongs: builder.query({
-      query: () => `/songs`,
+    getPlaylists: builder.query({
+      query: () => `/playlists/all`,
     }),
-    getMySongs: builder.query({
-      query: () => `/mySongs`,
-    }),
-    createSong: builder.mutation({
+    createPlaylist: builder.mutation({
       query: (body) => ({
-        url: `/songs`,
+        url: `/playlists`,
         method: "POST",
         body,
+      }),
+    }),
+    updatePlaylist: builder.mutation({
+      query: (id,body) => ({
+        url: `/playlists/${id}`,
+        method: "PUT",
+        body: body,
+      }),
+    }),
+    deletePlaylist: builder.mutation({
+      query: (id) => ({
+        url: `/playlists/${id}`,
+        method: "DELETE",
+        body: id,
       }),
     }),
   }),
@@ -34,5 +45,9 @@ export const songApi = createApi({
 
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
-export const { useGetSongsQuery, useCreateSongMutation, useGetMySongsQuery } =
-  songApi;
+export const {
+  useGetPlaylistsQuery,
+  useCreatePlaylistMutation,
+  useDeletePlaylistMutation,
+  useUpdatePlaylistMutation,
+} = playlistApi;
