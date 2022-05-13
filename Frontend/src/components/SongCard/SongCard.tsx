@@ -28,8 +28,6 @@ function SongCard({ songName, songUrl, songArtist }) {
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
-  // console.log("songName",songName);
-  
 
   const handlePlay = () => {
     if(currentSong[0].audio === ""){

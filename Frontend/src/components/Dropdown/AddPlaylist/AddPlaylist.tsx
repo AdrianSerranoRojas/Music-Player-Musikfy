@@ -17,18 +17,13 @@ import {
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
 const MenuProps = {
-    PaperProps: {
+  PaperProps: {
     style: {
-        maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-        width: 250,
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
     },
-},
+  },
 };
-
-const names = [
-    'Sad Songs',
-    'Paleta Songs',
-];
 
 function DropdownAddPlaylist() {
   const navigate = useNavigate();
@@ -37,13 +32,13 @@ function DropdownAddPlaylist() {
   ();
   const [personName, setPersonName] = React.useState([]);
 
-    const handleChange = (event) => {
+  const handleChange = (event) => {
     const {
-        target: { value },
+      target: { value },
     } = event;
     setPersonName(
       // On autofill we get a stringified value.
-        typeof value === 'string' ? value.split(',') : value,
+      typeof value === "string" ? value.split(",") : value
     );
   };
   const handleAddSongPlaylist = (name) => {
@@ -55,26 +50,27 @@ function DropdownAddPlaylist() {
   };
   return (
     <div>
-        <FormControl sx={{ width: 300 }}>
-        <InputLabel id="demo-multiple-checkbox-label">Add to a Playlist</InputLabel>
+      <FormControl sx={{ m: 1, width: 300 }}>
+        <InputLabel id="demo-multiple-checkbox-label">Tag</InputLabel>
         <Select
-            labelId="demo-multiple-checkbox-label"
-            id="demo-multiple-checkbox"
-            multiple
-            value={personName}
-            onChange={handleChange}
-            input={<OutlinedInput label="Add" />}
-            renderValue={(selected) => selected.join(', ')}
-            MenuProps={MenuProps}
+          labelId="demo-multiple-checkbox-label"
+          id="demo-multiple-checkbox"
+          multiple
+          value={personName}
+          onChange={handleChange}
+          input={<OutlinedInput label="Tag" />}
+          renderValue={(selected) => selected.join(", ")}
+          MenuProps={MenuProps}
         >
-            {names.map((name) => (
-            <MenuItem key={name} value={name}>
-                <Checkbox checked={personName.indexOf(name) > -1} />
-                <ListItemText primary={name} />
+          {isSuccess && data.data.map((name) => (
+            <MenuItem key={name.title} value={name.title}>
+              <Checkbox checked={personName.indexOf(name.title) > -1} />
+              <button onClick={()=>handleAddSongPlaylist(name)}>ok</button>
+              <ListItemText primary={name.title} />
             </MenuItem>
-            ))}
+          ))}
         </Select>
-        </FormControl>
+      </FormControl>
     </div>
   );
 }
