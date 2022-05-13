@@ -25,10 +25,10 @@ import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCar
 
 const Home = () => {
   return (
-    <Box sx={{display:'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap:4 }}>
+    <Box sx={{display:'flex', gridTemplateColumns: 'repeat(2, 1fr)', gap:4 }}>
       <SearchSongListing />
-      <LikesCard />
-      <PlaylistsCard />
+      {/* <LikesCard />
+      <PlaylistsCard /> */}
     </Box>
   );
 };
