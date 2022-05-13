@@ -19,7 +19,6 @@ import { useDispatch } from "react-redux";
 import { addSongFile, updateSongFile } from "../../features/song/songsSlice";
 import { useCreateSongMutation } from "../../services/songApi";
 import { CardMedia } from "@mui/material";
-import Typography from '@mui/material/Typography';
 
 const songSchema = Yup.object().shape({
   files: Yup.mixed().required(),
@@ -98,17 +97,36 @@ function AddSongForm() {
       <Box>
         <Typography variant="h3" align="center">Upload Song</Typography>
       </Box>
-      <section className="row row-cols-1">
-        <div className="col">
-          <h2 className="h5 mb-3">upload your own songs</h2>
+      {/* DROPZONE */}
+      <div>
+        <div className="dropzone" {...getRootProps()}>
+          <input type="text" placeholder="as" {...getInputProps()} />
+          {isDragActive ? "Drag active" : "You can drop your files"}
         </div>
-        <div className="col">
-          <Formik
-            onSubmit={(values) => {
-              handleSubmit(values);
-            }}
-            initialValues={initialValues}
-            validationSchema={songSchema}
+        {image.length > 0 && (
+          <div>
+            {image.map((image, index) => (
+              <CardMedia
+                component="img"
+                height="140"
+                image={image}
+                key={index}
+                alt="green iguana"
+              />
+              // <img src={image} key={index} />
+            ))}
+          </div>
+        )}
+        {image.length > 0 ? (
+          <Button onClick={insertFile} variant="contained" color="primary">
+            Upload Song
+          </Button>
+        ) : (
+          <Button
+            onClick={insertFile}
+            variant="contained"
+            color="primary"
+            disabled
           >
             {({
               setFieldValue,
