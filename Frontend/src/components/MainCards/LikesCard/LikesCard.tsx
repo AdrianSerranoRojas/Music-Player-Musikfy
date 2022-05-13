@@ -8,12 +8,21 @@ function LikesCard() {
 
   return (
     <>
-      <Box sx={{maxwidth: 750,
-            maxheight: 440}}>
-        <Typography variant="h5" align='center' fontFamily='Vollkorn, serif'>Most liked Songs!</Typography>
+      <Box sx={{ maxwidth: 750, maxheight: 440 }}>
+        <Typography variant="h5" align="center" fontFamily="Vollkorn, serif">
+          Most liked Songs!
+        </Typography>
         {isSuccess &&
           data.data.map((song, index) => {
-            return <SongCard key={index} songName={song.songName} songUrl={song.songFile.url} songArtist={song.songArtist} />;
+            return (
+              <SongCard
+                songName={song?.songData?.title}
+                songUrl={song.songFile.url}
+                key={index}
+                songArtist={song?.songData?.artist}
+                // id={song._id}
+              />
+            );
           })}
       </Box>
     </>

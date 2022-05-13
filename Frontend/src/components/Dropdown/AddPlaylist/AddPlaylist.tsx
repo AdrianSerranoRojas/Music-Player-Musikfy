@@ -1,11 +1,18 @@
-import * as React from 'react';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import ListItemText from '@mui/material/ListItemText';
-import Select from '@mui/material/Select';
-import Checkbox from '@mui/material/Checkbox';
+import  React from "react";
+import {useNavigate} from "react-router-dom"
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import ListItemText from "@mui/material/ListItemText";
+import Select from "@mui/material/Select";
+import Checkbox from "@mui/material/Checkbox";
+import {
+  useGetPlaylistsQuery,
+  useCreatePlaylistMutation,
+  useUpdatePlaylistMutation
+} from "../../../services/playlistApi";
+
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;
@@ -24,8 +31,10 @@ const names = [
 ];
 
 function DropdownAddPlaylist() {
-  const { data, isLoading, isSuccess } = useGetPlaylistsQuery();
-  const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation();
+  const navigate = useNavigate();
+  const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
+  const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation
+  ();
   const [personName, setPersonName] = React.useState([]);
 
     const handleChange = (event) => {
@@ -36,9 +45,15 @@ function DropdownAddPlaylist() {
       // On autofill we get a stringified value.
         typeof value === 'string' ? value.split(',') : value,
     );
-};
-
-return (
+  };
+  const handleAddSongPlaylist = (name) => {
+    console.log(name._id);
+    const body= {song:["unaCancion"]}
+    console.log(body);
+    updatePlaylist(name._id,body)
+    refetch()
+  };
+  return (
     <div>
         <FormControl sx={{ width: 300 }}>
         <InputLabel id="demo-multiple-checkbox-label">Add to a Playlist</InputLabel>

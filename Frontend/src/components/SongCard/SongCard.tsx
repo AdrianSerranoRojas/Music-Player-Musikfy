@@ -27,6 +27,9 @@ function SongCard({ songName, songUrl, songArtist }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
+  const [open, setOpen] = React.useState(false);
+  // console.log("songName",songName);
+  
 
   const handlePlay = () => {
     if(currentSong[0].audio === ""){
@@ -39,8 +42,6 @@ function SongCard({ songName, songUrl, songArtist }) {
   const handleQueue = () => {
     dispatch(addCurrentSong({isPlaying: true, audio: songUrl, songName: songName, songArtist: songArtist}));
   }
-
-  const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => {
     setOpen(!open);
@@ -60,7 +61,7 @@ function SongCard({ songName, songUrl, songArtist }) {
       <Box sx={{ display: "flex", flexDirection: "column" }}>
         <CardContent sx={{ flex: "1 0 auto" }}>
           <Typography component="div" variant="h5">
-            {songName}
+            {songName }
           </Typography>
           <Typography
             variant="subtitle1"
@@ -93,11 +94,11 @@ function SongCard({ songName, songUrl, songArtist }) {
           <AddIcon sx={{ height: 30, width: 30 }}/>
         </IconButton>
         <Collapse in={open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
-                    <DropdownAddPlaylist />
-                </ListItemButton>
-            </List>
+          <List component="div" disablePadding>
+            <ListItemButton sx={{ pl: 4 }}>
+              <DropdownAddPlaylist />
+            </ListItemButton>
+          </List>
         </Collapse>
       </Box>
       </Card>
