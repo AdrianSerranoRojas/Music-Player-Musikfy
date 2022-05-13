@@ -21,7 +21,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
-import Logo from "./Logo.js";
+import Logo from "./Logo";
 import navbarList, { navbarListLogout } from "./SideBarData";
 import StyledAvatar from "./StyledAvatar";
 

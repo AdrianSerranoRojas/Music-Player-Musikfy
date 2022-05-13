@@ -83,9 +83,6 @@ function withLayout(WrappedComponent: any) {
           <WrappedComponent {...props} />
         </Widget>
         <SideBar />
-        {/* <Widget2>
-          <PlayerH5/>
-        </Widget2> */}
         <WallPaper />
       </>
     );
