@@ -5,6 +5,23 @@ import { Button } from "@mui/material";
 import { useDropzone } from "react-dropzone";
 import { useCreateSongMutation } from "../../services/songApi";
 import { CardMedia } from "@mui/material";
+import { styled } from "@mui/material/styles";
+  const Widget = styled("div")(({ theme }) => ({
+    overflowX: "hidden",
+    padding: 16,
+    borderRadius: 16,
+    width: "80%",
+    maxWidth: "100%",
+    marginTop: "4%",
+    marginLeft: "12.5%",
+    position: "relative",
+    zIndex: 1,
+    backgroundColor:
+      theme.palette.mode === "dark"
+        ? "rgba(0,0,0,0.6)"
+        : "rgba(255,255,255,0.4)",
+    backdropFilter: "blur(40px)",
+  }));
 
 function AddSongForm() {
   let signUpError = false;
@@ -45,10 +62,10 @@ function AddSongForm() {
       </Box>
       {/* DROPZONE */}
       <div>
-        <div className="dropzone" {...getRootProps()}>
+        <Widget className="dropzone" {...getRootProps()}>
           <input type="text" placeholder="as" {...getInputProps()} />
           {isDragActive ? "Drag active" : "You can drop your files"}
-        </div>
+        </Widget>
         {image.length > 0 && (
           <div>
             {image.map((image, index) => (
