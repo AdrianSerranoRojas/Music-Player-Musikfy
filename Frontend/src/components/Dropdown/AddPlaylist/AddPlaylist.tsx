@@ -24,7 +24,9 @@ const names = [
 ];
 
 function DropdownAddPlaylist() {
-    const [personName, setPersonName] = React.useState([]);
+  const { data, isLoading, isSuccess } = useGetPlaylistsQuery();
+  const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation();
+  const [personName, setPersonName] = React.useState([]);
 
     const handleChange = (event) => {
     const {

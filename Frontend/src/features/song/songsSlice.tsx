@@ -47,6 +47,11 @@ export const songsSlice = createSlice({
       state.currentSong = [...state.currentSong, action.payload];
       return state;
     },
+    addPlayQueue: (state, action) =>{
+      let actualSong = state.currentSong[state.trackIndex]
+      state.currentSong[state.trackIndex] = action.payload;
+      state.currentSong = [...state.currentSong, actualSong];
+    },
     setFilterSong: (state, action) => {
       state.filterSong = action.payload;
     },
@@ -69,6 +74,7 @@ export const {
   addFirstCurrentSong,
   setFilterSong,
   setTrackIndex,
+  addPlayQueue,
 } = songsSlice.actions;
 
 export const songsSelector = (state) => state.songs;
