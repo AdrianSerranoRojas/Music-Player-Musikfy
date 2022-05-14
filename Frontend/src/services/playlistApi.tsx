@@ -27,9 +27,9 @@ export const playlistApi = createApi({
       }),
     }),
     updatePlaylist: builder.mutation({
-      query: (id,...patch) => ({
+      query: ({id,...patch}) => ({
         url: `/playlists/${id}`,
-        method: "PUT",
+        method: "PATCH",
         body: patch,
       }),
     }),
@@ -37,7 +37,6 @@ export const playlistApi = createApi({
       query: (id) => ({
         url: `/playlists/${id}`,
         method: "DELETE",
-        // body: id,
       }),
     }),
   }),

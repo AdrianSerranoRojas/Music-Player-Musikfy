@@ -3,21 +3,13 @@ import { Playlists } from "../models/playList-models.js";
 
 export async function getPlayList(req, res) {
   try {
-    const playlists = await Playlists.find();
-    // .select({
-    //   songUrl: 1,
-    //   songName: 1,
-    // })
-    // .lean()
-    // .exec();
-
+    const playlists = await Playlists.find().lean().exec();
     res.status(200).send({
       data: playlists,
     });
   } catch (error) {
     next(error);
   }
-  // res.json({message: "hi playlist"})
 }
 export async function createPlaylist(req, res, next) {
   const { uid } = req.user;
@@ -52,7 +44,7 @@ export async function createPlaylist(req, res, next) {
 export async function createPlaylist2(req, res, next) {
   // const { title, description, genre, private, image } = req.body.playlist;
   console.log(req.body);
-   const { title } = req.body;
+  const { title } = req.body;
   // const { uid } = req.user;
   console.log("log de title", title);
   try {
@@ -77,8 +69,6 @@ export async function createPlaylist2(req, res, next) {
       message: "OK",
     });
 
-
-    
     // res.json({message: "hi playlist"})
   } catch (error) {
     next(error);
@@ -164,35 +154,43 @@ export async function orderPlaylistsSongs(req, res, next) {
     next(error);
   }
 }
-export async function  updatePlaylistById (req, res, next) {
-  const { id } = req.params;
-  // const {bodyUpdate } = req.body
-  console.log("este ni se si sale",id);
-  // const playlistUpdate = await Playlists.findOneAndUpdate(id,req.body )
+export async function updatePlaylistById(req, res, next) {
+  const { id: playlistId} = req.params
+  const songId = req.body;
+  const { uid } = req.user;
+  // const { id: songId } = req.params;
+  // const { playlistId } = req.body;
+  const { userId } = req.body;
+  try {
+    const checkPlaylist = await Playlists.findById(playlistId);
+    if (!checkPlaylist.songs.includes(songId)) {
+      await Playlists.findOneAndUpdate(
+        { _id: playlistId},
+        {
+          $push: { songs: [{ _id: songId }] },
+        },
+        {
+          $push: {fans: [{ _id:  userId }] },
+        },
+        { new: true }
+      );
+    }
+    res.status(200).send({
+      message: "OK",
+    });
+  } catch (error) {
+    next(error);
+  }
+ 
 }
 export async function removePlaylistById(req, res, next) {
   const { id } = req.params;
-  // const { userId } = req.body;
-  console.log(">>>>>>>",id);
 
   try {
-    // await Playlists.deleteOne({ _id: id });
-    // await db.User.findOneAndUpdate(
-    //   { firebase_id: userId },
-    //   {
-    //     $pull: { myPlaylists: id, myFavoritePlaylists: id },
-    //   },
-    //   { new: true }
-    // );
-    const playlistsRemove = await Playlists.findByIdAndDelete(id,{new: true})
-    .lean()
-    .exec();
-    // .select({
-    //   songUrl: 1,
-    //   songName: 1,
-    // })
-    // res.status(200).send({
-    //   data: playlists,
+    const playlistsRemove = await Playlists.findByIdAndDelete(id, { new: true })
+      .lean()
+      .exec();
+
     res.status(200).send({
       message: "OK",
     });
@@ -228,7 +226,6 @@ export async function updatePlaylist(req, res, next) {
     next(error);
   }
 }
-updatePlaylistById
 
 export async function addSongToPlaylist(req, res, next) {
   const { id: songId } = req.params;

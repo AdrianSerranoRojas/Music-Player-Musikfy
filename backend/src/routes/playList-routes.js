@@ -41,7 +41,7 @@ playlistRouter.put("/top", authMiddleware, bestListSongs);
 playlistRouter.get("/playlists/all", getPlayList);
 playlistRouter.post("/playlists", authMiddleware, createPlaylist2);
 playlistRouter.delete("/playlists/:id", authMiddleware, removePlaylistById);
-playlistRouter.put("/playlists/:id", authMiddleware, updatePlaylistById);
+playlistRouter.patch("/playlists/:id", authMiddleware, updatePlaylistById);
 
 // playlistRouter.get("/",  createPlaylist2);
 // playlistRouter.patch("/songs/:id", authMiddleware, removeSongFromPlaylist);

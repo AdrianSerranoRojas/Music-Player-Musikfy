@@ -25,11 +25,13 @@ const MenuProps = {
   },
 };
 
-function DropdownAddPlaylist() {
+function DropdownAddPlaylist({id}) {
   const navigate = useNavigate();
   const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
   const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation
   ();
+  
+  
   const [personName, setPersonName] = React.useState([]);
 
   const handleChange = (event) => {
@@ -42,10 +44,12 @@ function DropdownAddPlaylist() {
     );
   };
   const handleAddSongPlaylist = (name) => {
-    console.log(name._id);
-    const body= {song:["unaCancion"]}
-    console.log(body);
-    updatePlaylist(name._id,body)
+    console.log("id lista",name._id);
+    console.log(id);
+    const idPlaylist = name._id;
+    const idSong= {song:id}
+    console.log(idSong);
+    updatePlaylist({idPlaylist,id})
     refetch()
   };
   return (
