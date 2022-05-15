@@ -11,7 +11,7 @@ const PlaylistSchema = new Schema(
       default: [],
     },
     songs: {
-      type: [{ type: Schema.Types.ObjectId, ref: "songs" }],
+      type: [{ type: Schema.Types.ObjectId, ref: "song" }],
       default: [],
     },
   },

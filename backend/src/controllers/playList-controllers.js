@@ -155,15 +155,22 @@ export async function orderPlaylistsSongs(req, res, next) {
   }
 }
 export async function updatePlaylistById(req, res, next) {
-  const { id: playlistId} = req.params
-  const songId = req.body;
+  const playlistId = req.body.idPlaylist;
+  const { id: songId} = req.params
   const { uid } = req.user;
   // const { id: songId } = req.params;
+  console.log("<<<<<<<<playlist<<<<<<<",playlistId);
+  console.log("??????<songId<<<<<<<<<<",songId);
+  console.log("---------- uid<<<<<<<", uid);
   // const { playlistId } = req.body;
   const { userId } = req.body;
   try {
-    const checkPlaylist = await Playlists.findById(playlistId);
-    if (!checkPlaylist.songs.includes(songId)) {
+    const checkPlaylist = await Playlists.findById(playlistId)
+    ;
+    // if (!checkPlaylist.includes(songId)) {
+      if (!checkPlaylist.songs.includes(songId)) {
+      console.log("no existe !!!!!!!",checkPlaylist);
+
       await Playlists.findOneAndUpdate(
         { _id: playlistId},
         {

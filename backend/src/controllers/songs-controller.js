@@ -1,5 +1,6 @@
 // import db from "../models";
 import { Songs } from "../models/songs-model.js";
+import { User } from "../models/user-model.js";
 import {
   uploadSongCloud,
   deleteImageCloud,
@@ -133,33 +134,92 @@ export async function getMySongs(req, res, next) {
     next(error);
   }
 }
+export async function likeSong(req, res, next) {
+  const songId = req.body.songId;
+  const userId = req.user.uid;
+  try {
+    const checkUser = await User.findOne({ _id: userId });
+    console.log(checkUser);
+    if (!checkUser.myFavoriteSongs.includes(songId)) {
+      const song = await Songs.findOneAndUpdate(
+        { _id: songId },
+        {
+          $inc: {
+            likes: 1,
+          },
+        }
+      );
+      await User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $push: { myFavoriteSongs: [{ _id: songId }] },
+        }
+      );
+    }
 
-// async function getSingleSong(req, res, next) {
-//   const { productId } = req.params;
+    res.status(200).send({
+      message: "OK",
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
-//   try {
-//     const product = await db.Product.findOne({ _id: productId })
-//       .select({
-//         title: 1,
-//         pages: 1,
-//       })
-//       .populate({
-//         path: "author",
-//         select: {
-//           firstName: 1,
-//           lastName: 1,
-//         },
-//       })
-//       .lean()
-//       .exec();
+export async function cancelLikeSong(req, res, next) {
+  const { id: songId } = req.params;
+  const { userId } = req.body;
+  try {
+    const checkUser = await User.findOne({ _id: userId });
+    if (checkUser.myFavoriteSongs.includes(songId)) {
+      await Songs.findOneAndUpdate(
+        { _id: songId },
+        {
+          $inc: {
+            likes: -1,
+          },
+        },
+        { new: true }
+      );
 
-//     res.status(200).send({
-//       data: product,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// }
+      await User.findOneAndUpdate(
+        { _id: userId },
+        {
+          $pull: { myFavoriteSongs: songId },
+        },
+        { new: true }
+      );
+    }
+    res.status(200).send({
+      message: "OK",
+    });
+  } catch (error) {
+    next(error);
+  }
+}
+export async function getSong(req, res, next) {
+  const { songId } = req.params;
+  console.log(songId);
+
+  try {
+    const song = await Songs.findOne({ _id: songId })
+      .select({})
+      // .populate({
+      //   path: "author",
+      //   select: {
+      //     firstName: 1,
+      //     lastName: 1,
+      //   },
+      // })
+      .lean()
+      .exec();
+
+    res.status(200).send({
+      data: song,
+    });
+  } catch (error) {
+    next(error);
+  }
+}
 
 // async function updateProduct(req, res, next) {
 //   const { productId } = req.params;
@@ -209,12 +269,7 @@ export async function getMySongs(req, res, next) {
 //   }
 // }
 
-
-
-
 // import db from "../models";
-
-
 
 // import { Songs } from "../models/songs-model.js";
 // import {

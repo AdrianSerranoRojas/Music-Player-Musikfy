@@ -2,12 +2,12 @@ import Header from "../components/Header";
 import SideBar from "../components/SideBar/SideBar";
 // import PlayerH5 from "../components/PlayerH5/PlayerH5";
 import { styled } from "@mui/material/styles";
-
+import Box from "@mui/material/Box";
+import SearchSongListing from "../components/SearchSongListing/SearchSongListing";
 
 const Widget = styled("div")(({ theme }) => ({
-  overflowY: "scroll",
-  overflowX: "hidden",
-  padding: 16,
+  overflowY: "hidden",
+  padding: 10,
   borderRadius: 16,
   width: "80%",
   maxWidth: "100%",
@@ -67,7 +67,6 @@ const WallPaper = styled("div")({
     transform: "rotate(30deg)",
   },
 });
-
 
 function getDisplayName(WrappedComponent: any) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";

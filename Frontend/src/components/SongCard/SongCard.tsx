@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -10,6 +10,7 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import AddIcon from "@mui/icons-material/Add";
 import { height } from "@mui/system";
@@ -27,12 +28,24 @@ import Collapse from "@mui/material/Collapse";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import FavIcon from "../FavIcon/FavIcon";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { useLikeSongMutation, useGetSongQuery } from "../../services/songApi";
+import { useGetUserQuery } from "../../services/userApi";
+import { TrendingUpSharp } from "@mui/icons-material";
+import AuthContext from "../../context/AuthContext";
 
-function SongCard({ songName, songUrl, songArtist, id }) {
+
+
+function SongCard({ songName, songUrl, songArtist, songId,id }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
+  const currentUser = useContext(AuthContext);
+
   const [open, setOpen] = React.useState(false);
+  const { data: song } = useGetSongQuery(songId);
+  const { data: user, refetch } = useGetUserQuery(currentUser?.uid);
+  const [LikeSong, response] = useLikeSongMutation();
+  const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
   const handlePlay = () => {
     if (currentSong[0].audio === "") {
@@ -67,9 +80,18 @@ function SongCard({ songName, songUrl, songArtist, id }) {
       })
     );
   };
-
   const handleOpen = () => {
     setOpen(!open);
+  };
+  const handleLike = () => {
+    console.log(fav);
+    if (fav) {
+      refetch();
+      console.log("esta cancion ya te gusta loco!");
+    } else {
+      LikeSong({ songId, fav });
+      refetch();
+    }
   };
 
   return (
@@ -109,7 +131,14 @@ function SongCard({ songName, songUrl, songArtist, id }) {
           <IconButton aria-label="play/pause" onClick={handleQueue}>
             <QueueMusicIcon sx={{ height: 38, width: 38 }} />
           </IconButton>
-          <FavIcon />
+          {/* <FavIcon onClick={handleLike} /> */}
+          <IconButton onClick={handleLike} aria-label="save as favorite">
+            {fav === true ? (
+              <FavoriteIcon sx={{ height: 30, width: 30 }} />
+            ) : (
+              <FavoriteBorderIcon sx={{ height: 30, width: 30 }} />
+            )}
+          </IconButton>
           <IconButton>
             <DeleteIcon sx={{ height: 30, width: 30 }} />
           </IconButton>
