@@ -11,12 +11,18 @@ import {
   useCreatePlaylistMutation,
 } from "../../../services/playlistApi";
 
-function PlaylistsCard() {
+function AddPlayList({ listSelectFunc }) {
+ 
   const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
   const [createPlaylist, result] = useCreatePlaylistMutation();
   const [deletePlaylist, resultDelete] = useDeletePlaylistMutation();
   const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation();
+
   const [playlistName, setPlaylistName] = useState("List");
+
+  function handleSelectPlaylist(playlist) {
+    listSelectFunc(playlist);
+  }
 
   async function handleCreatePlaylist() {
     await createPlaylist({ title: playlistName });
@@ -49,11 +55,14 @@ function PlaylistsCard() {
           data.data.map((playlist, index) => {
             return (
               <ImageListItem key={index}>
-                <Typography variant="subtitle1" align="center">
-                  {playlist.title}
-                </Typography>
                 <button
-                  className="btn btn-warning"
+                  onClick={(e) => handleSelectPlaylist(playlist)}
+                  className="btn btn-link"
+                >
+                  {playlist.title}
+                </button>
+                <button
+                  className="btn btn-warning mt-2"
                   onClick={() => handleDeletePlaylist({ playlist })}
                 >
                   delete
@@ -73,4 +82,4 @@ function PlaylistsCard() {
   );
 }
 
-export default PlaylistsCard;
+export default AddPlayList;

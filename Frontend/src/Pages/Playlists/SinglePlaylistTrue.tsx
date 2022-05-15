@@ -11,10 +11,10 @@ import withLayout from "../../hoc/withLayout";
 import PlaylistModal from "../../components/PlaylistModal/PlaylistModal";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-function SinglePlaylist() {
+function SinglePlaylistTrue() {
 
   const Widget = styled("div")(({ theme }) => ({
-    padding: 16,
+    SinglePlaylistTrueadding: 16,
     borderRadius: 16,
     width: 830,
     maxWidth: "100%",
@@ -107,4 +107,4 @@ function SinglePlaylist() {
   );
 }
 
-export default withLayout(SinglePlaylist);
+export default withLayout(SinglePlaylistTrue);

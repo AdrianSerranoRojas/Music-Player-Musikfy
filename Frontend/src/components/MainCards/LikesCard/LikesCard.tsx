@@ -3,7 +3,7 @@ import Typography from "@mui/material/Typography";
 import SongCard from "../../SongCard/SongCard";
 import { useGetSongsQuery } from "../../../services/songApi";
 
-function LikesCard() {
+function SongListOfPlaylist() {
   const { data, isLoading, isSuccess } = useGetSongsQuery();
 
   return (
@@ -29,4 +29,4 @@ function LikesCard() {
   );
 }
 
-export default LikesCard;
+export default SongListOfPlaylist;

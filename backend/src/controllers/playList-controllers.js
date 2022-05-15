@@ -1,7 +1,7 @@
 import { Playlists } from "../models/playList-models.js";
 // import { uploadImagePlaylistCloud } from "../libs/cloudinary.js";
 
-export async function getPlayList(req, res) {
+export async function getPlayLists(req, res) {
   try {
     const playlists = await Playlists.find().lean().exec();
     res.status(200).send({
@@ -11,65 +11,30 @@ export async function getPlayList(req, res) {
     next(error);
   }
 }
-export async function createPlaylist(req, res, next) {
-  const { uid } = req.user;
-  const body = req.body;
-  let playlistImg = "";
-  try {
-    const newImage = req.body[0];
 
-    if (newImage) {
-      console.log("newImage");
-      const resultLoadImage = await uploadImagePlaylistCloud(newImage);
-      // await fs.remove(req.files.image.tempFilePath);
-      playlistImg = resultLoadImage.secure_url;
-    }
-    // guardar en la base de datos
-    // const song = await Song.findOne({ nameSong: nameSong });
-    // if (song) {
-    //   return res.sendStatus(200);
-    // }
-    const newPlaylist = await Playlists.create({
-      playlistImg: playlistImg,
-      name: body.name,
-      author: uid,
+export async function getPlayList(req, res, next) {
+  const { id } = req.params;
+  try {
+    const PlaylistsToSearch = await Playlists.find({_id: id }).lean();
+    console.log("aver si hay suerte",PlaylistsToSearch.songs);
+
+    res.status(200).send({
+      data: PlaylistsToSearch,
     });
-    console.log(newSong);
-    res.sendStatus(200);
-  } catch (error) {
-    next(error);
+  } catch (err) {
+    next(err);
   }
 }
 
-export async function createPlaylist2(req, res, next) {
-  // const { title, description, genre, private, image } = req.body.playlist;
-  console.log(req.body);
+export async function createPlaylist(req, res, next) {
   const { title } = req.body;
-  // const { uid } = req.user;
-  console.log("log de title", title);
   try {
     const newPlaylist = await Playlists.create({
       title: title,
-      // description,
-      // genre: genre,
-      // playlistImage: image,
-      // private,
-      // owner: uid,
     });
-    // await db.User.findOneAndUpdate(
-    //   { firebase_id: uid },
-    //   {
-    //     $push: {
-    //       myPlaylists: [{ _id: newPlaylist._id }],
-    //       myFavoritePlaylists: [{ _id: newPlaylist._id }],
-    //     },
-    //   }
-    // );
     res.status(200).send({
       message: "OK",
     });
-
-    // res.json({message: "hi playlist"})
   } catch (error) {
     next(error);
   }
@@ -156,29 +121,19 @@ export async function orderPlaylistsSongs(req, res, next) {
 }
 export async function updatePlaylistById(req, res, next) {
   const playlistId = req.body.idPlaylist;
-  const { id: songId} = req.params
+  const { id: songId } = req.params;
   const { uid } = req.user;
-  // const { id: songId } = req.params;
-  console.log("<<<<<<<<playlist<<<<<<<",playlistId);
-  console.log("??????<songId<<<<<<<<<<",songId);
-  console.log("---------- uid<<<<<<<", uid);
-  // const { playlistId } = req.body;
-  const { userId } = req.body;
   try {
-    const checkPlaylist = await Playlists.findById(playlistId)
-    ;
-    // if (!checkPlaylist.includes(songId)) {
-      if (!checkPlaylist.songs.includes(songId)) {
-      console.log("no existe !!!!!!!",checkPlaylist);
-
+    const checkPlaylist = await Playlists.findById(playlistId);
+    if (!checkPlaylist.songs.includes(songId)) {
       await Playlists.findOneAndUpdate(
-        { _id: playlistId},
+        { _id: playlistId },
         {
           $push: { songs: [{ _id: songId }] },
         },
-        {
-          $push: {fans: [{ _id:  userId }] },
-        },
+        // {
+        //   $push: {fans: [{ _id:  userId }] },
+        // },
         { new: true }
       );
     }
@@ -188,7 +143,6 @@ export async function updatePlaylistById(req, res, next) {
   } catch (error) {
     next(error);
   }
- 
 }
 export async function removePlaylistById(req, res, next) {
   const { id } = req.params;
