@@ -21,7 +21,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
-import Logo from "./Logo.js";
+import Logo from "./Logo";
 import navbarList, { navbarListLogout } from "./SideBarData";
 import StyledAvatar from "./StyledAvatar";
 
@@ -48,7 +48,7 @@ export default function SideNavbar({ ...props }) {
 
   const currentUser = useContext(AuthContext);
   const theme = useTheme();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const refFocus = useRef();
 
   function toogleOpen() {

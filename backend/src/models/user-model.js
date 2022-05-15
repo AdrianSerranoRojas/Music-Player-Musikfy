@@ -12,18 +12,6 @@ const UserSchema = new Schema(
       type: String,
       trim: true,
     },
-    gender: {
-      type: String,
-      trim: true,
-    },
-    birthday: {
-      type: String,
-      trim: true,
-    },
-    country: {
-      type: String,
-      trim: true,
-    },
     email: {
       type: String,
       required: [true, "The email is required"],
@@ -37,6 +25,10 @@ const UserSchema = new Schema(
     image: {
       url: String,
       public_id: String,
+    },
+    myFavoriteSongs: {
+      type: [{ type: Schema.Types.ObjectId, ref: "song" }],
+      default: [],
     },
   },
   { timestamps: true }

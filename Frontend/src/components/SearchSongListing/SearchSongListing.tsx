@@ -29,7 +29,6 @@ function SearchSongListing() {
   const { data, isLoading, isSuccess } = useGetSongsFilteredQuery(filterSong);
 
   useEffect(() => {
-    console.log(data);
   }, [data]);
 
   return (
@@ -58,6 +57,7 @@ function SearchSongListing() {
                     key={index}
                     songName={song.songName}
                     songUrl={song.songFile.url}
+                    songId={song._id}
                   />
                 );
               })}

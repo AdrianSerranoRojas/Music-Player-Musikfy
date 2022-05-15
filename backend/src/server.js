@@ -6,6 +6,7 @@ import fileUpload from "express-fileupload";
 
 import userRouter from "./routes/user-routes.js";
 import songsRouter from "./routes/songs-routes.js";
+import playlistRouter from "./routes/playList-routes.js";
 
 import config from "./config/config.js";
 
@@ -23,5 +24,6 @@ app.use(
 );
 app.use(userRouter);
 app.use(songsRouter);
+app.use(playlistRouter);
 
 export default app;

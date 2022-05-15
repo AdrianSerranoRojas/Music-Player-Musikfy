@@ -11,10 +11,6 @@ import VpnKeyIcon from "@mui/icons-material/VpnKey";
 import LockIcon from "@mui/icons-material/Lock";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 
-
-
-
-
 const navbarList = [
   {
     key: 1,
@@ -27,7 +23,7 @@ const navbarList = [
   {
     key: 2,
     icon: DashboardOutlined,
-    desc: "Dashboard",
+    desc: "Dashboard (solo songs)",
     secondDesc: "",
     badge: 0,
     subList: [],
@@ -42,47 +38,47 @@ const navbarList = [
     subList: [],
     path: "/profile",
   },
-  {
-    key: 4,
-    icon: LockIcon,
-    path: "/changePassword",
-    desc: "Change Password",
-    secondDesc: "",
-    badge: 0,
-    subList: [],
-  },
+  // {
+  //   key: 4,
+  //   icon: LockIcon,
+  //   path: "/changePassword",
+  //   desc: "Change Password",
+  //   secondDesc: "",
+  //   badge: 0,
+  //   subList: [],
+  // },
   {
     key: 5,
     icon: LibraryMusicIcon,
     path: "/addSong",
-    desc: "Add Song",
+    desc: "Liked Songs",
     secondDesc: "",
     badge: 1,
     subList: [],
   },
-  {
-    key: 6,
-    icon: Analytics,
-    path: "/",
-    desc: "Top Ten",
-    secondDesc: "",
-    badge: 0,
-    subList: [],
-  },
-  {
-    key: 7,
-    icon: FolderOpen,
-    path: "/",
-    desc: "Folder",
-    secondDesc: "",
-    badge: 0,
-    subList: [],
-  },
+  // {
+  //   key: 6,
+  //   icon: Analytics,
+  //   path: "/",
+  //   desc: "Top Ten",
+  //   secondDesc: "",
+  //   badge: 0,
+  //   subList: [],
+  // },
+  // {
+  //   key: 7,
+  //   icon: FolderOpen,
+  //   path: "/",
+  //   desc: "Folder",
+  //   secondDesc: "",
+  //   badge: 0,
+  //   subList: [],
+  // },
   {
     key: 8,
     icon: PlaylistPlayIcon,
     path: "/Playlist",
-    desc: "Playlist",
+    desc: "Playlist list hacer enlace a playlist",
     secondDesc: "",
     badge: 5,
     subList: [],
@@ -91,20 +87,20 @@ const navbarList = [
     key: 8,
     icon: PlaylistPlayIcon,
     path: "/mySongs",
-    desc: "My songs",
+    desc: "My songs (add songs and my songs)",
     secondDesc: "",
     badge: 0,
     subList: [],
   },
-  {
-    key: 9,
-    icon: Forum,
-    path: "/filter",
-    desc: "Filter",
-    secondDesc: "",
-    badge: 0,
-    subList: [],
-  },
+  // {
+  //   key: 9,
+  //   icon: Forum,
+  //   path: "/filter",
+  //   desc: "Filter",
+  //   secondDesc: "",
+  //   badge: 0,
+  //   subList: [],
+  // },
 ];
 
 export const navbarListLogout = [

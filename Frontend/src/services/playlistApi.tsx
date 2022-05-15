@@ -2,8 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getCurrentUserToken } from "../firebase/firebase";
 
 // Define a service using a base URL and expected endpoints
-export const songApi = createApi({
-  reducerPath: "songApi",
+export const playlistApi = createApi({
+  reducerPath: "playlistApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "http://localhost:4000",
     prepareHeaders: async (headers, { getState }) => {
@@ -16,49 +16,38 @@ export const songApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getSongs: builder.query({
-      query: () => `/songs`,
+    getPlaylists: builder.query({
+      query: () => `/playlists/all`,
     }),
-    getSong: builder.query({
-      query: (id) => `/songs/${id}`,
-    }),
-    getSongsFiltered: builder.query({
-      query: (filter) => `/songs/${filter}`,
-    }),
-    getMySongs: builder.query({
-      query: () => `/mySongs`,
-    }),
-    createSong: builder.mutation({
+    createPlaylist: builder.mutation({
       query: (body) => ({
-        url: `/songs`,
+        url: `/playlists`,
         method: "POST",
         body,
       }),
     }),
-    likeSong: builder.mutation({
-      query: ({ uid, ...patch }) => ({
-        url: `/like/${uid}`,
-        method: "PATCH",
+    updatePlaylist: builder.mutation({
+      query: (id,...patch) => ({
+        url: `/playlists/${id}`,
+        method: "PUT",
         body: patch,
       }),
     }),
-    notLikeSong: builder.mutation({
-      query: ({ uid, ...patch }) => ({
-        url: `/notLike/${uid}`,
-        method: "PATCH",
-        body: patch,
+    deletePlaylist: builder.mutation({
+      query: (id) => ({
+        url: `/playlists/${id}`,
+        method: "DELETE",
+        // body: id,
       }),
     }),
   }),
 });
+
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const {
-  useGetSongsQuery,
-  useCreateSongMutation,
-  useGetMySongsQuery,
-  useGetSongsFilteredQuery,
-  useLikeSongMutation,
-  useGetSongQuery,
-  useNotLikeSongMutation,
-} = songApi;
+  useGetPlaylistsQuery,
+  useCreatePlaylistMutation,
+  useDeletePlaylistMutation,
+  useUpdatePlaylistMutation,
+} = playlistApi;
