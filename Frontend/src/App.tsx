@@ -22,7 +22,6 @@ import FavoriteSongs from "./Pages/FavoriteSongs/FavoriteSongs";
 
 import { NotFound } from "./components/NotFound/NotFound";
 import Playlists2 from "./components/PlaylistModal/PlaylistModal";
-import DnDSongs from "./components/DragAndDrop/DragAndDrop";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState(null);

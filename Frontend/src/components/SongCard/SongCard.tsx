@@ -22,7 +22,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import FavIcon from "../FavIcon/FavIcon";
 import DeleteIcon from '@mui/icons-material/Delete';
 
-function SongCard({ songName, songUrl, songArtist }) {
+function SongCard({ songName, songUrl, songArtist, songUser }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
@@ -73,7 +73,7 @@ function SongCard({ songName, songUrl, songArtist }) {
             color="text.secondary"
             component="div"
           >
-            3:14
+            {songUser}
           </Typography>
         </CardContent>
       </Box>
