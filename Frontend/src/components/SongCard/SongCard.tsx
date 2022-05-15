@@ -28,7 +28,11 @@ import Collapse from "@mui/material/Collapse";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import FavIcon from "../FavIcon/FavIcon";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { useLikeSongMutation, useGetSongQuery } from "../../services/songApi";
+import {
+  useLikeSongMutation,
+  useGetSongQuery,
+  useNotLikeSongMutation,
+} from "../../services/songApi";
 import { useGetUserQuery } from "../../services/userApi";
 import { TrendingUpSharp } from "@mui/icons-material";
 import AuthContext from "../../context/AuthContext";
@@ -43,6 +47,8 @@ function SongCard({ songName, songUrl, songArtist, songId }) {
   const { data: song } = useGetSongQuery(songId);
   const { data: user, refetch } = useGetUserQuery(currentUser?.uid);
   const [LikeSong, response] = useLikeSongMutation();
+  const [NotLikeSong, response2] = useNotLikeSongMutation();
+
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
   const handlePlay = () => {
@@ -84,6 +90,7 @@ function SongCard({ songName, songUrl, songArtist, songId }) {
   const handleLike = () => {
     console.log(fav);
     if (fav) {
+      NotLikeSong({ songId, fav });
       refetch();
       console.log("esta cancion ya te gusta loco!");
     } else {

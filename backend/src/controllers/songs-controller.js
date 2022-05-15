@@ -166,8 +166,8 @@ export async function likeSong(req, res, next) {
 }
 
 export async function cancelLikeSong(req, res, next) {
-  const { id: songId } = req.params;
-  const { userId } = req.body;
+  const songId = req.body.songId;
+  const userId = req.user.uid;
   try {
     const checkUser = await User.findOne({ _id: userId });
     if (checkUser.myFavoriteSongs.includes(songId)) {

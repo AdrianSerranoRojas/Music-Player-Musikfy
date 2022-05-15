@@ -10,6 +10,7 @@ import {
   getMySongs,
   getSongsFilter,
   likeSong,
+  cancelLikeSong,
 } from "../controllers/songs-controller.js";
 
 const songsRouter = Router();
@@ -22,5 +23,6 @@ songsRouter.get("/mySongs", authMiddleware, getMySongs);
 songsRouter.post("/songs", authMiddleware, createSong);
 songsRouter.get("/songs/:filter", getSongsFilter);
 songsRouter.patch("/like/:id", authMiddleware, likeSong);
+songsRouter.patch("/notLike/:id", authMiddleware, cancelLikeSong);
 
 export default songsRouter;

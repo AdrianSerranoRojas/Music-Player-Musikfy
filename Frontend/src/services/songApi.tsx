@@ -42,9 +42,15 @@ export const songApi = createApi({
         body: patch,
       }),
     }),
+    notLikeSong: builder.mutation({
+      query: ({ uid, ...patch }) => ({
+        url: `/notLike/${uid}`,
+        method: "PATCH",
+        body: patch,
+      }),
+    }),
   }),
 });
-
 // Export hooks for usage in functional components, which are
 // auto-generated based on the defined endpoints
 export const {
@@ -54,4 +60,5 @@ export const {
   useGetSongsFilteredQuery,
   useLikeSongMutation,
   useGetSongQuery,
+  useNotLikeSongMutation,
 } = songApi;
