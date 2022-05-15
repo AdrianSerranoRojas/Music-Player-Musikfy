@@ -135,8 +135,6 @@ export async function getMySongs(req, res, next) {
   }
 }
 export async function likeSong(req, res, next) {
-
-
   const songId = req.body.songId;
   const userId = req.user.uid;
   try {
@@ -171,9 +169,9 @@ export async function cancelLikeSong(req, res, next) {
   const { id: songId } = req.params;
   const { userId } = req.body;
   try {
-    const checkUser = await db.User.findOne({ firebase_id: userId });
+    const checkUser = await User.findOne({ _id: userId });
     if (checkUser.myFavoriteSongs.includes(songId)) {
-      await db.Song.findOneAndUpdate(
+      await Songs.findOneAndUpdate(
         { _id: songId },
         {
           $inc: {
@@ -183,8 +181,8 @@ export async function cancelLikeSong(req, res, next) {
         { new: true }
       );
 
-      await db.User.findOneAndUpdate(
-        { firebase_id: userId },
+      await User.findOneAndUpdate(
+        { _id: userId },
         {
           $pull: { myFavoriteSongs: songId },
         },

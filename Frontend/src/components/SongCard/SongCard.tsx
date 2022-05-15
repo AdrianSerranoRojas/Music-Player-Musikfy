@@ -10,7 +10,7 @@ import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import SkipNextIcon from "@mui/icons-material/SkipNext";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import AddIcon from "@mui/icons-material/Add";
 import { height } from "@mui/system";
@@ -41,7 +41,7 @@ function SongCard({ songName, songUrl, songArtist, songId }) {
 
   const [open, setOpen] = React.useState(false);
   const { data: song } = useGetSongQuery(songId);
-  const { data: user } = useGetUserQuery("A1rLNZ2GKFYltamIAVYoDQq8thp1");
+  const { data: user, refetch } = useGetUserQuery(currentUser?.uid);
   const [LikeSong, response] = useLikeSongMutation();
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
@@ -83,10 +83,12 @@ function SongCard({ songName, songUrl, songArtist, songId }) {
   };
   const handleLike = () => {
     console.log(fav);
-    if (fav){
-      console.log("esta cancion ya te gusta loco!")
-    }else{
+    if (fav) {
+      refetch();
+      console.log("esta cancion ya te gusta loco!");
+    } else {
       LikeSong({ songId, fav });
+      refetch();
     }
   };
 
@@ -129,10 +131,10 @@ function SongCard({ songName, songUrl, songArtist, songId }) {
           </IconButton>
           {/* <FavIcon onClick={handleLike} /> */}
           <IconButton onClick={handleLike} aria-label="save as favorite">
-            {fav ? (
-              <FavoriteBorderIcon sx={{ height: 30, width: 30 }} />
-              ) : (
+            {fav === true ? (
               <FavoriteIcon sx={{ height: 30, width: 30 }} />
+            ) : (
+              <FavoriteBorderIcon sx={{ height: 30, width: 30 }} />
             )}
           </IconButton>
           <IconButton>
