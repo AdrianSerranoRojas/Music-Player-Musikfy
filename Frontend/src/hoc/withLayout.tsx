@@ -8,25 +8,11 @@ import SearchSongListing from "../components/SearchSongListing/SearchSongListing
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
   padding: 10,
-  borderRadius: 16,
+  borderRadius: 3,
   width: "80%",
   maxWidth: "100%",
   height: "70vh",
   marginTop: "4%",
-  marginLeft: "12.5%",
-  position: "relative",
-  zIndex: 1,
-  backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
-  backdropFilter: "blur(40px)",
-}));
-const Widget2 = styled("div")(({ theme }) => ({
-  overflowX: "hidden",
-  padding: 16,
-  borderRadius: 16,
-  width: "80%",
-  maxWidth: "100%",
-  height: "15%",
   marginLeft: "12.5%",
   position: "relative",
   zIndex: 1,

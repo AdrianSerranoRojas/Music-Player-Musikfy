@@ -9,21 +9,22 @@ import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsFilteredQuery } from "../../services/songApi";
 import { songsSelector } from "../../features/song/songsSlice";
 
+const Widget = styled("div")(({ theme }) => ({
+  overflowY: "scroll",
+  padding: 2,
+  height: "29vh",
+  borderRadius: 0,
+  width: "100%",
+  maxWidth: "100%",
+  margin: "auto",
+  position: "relative",
+  zIndex: 1,
+  backgroundColor:
+    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
+  backdropFilter: "blur(40px)",
+}));
+
 function SearchSongListing() {
-  const Widget = styled("div")(({ theme }) => ({
-    padding: 16,
-    borderRadius: 16,
-    width: 830,
-    maxWidth: "100%",
-    margin: "auto",
-    position: "relative",
-    zIndex: 1,
-    backgroundColor:
-      theme.palette.mode === "dark"
-        ? "rgba(0,0,0,0.6)"
-        : "rgba(255,255,255,0.4)",
-    backdropFilter: "blur(40px)",
-  }));
 
   const { filterSong } = useSelector(songsSelector);
   const { data, isLoading, isSuccess } = useGetSongsFilteredQuery(filterSong);
@@ -33,7 +34,7 @@ function SearchSongListing() {
 
   return (
     <>
-      <Box sx={{ pt: 5 }}>
+      <Box sx={{ pt: 0 }}>
         <Widget
           sx={{
             boxShadow: 4,
@@ -48,7 +49,6 @@ function SearchSongListing() {
               align="center"
               fontFamily="Vollkorn, serif"
             >
-              Songs!
             </Typography>
             {isSuccess &&
               data.data.map((song, index) => {

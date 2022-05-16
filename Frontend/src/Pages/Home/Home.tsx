@@ -27,8 +27,9 @@ import Slider from "../../components/Slider/Slider";
 
 const Home = () => {
   return (
-    <Box sx={{display:'flex', gridTemplateColumns: 'repeat(2, 1fr)', gap:4 }}>
-        <Slider/>
+    <Box sx={{ display: "flex", flexDirection: "column" }}>
+      <Slider />
+      <SearchSongListing />
       {/* <PlaylistsCard /> */}
     </Box>
   );
