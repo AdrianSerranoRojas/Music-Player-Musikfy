@@ -107,10 +107,10 @@ function SongCard({ songName, songUrl, songArtist, songId,id }) {
 
   return (
     <>
-      <Card variant="outlined" sx={{ display: "flex", height: 110 }}>
+      <Card variant="outlined" sx={{ display: "flex", height: 65 }}>
         <CardMedia
           component="img"
-          sx={{ width: 110, height: 110 }}
+          sx={{ width: 65, height: 65 }}
           image="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg"
           alt="Live from space album cover"
         />
@@ -137,24 +137,24 @@ function SongCard({ songName, songUrl, songArtist, songId,id }) {
         </Box>
         <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
           <IconButton aria-label="play/pause" onClick={handlePlay}>
-            <PlayArrowIcon sx={{ height: 38, width: 38 }} />
+            <PlayArrowIcon sx={{ height: 20, width: 20 }} />
           </IconButton>
           <IconButton aria-label="play/pause" onClick={handleQueue}>
-            <QueueMusicIcon sx={{ height: 38, width: 38 }} />
+            <QueueMusicIcon sx={{ height: 20, width: 20 }} />
           </IconButton>
           {/* <FavIcon onClick={handleLike} /> */}
           <IconButton onClick={handleLike} aria-label="save as favorite">
             {fav === true ? (
-              <FavoriteIcon sx={{ height: 30, width: 30 }} />
+              <FavoriteIcon sx={{ height: 20, width: 20 }} />
             ) : (
-              <FavoriteBorderIcon sx={{ height: 30, width: 30 }} />
+              <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
             )}
           </IconButton>
           <IconButton>
-            <DeleteIcon sx={{ height: 30, width: 30 }} />
+            <DeleteIcon sx={{ height: 20, width: 20 }} />
           </IconButton>
           <IconButton onClick={handleOpen}>
-            <AddIcon sx={{ height: 30, width: 30 }} />
+            <AddIcon sx={{ height: 20, width: 20 }} />
           </IconButton>
           <Collapse in={open} timeout="auto" unmountOnExit className="hola">
             <List component="div" disablePadding>

@@ -29,7 +29,11 @@ const WallPaper = styled("div")(({ theme }) => ({
   height: "100%",
   top: 0,
   left: 0,
-  background: "linear-gradient(rgb(255, 38, 142) 0%, rgb(255, 105, 79) 100%)",
+  background:
+  theme.palette.mode === "dark"
+      ? "linear-gradient(#0f0 0%, #e600f5 100%)"
+      : "linear-gradient(rgb(255, 38, 142) 0%, rgb(255, 105, 79) 100%)",
+  
   transition: "all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s",
   "&:before": {
     content: '""',
