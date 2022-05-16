@@ -10,7 +10,7 @@ function SongListOfPlaylist({ listSelect }) {
   if(isSuccess) {
     console.log(data);
   }
- 
+
   console.log("<<<<<<<<<listSelect", listSelect.songs);
 
   return (
