@@ -9,6 +9,7 @@ import {
 } from "../../services/songApi";
 import "../MySongs/MySongs.scss";
 import withLayout from "../../hoc/withLayout";
+import AddSongButton from "../../components/AddSongButton/AddSongButton";
 
 function MySongs() {
   const Widget = styled("div")(({ theme }) => ({
@@ -26,7 +27,7 @@ function MySongs() {
     backdropFilter: "blur(40px)",
   }));
 
-   const { data, isLoading, isSuccess } = useGetMySongsQuery();
+  const { data, isLoading, isSuccess } = useGetMySongsQuery();
   // const { data, isLoading, isSuccess } = useGetSongsFilteredQuery("basote");
 
   useEffect(() => {
@@ -50,7 +51,8 @@ function MySongs() {
               align="center"
               fontFamily="Vollkorn, serif"
             >
-              My Songs!
+              My Songs!!!
+              <AddSongButton />
             </Typography>
             {isSuccess &&
               data.data.map((song, index) => {

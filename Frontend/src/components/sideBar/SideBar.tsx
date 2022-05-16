@@ -91,7 +91,7 @@ export default function SideNavbar({ ...props }) {
             marginBottom: "9px",
           }}
         >
-          <Logo />
+
         </Box>
         <Typography
           variant="h1"

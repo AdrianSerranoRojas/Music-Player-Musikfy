@@ -17,7 +17,10 @@ export const playlistApi = createApi({
   }),
   endpoints: (builder) => ({
     getPlaylists: builder.query({
-      query: () => `/playlists/all`,
+      query: () => `/playlists`,
+    }),
+    getPlaylist: builder.query({
+      query: (id) => `/playlist/${id}`,
     }),
     createPlaylist: builder.mutation({
       query: (body) => ({
@@ -27,9 +30,9 @@ export const playlistApi = createApi({
       }),
     }),
     updatePlaylist: builder.mutation({
-      query: (id,...patch) => ({
+      query: ({id,...patch}) => ({
         url: `/playlists/${id}`,
-        method: "PUT",
+        method: "PATCH",
         body: patch,
       }),
     }),
@@ -37,7 +40,6 @@ export const playlistApi = createApi({
       query: (id) => ({
         url: `/playlists/${id}`,
         method: "DELETE",
-        // body: id,
       }),
     }),
   }),
@@ -47,6 +49,7 @@ export const playlistApi = createApi({
 // auto-generated based on the defined endpoints
 export const {
   useGetPlaylistsQuery,
+  useGetPlaylistQuery,
   useCreatePlaylistMutation,
   useDeletePlaylistMutation,
   useUpdatePlaylistMutation,

@@ -53,7 +53,7 @@ const navbarList = [
     path: "/addSong",
     desc: "Liked Songs",
     secondDesc: "",
-    badge: 1,
+    badge: 0,
     subList: [],
   },
   // {
@@ -80,7 +80,7 @@ const navbarList = [
     path: "/Playlist",
     desc: "Playlist list hacer enlace a playlist",
     secondDesc: "",
-    badge: 5,
+    badge: 0,
     subList: [],
   },
   {
