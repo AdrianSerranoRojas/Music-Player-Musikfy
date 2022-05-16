@@ -33,7 +33,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
   },
 }));
 
-export default function StyledAvatar({ currentUser }) {
+export default function StyledAvatar({ currentUser, imageURL }) {
   var colorUser = null;
   {
     currentUser ? (colorUser = "success") : (colorUser = "red");
@@ -51,7 +51,11 @@ export default function StyledAvatar({ currentUser }) {
           },
         }}
       >
-        <Avatar alt="Remy Sharp" sx={{ width: "32px", height: "32px" }}>
+        <Avatar
+          src={imageURL && imageURL }
+          alt="Remy Sharp"
+          sx={{ width: "32px", height: "32px" }}
+        >
           A
         </Avatar>
       </StyledBadge>
