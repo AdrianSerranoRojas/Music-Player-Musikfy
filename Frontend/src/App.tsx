@@ -25,7 +25,6 @@ import { styled } from "@mui/material/styles";
 
 import { NotFound } from "./components/NotFound/NotFound";
 import Playlists2 from "./components/PlaylistModal/PlaylistModal";
-import DnDSongs from "./components/DragAndDrop/DragAndDrop";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({
