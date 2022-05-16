@@ -97,6 +97,7 @@ function SongCard({ songName, songUrl, songArtist, songId }) {
       LikeSong({ songId, fav });
       refetch();
     }
+     refetch();
   };
 
   return (
