@@ -8,11 +8,11 @@ import SearchSongListing from "../components/SearchSongListing/SearchSongListing
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
   padding: 10,
-  borderRadius: 3,
+  borderRadius: 16,
   width: "80%",
   maxWidth: "100%",
-  height: "70vh",
-  marginTop: "4%",
+  height: "72vh",
+  marginTop: "2.5%",
   marginLeft: "12.5%",
   position: "relative",
   zIndex: 1,
@@ -21,7 +21,7 @@ const Widget = styled("div")(({ theme }) => ({
   backdropFilter: "blur(40px)",
 }));
 
-const WallPaper = styled("div")({
+const WallPaper = styled("div")(({ theme }) => ({
   zIndex: 0,
   position: "absolute",
   overflow: "hidden",
@@ -52,7 +52,7 @@ const WallPaper = styled("div")({
       "radial-gradient(at center center, rgb(247, 237, 225) 0%, rgba(247, 237, 225, 0) 70%)",
     transform: "rotate(30deg)",
   },
-});
+}));
 
 function getDisplayName(WrappedComponent: any) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
