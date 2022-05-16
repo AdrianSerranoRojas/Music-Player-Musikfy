@@ -20,11 +20,11 @@ import Playlists from "./Pages/Playlists/Playlists";
 import Filter from "./Pages/Filter/Filter";
 import FavoriteSongs from "./Pages/FavoriteSongs/FavoriteSongs";
 import PlayerH5 from "./components/PlayerH5/PlayerH5";
+import QueueListing from "./components/QueueListing/QueueListing";
 import { styled } from "@mui/material/styles";
 
 import { NotFound } from "./components/NotFound/NotFound";
 import Playlists2 from "./components/PlaylistModal/PlaylistModal";
-import DnDSongs from "./components/DragAndDrop/DragAndDrop";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({
@@ -98,6 +98,7 @@ export default function App() {
         </Routes>
         <Widget2>
           <PlayerH5 />
+          <QueueListing />
         </Widget2>
       </AuthContext.Provider>
     </>
