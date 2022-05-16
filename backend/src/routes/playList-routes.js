@@ -28,11 +28,23 @@ import {
 
 const playlistRouter = Router();
 
-playlistRouter.get("/playlists", authMiddleware, getPlayLists);
+//  >>>>>>>> pruebas test 
 
 playlistRouter.get("/test",  ((req,res)=>{
   res.sendStatus(200);
 }))
+
+playlistRouter.post("/test",  ((req,res)=>{
+  const {title} = req.body;
+  res.json({title});
+}))
+
+
+//  >>>>>>>>
+
+
+playlistRouter.get("/playlists", authMiddleware, getPlayLists);
+
 playlistRouter.get("/playlist/:id", authMiddleware, getPlayList);
 playlistRouter.post("/playlists", authMiddleware, createPlaylist);
 playlistRouter.delete("/playlists/:id", authMiddleware, removePlaylistById);
