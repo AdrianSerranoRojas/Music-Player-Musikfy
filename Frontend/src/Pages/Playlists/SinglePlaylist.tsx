@@ -2,7 +2,7 @@ import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
-import PlaylistsCard from "../../components/MainCards/AddPlayList/AddPlayList";
+import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
 
@@ -10,6 +10,7 @@ import "../MySongs/MySongs.scss";
 import withLayout from "../../hoc/withLayout";
 import PlaylistModal from "../../components/PlaylistModal/PlaylistModal";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { useState } from "react";
 
 function SinglePlaylist() {
 
@@ -28,11 +29,37 @@ function SinglePlaylist() {
     backdropFilter: "blur(40px)",
   }));
 
+  const reorder = (list, startIndex, endIndex) => {
+    const result = [...list];
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed)
+
+    return result;
+  }
+
   const { data, isLoading, isSuccess } = useGetSongsQuery();
+
+  const [songs, setSongs] = useState();
 
   return (
     <>
-    <DragDropContext onDragEnd={(result) => console.log(result)}>
+    <DragDropContext
+      // onDragEnd={(result) => {
+      //   const {source, destination} = result;
+      //   if (!destination) {
+      //     return;
+      //   }
+      //   if (
+      //     source.index === destination.index &&
+      //     source.droppableId === destination.droppableId
+      //     ) {
+      //       return;
+      //     }
+
+      //   setSongs((prevSongs) =>
+      //     reorder(prevSongs, source.index, destination.index));
+      // }}
+    >
       <Box>
         <Widget
           sx={{
@@ -91,6 +118,7 @@ function SinglePlaylist() {
                       <SongCard
                         songName={song.songName}
                         songUrl={song.songUrl}
+                        songUser={song.songUser.email}
                       />
                     </Box>
                   }

@@ -32,7 +32,8 @@ import { useLikeSongMutation, useGetSongQuery } from "../../services/songApi";
 import { useGetUserQuery } from "../../services/userApi";
 import { TrendingUpSharp } from "@mui/icons-material";
 import AuthContext from "../../context/AuthContext";
-
+import CloseIcon from '@mui/icons-material/Close';
+import "./SongCard.scss"
 
 
 function SongCard({ songName, songUrl, songArtist, songId,id }) {
@@ -80,9 +81,11 @@ function SongCard({ songName, songUrl, songArtist, songId,id }) {
       })
     );
   };
-  const handleOpen = () => {
-    setOpen(!open);
-  };
+
+  const [open1, setOpen1] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const handleLike = () => {
     console.log(fav);
     if (fav) {
@@ -145,10 +148,13 @@ function SongCard({ songName, songUrl, songArtist, songId,id }) {
           <IconButton onClick={handleOpen}>
             <AddIcon sx={{ height: 30, width: 30 }} />
           </IconButton>
-          <Collapse in={open} timeout="auto" unmountOnExit>
+          <Collapse in={open} timeout="auto" unmountOnExit className="hola">
             <List component="div" disablePadding>
-              <ListItemButton sx={{ pl: 4 }}>
+              <ListItemButton>
                 <DropdownAddPlaylist id={id} />
+                <ListItemButton onClick={handleClose}>
+                  <CloseIcon />
+                </ListItemButton>
               </ListItemButton>
             </List>
           </Collapse>

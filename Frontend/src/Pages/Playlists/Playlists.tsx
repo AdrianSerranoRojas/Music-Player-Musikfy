@@ -11,6 +11,7 @@ import {
 
 } from "../../services/playlistApi";
 import { Spinner } from "../../components/Spinner/Spinner";
+import { Typography } from "@mui/material";
 
 function Playlists() {
   const [listSelect, setListSelect] = useState();
@@ -78,18 +79,13 @@ function Playlists() {
   // }));
 
   return (
-    <div className="container d-flex flex-row">
-        {isLoading && <Spinner />}
-      <div className="col-6">
+    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',gap: 3}}>
         <AddPlayList  listSelectFunc={listSelectFunc} />
-      </div>
-      <div className="col-6">
         {listSelect ? (
           // <SongListOfPlaylist  playlistSongThisList={playlistSongThisList} listSelect={listSelect} />
           <SongListOfPlaylist listSelect={listSelect} />
-        ) :<div>Select a list</div>}
-      </div>
-    </div>
+        ) :<Typography sx={{ml: 30, mt: 35}} variant="h3">Select a list</Typography>}
+    </Box>
   );
 }
 

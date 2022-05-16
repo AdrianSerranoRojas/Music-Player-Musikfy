@@ -10,9 +10,28 @@ import {
   useUpdatePlaylistMutation,
   useCreatePlaylistMutation,
 } from "../../../services/playlistApi";
+import CardHeader from '@mui/material/CardHeader';
+import CardMedia from '@mui/material/CardMedia';
+import CardActions from '@mui/material/CardActions';
+import IconButton from '@mui/material/IconButton';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShareIcon from '@mui/icons-material/Share';
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import "./AddPlayList.scss";
+import DeleteIcon from '@mui/icons-material/Delete';
+import FavIconPlaylist from "../../FavIcon/FavIconPlaylist";
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Modal from "@mui/material/Modal";
+import { Button, TextField } from "@mui/material";
+import React from "react";
+import styled from '@mui/material/styles/styled';
 
 function AddPlayList({ listSelectFunc }) {
- 
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
   const [createPlaylist, result] = useCreatePlaylistMutation();
   const [deletePlaylist, resultDelete] = useDeletePlaylistMutation();
@@ -42,43 +61,67 @@ function AddPlayList({ listSelectFunc }) {
 
   return (
     <Box>
-      <Typography variant="h5" align="center" fontFamily="Vollkorn, serif">
-        Most liked Playlists!
-        <div>
-          <input type="text" onChange={(e) => handleChange(e)} />
-          <button onClick={handleCreatePlaylist}>Create Playlist</button>
-        </div>
-      </Typography>
-      <hr />
-      <ImageList sx={{ width: 800, height: 460 }} cols={4}>
-        {isSuccess &&
+    <Typography variant="h4" align="center" fontFamily="Vollkorn, serif" >
+        All the Playlists!
+    </Typography>
+    <Box sx={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0.2}}>
+    <Card>
+    <CardHeader
+      title="Create Playlist"
+    />
+    <IconButton aria-label="add" onClick={handleOpen} sx={{ml: 9}}>
+      <AddCircleIcon sx={{ height: 55, width: 55 }}/>
+    </IconButton>
+    <Modal
+        open={open}
+        onClose={handleClose}
+      >
+          <Box
+            component="form"
+            noValidate
+            autoComplete="off"
+            className="boxModal">
+          <Typography variant="h5" align="center" fontFamily="Vollkorn, serif" >
+            Create playlist
+          </Typography>
+          <hr />
+          <TextField label="Title" variant="filled" onChange={(e) => handleChange(e)}/><br></br>
+          <Button onClick={handleCreatePlaylist} variant="contained">Create</Button>
+          </Box>
+      </Modal>
+    </Card>
+    {isSuccess &&
           data.data.map((playlist, index) => {
             return (
-              <ImageListItem key={index}>
-                <button
-                  onClick={(e) => handleSelectPlaylist(playlist)}
-                  className="btn btn-link"
-                >
-                  {playlist.title}
-                </button>
-                <button
-                  className="btn btn-warning mt-2"
-                  onClick={() => handleDeletePlaylist({ playlist })}
-                >
-                  delete
-                </button>
-                {/* <img src={playlist.playlistImg} alt="hola" /> */}
-                <button
-                  className="btn btn-primary mt-2"
-                  onClick={() => handleUpdatePlaylist({ playlist })}
-                >
-                  update
-                </button>
-              </ImageListItem>
-            );
-          })}
-      </ImageList>
+              <>
+    <Card>
+      <Box key={index}>
+      <button
+      className='imgButtonPlaylist'
+      onClick={(e) => handleSelectPlaylist(playlist)}>
+    <CardHeader
+      title={playlist.title}
+      subheader="Created by Roger"
+    />
+    </button>
+    <CardActions disableSpacing>
+      <FavIconPlaylist />
+      <IconButton aria-label="share">
+        <ShareIcon />
+      </IconButton>
+      <IconButton
+        aria-label="delete"
+        onClick={() => handleDeletePlaylist({ playlist })}>
+        <DeleteIcon />
+      </IconButton>
+    </CardActions>
     </Box>
+  </Card>
+  </>
+  )
+  })}
+  </Box>
+  </Box>
   );
 }
 
