@@ -3,47 +3,45 @@ import { Router } from "express";
 import { authMiddleware } from "../middleware/auth-middleware.js";
 import {
   getPlayList,
-  createPlaylist2,
-  bestListSongs,
-  fetchPlaylists,
-  removeSongFromPlaylist,
-  fetchPublicPlaylists,
-  getSongsByPlaylistId,
-  orderPlaylistsSongs,
-  orderMyPlaylists,
-  fetchMyPlaylists,
-  sortPlaylistsByLikes,
-  getPlaylistById,
-  updatePlaylist,
+  getPlayLists,
+  createPlaylist,
   removePlaylistById,
-  getMyFavoritePlaylists,
-  followPlaylist,
-  cancelFollowPlaylist,
-  addSongToPlaylist,
-  updatePlaylistById
+  updatePlaylistById,
+  // bestListSongs,
+  // fetchPlaylists,
+  // removeSongFromPlaylist,
+  // fetchPublicPlaylists,
+  // getSongsByPlaylistId,
+  // orderPlaylistsSongs,
+  // orderMyPlaylists,
+  // fetchMyPlaylists,
+  // sortPlaylistsByLikes,
+  // getPlaylistById,
+  // updatePlaylist,
+  // getMyFavoritePlaylists,
+  // followPlaylist,
+  // cancelFollowPlaylist,
+  // addSongToPlaylist,
   // getUserPlayList,
-  // createUser,
-  // updateUser,
-  // deleteUser,
-  // signUp,
+
 } from "../controllers/playList-controllers.js";
 
 const playlistRouter = Router();
 
-// playListRouter.get("/playlist", getPlayList);
-// playListRouter.get("/playlist/:userId", getUserPlayList);
+playlistRouter.get("/playlists", authMiddleware, getPlayLists);
+playlistRouter.get("/playlist/:id", authMiddleware, getPlayList);
+playlistRouter.post("/playlists", authMiddleware, createPlaylist);
+playlistRouter.delete("/playlists/:id", authMiddleware, removePlaylistById);
+playlistRouter.patch("/playlists/:id", authMiddleware, updatePlaylistById);
 
+export default playlistRouter;
+
+// playListRouter.get("/playlist/:userId", getUserPlayList);
 // playListRouter.patch("playlist/:userId", updateUser);
 // playListRouter.post("/playlist", authMiddleware, createPlaylist);
 // playListRouter.post("/playlist", authMiddleware, signUp);
-playlistRouter.put("/top", authMiddleware, bestListSongs);
+// playlistRouter.put("/top", authMiddleware, bestListSongs);
 // playlistRouter.get("/all", authMiddleware, fetchPlaylists);
-playlistRouter.get("/playlists/all", getPlayList);
-playlistRouter.post("/playlists", authMiddleware, createPlaylist2);
-playlistRouter.delete("/playlists/:id", authMiddleware, removePlaylistById);
-playlistRouter.put("/playlists/:id", authMiddleware, updatePlaylistById);
-
-// playlistRouter.get("/",  createPlaylist2);
 // playlistRouter.patch("/songs/:id", authMiddleware, removeSongFromPlaylist);
 // playlistRouter.get("/public/:id", authMiddleware, fetchPublicPlaylists);
 // playlistRouter.get("/playlist/:id", authMiddleware, getSongsByPlaylistId);
@@ -67,4 +65,3 @@ playlistRouter.put("/playlists/:id", authMiddleware, updatePlaylistById);
 // playlistRouter.patch("/:id", authMiddleware, updatePlaylist);
 // playlistRouter.put("/:id", authMiddleware, removePlaylistById);
 
-export default playlistRouter;

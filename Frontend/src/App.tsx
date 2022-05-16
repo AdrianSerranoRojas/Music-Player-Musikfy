@@ -24,7 +24,6 @@ import QueueListing from "./components/QueueListing/QueueListing";
 import { styled } from "@mui/material/styles";
 
 import { NotFound } from "./components/NotFound/NotFound";
-import Playlists2 from "./components/PlaylistModal/PlaylistModal";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({
@@ -95,6 +94,10 @@ export default function App() {
             path="/playlists"
             element={currentUser ? <Playlists /> : <Home />}
           />
+          {/* <Route
+            path="/playliststrue"
+            element={  <SongListOfPlaylist/> }
+          /> */}
         </Routes>
         <Widget2>
           <PlayerH5 />

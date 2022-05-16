@@ -43,8 +43,8 @@ function PlaylistModal() {
   }));
 
   return (
-    <div>
-      <IconButton onClick={handleOpen} sx={{ ml: 23 }}>
+    <>
+      <IconButton onClick={handleOpen} sx={{ ml: 21 }}>
         <DehazeIcon />
       </IconButton>
       <Modal
@@ -66,7 +66,7 @@ function PlaylistModal() {
           </Button>
         </Widget>
       </Modal>
-    </div>
+    </>
   );
 }
 

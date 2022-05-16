@@ -5,46 +5,16 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCard from "../../components/MainCards/AddPlayList/AddPlayList";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
-import SettingsIcon from '@mui/icons-material/Settings';
-import FavoriteIcon from '@mui/icons-material/Favorite';
 
+import "../MySongs/MySongs.scss";
 import withLayout from "../../hoc/withLayout";
+import PlaylistModal from "../../components/PlaylistModal/PlaylistModal";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-function FavoriteSongs() {
-  const WallPaper = styled("div")({
-    position: "fixed",
-    width: "100%",
-    height: "100%",
-    top: 0,
-    left: 0,
-    overflow: "hidden",
-    background: "linear-gradient(rgb(255, 38, 142) 0%, rgb(255, 105, 79) 100%)",
-    transition: "all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s",
-    "&:before": {
-      content: '""',
-      width: "140%",
-      height: "140%",
-      position: "fixed",
-      top: "-40%",
-      right: "-50%",
-      background:
-        "radial-gradient(at center center, rgb(62, 79, 249) 0%, rgba(62, 79, 249, 0) 64%)",
-    },
-    "&:after": {
-      content: '""',
-      width: "140%",
-      height: "140%",
-      position: "fixed",
-      bottom: "-50%",
-      left: "-30%",
-      background:
-        "radial-gradient(at center center, rgb(247, 237, 225) 0%, rgba(247, 237, 225, 0) 70%)",
-      transform: "rotate(30deg)",
-    },
-  });
+function SinglePlaylistTrue() {
 
   const Widget = styled("div")(({ theme }) => ({
-    padding: 16,
+    SinglePlaylistTrueadding: 16,
     borderRadius: 16,
     width: 830,
     maxWidth: "100%",
@@ -62,6 +32,7 @@ function FavoriteSongs() {
 
   return (
     <>
+    <DragDropContext onDragEnd={(result) => console.log(result)}>
       <Box>
         <Widget
           sx={{
@@ -72,14 +43,17 @@ function FavoriteSongs() {
           }}
         >
           <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
-            <FavoriteIcon sx={{ height: 270, width: 270, ml: 5, mt: 5 }} />
+            <img
+              src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg"
+              alt="hola"
+            />
             <Box sx={{ mt: 15 }}>
               <Typography
                 variant="h2"
                 align="center"
                 fontFamily="Vollkorn, serif"
               >
-                Songs you like!
+                Name Playlist
               </Typography>
               <Typography
                 variant="h4"
@@ -88,25 +62,49 @@ function FavoriteSongs() {
               >
                 31 Songs
               </Typography>
-              <SettingsIcon sx={{ ml: 22 }} />
+              <Typography
+                variant="h6"
+                align="center"
+                fontFamily="Vollkorn, serif"
+              >
+                Created by alonso22
+              </Typography>
+              <PlaylistModal/>
             </Box>
           </Box>
-          <Box sx={{ mt: 1 }}>
+          <Droppable droppableId="songs">
+          {(droppableProvided) => (
+          <Box
+            sx={{ mt: 1 }}
+            {...droppableProvided.droppableProps}
+            ref={droppableProvided.innerRef}
+            >
             {isSuccess &&
               data.data.map((song, index) => {
                 return (
-                  <SongCard
-                    key={index}
-                    songName={song.songName}
-                    songUrl={song.songUrl}
-                  />
+                  <Draggable key={index} draggableId={song._id} index={index}>
+                  {(draggableProvided) =>
+                    <Box
+                      {...draggableProvided.draggableProps}
+                      ref={draggableProvided.innerRef}
+                      {...draggableProvided.dragHandleProps}>
+                      <SongCard
+                        songName={song.songName}
+                        songUrl={song.songUrl}
+                      />
+                    </Box>
+                  }
+                  </Draggable>
                 );
               })}
-          </Box>
+              {droppableProvided.placeholder}
+          </Box>)}
+          </Droppable>
         </Widget>
-    </Box>
+      </Box>
+      </DragDropContext>
     </>
   );
 }
 
-export default withLayout(FavoriteSongs);
+export default withLayout(SinglePlaylistTrue);

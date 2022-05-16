@@ -5,7 +5,7 @@ import "./Home.scss";
 import Box from "@mui/material/Box";
 import PlaylistsCardSmall from "../../components/MainCards/PlaylistsCardSmall/PlaylistsCardSmall";
 import SearchSongListing from "../../components/SearchSongListing/SearchSongListing";
-import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
+import PlaylistsCard from "../../components/MainCards/AddPlayList/AddPlayList";
 
 import Slider from "../../components/Slider/Slider";
 
@@ -28,11 +28,9 @@ import Slider from "../../components/Slider/Slider";
 const Home = () => {
   return (
     <Box sx={{display:'flex', gridTemplateColumns: 'repeat(2, 1fr)', gap:4 }}>
-
-      {/* <SearchSongListing /> */}
-      <Slider />
-      {/* <LikesCard />
-      <PlaylistsCard /> */}
+      <SearchSongListing />
+      <LikesCard />
+      {/* <PlaylistsCard /> */}
     </Box>
   );
 };
