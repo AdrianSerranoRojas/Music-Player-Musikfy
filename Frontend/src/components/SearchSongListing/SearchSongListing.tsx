@@ -25,12 +25,10 @@ const Widget = styled("div")(({ theme }) => ({
 }));
 
 function SearchSongListing() {
-
   const { filterSong } = useSelector(songsSelector);
   const { data, isLoading, isSuccess } = useGetSongsFilteredQuery(filterSong);
 
-  useEffect(() => {
-  }, [data]);
+  useEffect(() => {}, [data]);
 
   return (
     <>
@@ -48,8 +46,7 @@ function SearchSongListing() {
               variant="h5"
               align="center"
               fontFamily="Vollkorn, serif"
-            >
-            </Typography>
+            ></Typography>
             {isSuccess &&
               data.data.map((song, index) => {
                 return (
