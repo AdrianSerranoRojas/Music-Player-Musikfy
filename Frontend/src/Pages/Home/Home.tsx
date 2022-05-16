@@ -7,6 +7,8 @@ import PlaylistsCardSmall from "../../components/MainCards/PlaylistsCardSmall/Pl
 import SearchSongListing from "../../components/SearchSongListing/SearchSongListing";
 import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 
+import Slider from "../../components/Slider/Slider";
+
 // async function fetchUserToken(
 //   setUserToken: any,
 //   setLoading: any,
@@ -26,7 +28,9 @@ import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCar
 const Home = () => {
   return (
     <Box sx={{display:'flex', gridTemplateColumns: 'repeat(2, 1fr)', gap:4 }}>
-      <SearchSongListing />
+
+      {/* <SearchSongListing /> */}
+      <Slider />
       {/* <LikesCard />
       <PlaylistsCard /> */}
     </Box>
