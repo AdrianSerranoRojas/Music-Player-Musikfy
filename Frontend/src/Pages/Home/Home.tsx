@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
       <Slider />
-      <SearchSongListing />
+      {/* <SearchSongListing /> */}
       {/* <PlaylistsCard /> */}
     </Box>
   );

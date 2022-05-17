@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
-import Box from "@mui/material/Box";
+
 import QueueCard from "../QueueCard/QueueCard";
+import Card from '@mui/material/Card';
 
 const QueueListing = () => {
     const currentSong = useSelector((state) => state.songs.currentSong);
@@ -14,6 +15,11 @@ const QueueListing = () => {
                             <QueueCard key={index} songName={song.songName} />
                         );
                     })
+                }
+                {currentSong[0].audio === "" &&
+                    <Card>
+                        <p>Add songs to the Queue! </p>
+                    </Card>
                 }
         </div>
     )
