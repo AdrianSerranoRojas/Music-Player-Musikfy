@@ -20,31 +20,18 @@ function Playlists() {
   const listSelectFunc = (list) => {
     setListSelect(list);
     setplaylistId(list._id)
+    console.log("list._id",list._id);
+    console.log("list",list);
+    
   };
 
   const { data, isLoading, isSuccess, refetch } = useGetPlaylistQuery(playlistId);
   let playlistSongThisList =[]
   if (isSuccess){
-    console.log(data);
+    console.log("el puto dataaa",data);
     playlistSongThisList = data.data[0].songs
-    console.log("m estoy liandooooo",playlistSongThisList);
+     console.log("m estoy liandooooo",playlistSongThisList);
   }
-
-  // const Widget = styled("div")(({ theme }) => ({
-  //   padding: 16,
-  //   borderRadius: 16,
-  //   width: 950,
-  //   maxWidth: "100%",
-  //   margin: "auto",
-  //   marginBottom: 25,
-  //   position: "relative",
-  //   zIndex: 1,
-  //   backgroundColor:
-  //     theme.palette.mode === "dark"
-  //       ? "rgba(0,0,0,0.6)"
-  //       : "rgba(255,255,255,0.4)",
-  //   backdropFilter: "blur(40px)",
-  // }));
 
   return (
     <Box>

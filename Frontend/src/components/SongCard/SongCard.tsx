@@ -159,7 +159,7 @@ function SongCard({ songName, songUrl, songArtist, songId, id }) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton>
-                <DropdownAddPlaylist id={id} />
+                <DropdownAddPlaylist id={songId} />
                 <ListItemButton onClick={handleClose}>
                   <CloseIcon />
                 </ListItemButton>
