@@ -4,14 +4,15 @@ import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongQuery } from "../../services/songApi";
 import PlaylistModal from "../PlaylistModal/PlaylistModal";
 
-function SongListOfPlaylist({ listSelect }) {
+function SongListOfPlaylist({ listSelect, list }) {
+  console.log(list);
   const id = listSelect?._id;
   const { data, isLoading, isSuccess } = useGetSongQuery(id);
   if(isSuccess) {
     console.log(data);
   }
 
-  console.log("<<<<<<<<<listSelect", listSelect.songs);
+  console.log("<<<<<<<<<listSelect", listSelect);
 
   return (
     <>
@@ -27,28 +28,28 @@ function SongListOfPlaylist({ listSelect }) {
                 align="center"
                 fontFamily="Vollkorn, serif"
               >
-                {listSelect.title}
+                {list.title}
               </Typography>
               <Typography
                 variant="h4"
                 align="center"
                 fontFamily="Vollkorn, serif"
               >
-                {listSelect.songs.length} songs
+                {listSelect.length} songs
               </Typography>
               <PlaylistModal/>
             </Box>
           </Box>
           <Box
             sx={{ mt: 1 }}>
-            {listSelect.songs.map((song, index) => {
+            {listSelect.map((song, index) => {
                 return (
                     <Box>
                       <SongCard
-                        songName={song}
-                        songUrl={song}
+                        songName={song.songData.title}
+                        songUrl={song.songFile.url}
                         key={index}
-                        songArtist={song}
+                        songArtist={song.songData.artist}
                       />
                     </Box>
               )}

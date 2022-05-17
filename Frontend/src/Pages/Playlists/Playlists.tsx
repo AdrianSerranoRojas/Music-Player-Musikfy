@@ -25,6 +25,7 @@ function Playlists() {
   const { data, isLoading, isSuccess, refetch } = useGetPlaylistQuery(playlistId);
   let playlistSongThisList =[]
   if (isSuccess){
+    console.log(data);
     playlistSongThisList = data.data[0].songs
     console.log("m estoy liandooooo",playlistSongThisList);
     
@@ -49,9 +50,9 @@ function Playlists() {
   return (
     <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', overflowX:'scroll'}}>
         <AddPlayList  listSelectFunc={listSelectFunc} />
-        {listSelect ? (
+        {isSuccess ? (
           // <SongListOfPlaylist  playlistSongThisList={playlistSongThisList} listSelect={listSelect} />
-          <SongListOfPlaylist listSelect={listSelect} />
+          <SongListOfPlaylist listSelect={playlistSongThisList} list={listSelect} />
         ) :<Typography sx={{ml: 30, mt: 35}} variant="h3">Select a list</Typography>}
     </Box>
   );

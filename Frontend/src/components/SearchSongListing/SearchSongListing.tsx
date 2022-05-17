@@ -52,7 +52,8 @@ function SearchSongListing() {
                 return (
                   <SongCard
                     key={index}
-                    songName={song.songName}
+                    songName={song.songData.title}
+                    songArtist={song.songData.artist}
                     songUrl={song.songFile.url}
                     songId={song._id}
                   />

@@ -18,7 +18,7 @@ export async function getPlayList(req, res, next) {
   console.log("es el id >>>>",id);
   try {
     const PlaylistsToSearch = await Playlists.find({ _id: id })
-      .populate("songs", { songData: 1 })
+      .populate("songs", { songData: 1 , songFile: 1})
       .lean()
       .exec();
       res.status(200).send({
