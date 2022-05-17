@@ -15,5 +15,4 @@ Route::controller(songController::class)->group(function(){
     Route::get("song/{id}","show");
     Route::put("song/{id}","update");
     Route::get("song/{id}","destroy");
-
 });
