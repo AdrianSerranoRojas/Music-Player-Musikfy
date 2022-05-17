@@ -66,6 +66,7 @@ export async function createSong(req, res, next) {
       title: tag?.tags?.title,
       artist: tag?.tags?.artist,
       album: tag?.tags?.album,
+      picture: tag?.tags?.picture,
     };
 
     astep3CreateDB(songFile, songUser, songData);
