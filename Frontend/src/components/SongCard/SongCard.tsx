@@ -69,9 +69,11 @@ function SongCard({ id, song }) {
 
   const handlePlay = () => {
     if(currentUser){
-      var userId = currentUser.id
+      console.log(songId)
+      var userId = currentUser.uid
+      console.log(userId)
+      createAction({songId:songId, userId:userId , action:"play"})
     }
-    createAction({songId:songId, userId:userId , action:"play"})
     if (currentSong[0].audio === "") {
       dispatch(
         addFirstCurrentSong([
