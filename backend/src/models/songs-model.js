@@ -16,10 +16,10 @@ const SongsSchema = new Schema(
       title: String,
       artist: String,
       album: String,
-      picture: {
-        url: String,
-        public_id: String,
-      },
+    },
+    songImage: {
+      imageUrl: String,
+      imagePublic_id: String,
     },
     likes: {
       type: Number,
@@ -28,11 +28,6 @@ const SongsSchema = new Schema(
     played: {
       type: Number,
       default: 0,
-    },
-    songImage: {
-      type: String,
-      default:
-        "https://res.cloudinary.com/oasismusic/image/upload/v1634289407/wmscaabwab6zggp4xilj.png",
     },
   },
   { timestamps: true }

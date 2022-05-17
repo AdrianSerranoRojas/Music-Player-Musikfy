@@ -28,7 +28,9 @@ function SearchSongListing() {
   const { filterSong } = useSelector(songsSelector);
   const { data, isLoading, isSuccess } = useGetSongsFilteredQuery(filterSong);
 
-  useEffect(() => {}, [data]);
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <>
@@ -56,6 +58,7 @@ function SearchSongListing() {
                     songArtist={song.songData.artist}
                     songUrl={song.songFile.url}
                     songId={song._id}
+                    songImage={song.songImage?.imageUrl}
                   />
                 );
               })}

@@ -61,6 +61,8 @@ function MySongs() {
                     key={index}
                     songName={song.songName}
                     songUrl={song.songFile.url}
+                    songId={song.id}
+                   
                   />
                 );
               })}

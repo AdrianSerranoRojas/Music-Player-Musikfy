@@ -36,11 +36,10 @@ import {
 import { useGetUserQuery } from "../../services/userApi";
 import { TrendingUpSharp } from "@mui/icons-material";
 import AuthContext from "../../context/AuthContext";
-import CloseIcon from '@mui/icons-material/Close';
-import "./SongCard.scss"
+import CloseIcon from "@mui/icons-material/Close";
+import "./SongCard.scss";
 
-
-function SongCard({ songName, songUrl, songArtist, songId,id }) {
+function SongCard({ songName, songUrl, songArtist, songId, id, songImage }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
@@ -102,7 +101,7 @@ function SongCard({ songName, songUrl, songArtist, songId,id }) {
       LikeSong({ songId, fav });
       refetch();
     }
-     refetch();
+    refetch();
   };
 
   return (
@@ -111,7 +110,7 @@ function SongCard({ songName, songUrl, songArtist, songId,id }) {
         <CardMedia
           component="img"
           sx={{ width: 65, height: 65 }}
-          image="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg"
+          image={songImage}
           alt="Live from space album cover"
         />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
