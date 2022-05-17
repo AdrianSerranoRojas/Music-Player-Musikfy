@@ -4,3 +4,4 @@ redis
 conf
 docker-compose.yml
 Dockerfile
+.gitignore
