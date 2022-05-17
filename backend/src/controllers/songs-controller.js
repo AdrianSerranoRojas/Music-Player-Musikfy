@@ -28,6 +28,13 @@ async function step1Cloudinary(newImage) {
     public_id: resultLoadImage.public_id,
   };
 }
+async function step33Cloudinary(newImage) {
+  const resultLoadImage = await uploadImageCloud(newImage[0]);
+  return {
+    url: resultLoadImage.secure_url,
+    public_id: resultLoadImage.public_id,
+  };
+}
 
 async function step2DataFile(songFile) {
   return new Promise((resolve, reject) => {
@@ -62,21 +69,31 @@ export async function createSong(req, res, next) {
     }
     // get data file
     const tag = await step2DataFile(songFile.url);
-    const songData = {
-      title: tag?.tags?.title,
-      artist: tag?.tags?.artist,
-      album: tag?.tags?.album,
-    };
 
-    astep3CreateDB(songFile, songUser, songData);
-    // console.log("reader", songData)
-    // guardar en la base de datos
-    // const song = await Song.findOne({ nameSong: nameSong });
-    // if (song) {
-    //   return res.sendStatus(200);
-    // }
-    console.log(songData);
+    const songDataTaker = async (tag) => {
+      const data = tag.tags.picture.data;
+      const format = tag.tags.picture.format;
+      let base64string = "";
+      for(let i=0 ; i<data.length; i++)
+      base64string += String.fromCharCode(data[i]);
+      let image33 = [`data:${format};base64,${btoa(base64string)}`]
+      const image = await step33Cloudinary(image33);
+    
+
+       return ( {
+          title: tag?.tags?.title,
+          artist: tag?.tags?.artist,
+          album: tag?.tags?.album,
+          picture: image,
+        }
+        )
+    }
+      const songData = await songDataTaker(tag);
+
+    const total = await astep3CreateDB(songFile, songUser, songData);
+
     res.sendStatus(200);
+  
   } catch (error) {
     next(error);
   }
