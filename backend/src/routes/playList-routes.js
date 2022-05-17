@@ -25,14 +25,12 @@ import {
   // getUserPlayList,
 
 } from "../controllers/playList-controllers.js";
-
+import {test} from "../controllers/test-controllers.js"
 const playlistRouter = Router();
 
 //  >>>>>>>> pruebas test 
 
-playlistRouter.get("/test",  ((req,res)=>{
-  res.sendStatus(200);
-}))
+playlistRouter.get("/test", test)
 
 playlistRouter.post("/test",  ((req,res)=>{
   const {title} = req.body;

@@ -8,9 +8,9 @@ import request from "supertest";
 //       expect(response.statusCode).toBe(200);
 //   });
 // });
-beforeAll(async () => await server.initTestServer());
-afterEach(async () => await server.clearUsersCollection());
-afterAll(async () => await server.stopTestServer());
+// beforeAll(async () => await server.initTestServer());
+// afterEach(async () => await server.clearUsersCollection());
+// afterAll(async () => await server.stopTestServer());
 
 
 describe("playlist Router", () => {
@@ -24,3 +24,15 @@ describe("playlist Router", () => {
     // }
   });
 });
+
+// describe("playlist Router", () => {
+//   test("recived status code 2000",  () => {
+//     // try {
+//       const response = request(playlistRoute).get("/test").send();
+//       console.log(response);
+      // expect(response.statusCode).toBe(200);
+    // } catch (error) {
+    //   console.log(error);
+    // }
+//   });
+// });

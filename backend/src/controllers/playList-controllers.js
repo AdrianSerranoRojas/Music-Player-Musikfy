@@ -31,6 +31,7 @@ export async function createPlaylist(req, res, next) {
   try {
     const newPlaylist = await Playlists.create({
       title: title,
+      
     });
     res.status(200).send({
       message: "OK",
