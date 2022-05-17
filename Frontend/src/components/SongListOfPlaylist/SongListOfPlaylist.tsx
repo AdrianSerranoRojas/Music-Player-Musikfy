@@ -5,62 +5,55 @@ import { useGetSongQuery } from "../../services/songApi";
 import PlaylistModal from "../PlaylistModal/PlaylistModal";
 
 function SongListOfPlaylist({ listSelect, list }) {
-  console.log(list);
   const id = listSelect?._id;
-  const { data, isLoading, isSuccess } = useGetSongQuery(id);
-  if(isSuccess) {
-    console.log(data);
-  }
-
-  console.log("<<<<<<<<<listSelect", listSelect);
+  const { data, isLoading, isSuccess, refetch } = useGetSongQuery(id);
 
   return (
     <>
       <Box>
-          <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
-            <img
-              src="https://res.cloudinary.com/carapolla/image/upload/v1652111449/samples/imagen_2022-05-09_175006652_famqza.png"
-              alt="hola"
-            />
-            <Box sx={{ mt: 7 }}>
-              <Typography
-                variant="h2"
-                align="center"
-                fontFamily="Vollkorn, serif"
-              >
-                {list.title}
-              </Typography>
-              <Typography
-                variant="h4"
-                align="center"
-                fontFamily="Vollkorn, serif"
-              >
-                {listSelect.length} songs
-              </Typography>
-              <PlaylistModal/>
-            </Box>
+        <Box>
+          <Box sx={{ mt: 7 }}>
+            <Typography
+              variant="h2"
+              align="center"
+              fontFamily="Vollkorn, serif"
+            >
+              {list.title}
+            </Typography>
+            <Typography
+              variant="h4"
+              align="center"
+              fontFamily="Vollkorn, serif"
+            >
+              {listSelect.length} songs
+            </Typography>
+            <PlaylistModal />
           </Box>
-          <Box
-            sx={{ mt: 1 }}>
-            {listSelect.map((song, index) => {
-                return (
-                    <Box>
-                      <SongCard
-                        songName={song.songData.title}
-                        songUrl={song.songFile.url}
-                        key={index}
-                        songArtist={song.songData.artist}
-                      />
-                    </Box>
-              )}
-                )}
-          </Box>
+        </Box>
+        <Box sx={{ mt: 1 }}>
+          {listSelect.map((song, index) => {
+            return (
+              <Box>
+                <SongCard
+                  songName={song.songData.title}
+                  songUrl={song.songFile.url}
+                  key={index}
+                  songArtist={song.songData.artist}
+                  id={id}
+                />
+              </Box>
+            );
+          })}
+        </Box>
       </Box>
     </>
-    );
+  );
 }
-        {/* {isSuccess && */}
-        {/* {listSelect.songs.map((song, index) => {
+{
+  /* {isSuccess && */
+}
+{
+  /* {listSelect.songs.map((song, index) => {
           return (
             <SongCard
               songName={song?.songData?.title}
@@ -70,7 +63,7 @@ function SongListOfPlaylist({ listSelect, list }) {
               id={song._id}
             />
           );
-        })} */}
-
+        })} */
+}
 
 export default SongListOfPlaylist;
