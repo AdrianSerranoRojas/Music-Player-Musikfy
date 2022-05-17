@@ -31,6 +31,7 @@ import AuthContext from "../../context/AuthContext";
 import { userSignOut } from "../../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilterSong, songsSelector } from "../../features/song/songsSlice";
+import { useGetUserQuery } from "../../services/userApi";
 
 const drawerWidthOpen = 240;
 const paddingIconButton = 10;
@@ -47,6 +48,8 @@ export default function SideNavbar({ ...props }) {
   const { filterSong } = useSelector(songsSelector);
 
   const currentUser = useContext(AuthContext);
+  const { data: user, isSuccess } = useGetUserQuery(currentUser?.uid);
+
   const theme = useTheme();
   const [open, setOpen] = useState(true);
   const refFocus = useRef();
@@ -90,9 +93,7 @@ export default function SideNavbar({ ...props }) {
             display: open ? "none" : { xs: "none", sm: "initial" },
             marginBottom: "9px",
           }}
-        >
-
-        </Box>
+        ></Box>
         <Typography
           variant="h1"
           noWrap={true}
@@ -462,7 +463,10 @@ export default function SideNavbar({ ...props }) {
             alignContent: "center",
           }}
         >
-          <StyledAvatar currentUser={currentUser} />
+          <StyledAvatar
+            currentUser={currentUser}
+            imageURL={user?.data?.image?.url}
+          />
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column", flexGrow: 1 }}>
           <Typography

@@ -1,11 +1,17 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./Slider.scss";
+import { useGetSongQuery } from "../../services/songApi";
+
 
 import { sliderData } from "./SliderData";
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
+import SongCard from "../SongCard/SongCard";
+
+
+
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -40,6 +46,12 @@ const Slider = () => {
     return () => clearInterval(slideInterval);
   }, [currentSlide]);
 
+  const { data, isLoading, isSuccess } = useGetSongQuery();
+  if(isSuccess) {
+    console.log(data);
+  }
+
+
   return (
     <div className="slider">
       <ArrowLeftIcon className="arrow prev" onClick={prevSlide} />
@@ -56,6 +68,9 @@ const Slider = () => {
                 <div className="content">
                   <h2>{slide.heading}</h2>
                   <p>{slide.desc}</p>
+                  <p>{slide.desc2}</p>
+
+                  {/* <SongCard /> */}
                   <hr />
                   <PlayCircleFilledWhiteIcon fontSize="large" />
                 </div>

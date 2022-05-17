@@ -23,7 +23,7 @@ export const songApi = createApi({
       query: (id) => `/songs/${id}`,
     }),
     getSongsFiltered: builder.query({
-      query: (filter) => `/songs/${filter}`,
+      query: (filter) => `/filterSongs/${filter}`,
     }),
     getMySongs: builder.query({
       query: () => `/mySongs`,

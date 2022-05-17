@@ -27,14 +27,14 @@ import { NotFound } from "./components/NotFound/NotFound";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({
-    overflowX: "hidden",
+    overflowY: "hidden",
     padding: 16,
     borderRadius: 16,
     width: "80%",
     maxWidth: "100%",
     height: "15%",
     marginLeft: "12.5%",
-    position: "relative",
+    position: "absolute",
     zIndex: 1,
     backgroundColor:
       theme.palette.mode === "dark"

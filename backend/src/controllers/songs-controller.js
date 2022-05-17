@@ -97,21 +97,29 @@ export async function getSongsFilter(req, res, next) {
   const { filter } = req.params;
 
   try {
-    const songs = await Songs.find({
-      songName: new RegExp(filter, "i"),
-    })
-      .select()
-      .lean()
-      .exec();
-    console.log(songs);
-    res.status(200).send({
-      data: songs,
-    });
+    if (filter === null) {
+      songs = await Songs.find({}).select().lean().exec();
+      console.log(songs);
+      res.status(200).send({
+        data: songs,
+      });
+    } else {
+      const songs = await Songs.find({
+        "songData.title": new RegExp(filter, "i"),
+      })
+        .select()
+        .lean()
+        .exec();
+
+      console.log(songs);
+      res.status(200).send({
+        data: songs,
+      });
+    }
   } catch (error) {
     next(error);
   }
 }
-
 export async function getMySongs(req, res, next) {
   // const { uid } = req.user;
   const { uid, email } = req.user;
@@ -164,7 +172,6 @@ export async function likeSong(req, res, next) {
     next(error);
   }
 }
-
 export async function cancelLikeSong(req, res, next) {
   const songId = req.body.songId;
   const userId = req.user.uid;

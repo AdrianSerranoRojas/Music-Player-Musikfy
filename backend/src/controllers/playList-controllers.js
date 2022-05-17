@@ -1,4 +1,5 @@
 import { Playlists } from "../models/playList-models.js";
+import { Songs } from "../models/songs-model.js";
 // import { uploadImagePlaylistCloud } from "../libs/cloudinary.js";
 
 export async function getPlayLists(req, res) {
@@ -14,13 +15,15 @@ export async function getPlayLists(req, res) {
 
 export async function getPlayList(req, res, next) {
   const { id } = req.params;
+  console.log("es el id >>>>",id);
   try {
-    const PlaylistsToSearch = await Playlists.find({_id: id }).lean();
-    console.log("aver si hay suerte",PlaylistsToSearch.songs);
-
-    res.status(200).send({
-      data: PlaylistsToSearch,
-    });
+    const PlaylistsToSearch = await Playlists.find({ _id: id })
+      .populate("songs", { songData: 1 , songFile: 1})
+      .lean()
+      .exec();
+      res.status(200).send({
+        data: PlaylistsToSearch,
+      });
   } catch (err) {
     next(err);
   }

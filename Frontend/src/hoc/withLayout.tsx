@@ -13,23 +13,8 @@ const Widget = styled("div")(({ theme }) => ({
   borderRadius: 16,
   width: "80%",
   maxWidth: "100%",
-  height: "70vh",
-  marginTop: "2.3%",
-  marginLeft: "12.5%",
-  position: "relative",
-  zIndex: 1,
-  backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
-  backdropFilter: "blur(40px)",
-  overflow: "scroll",
-}));
-const Widget2 = styled("div")(({ theme }) => ({
-  overflowX: "hidden",
-  padding: 16,
-  borderRadius: 16,
-  width: "80%",
-  maxWidth: "100%",
-  height: "15%",
+  height: "72vh",
+  marginTop: "2.5%",
   marginLeft: "12.5%",
   position: "relative",
   zIndex: 1,
@@ -38,7 +23,7 @@ const Widget2 = styled("div")(({ theme }) => ({
   backdropFilter: "blur(40px)",
 }));
 
-const WallPaper = styled("div")({
+const WallPaper = styled("div")(({ theme }) => ({
   zIndex: 0,
   position: "absolute",
   overflow: "hidden",
@@ -46,7 +31,11 @@ const WallPaper = styled("div")({
   height: "100%",
   top: 0,
   left: 0,
-  background: "linear-gradient(rgb(255, 38, 142) 0%, rgb(255, 105, 79) 100%)",
+  background:
+  theme.palette.mode === "dark"
+      ? "linear-gradient(#0f0 0%, #e600f5 100%)"
+      : "linear-gradient(rgb(255, 38, 142) 0%, rgb(255, 105, 79) 100%)",
+  
   transition: "all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s",
   "&:before": {
     content: '""',
@@ -69,7 +58,7 @@ const WallPaper = styled("div")({
       "radial-gradient(at center center, rgb(247, 237, 225) 0%, rgba(247, 237, 225, 0) 70%)",
     transform: "rotate(30deg)",
   },
-});
+}));
 
 function getDisplayName(WrappedComponent: any) {
   return WrappedComponent.displayName || WrappedComponent.name || "Component";
