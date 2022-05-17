@@ -12,6 +12,8 @@ import {
   useCreatePlaylistMutation,
   useUpdatePlaylistMutation
 } from "../../../services/playlistApi";
+import { Button } from "@mui/material";
+
 
 
 const ITEM_HEIGHT = 48;
@@ -69,7 +71,7 @@ function DropdownAddPlaylist({id}) {
           {isSuccess && data.data.map((name) => (
             <MenuItem key={name.title} value={name.title}>
               <Checkbox checked={personName.indexOf(name.title) > -1} />
-              <button onClick={()=>handleAddSongPlaylist(name)}>ok</button>
+              <Button variant="outlined" sx={{mr:2}} onClick={()=>handleAddSongPlaylist(name)}>Select</Button>
               <ListItemText primary={name.title} />
             </MenuItem>
           ))}

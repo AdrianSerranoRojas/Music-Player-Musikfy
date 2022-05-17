@@ -26,6 +26,14 @@ import { Button, CardActionArea, Grid, TextField } from "@mui/material";
 import React from "react";
 import styled from '@mui/material/styles/styled';
 
+const Widget = styled("div")(({ theme }) => ({
+  overflowY: "hidden",
+  maxWidth: "100%",
+  height: "40vh",
+  zIndex: 1,
+  overflow: "scroll",
+}));
+
 function AddPlayList({ listSelectFunc }) {
 
   const [open, setOpen] = React.useState(false);
@@ -58,14 +66,6 @@ function AddPlayList({ listSelectFunc }) {
   const handleChange = (e) => {
     setPlaylistName(e.target.value);
   };
-
-  const Widget = styled("div")(({ theme }) => ({
-    overflowY: "hidden",
-    maxWidth: "100%",
-    height: "40vh",
-    zIndex: 1,
-    overflow: "scroll",
-  }));
 
   return (
     <Widget>

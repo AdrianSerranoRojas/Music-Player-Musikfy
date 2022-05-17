@@ -40,7 +40,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import "./SongCard.scss"
 
 
-function SongCard({ songName, songUrl, songArtist, songId,id }) {
+function SongCard({ songName, songUrl, songArtist, songId, id }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
