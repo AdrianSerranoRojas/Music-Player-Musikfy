@@ -1,6 +1,10 @@
+import Card from '@mui/material/Card';
+
 const QueueCard = ({songName}) => {
     return (
-        <p>{songName}</p>
+        <Card>
+            <p>{songName}</p>
+        </Card>
     )
 }
 

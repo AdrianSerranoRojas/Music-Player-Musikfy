@@ -7,8 +7,7 @@ const QueueListing = () => {
     console.log(currentSong);
 
     return(
-        <>
-            <Box sx={{ maxwidth: 750, maxheight: 440 }}>
+        <div className="QueueListContainer">
                 {currentSong[0].audio !== "" &&
                     currentSong.map((song, index) => {
                         return(
@@ -16,8 +15,7 @@ const QueueListing = () => {
                         );
                     })
                 }
-            </Box>
-        </>
+        </div>
     )
 }
 
