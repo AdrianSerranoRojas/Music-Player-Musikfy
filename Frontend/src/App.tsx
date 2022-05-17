@@ -88,10 +88,6 @@ export default function App() {
           />
           <Route
             path="/playlist"
-            element={currentUser ? <SinglePlaylist /> : <Home />}
-          />
-          <Route
-            path="/playlists"
             element={currentUser ? <Playlists /> : <Home />}
           />
           {/* <Route

@@ -79,12 +79,12 @@ function Playlists() {
   // }));
 
   return (
-    <Box sx={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)',gap: 3}}>
-        <AddPlayList  listSelectFunc={listSelectFunc} />
+    <Box>
+        <AddPlayList listSelectFunc={listSelectFunc} />
         {listSelect ? (
           // <SongListOfPlaylist  playlistSongThisList={playlistSongThisList} listSelect={listSelect} />
           <SongListOfPlaylist listSelect={listSelect} />
-        ) :<Typography sx={{ml: 30, mt: 35}} variant="h3">Select a list</Typography>}
+        ) :<Typography sx={{mx: "auto", mt: 12}} variant="h3">Select a list</Typography>}
     </Box>
   );
 }

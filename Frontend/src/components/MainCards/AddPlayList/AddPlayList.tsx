@@ -22,7 +22,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import FavIconPlaylist from "../../FavIcon/FavIconPlaylist";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Modal from "@mui/material/Modal";
-import { Button, TextField } from "@mui/material";
+import { Button, CardActionArea, Grid, TextField } from "@mui/material";
 import React from "react";
 import styled from '@mui/material/styles/styled';
 
@@ -59,15 +59,24 @@ function AddPlayList({ listSelectFunc }) {
     setPlaylistName(e.target.value);
   };
 
+  const Widget = styled("div")(({ theme }) => ({
+    overflowY: "hidden",
+    maxWidth: "100%",
+    height: "40vh",
+    zIndex: 1,
+    overflow: "scroll",
+  }));
+
   return (
-    <Box>
+    <Widget>
     <Typography variant="h4" align="center" fontFamily="Vollkorn, serif" >
         All the Playlists!
     </Typography>
-    <Box sx={{display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 0.2}}>
+    <Box>
     <Card>
     <CardHeader
       title="Create Playlist"
+      sx={{pt:2, pb:0, my:0}}
     />
     <IconButton aria-label="add" onClick={handleOpen} sx={{ml: 9}}>
       <AddCircleIcon sx={{ height: 55, width: 55 }}/>
@@ -81,7 +90,7 @@ function AddPlayList({ listSelectFunc }) {
             noValidate
             autoComplete="off"
             className="boxModal">
-          <Typography variant="h5" align="center" fontFamily="Vollkorn, serif" >
+          <Typography variant="h5" align="center" fontFamily="Vollkorn, serif"  >
             Create playlist
           </Typography>
           <hr />
@@ -94,16 +103,18 @@ function AddPlayList({ listSelectFunc }) {
           data.data.map((playlist, index) => {
             return (
               <>
-    <Card>
+    <Card sx={{mt:0.2}}>
       <Box key={index}>
+      <CardActionArea>
       <button
       className='imgButtonPlaylist'
       onClick={(e) => handleSelectPlaylist(playlist)}>
     <CardHeader
       title={playlist.title}
-      subheader="Created by Roger"
+      sx={{py:0, my:0}}
     />
     </button>
+    </CardActionArea>
     <CardActions disableSpacing>
       <FavIconPlaylist />
       <IconButton aria-label="share">
@@ -121,7 +132,7 @@ function AddPlayList({ listSelectFunc }) {
   )
   })}
   </Box>
-  </Box>
+  </Widget>
   );
 }
 

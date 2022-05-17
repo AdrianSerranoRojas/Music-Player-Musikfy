@@ -16,11 +16,7 @@ function SongListOfPlaylist({ listSelect }) {
   return (
     <>
       <Box>
-          <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
-            <img
-              src="https://res.cloudinary.com/carapolla/image/upload/v1652111449/samples/imagen_2022-05-09_175006652_famqza.png"
-              alt="hola"
-            />
+          <Box>
             <Box sx={{ mt: 7 }}>
               <Typography
                 variant="h2"
