@@ -40,6 +40,7 @@ function SongListOfPlaylist({ listSelect, list }) {
                   key={index}
                   songArtist={song.songData.artist}
                   id={id}
+                  song={song}
                 />
               </Box>
             );

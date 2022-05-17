@@ -35,6 +35,7 @@ function filter({ songUrl, songName, songArtist, songGenre, userId }) {
                   key={index}
                   songName={song.songName}
                   songUrl={song.songFile.url}
+                  song={song}
                 />
               </li>
             );

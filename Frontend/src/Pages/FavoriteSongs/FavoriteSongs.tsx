@@ -99,6 +99,7 @@ function FavoriteSongs() {
                     key={index}
                     songName={song.songName}
                     songUrl={song.songUrl}
+                    song={song}
                   />
                 );
               })}

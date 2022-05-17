@@ -21,6 +21,7 @@ function SongListOfPlaylist() {
                 key={index}
                 songArtist={song?.songData?.artist}
                 id={song._id}
+                song={song}
               />
             );
           })}
