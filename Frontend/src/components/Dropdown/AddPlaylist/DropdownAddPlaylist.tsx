@@ -41,7 +41,6 @@ function DropdownAddPlaylist({ id }) {
   };
   const handleAddSongPlaylist = (name) => {
     const idPlaylist = name._id;
-    console.log("el putttoooo id de la cancion", id);
     updatePlaylist({ idPlaylist, id });
     refetch();
   };
@@ -62,9 +61,9 @@ function DropdownAddPlaylist({ id }) {
           MenuProps={MenuProps}
         >
           {isSuccess &&
-            data.data.map((name) => (
-              <MenuItem key={name.title} value={name.title}>
-                <Checkbox checked={personName.indexOf(name.title) > -1} />
+            data.data.map((name,index) => (
+              <MenuItem key={index} value={name.title}>
+                <Checkbox key={name.title} checked={personName.indexOf(name.title) > -1} />
                 <Button
                   variant="outlined"
                   sx={{ mr: 2 }}

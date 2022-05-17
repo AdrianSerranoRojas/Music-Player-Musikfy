@@ -102,18 +102,18 @@ function AddPlayList({ listSelectFunc }) {
     {isSuccess &&
           data.data.map((playlist, index) => {
             return (
-              <>
-    <Card sx={{mt:0.2}}>
-      <Box key={index}>
+              <div  key={index} >
+    <Card  key={index}  sx={{mt:0.2}}>
+      <Box >
       <CardActionArea>
-      <button
+      <Button
       className='imgButtonPlaylist'
       onClick={(e) => handleSelectPlaylist(playlist)}>
     <CardHeader
       title={playlist.title}
       sx={{py:0, my:0}}
     />
-    </button>
+    </Button>
     </CardActionArea>
     <CardActions disableSpacing>
       <FavIconPlaylist />
@@ -128,7 +128,7 @@ function AddPlayList({ listSelectFunc }) {
     </CardActions>
     </Box>
   </Card>
-  </>
+  </div>
   )
   })}
   </Box>

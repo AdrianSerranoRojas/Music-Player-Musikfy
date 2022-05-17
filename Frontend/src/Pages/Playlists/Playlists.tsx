@@ -6,10 +6,7 @@ import withLayout from "../../hoc/withLayout";
 import AddPlayList from "../../components/MainCards/AddPlayList/AddPlayList";
 import SongListOfPlaylist from "../../components/SongListOfPlaylist/SongListOfPlaylist";
 import { useState } from "react";
-import {
-  useGetPlaylistQuery,
-
-} from "../../services/playlistApi";
+import { useGetPlaylistQuery } from "../../services/playlistApi";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { Typography } from "@mui/material";
 
@@ -19,27 +16,29 @@ function Playlists() {
 
   const listSelectFunc = (list) => {
     setListSelect(list);
-    setplaylistId(list._id)
-    console.log("list._id",list._id);
-    console.log("list",list);
-    
+    setplaylistId(list._id);
   };
 
-  const { data, isLoading, isSuccess, refetch } = useGetPlaylistQuery(playlistId);
-  let playlistSongThisList =[]
-  if (isSuccess){
-    console.log("el puto dataaa",data);
-    playlistSongThisList = data.data[0].songs
-     console.log("m estoy liandooooo",playlistSongThisList);
+  const { data, isLoading, isSuccess, refetch } =
+    useGetPlaylistQuery(playlistId);
+  let playlistSongThisList = [];
+  if (isSuccess) {
+    playlistSongThisList = data.data[0].songs;
   }
 
   return (
     <Box>
-        <AddPlayList listSelectFunc={listSelectFunc} />
-        {listSelect ? (
-          // <SongListOfPlaylist  playlistSongThisList={playlistSongThisList} listSelect={listSelect} />
-          <SongListOfPlaylist listSelect={playlistSongThisList} list={listSelect} />
-        ) :<Typography sx={{mx: "auto", mt: 12}} variant="h3">Select a list</Typography>}
+      <AddPlayList listSelectFunc={listSelectFunc} />
+      {listSelect ? (
+        <SongListOfPlaylist
+          listSelect={playlistSongThisList}
+          list={listSelect}
+        />
+      ) : (
+        <Typography sx={{ mx: "auto", mt: 12 }} variant="h3">
+          Select a list
+        </Typography>
+      )}
     </Box>
   );
 }

@@ -21,7 +21,7 @@ import {
   addPlayQueue,
 } from "../../features/song/songsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import DropdownAddPlaylist from "../Dropdown/AddPlaylist/AddPlaylist";
+import DropdownAddPlaylist from "../Dropdown/AddPlaylist/DropdownAddPlaylist";
 import ListItemButton from "@mui/material/ListItemButton";
 import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
