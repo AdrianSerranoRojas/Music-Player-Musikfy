@@ -44,7 +44,7 @@ function PlaylistModal() {
 
   return (
     <>
-      <IconButton onClick={handleOpen} sx={{ ml: 21 }}>
+      <IconButton onClick={handleOpen} sx={{ ml: "49%" }}>
         <DehazeIcon />
       </IconButton>
       <Modal

@@ -8,7 +8,7 @@ import { useGetUserQuery, useUpdateUserMutation } from "../../services/userApi";
 import AuthContext from "../../context/AuthContext";
 import EditInfo from "../../components/EditInfo/EditInfo";
 import "./profile.scss";
-import { Button } from "@mui/material";
+import { Box, Button, Card, Container, createTheme, Paper, ThemeProvider } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
 import { styled } from "@mui/material/styles";
 
@@ -18,7 +18,7 @@ const Widget = styled("div")(({ theme }) => ({
   borderRadius: 16,
   width: "80%",
   maxWidth: "100%",
-  marginTop: "4%",
+  marginTop: "2%",
   marginLeft: "12.5%",
   position: "relative",
   zIndex: 1,

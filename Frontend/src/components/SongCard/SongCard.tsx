@@ -21,7 +21,7 @@ import {
   addPlayQueue,
 } from "../../features/song/songsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import DropdownAddPlaylist from "../Dropdown/AddPlaylist/AddPlaylist";
+import DropdownAddPlaylist from "../Dropdown/AddPlaylist/DropdownAddPlaylist";
 import ListItemButton from "@mui/material/ListItemButton";
 import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
@@ -40,7 +40,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import "./SongCard.scss"
 
 
-function SongCard({ songName, songUrl, songArtist, songId,id }) {
+function SongCard({ songName, songUrl, songArtist, songId, id }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
@@ -156,10 +156,10 @@ function SongCard({ songName, songUrl, songArtist, songId,id }) {
           <IconButton onClick={handleOpen}>
             <AddIcon sx={{ height: 20, width: 20 }} />
           </IconButton>
-          <Collapse in={open} timeout="auto" unmountOnExit className="hola">
+          <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton>
-                <DropdownAddPlaylist id={id} />
+                <DropdownAddPlaylist id={songId} />
                 <ListItemButton onClick={handleClose}>
                   <CloseIcon />
                 </ListItemButton>

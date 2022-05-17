@@ -4,6 +4,8 @@ import SideBar from "../components/SideBar/SideBar";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import SearchSongListing from "../components/SearchSongListing/SearchSongListing";
+import "./withLayout.scss";
+import Card from "@mui/material/Card";
 
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
@@ -68,9 +70,11 @@ function withLayout(WrappedComponent: any) {
   function WrapperComponent({ ...props }) {
     return (
       <>
+        <Card className="transparent">
         <Widget>
           <WrappedComponent {...props} />
         </Widget>
+        </Card>
         <SideBar />
         <WallPaper />
       </>
