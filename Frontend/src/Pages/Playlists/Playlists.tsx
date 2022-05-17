@@ -28,7 +28,7 @@ function Playlists() {
 
   return (
     <Box>
-      <AddPlayList listSelectFunc={listSelectFunc} />
+      <AddPlayList listSelectFunc={listSelectFunc} refetching={refetch}/>
       {listSelect ? (
         <SongListOfPlaylist
           listSelect={playlistSongThisList}

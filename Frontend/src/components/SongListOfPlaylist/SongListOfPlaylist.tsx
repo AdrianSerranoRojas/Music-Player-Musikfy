@@ -6,7 +6,7 @@ import PlaylistModal from "../PlaylistModal/PlaylistModal";
 
 function SongListOfPlaylist({ listSelect, list }) {
   const id = listSelect?._id;
-  const { data, isLoading, isSuccess } = useGetSongQuery(id);
+  const { data, isLoading, isSuccess, refetch } = useGetSongQuery(id);
 
   return (
     <>

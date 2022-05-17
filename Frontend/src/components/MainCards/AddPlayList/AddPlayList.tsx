@@ -34,7 +34,7 @@ const Widget = styled("div")(({ theme }) => ({
   overflow: "scroll",
 }));
 
-function AddPlayList({ listSelectFunc }) {
+function AddPlayList({ listSelectFunc, refetching }) {
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -49,6 +49,7 @@ function AddPlayList({ listSelectFunc }) {
 
   function handleSelectPlaylist(playlist) {
     listSelectFunc(playlist);
+    refetching();
   }
 
   async function handleCreatePlaylist() {
