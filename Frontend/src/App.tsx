@@ -102,7 +102,7 @@ export default function App() {
         </Routes>
         <Widget2>
           <PlayerH5 />
-          <Box style={{overflow: "scroll"}}>
+          <Box style={{overflow: "scroll", width : "30%"}}>
             <QueueListing />
           </Box>
         </Widget2>
