@@ -34,19 +34,33 @@ import {
   useNotLikeSongMutation,
 } from "../../services/songApi";
 import { useGetUserQuery } from "../../services/userApi";
+import {
+  useGetSongsCounterQuery,
+  useGetSongsCounterByUserQuery,
+  useCreateActionMutation,
+} from "../../services/stadisticsApi";
 import { TrendingUpSharp } from "@mui/icons-material";
 import AuthContext from "../../context/AuthContext";
 import CloseIcon from "@mui/icons-material/Close";
 import "./SongCard.scss";
 
-function SongCard({ songName, songUrl, songArtist, songId, id, songImage }) {
+function SongCard({ id, song }) {
+ 
+  const songName = song.songData.title;
+  const songArtist = song.songData.artist;
+  const songUrl = song.songFile.url;
+  const songId = song._id;
+  const songImage = song?.songImage?.imageUrl;
+
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
   const currentUser = useContext(AuthContext);
 
+  const [createAction, ActionResponse] = useCreateActionMutation();
+
   const [open, setOpen] = React.useState(false);
-  const { data: song } = useGetSongQuery(songId);
+  // const { data: song } = useGetSongQuery(songId);
   const { data: user, refetch } = useGetUserQuery(currentUser?.uid);
   const [LikeSong, response] = useLikeSongMutation();
   const [NotLikeSong, response2] = useNotLikeSongMutation();
@@ -54,6 +68,10 @@ function SongCard({ songName, songUrl, songArtist, songId, id, songImage }) {
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
   const handlePlay = () => {
+    if(currentUser){
+      var userId = currentUser.id
+    }
+    createAction({songId:songId, userId:userId , action:"play"})
     if (currentSong[0].audio === "") {
       dispatch(
         addFirstCurrentSong([

@@ -62,6 +62,7 @@ function MySongs() {
                     songName={song.songName}
                     songUrl={song.songFile.url}
                     songId={song.id}
+                    song={song}
                    
                   />
                 );
