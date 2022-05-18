@@ -8,7 +8,7 @@ export const stadisticsApi = createApi({
   }),
   endpoints: (builder) => ({
     getSongsCounter: builder.query({
-      query: () => `/api/songs`,
+      query: () => `/api/song`,
     }),
     getSongsCounterByUser: builder.query({
       query: (userId) => `api/songs/${userId}`,

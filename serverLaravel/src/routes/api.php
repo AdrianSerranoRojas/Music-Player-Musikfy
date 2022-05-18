@@ -12,7 +12,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::controller(songController::class)->group(function () {
     Route::get("songs", "index");
     Route::post("song", "store");
-    Route::get("song/{id}", "show");
+    Route::get("song", "show");
     Route::put("song/{id}", "update");
     Route::delete("song/{id}", "destroy");
     Route::get("songUser/{id}/{userId}", "showSongUser");

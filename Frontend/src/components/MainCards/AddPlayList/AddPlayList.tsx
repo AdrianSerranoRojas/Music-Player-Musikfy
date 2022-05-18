@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 import { useState } from "react";
 import {
   useGetPlaylistsQuery,
+  useGetPlaylistQuery,
   useDeletePlaylistMutation,
   useUpdatePlaylistMutation,
   useCreatePlaylistMutation,
@@ -25,6 +26,8 @@ import Modal from "@mui/material/Modal";
 import { Button, CardActionArea, Grid, TextField } from "@mui/material";
 import React from "react";
 import styled from '@mui/material/styles/styled';
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import PlaylistCard from "../../PlaylistCard/PlaylistCard";
 
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
@@ -42,22 +45,16 @@ function AddPlayList({ listSelectFunc, refetching }) {
 
   const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
   const [createPlaylist, result] = useCreatePlaylistMutation();
-  const [deletePlaylist, resultDelete] = useDeletePlaylistMutation();
   const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation();
 
   const [playlistName, setPlaylistName] = useState("List");
 
-  function handleSelectPlaylist(playlist) {
-    listSelectFunc(playlist);
-    refetching();
-  }
-
+  // function handleSelectPlaylist(playlist) {
+  //   listSelectFunc(playlist);
+  //   refetching();
+  // }
   async function handleCreatePlaylist() {
     await createPlaylist({ title: playlistName });
-    refetch();
-  }
-  async function handleDeletePlaylist(playlistName) {
-    await deletePlaylist(playlistName.playlist._id);
     refetch();
   }
   async function handleUpdatePlaylist(playlistName) {
@@ -68,13 +65,15 @@ function AddPlayList({ listSelectFunc, refetching }) {
     setPlaylistName(e.target.value);
   };
 
+  const playlistTxt = "Playlist title: "
+
   return (
     <Widget>
     <Typography variant="h4" align="center" fontFamily="Vollkorn, serif" >
         All the Playlists!
     </Typography>
     <Box>
-    <Card>
+    <Card className='playlistBg'>
     <CardHeader
       title="Create Playlist"
       sx={{pt:2, pb:0, my:0}}
@@ -103,33 +102,7 @@ function AddPlayList({ listSelectFunc, refetching }) {
     {isSuccess &&
           data.data.map((playlist, index) => {
             return (
-              <div  key={index} >
-    <Card  key={index}  sx={{mt:0.2}}>
-      <Box >
-      <CardActionArea>
-      <Button
-      className='imgButtonPlaylist'
-      onClick={(e) => handleSelectPlaylist(playlist)}>
-    <CardHeader
-      title={playlist.title}
-      sx={{py:0, my:0}}
-    />
-    </Button>
-    </CardActionArea>
-    <CardActions disableSpacing>
-      <FavIconPlaylist />
-      <IconButton aria-label="share">
-        <ShareIcon />
-      </IconButton>
-      <IconButton
-        aria-label="delete"
-        onClick={() => handleDeletePlaylist({ playlist })}>
-        <DeleteIcon />
-      </IconButton>
-    </CardActions>
-    </Box>
-  </Card>
-  </div>
+              <PlaylistCard key={index} playlist={playlist} refetch={refetch} listSelectFunc={listSelectFunc} refetching={refetching}/>
   )
   })}
   </Box>

@@ -7,7 +7,7 @@ import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import { useGetUserQuery, useUpdateUserMutation } from "../../services/userApi";
 import AuthContext from "../../context/AuthContext";
 import EditInfo from "../../components/EditInfo/EditInfo";
-import "./profile.scss";
+// import "./profile.scss";
 import { Box, Button, Card, Container, createTheme, Paper, ThemeProvider } from "@mui/material";
 import LockIcon from "@mui/icons-material/Lock";
 import { styled } from "@mui/material/styles";
