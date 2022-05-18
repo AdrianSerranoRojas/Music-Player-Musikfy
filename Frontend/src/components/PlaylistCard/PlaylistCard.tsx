@@ -4,6 +4,7 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import CardHeader from '@mui/material/CardHeader';
 import { Button, CardActionArea} from "@mui/material";
+import Grid from '@mui/material/Grid';
 
 import FavIconPlaylist from "../FavIcon/FavIconPlaylist";
 import ShareIcon from '@mui/icons-material/Share';
@@ -63,32 +64,39 @@ const PlaylistCard = ({playlist, refetch, listSelectFunc, refetching }) => {
         })
     }
     return(
-        <Card sx={{mt:0.2}}>
-      <Box >
-      <CardActionArea>
-      <Button
-      className='imgButtonPlaylist'
-      onClick={(e) => handleSelectPlaylist(playlist)}>
-    <CardHeader
-      title={playlist.title}
-      sx={{py:0, my:0}}
-    />
-    </Button>
-    </CardActionArea>
-    <CardActions disableSpacing>
-      <FavIconPlaylist />
-      <IconButton aria-label="share">
-        <ShareIcon />
-      </IconButton>
-      <IconButton
-        aria-label="delete"
-        onClick={handleDeletePlaylist}>
-        <DeleteIcon />
-      </IconButton>
-      <IconButton aria-label="share" onClick={() => handlePlayPlaylist({ playlist })}>
-        <PlayArrowIcon />
-      </IconButton>
-    </CardActions>
+  <Card sx={{mt:0.2}} className="playlistBg">
+    <Box >
+        <Grid container>
+            <Grid item xs={12}>
+                <CardActions>
+                <button
+                className='imgButtonPlaylist'
+                onClick={(e) => handleSelectPlaylist(playlist)}>
+                <CardHeader
+                title={playlist.title}
+                sx={{py:0, my:0}}
+                className="hoverPlaylist"
+                />
+                </button>
+                </CardActions>
+            </Grid>
+            <Grid item xs={8} sx={{ml:4}}>
+                <CardActions disableSpacing>
+                <FavIconPlaylist />
+                <IconButton aria-label="share">
+                    <ShareIcon />
+                </IconButton>
+                <IconButton
+                    aria-label="delete"
+                    onClick={handleDeletePlaylist}>
+                    <DeleteIcon />
+                </IconButton>
+                <IconButton aria-label="share" onClick={() => handlePlayPlaylist({ playlist })}>
+                    <PlayArrowIcon />
+                </IconButton>
+                </CardActions>
+            </Grid>
+        </Grid>
     </Box>
   </Card>
     );
