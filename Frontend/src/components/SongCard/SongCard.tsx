@@ -159,7 +159,7 @@ export default function SongCard2({ song, id  }) {
           </Typography>
           <Typography sx={{ml:"1%"}} variant="subtitle2">
             {songArtist}
-            Rep: {isSuccess && songCounter.total}
+            Rep: {isSuccess && songCounter?.total}
           </Typography>
         </Grid>
         </Grid>
