@@ -13,7 +13,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import AddIcon from "@mui/icons-material/Add";
-import { height } from "@mui/system";
 import {
   addCurrentSong,
   addFirstCurrentSong,
@@ -45,7 +44,7 @@ import AuthContext from "../../context/AuthContext";
 import CloseIcon from "@mui/icons-material/Close";
 import "./SongCard.scss";
 
-function SongCard({ song }) {
+function SongCard({ song, id }) {
   const songName = song?.songData?.title;
   const songArtist = song?.songData?.artist;
   const songUrl = song?.songFile?.url;
@@ -53,7 +52,7 @@ function SongCard({ song }) {
   const songImage = song?.songImage?.imageUrl;
 
   const theme = useTheme();
-  const currentSong = useSelector((state) => state.songs.currentSong);
+  const { currentSong } = useSelector(songsSelector);
   const dispatch = useDispatch();
   const currentUser = useContext(AuthContext);
 
@@ -66,8 +65,17 @@ function SongCard({ song }) {
   const [NotLikeSong, response2] = useNotLikeSongMutation();
   const userId = user.id;
 
-  const { data: songCounter, isSuccess } = useGetSongsCounterQuery();
- 
+  const { data: songsCounter, isSuccess } = useGetSongsCounterQuery();
+
+   let songCounter={total:0};
+   
+  useEffect(()=>{
+    if (songsCounter) {
+      songCounter = songsCounter.find((song) => song.songId === songId);
+      console.log(songCounter);
+    }
+  },[songsCounter])
+
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
   const handlePlay = () => {
@@ -134,16 +142,13 @@ function SongCard({ song }) {
           component="img"
           sx={{ width: 65, height: 65 }}
           image={songImage}
-          alt="Live from space album cover"
+          alt="alt"
         />
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
+        <Box sx={{ display: "flex", flexDirection: "row" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography component="div" variant="h6">
+            {/* <Typography component="div" >
               {songName}
-            </Typography>
-            <Typography component="div" variant="h6">
-              {songName}
-            </Typography>
+            </Typography> */}
             <Typography
               variant="subtitle1"
               color="text.secondary"
@@ -156,7 +161,7 @@ function SongCard({ song }) {
               color="text.secondary"
               component="div"
             >
-              3:14
+              Rep: {isSuccess && songCounter.total}
             </Typography>
           </CardContent>
         </Box>
@@ -184,7 +189,7 @@ function SongCard({ song }) {
           <Collapse in={open} timeout="auto" unmountOnExit>
             <List component="div" disablePadding>
               <ListItemButton>
-                <DropdownAddPlaylist id={songId} />
+                <DropdownAddPlaylist id={id} />
                 <ListItemButton onClick={handleClose}>
                   <CloseIcon />
                 </ListItemButton>

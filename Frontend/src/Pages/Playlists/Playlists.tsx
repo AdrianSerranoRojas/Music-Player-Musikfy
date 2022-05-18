@@ -18,9 +18,10 @@ function Playlists() {
     setListSelect(list);
     setplaylistId(list._id);
   };
-
+  
   const { data, isLoading, isSuccess, refetch } =
     useGetPlaylistQuery(playlistId);
+
   let playlistSongThisList = [];
   if (isSuccess) {
     playlistSongThisList = data.data[0].songs;
