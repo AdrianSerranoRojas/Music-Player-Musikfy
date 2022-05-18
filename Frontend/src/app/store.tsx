@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import usersSlice from "../features/users/usersSlice";
-import {songsSlice} from "../features/song/songsSlice";
+import { songsSlice } from "../features/song/songsSlice";
 
 import { songApi } from "../services/songApi";
 import { userApi } from "../services/userApi";
 import { playlistApi } from "../services/playlistApi";
-
+import { stadisticsApi } from "../services/stadisticsApi";
 
 import { setupListeners } from "@reduxjs/toolkit/query";
 
@@ -15,11 +15,17 @@ export const store = configureStore({
     usersState: usersSlice,
     songs: songsSlice.reducer,
     [songApi.reducerPath]: songApi.reducer,
+    [stadisticsApi.reducerPath]: stadisticsApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
     [playlistApi.reducerPath]: playlistApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(songApi.middleware, userApi.middleware,playlistApi.middleware),
+    getDefaultMiddleware().concat(
+      songApi.middleware,
+      userApi.middleware,
+      playlistApi.middleware,
+      stadisticsApi.middleware
+    ),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

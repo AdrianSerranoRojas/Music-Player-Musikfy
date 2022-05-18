@@ -6,10 +6,7 @@ import withLayout from "../../hoc/withLayout";
 import AddPlayList from "../../components/MainCards/AddPlayList/AddPlayList";
 import SongListOfPlaylist from "../../components/SongListOfPlaylist/SongListOfPlaylist";
 import { useState } from "react";
-import {
-  useGetPlaylistQuery,
-
-} from "../../services/playlistApi";
+import { useGetPlaylistQuery } from "../../services/playlistApi";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { Typography } from "@mui/material";
 
@@ -19,40 +16,29 @@ function Playlists() {
 
   const listSelectFunc = (list) => {
     setListSelect(list);
-    setplaylistId(list._id)
+    setplaylistId(list._id);
   };
 
-  const { data, isLoading, isSuccess, refetch } = useGetPlaylistQuery(playlistId);
-  let playlistSongThisList =[]
-  if (isSuccess){
-    console.log(data);
-    playlistSongThisList = data.data[0].songs
-    console.log("m estoy liandooooo",playlistSongThisList);
+  const { data, isLoading, isSuccess, refetch } =
+    useGetPlaylistQuery(playlistId);
+  let playlistSongThisList = [];
+  if (isSuccess) {
+    playlistSongThisList = data.data[0].songs;
   }
-
-  // const Widget = styled("div")(({ theme }) => ({
-  //   padding: 16,
-  //   borderRadius: 16,
-  //   width: 950,
-  //   maxWidth: "100%",
-  //   margin: "auto",
-  //   marginBottom: 25,
-  //   position: "relative",
-  //   zIndex: 1,
-  //   backgroundColor:
-  //     theme.palette.mode === "dark"
-  //       ? "rgba(0,0,0,0.6)"
-  //       : "rgba(255,255,255,0.4)",
-  //   backdropFilter: "blur(40px)",
-  // }));
 
   return (
     <Box>
-        <AddPlayList listSelectFunc={listSelectFunc} />
-        {listSelect ? (
-          // <SongListOfPlaylist  playlistSongThisList={playlistSongThisList} listSelect={listSelect} />
-          <SongListOfPlaylist listSelect={playlistSongThisList} list={listSelect} />
-        ) :<Typography sx={{mx: "auto", mt: 12}} variant="h3">Select a list</Typography>}
+      <AddPlayList listSelectFunc={listSelectFunc} refetching={refetch}/>
+      {listSelect ? (
+        <SongListOfPlaylist
+          listSelect={playlistSongThisList}
+          list={listSelect}
+        />
+      ) : (
+        <Typography sx={{ mx: "auto", mt: 12 }} variant="h3">
+          Select a list
+        </Typography>
+      )}
     </Box>
   );
 }

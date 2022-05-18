@@ -9,7 +9,8 @@ class Songs extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'songName',
-        'songCounter',
+        'songId',
+        'userId',
+        'action'
     ];
 }

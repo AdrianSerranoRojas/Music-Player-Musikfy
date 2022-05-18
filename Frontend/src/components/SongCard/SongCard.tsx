@@ -1,5 +1,5 @@
-import React, { useState, useContext } from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import React, { useState, useContext, useEffect } from "react";
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -21,7 +21,7 @@ import {
   addPlayQueue,
 } from "../../features/song/songsSlice";
 import { useDispatch, useSelector } from "react-redux";
-import DropdownAddPlaylist from "../Dropdown/AddPlaylist/AddPlaylist";
+import DropdownAddPlaylist from "../Dropdown/AddPlaylist/DropdownAddPlaylist";
 import ListItemButton from "@mui/material/ListItemButton";
 import List from "@mui/material/List";
 import Collapse from "@mui/material/Collapse";
@@ -34,32 +34,56 @@ import {
   useNotLikeSongMutation,
 } from "../../services/songApi";
 import { useGetUserQuery } from "../../services/userApi";
+import {
+  useGetSongsCounterQuery,
+  useGetSongsCounterByUserQuery,
+  useCreateActionMutation,
+  useGetSongCounterByUserQuery,
+} from "../../services/stadisticsApi";
+import { TrendingUpSharp } from "@mui/icons-material";
 import AuthContext from "../../context/AuthContext";
-import CloseIcon from '@mui/icons-material/Close';
-import "./SongCard.scss"
-import Grid from "@mui/material/Grid";
-import CardHeader from "@mui/material/CardHeader";
-import CardActions from "@mui/material/CardActions";
-import MoreVertIcon from '@mui/icons-material/MoreVert';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import CloseIcon from "@mui/icons-material/Close";
+import "./SongCard.scss";
 
+function SongCard({ song }) {
+  const songName = song?.songData?.title;
+  const songArtist = song?.songData?.artist;
+  const songUrl = song?.songFile?.url;
+  const songId = song?._id;
+  const songImage = song?.songImage?.imageUrl;
 
-
-function SongCard({ songName, songUrl, songArtist, songId, id }) {
   const theme = useTheme();
   const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
   const currentUser = useContext(AuthContext);
 
+  const [createAction, ActionResponse] = useCreateActionMutation();
+
   const [open, setOpen] = React.useState(false);
-  const { data: song } = useGetSongQuery(songId);
+  // const { data: song } = useGetSongQuery(songId);
   const { data: user, refetch } = useGetUserQuery(currentUser?.uid);
   const [LikeSong, response] = useLikeSongMutation();
   const [NotLikeSong, response2] = useNotLikeSongMutation();
+  const userId = user.id;
+
+  const { data: songCounter, isSuccess } = useGetSongCounterByUserQuery({
+    songId,
+    userId,
+  });
+
+  useEffect(() => {
+    console.log(songCounter);
+  }, [songCounter]);
 
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
   const handlePlay = () => {
+    if (currentUser) {
+      console.log(songId);
+      var userId = currentUser.uid;
+      console.log(userId);
+      createAction({ songId: songId, userId: userId, action: "play" });
+    }
     if (currentSong[0].audio === "") {
       dispatch(
         addFirstCurrentSong([
@@ -107,50 +131,76 @@ function SongCard({ songName, songUrl, songArtist, songId, id }) {
       LikeSong({ songId, fav });
       refetch();
     }
-     refetch();
+    refetch();
   };
 
   return (
-<>
-<Card sx={{ display: "flex", height: 80 }}>
-<CardHeader
-title={songName}
-subheader={songArtist}
-/>
-  <CardActions disableSpacing sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-    <IconButton aria-label="play/pause" onClick={handlePlay}>
-      <PlayArrowIcon sx={{ height: 20, width: 20 }} />
-    </IconButton>
-    <IconButton aria-label="play/pause" onClick={handleQueue}>
-      <QueueMusicIcon sx={{ height: 20, width: 20 }} />
-    </IconButton>
-    {/* <FavIcon onClick={handleLike} /> */}
-    <IconButton onClick={handleLike} aria-label="save as favorite">
-      {fav === true ? (
-        <FavoriteIcon sx={{ height: 20, width: 20 }} />
-      ) : (
-        <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
-      )}
-    </IconButton>
-    <IconButton>
-      <DeleteIcon sx={{ height: 20, width: 20 }} />
-    </IconButton>
-    <IconButton onClick={handleOpen}>
-      <AddIcon sx={{ height: 20, width: 20 }} />
-    </IconButton>
-    </CardActions>
-    <Collapse in={open} timeout="auto" unmountOnExit>
-      <List component="div" disablePadding>
-        <ListItemButton>
-          <DropdownAddPlaylist id={id} />
-          <ListItemButton onClick={handleClose}>
-            <CloseIcon />
-          </ListItemButton>
-        </ListItemButton>
-      </List>
-    </Collapse>
-</Card>
-</>
+    <>
+      <Card variant="outlined" sx={{ display: "flex", height: 65 }}>
+        <CardMedia
+          component="img"
+          sx={{ width: 65, height: 65 }}
+          image={songImage}
+          alt="Live from space album cover"
+        />
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <CardContent sx={{ flex: "1 0 auto" }}>
+            <Typography component="div" variant="h6">
+              {songName}
+            </Typography>
+            <Typography component="div" variant="h6">
+              {songName}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              component="div"
+            >
+              {songArtist}
+            </Typography>
+            <Typography
+              variant="subtitle2"
+              color="text.secondary"
+              component="div"
+            >
+              3:14
+            </Typography>
+          </CardContent>
+        </Box>
+        <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
+          <IconButton aria-label="play/pause" onClick={handlePlay}>
+            <PlayArrowIcon sx={{ height: 20, width: 20 }} />
+          </IconButton>
+          <IconButton aria-label="play/pause" onClick={handleQueue}>
+            <QueueMusicIcon sx={{ height: 20, width: 20 }} />
+          </IconButton>
+          {/* <FavIcon onClick={handleLike} /> */}
+          <IconButton onClick={handleLike} aria-label="save as favorite">
+            {fav === true ? (
+              <FavoriteIcon sx={{ height: 20, width: 20 }} />
+            ) : (
+              <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
+            )}
+          </IconButton>
+          <IconButton>
+            <DeleteIcon sx={{ height: 20, width: 20 }} />
+          </IconButton>
+          <IconButton onClick={handleOpen}>
+            <AddIcon sx={{ height: 20, width: 20 }} />
+          </IconButton>
+          <Collapse in={open} timeout="auto" unmountOnExit>
+            <List component="div" disablePadding>
+              <ListItemButton>
+                <DropdownAddPlaylist id={songId} />
+                <ListItemButton onClick={handleClose}>
+                  <CloseIcon />
+                </ListItemButton>
+              </ListItemButton>
+            </List>
+          </Collapse>
+        </Box>
+      </Card>
+    </>
   );
 }
 

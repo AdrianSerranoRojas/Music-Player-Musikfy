@@ -22,11 +22,17 @@ import FavoriteSongs from "./Pages/FavoriteSongs/FavoriteSongs";
 import PlayerH5 from "./components/PlayerH5/PlayerH5";
 import QueueListing from "./components/QueueListing/QueueListing";
 import { styled } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+
 
 import { NotFound } from "./components/NotFound/NotFound";
+import { flexbox } from "@mui/system";
+import Stadistics from "./Pages/Stadistics/Stadistics";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({
+    display: "flex",
+    gap: "2%",
     overflowY: "hidden",
     padding: 16,
     borderRadius: 16,
@@ -90,14 +96,16 @@ export default function App() {
             path="/playlist"
             element={currentUser ? <Playlists /> : <Home />}
           />
-          {/* <Route
-            path="/playliststrue"
-            element={  <SongListOfPlaylist/> }
-          /> */}
+          <Route
+            path="/stadistics"
+            element={  <Stadistics /> }
+          />
         </Routes>
         <Widget2>
           <PlayerH5 />
-          <QueueListing />
+          <Box style={{overflow: "scroll", width : "30%"}}>
+            <QueueListing />
+          </Box>
         </Widget2>
       </AuthContext.Provider>
     </>

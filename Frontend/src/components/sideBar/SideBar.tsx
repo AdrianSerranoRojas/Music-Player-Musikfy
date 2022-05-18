@@ -60,9 +60,9 @@ export default function SideNavbar({ ...props }) {
 
   function toogleOpenSearch() {
     setOpen(false);
-    setTimeout(() => {
-      refFocus.current.focus();
-    }, 500);
+    // setTimeout(() => {
+    //   refFocus.current.focus();
+    // }, 500);
   }
 
   const navigate = useNavigate();
@@ -190,13 +190,6 @@ export default function SideNavbar({ ...props }) {
                           "& .MuiInputBase-input": {
                             color: "gray",
                             padding: 0,
-                          },
-                        }}
-                        componentsProps={{
-                          input: {
-                            sx: {
-                              padding: 0,
-                            },
                           },
                         }}
                       ></InputBase>
@@ -345,13 +338,6 @@ export default function SideNavbar({ ...props }) {
                           "& .MuiInputBase-input": {
                             color: "lightgray",
                             padding: 0,
-                          },
-                        }}
-                        componentsProps={{
-                          input: {
-                            sx: {
-                              padding: 0,
-                            },
                           },
                         }}
                       ></InputBase>

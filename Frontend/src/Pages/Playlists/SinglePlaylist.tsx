@@ -43,6 +43,8 @@ function SinglePlaylist() {
 
   return (
     <>
+    {isSuccess &&
+    
       <DragDropContext
       // onDragEnd={(result) => {
       //   const {source, destination} = result;
@@ -123,6 +125,7 @@ function SinglePlaylist() {
                               {...draggableProvided.dragHandleProps}
                             >
                               <SongCard
+                                song={song}
                                 songName={song.songName}
                                 songUrl={song.songUrl}
                                 songUser={song.songUser.email}
@@ -139,6 +142,7 @@ function SinglePlaylist() {
           </Widget>
         </Box>
       </DragDropContext>
+    }
     </>
   );
 }
