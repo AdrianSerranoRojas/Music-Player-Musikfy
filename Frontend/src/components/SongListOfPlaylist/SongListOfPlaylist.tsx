@@ -10,43 +10,42 @@ function SongListOfPlaylist({ listSelect, list }) {
 
   return (
     <>
-      <Box>
+      {isSuccess && (
         <Box>
-          <Box sx={{ mt: 7 }}>
-            <Typography
-              variant="h2"
-              align="center"
-              fontFamily="Vollkorn, serif"
-            >
-              {list.title}
-            </Typography>
-            <Typography
-              variant="h4"
-              align="center"
-              fontFamily="Vollkorn, serif"
-            >
-              {listSelect.length} songs
-            </Typography>
-            <PlaylistModal />
+          <Box>
+            <Box sx={{ mt: 7 }}>
+              <Typography
+                variant="h2"
+                align="center"
+                fontFamily="Vollkorn, serif"
+              >
+                {list.title}
+              </Typography>
+              <Typography
+                variant="h4"
+                align="center"
+                fontFamily="Vollkorn, serif"
+              >
+                {listSelect.length} songs
+              </Typography>
+              <PlaylistModal />
+            </Box>
+          </Box>
+          <Box sx={{ mt: 1 }}>
+            {listSelect.map((song, index) => {
+              return (
+                <Box>
+                  <SongCard
+                    key={index}
+                    id={id}
+                    song={song}
+                  />
+                </Box>
+              );
+            })}
           </Box>
         </Box>
-        <Box sx={{ mt: 1 }}>
-          {listSelect.map((song, index) => {
-            return (
-              <Box>
-                <SongCard
-                  songName={song.songData.title}
-                  songUrl={song.songFile.url}
-                  key={index}
-                  songArtist={song.songData.artist}
-                  id={id}
-                  song={song}
-                />
-              </Box>
-            );
-          })}
-        </Box>
-      </Box>
+      )}
     </>
   );
 }

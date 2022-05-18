@@ -36,40 +36,41 @@ function MySongs() {
 
   return (
     <>
-      <Box sx={{ pt: 15 }}>
-        <Widget
-          sx={{
-            boxShadow: 4,
-            p: 2,
-            maxwidth: 750,
-            maxheight: 440,
-          }}
-        >
-          <Box>
-            <Typography
-              variant="h5"
-              align="center"
-              fontFamily="Vollkorn, serif"
-            >
-              My Songs!!!
-              <AddSongButton />
-            </Typography>
-            {isSuccess &&
-              data.data.map((song, index) => {
-                return (
-                  <SongCard
-                    key={index}
-                    songName={song.songName}
-                    songUrl={song.songFile.url}
-                    songId={song.id}
-                    song={song}
-                   
-                  />
-                );
-              })}
-          </Box>
-        </Widget>
-      </Box>
+      {isSuccess && (
+        <Box sx={{ pt: 15 }}>
+          <Widget
+            sx={{
+              boxShadow: 4,
+              p: 2,
+              maxwidth: 750,
+              maxheight: 440,
+            }}
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                align="center"
+                fontFamily="Vollkorn, serif"
+              >
+                My Songs!!!
+                <AddSongButton />
+              </Typography>
+              {isSuccess &&
+                data.data.map((song, index) => {
+                  return (
+                    <SongCard
+                      key={index}
+                      songName={song.songName}
+                      songUrl={song.songFile.url}
+                      songId={song.id}
+                      song={song}
+                    />
+                  );
+                })}
+            </Box>
+          </Widget>
+        </Box>
+      )}
     </>
   );
 }

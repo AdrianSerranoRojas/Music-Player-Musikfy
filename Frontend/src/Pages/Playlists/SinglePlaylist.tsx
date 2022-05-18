@@ -43,6 +43,8 @@ function SinglePlaylist() {
 
   return (
     <>
+    {isSuccess &&
+    
       <DragDropContext
       // onDragEnd={(result) => {
       //   const {source, destination} = result;
@@ -140,6 +142,7 @@ function SinglePlaylist() {
           </Widget>
         </Box>
       </DragDropContext>
+    }
     </>
   );
 }

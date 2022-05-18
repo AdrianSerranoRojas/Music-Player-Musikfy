@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
@@ -38,21 +38,22 @@ import {
   useGetSongsCounterQuery,
   useGetSongsCounterByUserQuery,
   useCreateActionMutation,
+  useGetSongCounterByUserQuery,
 } from "../../services/stadisticsApi";
 import { TrendingUpSharp } from "@mui/icons-material";
 import AuthContext from "../../context/AuthContext";
 import CloseIcon from "@mui/icons-material/Close";
 import "./SongCard.scss";
 
-function SongCard({ id, song }) {
-  const songName = song.songData.title;
-  const songArtist = song.songData.artist;
-  const songUrl = song.songFile.url;
-  const songId = song._id;
+function SongCard({ song }) {
+  const songName = song?.songData?.title;
+  const songArtist = song?.songData?.artist;
+  const songUrl = song?.songFile?.url;
+  const songId = song?._id;
   const songImage = song?.songImage?.imageUrl;
 
   const theme = useTheme();
-  const currentSong = useSelector(songsSelector);
+  const currentSong = useSelector((state) => state.songs.currentSong);
   const dispatch = useDispatch();
   const currentUser = useContext(AuthContext);
 
@@ -63,6 +64,16 @@ function SongCard({ id, song }) {
   const { data: user, refetch } = useGetUserQuery(currentUser?.uid);
   const [LikeSong, response] = useLikeSongMutation();
   const [NotLikeSong, response2] = useNotLikeSongMutation();
+  const userId = user.id;
+
+  const { data: songCounter, isSuccess } = useGetSongCounterByUserQuery({
+    songId,
+    userId,
+  });
+
+  useEffect(() => {
+    console.log(songCounter);
+  }, [songCounter]);
 
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
@@ -134,7 +145,10 @@ function SongCard({ id, song }) {
         />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography component="div" variant="h5">
+            <Typography component="div" variant="h6">
+              {songName}
+            </Typography>
+            <Typography component="div" variant="h6">
               {songName}
             </Typography>
             <Typography

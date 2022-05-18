@@ -48,7 +48,7 @@ function SearchSongListing() {
               ></Typography>
               {isSuccess &&
                 data.data.map((song, index) => {
-                  return <SongCard key={index} song={song} />;
+                  return <SongCard key={index} song={song}/>;
                 })}
             </Box>
           </Widget>

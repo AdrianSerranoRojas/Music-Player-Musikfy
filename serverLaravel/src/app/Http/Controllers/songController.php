@@ -73,4 +73,17 @@ class songController extends Controller
         $song =  Songs::destroy($id);
         return $song;
     }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showSongUser($id, $userId)
+    {
+        $song = Songs::find($id);
+        return $song;
+    }
 }

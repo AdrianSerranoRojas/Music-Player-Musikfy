@@ -4,14 +4,19 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const stadisticsApi = createApi({
   reducerPath: "stadisticsApi",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8100"
+    baseUrl: "http://localhost:8100",
   }),
   endpoints: (builder) => ({
     getSongsCounter: builder.query({
       query: () => `/api/songs`,
     }),
     getSongsCounterByUser: builder.query({
-      query: (userId) => `/songs/${userId}`,
+      query: (userId) => `api/songs/${userId}`,
+    }),
+    getSongCounterByUser: builder.query({
+      query: ({ songId, ...patch }) => ({
+        url: `api/songUser/${songId}/${patch}`,
+      }),
     }),
     // getSongsFiltered: builder.query({
     //   query: (filter) => `/filterSongs/${filter}`,
@@ -48,4 +53,5 @@ export const {
 useGetSongsCounterQuery,
 useGetSongsCounterByUserQuery,
 useCreateActionMutation,
+useGetSongCounterByUserQuery,
 } = stadisticsApi;
