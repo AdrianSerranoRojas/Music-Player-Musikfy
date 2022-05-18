@@ -28,6 +28,7 @@ const PlaylistCard = ({playlist, refetch, listSelectFunc, refetching }) => {
     const currentSong = useSelector((state) => state.songs.currentSong);
     const [deletePlaylist, resultDelete] = useDeletePlaylistMutation();
     const { data } = useGetPlaylistQuery(playlist._id);
+    
     function handleSelectPlaylist(playlist) {
           listSelectFunc(playlist);
           refetching();
@@ -40,7 +41,6 @@ const PlaylistCard = ({playlist, refetch, listSelectFunc, refetching }) => {
 
     function handlePlayPlaylist() {
         const songData = data.data[0].songs;
-        console.log(songData);
         songData.map((song, index) => {
             if (index === 0){
                 dispatch(

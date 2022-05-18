@@ -1,16 +1,13 @@
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import SongCard from "../../components/SongCard/SongCard";
-import { useGetSongQuery } from "../../services/songApi";
-import PlaylistModal from "../PlaylistModal/PlaylistModal";
+import SongCard2 from "../SongCard/SongCard2";
+
 
 function SongListOfPlaylist({ listSelect, list }) {
   const id = listSelect?._id;
-  const { data, isLoading, isSuccess, refetch } = useGetSongQuery(id);
 
   return (
     <>
-      {isSuccess && (
         <Box>
           <Box>
             <Box sx={{ mt: 7 }}>
@@ -28,42 +25,27 @@ function SongListOfPlaylist({ listSelect, list }) {
               >
                 {listSelect.length} songs
               </Typography>
-              <PlaylistModal />
             </Box>
           </Box>
           <Box sx={{ mt: 1 }}>
             {listSelect.map((song, index) => {
               return (
                 <Box>
-                  <SongCard
+                  <SongCard2
+                    songId={song._id}
+                    songName={song.songData.title}
+                    songUrl={song.songFile.url}
                     key={index}
+                    songArtist={song.songData.artist}
                     id={id}
-                    song={song}
                   />
                 </Box>
               );
             })}
           </Box>
         </Box>
-      )}
     </>
-  );
-}
-{
-  /* {isSuccess && */
-}
-{
-  /* {listSelect.songs.map((song, index) => {
-          return (
-            <SongCard
-              songName={song?.songData?.title}
-              songUrl={song.songFile.url}
-              key={index}
-              songArtist={song?.songData?.artist}
-              id={song._id}
-            />
-          );
-        })} */
+      )
 }
 
 export default SongListOfPlaylist;

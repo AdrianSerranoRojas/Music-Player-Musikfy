@@ -15,7 +15,7 @@ import QueueMusicIcon from '@mui/icons-material/QueueMusic';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import DropdownAddPlaylist from '../Dropdown/AddPlaylist/AddPlaylist';
+import DropdownAddPlaylist from '../Dropdown/AddPlaylist/DropdownAddPlaylist';
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import { useDispatch, useSelector } from "react-redux";
 import { useTheme } from "@mui/material/styles";

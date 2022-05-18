@@ -1,36 +1,34 @@
-@use "../../styles/Fonts.scss";
 
-.mainProfile{
-    margin: 0 10%;
-    font-family: Fonts.$Vollkorn;
-}
-.pageProfile {
-    display: grid;
-    grid-gap: 100px;
-    grid-template-columns: repeat(2, 1fr);
-}
-.profileTitle {
-    font-size: 20px;
-    margin-bottom: 15px;
-    margin: 0;
-}
-.profileData{
-    font-size: 18px;
-}
-.profileImg {
-    border-radius: 50%;
-    width: 50%;
-}
-.profileButtons {
-    margin: 100px 0 0 50%;
-}
-.profileCancel{
-    margin: 15px;
-}
-.gridFixer{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-}
-.transparent{
-    background-color: transparent;
-}
+// .mainProfile{
+//     margin: 0 10%;
+// }
+// .pageProfile {
+//     display: grid;
+//     grid-gap: 100px;
+//     grid-template-columns: repeat(2, 1fr);
+// }
+// .profileTitle {
+//     font-size: 20px;
+//     margin-bottom: 15px;
+//     margin: 0;
+// }
+// .profileData{
+//     font-size: 18px;
+// }
+// .profileImg {
+//     border-radius: 50%;
+//     width: 50%;
+// }
+// .profileButtons {
+//     margin: 100px 0 0 50%;
+// }
+// .profileCancel{
+//     margin: 15px;
+// }
+// .gridFixer{
+//     display: grid;
+//     grid-template-columns: repeat(2, 1fr);
+// }
+// .transparent{
+//     background-color: transparent;
+// }
