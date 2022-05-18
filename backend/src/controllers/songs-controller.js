@@ -156,6 +156,27 @@ export async function getMySongs(req, res, next) {
     next(error);
   }
 }
+export async function getMyLikedSongs(req, res, next) {
+  const { uid } = req.user;
+
+  try {
+    const songs = await User.findOne({
+      _id: uid,
+    })
+      .select({ myFavoriteSongs: 1, _id: 0 })
+      .populate("myFavoriteSongs", {})
+      .lean()
+      .exec();
+
+    res.status(200).send({
+      data: songs,
+    });
+    console.log(songs);
+  } catch (error) {
+    next(error);
+  }
+}
+
 export async function likeSong(req, res, next) {
   const songId = req.body.songId;
   const userId = req.user.uid;

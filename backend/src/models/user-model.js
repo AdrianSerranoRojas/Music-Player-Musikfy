@@ -27,7 +27,7 @@ const UserSchema = new Schema(
       public_id: String,
     },
     myFavoriteSongs: {
-      type: [{ type: Schema.Types.ObjectId, ref: "song" }],
+      type: [{ type: Schema.Types.ObjectId, ref: "songs" }],
       default: [],
     },
   },

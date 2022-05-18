@@ -1,48 +1,18 @@
+import { useEffect } from "react";
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
-import PlaylistsCard from "../../components/MainCards/AddPlayList/AddPlayList";
 import SongCard from "../../components/SongCard/SongCard";
-import { useGetSongsQuery } from "../../services/songApi";
-import SettingsIcon from "@mui/icons-material/Settings";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-
+import {
+  useGetMySongsQuery,
+  useGetSongsFilteredQuery,
+  useGetMyLikedSongsQuery,
+} from "../../services/songApi";
+import "../MySongs/MySongs.scss";
 import withLayout from "../../hoc/withLayout";
+import AddSongButton from "../../components/AddSongButton/AddSongButton";
 
-function FavoriteSongs() {
-  const WallPaper = styled("div")({
-    position: "fixed",
-    width: "100%",
-    height: "100%",
-    top: 0,
-    left: 0,
-    overflow: "hidden",
-    background: "linear-gradient(rgb(255, 38, 142) 0%, rgb(255, 105, 79) 100%)",
-    transition: "all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s",
-    "&:before": {
-      content: '""',
-      width: "140%",
-      height: "140%",
-      position: "fixed",
-      top: "-40%",
-      right: "-50%",
-      background:
-        "radial-gradient(at center center, rgb(62, 79, 249) 0%, rgba(62, 79, 249, 0) 64%)",
-    },
-    "&:after": {
-      content: '""',
-      width: "140%",
-      height: "140%",
-      position: "fixed",
-      bottom: "-50%",
-      left: "-30%",
-      background:
-        "radial-gradient(at center center, rgb(247, 237, 225) 0%, rgba(247, 237, 225, 0) 70%)",
-      transform: "rotate(30deg)",
-    },
-  });
-
+function MyFavoriteSongs() {
   const Widget = styled("div")(({ theme }) => ({
     padding: 16,
     borderRadius: 16,
@@ -58,12 +28,13 @@ function FavoriteSongs() {
     backdropFilter: "blur(40px)",
   }));
 
-  const { data, isLoading, isSuccess } = useGetSongsQuery();
+  const { data, isLoading, isSuccess } = useGetMyLikedSongsQuery();
+  // const { data, isLoading, isSuccess } = useGetSongsFilteredQuery("basote");
 
   return (
     <>
       {isSuccess && (
-        <Box>
+        <Box sx={{ pt: 15 }}>
           <Widget
             sx={{
               boxShadow: 4,
@@ -72,32 +43,17 @@ function FavoriteSongs() {
               maxheight: 440,
             }}
           >
-            <Box
-              sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
-            >
-              <FavoriteIcon sx={{ height: 270, width: 270, ml: 5, mt: 5 }} />
-              <Box sx={{ mt: 15 }}>
-                <Typography
-                  variant="h2"
-                  align="center"
-                  fontFamily="Vollkorn, serif"
-                >
-                  Songs you like!
-                </Typography>
-                <Typography
-                  variant="h4"
-                  align="center"
-                  fontFamily="Vollkorn, serif"
-                >
-                  31 Songs
-                </Typography>
-                <SettingsIcon sx={{ ml: 22 }} />
-              </Box>
-            </Box>
-            <Box sx={{ mt: 1 }}>
+            <Box>
+              <Typography
+                variant="h5"
+                align="center"
+                fontFamily="Vollkorn, serif"
+              >
+                LIKED!!!
+              </Typography>
               {isSuccess &&
-                data.data.map((song, index) => {
-                  return <SongCard key={index} id={id} song={song} />;
+                data.data.myFavoriteSongs.map((song, index) => {
+                  return <SongCard key={index} song={song} />;
                 })}
             </Box>
           </Widget>
@@ -107,4 +63,4 @@ function FavoriteSongs() {
   );
 }
 
-export default withLayout(FavoriteSongs);
+export default withLayout(MyFavoriteSongs);

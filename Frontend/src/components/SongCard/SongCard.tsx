@@ -63,7 +63,6 @@ function SongCard({ song, id }) {
   const { data: user, refetch } = useGetUserQuery(currentUser?.uid);
   const [LikeSong, response] = useLikeSongMutation();
   const [NotLikeSong, response2] = useNotLikeSongMutation();
-  const userId = user.id;
 
   const { data: songsCounter, isSuccess } = useGetSongsCounterQuery();
 

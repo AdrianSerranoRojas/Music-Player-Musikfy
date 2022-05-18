@@ -28,6 +28,9 @@ export const songApi = createApi({
     getMySongs: builder.query({
       query: () => `/mySongs`,
     }),
+    getMyLikedSongs: builder.query({
+      query: () => `/likedSongs`,
+    }),
     createSong: builder.mutation({
       query: (body) => ({
         url: `/songs`,
@@ -61,4 +64,5 @@ export const {
   useLikeSongMutation,
   useGetSongQuery,
   useNotLikeSongMutation,
+  useGetMyLikedSongsQuery
 } = songApi;
