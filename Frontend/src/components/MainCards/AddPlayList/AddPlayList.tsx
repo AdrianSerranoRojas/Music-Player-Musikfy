@@ -68,13 +68,15 @@ function AddPlayList({ listSelectFunc, refetching }) {
     setPlaylistName(e.target.value);
   };
 
+  const playlistTxt = "Playlist title: "
+
   return (
     <Widget>
     <Typography variant="h4" align="center" fontFamily="Vollkorn, serif" >
         All the Playlists!
     </Typography>
     <Box>
-    <Card>
+    <Card className='playlistBg'>
     <CardHeader
       title="Create Playlist"
       sx={{pt:2, pb:0, my:0}}
@@ -103,19 +105,24 @@ function AddPlayList({ listSelectFunc, refetching }) {
     {isSuccess &&
           data.data.map((playlist, index) => {
             return (
-              <div  key={index} >
-    <Card  key={index}  sx={{mt:0.2}}>
-      <Box >
-      <CardActionArea>
-      <Button
+              <>
+    <Card sx={{mt:0.2}} className="playlistBg">
+      <Box key={index}>
+        <Grid container>
+          <Grid item xs={12}>
+        <CardActions>
+      <button
       className='imgButtonPlaylist'
       onClick={(e) => handleSelectPlaylist(playlist)}>
     <CardHeader
-      title={playlist.title}
+      title={playlistTxt + playlist.title}
       sx={{py:0, my:0}}
+      className="hoverPlaylist"
     />
-    </Button>
-    </CardActionArea>
+    </button>
+    </CardActions>
+    </Grid>
+    <Grid item xs={8} sx={{ml:4}}>
     <CardActions disableSpacing>
       <FavIconPlaylist />
       <IconButton aria-label="share">
@@ -127,9 +134,11 @@ function AddPlayList({ listSelectFunc, refetching }) {
         <DeleteIcon />
       </IconButton>
     </CardActions>
+    </Grid>
+    </Grid>
     </Box>
   </Card>
-  </div>
+    </>
   )
   })}
   </Box>

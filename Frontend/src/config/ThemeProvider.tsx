@@ -1,7 +1,7 @@
 import * as React from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { amber, deepOrange, grey } from "@mui/material/colors";
+import { amber, deepOrange, grey, purple, pink,} from "@mui/material/colors";
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},
@@ -26,7 +26,9 @@ export default function ToggleColorMode({ children }) {
           ...(mode === "light"
             ? {
                 // palette values for light mode
-                primary: amber,
+                primary: {
+                  main: pink[200]
+                },
                 secondary: deepOrange,
                 divider: amber[200],
                 text: {
@@ -37,7 +39,7 @@ export default function ToggleColorMode({ children }) {
             : {
                 // palette values for dark mode
                 primary: {
-                  main: "#0f0",
+                  main: "#fafafa",
                 },
                 secondary: {
                   main: "#e600f5",
