@@ -32,7 +32,7 @@ export default function App() {
     borderRadius: 16,
     width: "80%",
     maxWidth: "100%",
-    height: "15%",
+    height: "15.8%",
     marginLeft: "12.5%",
     position: "absolute",
     zIndex: 1,

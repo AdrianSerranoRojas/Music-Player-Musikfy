@@ -35,7 +35,7 @@
   
   .content {
     position: absolute;
-    top: 23rem;
+    margin-top: -200px;
     left: 5rem;
     opacity: 0;
     width: 50%;
@@ -93,11 +93,11 @@
   }
   
   .next {
-    top: 35%;
+    top: 15%;
     right: 1.5rem;
   }
   .prev {
-    top: 35%;
+    top: 15%;
     left: 1.5rem;
   }
 

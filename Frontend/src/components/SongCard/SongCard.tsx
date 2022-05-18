@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useTheme } from "@mui/material/styles";
+import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
@@ -34,10 +34,15 @@ import {
   useNotLikeSongMutation,
 } from "../../services/songApi";
 import { useGetUserQuery } from "../../services/userApi";
-import { TrendingUpSharp } from "@mui/icons-material";
 import AuthContext from "../../context/AuthContext";
 import CloseIcon from '@mui/icons-material/Close';
 import "./SongCard.scss"
+import Grid from "@mui/material/Grid";
+import CardHeader from "@mui/material/CardHeader";
+import CardActions from "@mui/material/CardActions";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 
 function SongCard({ songName, songUrl, songArtist, songId, id }) {
@@ -106,69 +111,46 @@ function SongCard({ songName, songUrl, songArtist, songId, id }) {
   };
 
   return (
-    <>
-      <Card variant="outlined" sx={{ display: "flex", height: 65 }}>
-        <CardMedia
-          component="img"
-          sx={{ width: 65, height: 65 }}
-          image="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg"
-          alt="Live from space album cover"
-        />
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography component="div" variant="h5">
-              {songName}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-            >
-              {songArtist}
-            </Typography>
-            <Typography
-              variant="subtitle2"
-              color="text.secondary"
-              component="div"
-            >
-              3:14
-            </Typography>
-          </CardContent>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-          <IconButton aria-label="play/pause" onClick={handlePlay}>
-            <PlayArrowIcon sx={{ height: 20, width: 20 }} />
-          </IconButton>
-          <IconButton aria-label="play/pause" onClick={handleQueue}>
-            <QueueMusicIcon sx={{ height: 20, width: 20 }} />
-          </IconButton>
-          {/* <FavIcon onClick={handleLike} /> */}
-          <IconButton onClick={handleLike} aria-label="save as favorite">
-            {fav === true ? (
-              <FavoriteIcon sx={{ height: 20, width: 20 }} />
-            ) : (
-              <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
-            )}
-          </IconButton>
-          <IconButton>
-            <DeleteIcon sx={{ height: 20, width: 20 }} />
-          </IconButton>
-          <IconButton onClick={handleOpen}>
-            <AddIcon sx={{ height: 20, width: 20 }} />
-          </IconButton>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton>
-                <DropdownAddPlaylist id={id} />
-                <ListItemButton onClick={handleClose}>
-                  <CloseIcon />
-                </ListItemButton>
-              </ListItemButton>
-            </List>
-          </Collapse>
-        </Box>
-      </Card>
-    </>
+<>
+<Card sx={{ display: "flex", height: 80 }}>
+<CardHeader
+title={songName}
+subheader={songArtist}
+/>
+  <CardActions disableSpacing sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
+    <IconButton aria-label="play/pause" onClick={handlePlay}>
+      <PlayArrowIcon sx={{ height: 20, width: 20 }} />
+    </IconButton>
+    <IconButton aria-label="play/pause" onClick={handleQueue}>
+      <QueueMusicIcon sx={{ height: 20, width: 20 }} />
+    </IconButton>
+    {/* <FavIcon onClick={handleLike} /> */}
+    <IconButton onClick={handleLike} aria-label="save as favorite">
+      {fav === true ? (
+        <FavoriteIcon sx={{ height: 20, width: 20 }} />
+      ) : (
+        <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
+      )}
+    </IconButton>
+    <IconButton>
+      <DeleteIcon sx={{ height: 20, width: 20 }} />
+    </IconButton>
+    <IconButton onClick={handleOpen}>
+      <AddIcon sx={{ height: 20, width: 20 }} />
+    </IconButton>
+    </CardActions>
+    <Collapse in={open} timeout="auto" unmountOnExit>
+      <List component="div" disablePadding>
+        <ListItemButton>
+          <DropdownAddPlaylist id={id} />
+          <ListItemButton onClick={handleClose}>
+            <CloseIcon />
+          </ListItemButton>
+        </ListItemButton>
+      </List>
+    </Collapse>
+</Card>
+</>
   );
 }
 
