@@ -67,14 +67,14 @@ function SongCard({ song, id }) {
 
   const { data: songsCounter, isSuccess } = useGetSongsCounterQuery();
 
-   let songCounter={total:0};
-   
-  useEffect(()=>{
+  const [songCounter, setSongCounter] = useState({ total: 0 });
+
+  useEffect(() => {
     if (songsCounter) {
-      songCounter = songsCounter.find((song) => song.songId === songId);
-      console.log(songCounter);
+      let songCounterX = songsCounter.find((song) => song.songId === songId);
+      setSongCounter(songCounterX);
     }
-  },[songsCounter])
+  }, [songsCounter]);
 
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
@@ -146,9 +146,9 @@ function SongCard({ song, id }) {
         />
         <Box sx={{ display: "flex", flexDirection: "row" }}>
           <CardContent sx={{ flex: "1 0 auto" }}>
-            {/* <Typography component="div" >
+            <Typography component="div" >
               {songName}
-            </Typography> */}
+            </Typography>
             <Typography
               variant="subtitle1"
               color="text.secondary"
@@ -161,7 +161,7 @@ function SongCard({ song, id }) {
               color="text.secondary"
               component="div"
             >
-              Rep: {isSuccess && songCounter.total}
+              Rep: {songCounter?.total}
             </Typography>
           </CardContent>
         </Box>
