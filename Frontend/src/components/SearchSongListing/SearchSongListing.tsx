@@ -28,43 +28,32 @@ function SearchSongListing() {
   const { filterSong } = useSelector(songsSelector);
   const { data, isLoading, isSuccess } = useGetSongsFilteredQuery(filterSong);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <>
-      <Box sx={{ pt: 0 }}>
-        <Widget
-          sx={{
-            boxShadow: 4,
-            p: 2,
-            maxwidth: 750,
-            maxheight: 200,
-          }}
-        >
-          <Box>
-            <Typography
-              variant="h5"
-              align="center"
-              fontFamily="Vollkorn, serif"
-            ></Typography>
-            {isSuccess &&
-              data.data.map((song, index) => {
-                return (
-                  <SongCard
-                    key={index}
-                    songName={song.songData.title}
-                    songArtist={song.songData.artist}
-                    songUrl={song.songFile.url}
-                    songId={song._id}
-                    songImage={song.songImage?.imageUrl}
-                  />
-                );
-              })}
-          </Box>
-        </Widget>
-      </Box>
+      {isSuccess && (
+        <Box sx={{ pt: 0 }}>
+          <Widget
+            sx={{
+              boxShadow: 4,
+              p: 2,
+              maxwidth: 750,
+              maxheight: 200,
+            }}
+          >
+            <Box>
+              <Typography
+                variant="h5"
+                align="center"
+                fontFamily="Vollkorn, serif"
+              ></Typography>
+              {isSuccess &&
+                data.data.map((song, index) => {
+                  return <SongCard key={index} song={song} />;
+                })}
+            </Box>
+          </Widget>
+        </Box>
+      )}
     </>
   );
 }

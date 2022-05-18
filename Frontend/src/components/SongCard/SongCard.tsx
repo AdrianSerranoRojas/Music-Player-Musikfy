@@ -45,7 +45,6 @@ import CloseIcon from "@mui/icons-material/Close";
 import "./SongCard.scss";
 
 function SongCard({ id, song }) {
- 
   const songName = song.songData.title;
   const songArtist = song.songData.artist;
   const songUrl = song.songFile.url;
@@ -53,7 +52,7 @@ function SongCard({ id, song }) {
   const songImage = song?.songImage?.imageUrl;
 
   const theme = useTheme();
-  const currentSong = useSelector((state) => state.songs.currentSong);
+  const currentSong = useSelector(songsSelector);
   const dispatch = useDispatch();
   const currentUser = useContext(AuthContext);
 
@@ -68,11 +67,11 @@ function SongCard({ id, song }) {
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
   const handlePlay = () => {
-    if(currentUser){
-      console.log(songId)
-      var userId = currentUser.uid
-      console.log(userId)
-      createAction({songId:songId, userId:userId , action:"play"})
+    if (currentUser) {
+      console.log(songId);
+      var userId = currentUser.uid;
+      console.log(userId);
+      createAction({ songId: songId, userId: userId, action: "play" });
     }
     if (currentSong[0].audio === "") {
       dispatch(
