@@ -13,10 +13,11 @@ class CreateSongsTable extends Migration
      */
     public function up()
     {
-        Schema::create('songs', function (Blueprint $table) {
+        Schema::create('Songs', function (Blueprint $table) {
             $table->id();
-            $table->string('songName');
-            $table->double('songCounter');
+            $table->string('songId');
+            $table->string('userId');
+            $table->string('action');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateSongsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('songs');
+        Schema::dropIfExists('stadistics');
     }
 }

@@ -46,11 +46,10 @@ const Slider = () => {
     return () => clearInterval(slideInterval);
   }, [currentSlide]);
 
-  const { data, isLoading, isSuccess } = useGetSongQuery();
-  if(isSuccess) {
-    console.log(data);
-  }
-
+  // const { data, isLoading, isSuccess } = useGetSongQuery();
+  // if(isSuccess) {
+  //   console.log(data);
+  // }
 
   return (
     <div className="slider">

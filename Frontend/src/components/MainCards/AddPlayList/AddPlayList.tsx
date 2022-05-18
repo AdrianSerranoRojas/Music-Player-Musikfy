@@ -65,13 +65,15 @@ function AddPlayList({ listSelectFunc, refetching }) {
     setPlaylistName(e.target.value);
   };
 
+  const playlistTxt = "Playlist title: "
+
   return (
     <Widget>
     <Typography variant="h4" align="center" fontFamily="Vollkorn, serif" >
         All the Playlists!
     </Typography>
     <Box>
-    <Card>
+    <Card className='playlistBg'>
     <CardHeader
       title="Create Playlist"
       sx={{pt:2, pb:0, my:0}}

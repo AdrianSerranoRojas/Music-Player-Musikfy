@@ -27,6 +27,7 @@ import Box from "@mui/material/Box";
 
 import { NotFound } from "./components/NotFound/NotFound";
 import { flexbox } from "@mui/system";
+import Stadistics from "./Pages/Stadistics/Stadistics";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({
@@ -37,7 +38,7 @@ export default function App() {
     borderRadius: 16,
     width: "80%",
     maxWidth: "100%",
-    height: "15%",
+    height: "15.8%",
     marginLeft: "12.5%",
     position: "absolute",
     zIndex: 1,
@@ -95,10 +96,10 @@ export default function App() {
             path="/playlist"
             element={currentUser ? <Playlists /> : <Home />}
           />
-          {/* <Route
-            path="/playliststrue"
-            element={  <SongListOfPlaylist/> }
-          /> */}
+          <Route
+            path="/stadistics"
+            element={  <Stadistics /> }
+          />
         </Routes>
         <Widget2>
           <PlayerH5 />

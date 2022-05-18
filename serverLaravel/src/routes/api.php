@@ -9,11 +9,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::controller(songController::class)->group(function(){
-    Route::get("songs","index");
-    Route::post("song","store");
-    Route::get("song/{id}","show");
-    Route::put("song/{id}","update");
-    Route::get("song/{id}","destroy");
-
+Route::controller(songController::class)->group(function () {
+    Route::get("songs", "index");
+    Route::post("song", "store");
+    Route::get("song/{id}", "show");
+    Route::put("song/{id}", "update");
+    Route::delete("song/{id}", "destroy");
+    Route::get("songUser/{id}/{userId}", "showSongUser");
 });

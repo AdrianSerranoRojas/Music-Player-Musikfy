@@ -5,8 +5,8 @@ import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 import PlaylistsCard from "../../components/MainCards/AddPlayList/AddPlayList";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
-import SettingsIcon from '@mui/icons-material/Settings';
-import FavoriteIcon from '@mui/icons-material/Favorite';
+import SettingsIcon from "@mui/icons-material/Settings";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 import withLayout from "../../hoc/withLayout";
 
@@ -62,49 +62,47 @@ function FavoriteSongs() {
 
   return (
     <>
-      <Box>
-        <Widget
-          sx={{
-            boxShadow: 4,
-            p: 2,
-            maxwidth: 750,
-            maxheight: 440,
-          }}
-        >
-          <Box sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}>
-            <FavoriteIcon sx={{ height: 270, width: 270, ml: 5, mt: 5 }} />
-            <Box sx={{ mt: 15 }}>
-              <Typography
-                variant="h2"
-                align="center"
-                fontFamily="Vollkorn, serif"
-              >
-                Songs you like!
-              </Typography>
-              <Typography
-                variant="h4"
-                align="center"
-                fontFamily="Vollkorn, serif"
-              >
-                31 Songs
-              </Typography>
-              <SettingsIcon sx={{ ml: 22 }} />
+      {isSuccess && (
+        <Box>
+          <Widget
+            sx={{
+              boxShadow: 4,
+              p: 2,
+              maxwidth: 750,
+              maxheight: 440,
+            }}
+          >
+            <Box
+              sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+            >
+              <FavoriteIcon sx={{ height: 270, width: 270, ml: 5, mt: 5 }} />
+              <Box sx={{ mt: 15 }}>
+                <Typography
+                  variant="h2"
+                  align="center"
+                  fontFamily="Vollkorn, serif"
+                >
+                  Songs you like!
+                </Typography>
+                <Typography
+                  variant="h4"
+                  align="center"
+                  fontFamily="Vollkorn, serif"
+                >
+                  31 Songs
+                </Typography>
+                <SettingsIcon sx={{ ml: 22 }} />
+              </Box>
             </Box>
-          </Box>
-          <Box sx={{ mt: 1 }}>
-            {isSuccess &&
-              data.data.map((song, index) => {
-                return (
-                  <SongCard
-                    key={index}
-                    songName={song.songName}
-                    songUrl={song.songUrl}
-                  />
-                );
-              })}
-          </Box>
-        </Widget>
-    </Box>
+            <Box sx={{ mt: 1 }}>
+              {isSuccess &&
+                data.data.map((song, index) => {
+                  return <SongCard key={index} id={id} song={song} />;
+                })}
+            </Box>
+          </Widget>
+        </Box>
+      )}
     </>
   );
 }

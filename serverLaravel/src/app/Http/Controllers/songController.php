@@ -27,8 +27,9 @@ class songController extends Controller
     public function store(Request $request)
     {
         $song = new Songs();
-        $song->songCounter = $request->songCounter;
-        $song->songName = $request->songName;
+        $song->songId = $request->songId;
+        $song->userId = $request->userId;
+        $song->action = $request->action;
 
         $song->save();
     }
@@ -70,6 +71,19 @@ class songController extends Controller
     public function destroy($id)
     {
         $song =  Songs::destroy($id);
+        return $song;
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showSongUser($id, $userId)
+    {
+        $song = Songs::find($id);
         return $song;
     }
 }

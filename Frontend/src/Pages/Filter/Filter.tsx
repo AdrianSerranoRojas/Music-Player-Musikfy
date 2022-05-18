@@ -12,7 +12,7 @@ import { useState } from "react";
 
 import "../Filter/Filter.scss";
 
-function filter({ songUrl, songName, songArtist, songGenre, userId }) {
+function filter({ songUrl, songName, songArtist, songGenre, userId, song }) {
   const { data, isLoading, isSuccess } = useGetSongsQuery();
 
   const [filterData, setFilterData] = useState("");
@@ -20,26 +20,35 @@ function filter({ songUrl, songName, songArtist, songGenre, userId }) {
 
   return (
     <>
-      <input
-        type="text"
-        placeholder="Search..."
-        className="search"
-        onChange={(e) => setFilterData(e.target.value)}
-      />
-      <ul className="list">
-        {isSuccess &&
-          data.data.filter(data=>data.songName.toLowerCase().includes(filterData)).map((song, index) => {
-            return (
-              <li key={index}>
-                <SongCard
-                  key={index}
-                  songName={song.songName}
-                  songUrl={song.songFile.url}
-                />
-              </li>
-            );
-          })}
-      </ul>
+      {isSuccess && (
+        <>
+          <input
+            type="text"
+            placeholder="Search..."
+            className="search"
+            onChange={(e) => setFilterData(e.target.value)}
+          />
+          <ul className="list">
+            {isSuccess &&
+              data.data
+                .filter((data) =>
+                  data.songName.toLowerCase().includes(filterData)
+                )
+                .map((song, index) => {
+                  return (
+                    <li key={index}>
+                      <SongCard
+                        key={index}
+                        songName={song.songName}
+                        songUrl={song.songFile.url}
+                        song={song}
+                      />
+                    </li>
+                  );
+                })}
+          </ul>
+        </>
+      )}
     </>
   );
 }
