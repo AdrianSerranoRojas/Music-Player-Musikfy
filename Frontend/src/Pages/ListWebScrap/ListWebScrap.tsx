@@ -1,64 +1,37 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import "./Login.scss";
 // import { FcGoogle } from "react-icons/fc";
 import { Button } from "@mui/material";
 import withLayout from "../../hoc/withLayout";
-// import AuthContext from "../../context/AuthContext";
-// import {
-//   singInWithGoogle,
-//   singInWithEmailAndPassword,
-// } from "../../firebase/firebase";
-// import { syncUserData } from "../../utils/auth-requests";
+
 
 function ListWebScrap() {
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [loading, setLoading] = useState(false);
-  // const [loginError, setLoginError] = useState(null);
+  const [dataFetech40list, setDataFetech40list] = useState(null);
 
-  // const currentUser = useContext(AuthContext);
+  const handleFetchWebScrap = async () => {
+    await fetch("http://localhost:4000/40lists")
+      .then((response) => response.json())
+      .then((data) => {
+        setDataFetech40list(data);
+      });
+  };
 
-  // async function handleLoginWithGoogleClick(e) {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     await singInWithGoogle();
-  //     await syncUserData();
-  //   } catch (error: any) {
-  //     setLoginError(error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-
-  // async function handleSubmit(e) {
-  //   e.preventDefault();
-  //   setLoading(true);
-  //   try {
-  //     await singInWithEmailAndPassword(email, password);
-  //   } catch (error: any) {
-  //     setLoginError(error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // }
-  const handleFetchWebScrap = ()=> {
-    console.log("carapolla");
-  //   fetch('http://example.com/movies.json')
-  // .then(response => response.json())
-  // .then(data => console.log(data));
-    
-  }
+  // useEffect(() => {}, []);
 
   return (
-    <>
-      <main className="container p-4 mt-5">
-        <h2>listWebScrap</h2>
-    <Button onClick={handleFetchWebScrap}> fetch listWebScrap</Button>
-      </main>
-    </>
+    <div className="container p-4 mt-5">
+      <h2>listWebScrap</h2>
+      <Button onClick={handleFetchWebScrap}> fetch listWebScrap</Button>
+      {/* !dataSa && <div>no existo</div>) */}
+
+      {/* {(dataFetech40list ==! null)
+        ? dataFetech40list.map((song, index) => {
+            return <div> osita </div>;
+          })
+        : null} */}
+    </div>
   );
 }
 

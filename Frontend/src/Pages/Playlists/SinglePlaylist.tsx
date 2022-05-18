@@ -1,16 +1,18 @@
+import { useState } from "react";
+
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
-import PlaylistsCard from "../../components/MainCards/PlaylistsCard/PlaylistsCard";
 import SongCard from "../../components/SongCard/SongCard";
 import { useGetSongsQuery } from "../../services/songApi";
 
-import "../MySongs/MySongs.scss";
 import withLayout from "../../hoc/withLayout";
+
 import PlaylistModal from "../../components/PlaylistModal/PlaylistModal";
+
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
-import { useState } from "react";
+
+import "../MySongs/MySongs.scss";
 
 function SinglePlaylist() {
   const Widget = styled("div")(({ theme }) => ({

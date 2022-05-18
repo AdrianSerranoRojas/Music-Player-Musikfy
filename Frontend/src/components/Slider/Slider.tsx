@@ -1,17 +1,12 @@
-import React from "react";
 import { useState, useEffect } from "react";
-import "./Slider.scss";
-import { useGetSongQuery } from "../../services/songApi";
-
 
 import { sliderData } from "./SliderData";
+
 import ArrowRightIcon from "@mui/icons-material/ArrowRight";
 import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
-import SongCard from "../SongCard/SongCard";
 
-
-
+import "./Slider.scss";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);

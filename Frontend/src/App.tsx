@@ -2,10 +2,9 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { auth } from "./firebase/firebase";
-import AuthContext from "./context/AuthContext";
 import { onAuthStateChanged } from "firebase/auth";
 
-import "./App.scss";
+import AuthContext from "./context/AuthContext";
 
 import Home from "./Pages/Home";
 import Login from "./Pages/Login/Login";
@@ -15,19 +14,18 @@ import Profile from "./Pages/Profile/Profile";
 import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import AddSong from "./Pages/addSong/addSong";
 import MySongs from "./Pages/MySongs/MySongs";
-import SinglePlaylist from "./Pages/Playlists/SinglePlaylist";
 import Playlists from "./Pages/Playlists/Playlists";
-import Filter from "./Pages/Filter/Filter";
-import FavoriteSongs from "./Pages/FavoriteSongs/FavoriteSongs";
+import ListWebScrap from "./Pages/ListWebScrap/ListWebScrap"
+import Stadistics from "./Pages/Stadistics/Stadistics";
+
 import PlayerH5 from "./components/PlayerH5/PlayerH5";
 import QueueListing from "./components/QueueListing/QueueListing";
+import { NotFound } from "./components/NotFound/NotFound";
+
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import ListWebScrap from "./Pages/ListWebScrap/ListWebScrap";
 
-import { NotFound } from "./components/NotFound/NotFound";
-import { flexbox } from "@mui/system";
-import Stadistics from "./Pages/Stadistics/Stadistics";
+import "./App.scss";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({

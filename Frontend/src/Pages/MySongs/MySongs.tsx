@@ -1,15 +1,20 @@
 import { useEffect } from "react";
+
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+
 import SongCard from "../../components/SongCard/SongCard";
+
 import {
   useGetMySongsQuery,
-  useGetSongsFilteredQuery,
 } from "../../services/songApi";
-import "../MySongs/MySongs.scss";
+
 import withLayout from "../../hoc/withLayout";
+
 import AddSongButton from "../../components/AddSongButton/AddSongButton";
+
+import "../MySongs/MySongs.scss";
 
 function MySongs() {
   const Widget = styled("div")(({ theme }) => ({

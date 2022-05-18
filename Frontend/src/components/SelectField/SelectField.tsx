@@ -1,6 +1,5 @@
-import React from "react";
 import Select from "react-select";
-import { useFormikContext, useField, Formik } from "formik";
+import { useFormikContext, useField } from "formik";
 
 export default function SelectField({
   options,

@@ -1,33 +1,25 @@
+import React from "react";
+import { useState } from "react";
+
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
 import Typography from "@mui/material/Typography";
-import { useState } from "react";
+import CardHeader from '@mui/material/CardHeader';
+import IconButton from '@mui/material/IconButton';
+import Modal from "@mui/material/Modal";
+import { Button, TextField } from "@mui/material";
+import PlaylistCard from "../../PlaylistCard/PlaylistCard";
+import styled from '@mui/material/styles/styled';
+
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+
 import {
   useGetPlaylistsQuery,
-  useGetPlaylistQuery,
-  useDeletePlaylistMutation,
   useUpdatePlaylistMutation,
   useCreatePlaylistMutation,
 } from "../../../services/playlistApi";
-import CardHeader from '@mui/material/CardHeader';
-import CardMedia from '@mui/material/CardMedia';
-import CardActions from '@mui/material/CardActions';
-import IconButton from '@mui/material/IconButton';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import MoreVertIcon from '@mui/icons-material/MoreVert';
+
 import "./AddPlayList.scss";
-import DeleteIcon from '@mui/icons-material/Delete';
-import FavIconPlaylist from "../../FavIcon/FavIconPlaylist";
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import Modal from "@mui/material/Modal";
-import { Button, CardActionArea, Grid, TextField } from "@mui/material";
-import React from "react";
-import styled from '@mui/material/styles/styled';
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import PlaylistCard from "../../PlaylistCard/PlaylistCard";
 
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",

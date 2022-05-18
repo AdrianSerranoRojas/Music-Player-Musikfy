@@ -1,11 +1,12 @@
-import Header from "../components/Header";
-import SideBar from "../components/SideBar/SideBar";
+import SideBar from "../components/sideBar/SideBar";
+
 // import PlayerH5 from "../components/PlayerH5/PlayerH5";
+
 import { styled } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import SearchSongListing from "../components/SearchSongListing/SearchSongListing";
-import "./withLayout.scss";
 import Card from "@mui/material/Card";
+
+import "./withLayout.scss";
+
 
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
