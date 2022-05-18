@@ -50,8 +50,9 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function SongCard2({ song, id  }) {
+export default function SongCard({ song, id  }) {
   const [expanded, setExpanded] = React.useState(false);
+// console.log("SongCard",id);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -138,7 +139,6 @@ export default function SongCard2({ song, id  }) {
     if (fav) {
       NotLikeSong({ songId, fav });
       refetch();
-      console.log("esta cancion ya te gusta loco!");
     } else {
       LikeSong({ songId, fav });
       refetch();
@@ -188,7 +188,7 @@ export default function SongCard2({ song, id  }) {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <DropdownAddPlaylist id={id} />
+          <DropdownAddPlaylist id={songId} />
         </CardContent>
       </Collapse>
     </Card>

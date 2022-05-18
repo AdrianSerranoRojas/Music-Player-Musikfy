@@ -30,6 +30,7 @@ const MenuProps = {
 function DropdownAddPlaylist({ id }) {
   const navigate = useNavigate();
   const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
+  // const { dataing, isLoadinging, isSuccessing, refetching } = useGetPlaylistQuery();
   const [updatePlaylist, resultUpdate] = useUpdatePlaylistMutation();
   const [personName, setPersonName] = React.useState([]);
 
@@ -45,7 +46,7 @@ function DropdownAddPlaylist({ id }) {
   const handleAddSongPlaylist = (name) => {
     const idPlaylist = name._id;
     updatePlaylist({ idPlaylist, id });
-    refetch();
+    // refetch();
   };
   return (
     <div>
