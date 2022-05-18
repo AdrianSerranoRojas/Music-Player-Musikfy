@@ -40,8 +40,8 @@ function SongListOfPlaylist({ listSelect, list }) {
         <Box sx={{ mt: 1 }}>
           {listSelect.map((song, index) => {
             return (
-              <Box>
-                <SongCard song={song} key={index} id={id} />
+              <Box key={index}>
+                <SongCard song={song} id={id} />
               </Box>
             );
           })}
