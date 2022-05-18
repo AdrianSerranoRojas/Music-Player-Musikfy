@@ -23,16 +23,16 @@ import {
     addPlayQueue,
   } from "../../features/song/songsSlice";
 
-const PlaylistCard = ({playlist, refetch, listSelectFunc, refetching }) => {
+const PlaylistCard = ({playlist, refetch, handleSelectPlaylist }) => {
     const dispatch = useDispatch();
     const currentSong = useSelector((state) => state.songs.currentSong);
     const [deletePlaylist, resultDelete] = useDeletePlaylistMutation();
     const { data } = useGetPlaylistQuery(playlist._id);
     
-    function handleSelectPlaylist(playlist) {
-          listSelectFunc(playlist);
-          refetching();
-    }
+    // function handleSelectPlaylist(playlist) {
+    //       listSelectFunc(playlist);
+    //       refetching();
+    // }
 
     async function handleDeletePlaylist() {
         await deletePlaylist(playlist._id);
@@ -71,7 +71,7 @@ const PlaylistCard = ({playlist, refetch, listSelectFunc, refetching }) => {
                 <CardActions>
                 <button
                 className='imgButtonPlaylist'
-                onClick={(e) => handleSelectPlaylist(playlist)}>
+                onClick={() => handleSelectPlaylist(playlist)}>
                 <CardHeader
                 title={playlist.title}
                 sx={{py:0, my:0}}

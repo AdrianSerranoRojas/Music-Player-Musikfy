@@ -125,6 +125,7 @@ export async function updatePlaylistById(req, res, next) {
   const playlistId = req.body.idPlaylist;
   const { id: songId } = req.params;
   const { uid } = req.user;
+
   try {
     const checkPlaylist = await Playlists.findById(playlistId);
     if (!checkPlaylist.songs.includes(songId)) {

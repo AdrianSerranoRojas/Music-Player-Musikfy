@@ -14,16 +14,21 @@ function Playlists() {
   const [listSelect, setListSelect] = useState();
   const [playlistId, setplaylistId] = useState();
 
+  
+  const { data, isLoading, isSuccess, refetch } =
+  useGetPlaylistQuery(playlistId);
+  
   const listSelectFunc = (list) => {
     setListSelect(list);
     setplaylistId(list._id);
+    // console.log(data.data)
+    // refetch()
   };
 
-  const { data, isLoading, isSuccess, refetch } =
-    useGetPlaylistQuery(playlistId);
   let playlistSongThisList = [];
   if (isSuccess) {
     playlistSongThisList = data.data[0].songs;
+    console.log(playlistSongThisList);
   }
 
   return (
@@ -33,6 +38,7 @@ function Playlists() {
         <SongListOfPlaylist
           listSelect={playlistSongThisList}
           list={listSelect}
+
         />
       ) : (
         <Typography sx={{ mx: "auto", mt: 12 }} variant="h3">
