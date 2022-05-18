@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "@mui/material";
@@ -19,6 +19,7 @@ import { syncUserData } from "../../utils/auth-requests";
 import "./Login.scss";
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -37,6 +38,7 @@ function Login() {
     } finally {
       setLoading(false);
     }
+    navigate("/");
   }
 
   async function handleSubmit(e) {
@@ -49,6 +51,7 @@ function Login() {
     } finally {
       setLoading(false);
     }
+    navigate("/");
   }
 
   return (

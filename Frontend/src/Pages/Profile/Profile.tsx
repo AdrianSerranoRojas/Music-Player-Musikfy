@@ -1,5 +1,5 @@
 import { useContext, useState, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import { useDropzone } from "react-dropzone";
 
@@ -40,6 +40,7 @@ function Profile() {
   const { data: user, isSuccess } = useGetUserQuery(currentUser.uid);
   const [editUser, setEditUser] = useState({});
   const [image, setImage] = useState([]);
+  const navigate = useNavigate();
 
   const onDrop = useCallback((acceptedFiles, rejectFiles) => {
     acceptedFiles.forEach((file) => {
@@ -63,6 +64,7 @@ function Profile() {
 
   const insertFile = async () => {
     updateUser({ uid, editUser, image });
+    navigate("/");
   };
 
   return (
