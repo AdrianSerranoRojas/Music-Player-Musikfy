@@ -23,7 +23,7 @@ import PlayerH5 from "./components/PlayerH5/PlayerH5";
 import QueueListing from "./components/QueueListing/QueueListing";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-
+import ListWebScrap from "./Pages/ListWebScrap/ListWebScrap"
 
 import { NotFound } from "./components/NotFound/NotFound";
 import { flexbox } from "@mui/system";
@@ -99,6 +99,10 @@ export default function App() {
           <Route
             path="/stadistics"
             element={  <Stadistics /> }
+          />
+          <Route
+            path="/40list"
+            element={  <ListWebScrap /> }
           />
         </Routes>
         <Widget2>

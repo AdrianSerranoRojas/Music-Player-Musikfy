@@ -2,6 +2,7 @@ import puppeteer from "puppeteer";
 import fs from "fs/promises";
 
 export async function listWebScraping(req, res) {
+  let titles;
   try {
     (async () => {
       const browser = await puppeteer.launch({ headless: false });
@@ -23,14 +24,14 @@ export async function listWebScraping(req, res) {
       // const alltitles =  await page.evaluate(()=>{
       //   const elements = document.querySelectorAll(".data-video .info_grupo p")
 
-      const titles = await page.evaluate(() => {
+       titles = await page.evaluate(() => {
         return Array.from(
           document.querySelectorAll(
             "#portada main div.contenedor_principal.estirar div.contenido_principal.estirar div.columnas_principal_y_secundaria div  div.lista40.principal div div.data-video div.info_grupo p"
           )
         ).map((x) => x.textContent);
       });
-      await fs.writeFile("titles.txt", titles.join("\r\n"));
+      // await fs.writeFile("titles.txt", titles.join("\r\n"));
 
       //   for (let element of elements){
       //     titles.push(element)
@@ -38,11 +39,19 @@ export async function listWebScraping(req, res) {
       //   return titles;
       // });
 
-      // console.log(alltitles);
+      // console.log(titles);
       await browser.close();
+      // titles =  JSON.parse(titlesNoFormat)
+      // return titles;
+      res.status(200).send({
+        data: titles,
+      });
     })();
     // });
-    // res.status(200);
+  
+  //  res.status(200).send({
+  //     data: titles,
+  //   });
   } catch (error) {
     console.log(error);
   }
