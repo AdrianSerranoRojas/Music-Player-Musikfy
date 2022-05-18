@@ -15,7 +15,7 @@ import ChangePassword from "./Pages/ChangePassword/ChangePassword";
 import AddSong from "./Pages/addSong/addSong";
 import MySongs from "./Pages/MySongs/MySongs";
 import Playlists from "./Pages/Playlists/Playlists";
-import ListWebScrap from "./Pages/ListWebScrap/ListWebScrap"
+import ListWebScrap from "./Pages/ListWebScrap/ListWebScrap";
 import Stadistics from "./Pages/Stadistics/Stadistics";
 
 import PlayerH5 from "./components/PlayerH5/PlayerH5";
@@ -24,6 +24,7 @@ import { NotFound } from "./components/NotFound/NotFound";
 
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
+import FavoriteSongs from "./Pages/FavoriteSongs/FavoriteSongs";
 
 import "./App.scss";
 

@@ -12,7 +12,7 @@ import "../MySongs/MySongs.scss";
 import withLayout from "../../hoc/withLayout";
 import AddSongButton from "../../components/AddSongButton/AddSongButton";
 
-function MyFavoriteSongs() {
+function FavoriteSongs() {
   const Widget = styled("div")(({ theme }) => ({
     padding: 16,
     borderRadius: 16,
@@ -63,4 +63,4 @@ function MyFavoriteSongs() {
   );
 }
 
-export default withLayout(MyFavoriteSongs);
+export default withLayout(FavoriteSongs);
