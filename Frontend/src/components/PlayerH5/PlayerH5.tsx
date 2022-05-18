@@ -35,8 +35,7 @@ const PlayerH5 = ({ layoutDisplay, src, title, ...otherProps }) => {
       onPause={(e) => console.log("onPause")}
       showSkipControls={true}
       showJumpControls={false}
-      header={`Now playing: ${currentSong[trackIndex].songName}`}
-      footer={`Artist: ${currentSong[trackIndex].songArtist}`}
+      header={`Now playing: ${currentSong[trackIndex].songName} (${currentSong[trackIndex].songArtist})`}
       ref={player}
       onClickPrevious={handleClickPrevious}
       onClickNext={handleClickNext}
