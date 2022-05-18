@@ -1,8 +1,12 @@
 import EditOutlinedIcon from "@mui/icons-material/ModeEditOutlined";
+
 import { useState } from "react";
-import InputEdit from "../InputEdit/InputEdit";
-import "./EditInfo.scss";
+
 import { IconButton } from "@mui/material";
+
+import InputEdit from "../InputEdit/InputEdit";
+
+import "./EditInfo.scss";
 
 function EditInfo({ value, setEditUser, control, editUser }) {
   const [isEditing, setIsEditing] = useState(false);

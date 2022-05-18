@@ -1,7 +1,11 @@
-import * as React from "react";
 import { useState, useRef, useContext } from "react";
-import { useTheme } from "@mui/material/styles";
+
 import { useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+
+import { useTheme } from "@mui/material/styles";
+
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import List from "@mui/material/List";
@@ -21,16 +25,18 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
-import Logo from "./Logo";
 import navbarList, { navbarListLogout } from "./SideBarData";
+
 import StyledAvatar from "./StyledAvatar";
 
 import ColorMode from "../ColorMode/ColorMode";
 
 import AuthContext from "../../context/AuthContext";
+
 import { userSignOut } from "../../firebase/firebase";
-import { useDispatch, useSelector } from "react-redux";
+
 import { setFilterSong, songsSelector } from "../../features/song/songsSlice";
+
 import { useGetUserQuery } from "../../services/userApi";
 
 const drawerWidthOpen = 240;

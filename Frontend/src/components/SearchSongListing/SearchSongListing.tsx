@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import Box from "@mui/material/Box";
@@ -6,7 +5,9 @@ import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 
 import SongCard from "../../components/SongCard/SongCard";
+
 import { useGetSongsFilteredQuery } from "../../services/songApi";
+
 import { songsSelector } from "../../features/song/songsSlice";
 
 const Widget = styled("div")(({ theme }) => ({

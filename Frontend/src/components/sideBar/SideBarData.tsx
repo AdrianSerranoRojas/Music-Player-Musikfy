@@ -1,14 +1,8 @@
 import DashboardOutlined from "@mui/icons-material/DashboardOutlined";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
-import HomeIcon from "@mui/icons-material/Home";
 import Person from "@mui/icons-material/Person";
-import Forum from "@mui/icons-material/Forum";
-import Analytics from "@mui/icons-material/Analytics";
-import FolderOpen from "@mui/icons-material/FolderOpen";
-import BorderColor from "@mui/icons-material/BorderColor";
 import Search from "@mui/icons-material/Search";
 import VpnKeyIcon from "@mui/icons-material/VpnKey";
-import LockIcon from "@mui/icons-material/Lock";
 import PlaylistPlayIcon from "@mui/icons-material/PlaylistPlay";
 
 const navbarList = [

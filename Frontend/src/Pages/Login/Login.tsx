@@ -1,15 +1,22 @@
 import { useState, useContext } from "react";
+
 import { Link } from "react-router-dom";
-import "./Login.scss";
+
 import { FcGoogle } from "react-icons/fc";
 import { Button } from "@mui/material";
+
 import withLayout from "../../hoc/withLayout";
+
 import AuthContext from "../../context/AuthContext";
+
 import {
   singInWithGoogle,
   singInWithEmailAndPassword,
 } from "../../firebase/firebase";
+
 import { syncUserData } from "../../utils/auth-requests";
+
+import "./Login.scss";
 
 function Login() {
   const [email, setEmail] = useState("");

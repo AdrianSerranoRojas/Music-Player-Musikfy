@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useGetSongsQuery } from "../../services/songApi";
+
 import axios from "axios";
 
 const initialState = {

@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 
 import QueueCard from "../QueueCard/QueueCard";
+
 import Card from '@mui/material/Card';
 
 const QueueListing = () => {

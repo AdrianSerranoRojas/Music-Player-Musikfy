@@ -1,7 +1,6 @@
 import * as React from "react";
 
 import { useTheme } from "@mui/material/styles";
-
 import IconButton from "@mui/material/IconButton";
 import Box from "@mui/material/Box";
 import Brightness4Icon from "@mui/icons-material/Brightness4";

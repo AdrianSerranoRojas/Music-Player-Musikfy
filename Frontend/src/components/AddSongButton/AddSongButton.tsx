@@ -1,11 +1,14 @@
-import { useState, useCallback, useEffect, useContext } from "react";
+import { useState, useCallback } from "react";
 
-import Box from "@mui/material/Box";
 import { Button } from "@mui/material";
-import { useDropzone } from "react-dropzone";
-import { useCreateSongMutation } from "../../services/songApi";
 import { CardMedia } from "@mui/material";
 import { styled } from "@mui/material/styles";
+
+import { useDropzone } from "react-dropzone";
+
+import { useCreateSongMutation } from "../../services/songApi";
+
+
 const Widget = styled("div")(({ theme }) => ({
   overflowX: "hidden",
   padding: 16,

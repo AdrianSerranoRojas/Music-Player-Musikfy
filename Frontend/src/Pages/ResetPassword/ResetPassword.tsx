@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Header from "../../components/Header/Header";
 import Button from "../../components/Button/Button";
+
 import withLayout from "../../hoc/withLayout";
 
 import { userSendPasswordResetEmail } from "../../firebase/firebase";

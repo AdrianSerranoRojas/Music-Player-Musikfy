@@ -1,5 +1,3 @@
-import React from "react";
-
 function Input({
   type = "text",
   label = "input-01",

@@ -1,15 +1,13 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
 
 import { Formik, Form } from "formik";
 
 import Button from "@mui/material/Button";
 import SelectField from "../../components/SelectField/SelectField";
 import SelectFieldMulty from "../../components/SelectFieldMulty/SelectFieldMulty";
-import { TextField } from "@mui/material";
-
 import Box from "@mui/material/Box";
+import { TextField } from "@mui/material";
 
 import AuthContext from "../../context/AuthContext";
 
