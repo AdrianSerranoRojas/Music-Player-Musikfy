@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Songs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class songController extends Controller
 {
@@ -40,9 +41,10 @@ class songController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        $song = Songs::find($id);
+        $song = Songs::select('songId', DB::raw('count(*) as total'))->groupBy('songId')->get();
+
         return $song;
     }
 
@@ -81,9 +83,9 @@ class songController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function showSongUser($id, $userId)
+    public function showSongUser($songId, $userId)
     {
-        $song = Songs::find($id);
+        $song = Songs::findAll($songId);
         return $song;
     }
 }

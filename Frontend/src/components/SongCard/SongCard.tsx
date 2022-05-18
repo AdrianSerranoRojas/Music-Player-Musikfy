@@ -66,15 +66,8 @@ function SongCard({ song }) {
   const [NotLikeSong, response2] = useNotLikeSongMutation();
   const userId = user.id;
 
-  const { data: songCounter, isSuccess } = useGetSongCounterByUserQuery({
-    songId,
-    userId,
-  });
-
-  useEffect(() => {
-    console.log(songCounter);
-  }, [songCounter]);
-
+  const { data: songCounter, isSuccess } = useGetSongsCounterQuery();
+ 
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
   const handlePlay = () => {
