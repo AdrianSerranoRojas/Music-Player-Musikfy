@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from "react-redux";
 
@@ -79,14 +79,14 @@ export default function SongCard2({ song, id  }) {
 
   const { data: songsCounter, isSuccess } = useGetSongsCounterQuery();
 
-   let songCounter={total:0};
-   
-  useEffect(()=>{
+  const [songCounter, setSongCounter] = useState({ total: 0 });
+
+  useEffect(() => {
     if (songsCounter) {
-      songCounter = songsCounter.find((song) => song.songId === songId);
-      console.log(songCounter);
+      let songCounterX = songsCounter.find((song) => song.songId === songId);
+      setSongCounter(songCounterX);
     }
-  },[songsCounter])
+  }, [songsCounter]);
 
   const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
@@ -154,7 +154,7 @@ export default function SongCard2({ song, id  }) {
       <Avatar variant="square" src={songImage} sx={{ width: 56, height: 56 }}>
       </Avatar>
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={8}>
           <Typography sx={{ml:"1%"}} variant="subtitle1">
             {songName}
           </Typography>
