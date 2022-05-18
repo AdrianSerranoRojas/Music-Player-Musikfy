@@ -1,9 +1,13 @@
-// export default PlayerH5;
-import React, { useRef, useState } from "react";
-import AudioPlayer, { RHAP_UI } from "react-h5-audio-player";
+import { useRef } from "react";
+
+import AudioPlayer from "react-h5-audio-player";
+
 import { useDispatch, useSelector } from "react-redux";
+
 import { setTrackIndex } from "../../features/song/songsSlice";
+
 import "react-h5-audio-player/lib/styles.css";
+
 import "./PlaherH5.scss";
 
 const PlayerH5 = ({ layoutDisplay, src, title, ...otherProps }) => {

@@ -1,7 +1,8 @@
 import * as React from "react";
+
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import { amber, deepOrange, grey, purple, pink,} from "@mui/material/colors";
+import { amber, deepOrange, grey, pink,} from "@mui/material/colors";
 
 export const ColorModeContext = React.createContext({
   toggleColorMode: () => {},

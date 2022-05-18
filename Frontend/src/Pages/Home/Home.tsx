@@ -1,13 +1,12 @@
 import withLayout from "../../hoc/withLayout";
-import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
 
-import "./Home.scss";
 import Box from "@mui/material/Box";
-import PlaylistsCardSmall from "../../components/MainCards/PlaylistsCardSmall/PlaylistsCardSmall";
+
 import SearchSongListing from "../../components/SearchSongListing/SearchSongListing";
-import PlaylistsCard from "../../components/MainCards/AddPlayList/AddPlayList";
 
 import Slider from "../../components/Slider/Slider";
+
+import "./Home.scss";
 
 // async function fetchUserToken(
 //   setUserToken: any,

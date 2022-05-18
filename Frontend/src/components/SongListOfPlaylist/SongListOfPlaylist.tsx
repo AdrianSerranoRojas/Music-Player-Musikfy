@@ -1,12 +1,23 @@
 import Box from "@mui/material/Box";
+import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+
 import SongCard from "../SongCard/SongCard";
+
+const Widget = styled("div")(({ theme }) => ({
+  overflowY: "hidden",
+  maxWidth: "100%",
+  height: "40vh",
+  zIndex: 1,
+  overflow: "scroll",
+}));
 
 function SongListOfPlaylist({ listSelect, list }) {
   const id = listSelect?._id;
 
   return (
     <>
+    <Widget>
       <Box>
         <Box>
           <Box sx={{ mt: 7 }}>
@@ -36,6 +47,7 @@ function SongListOfPlaylist({ listSelect, list }) {
           })}
         </Box>
       </Box>
+      </Widget>
     </>
   );
 }

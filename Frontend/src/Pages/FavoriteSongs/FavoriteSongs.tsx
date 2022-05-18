@@ -1,10 +1,11 @@
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import LikesCard from "../../components/MainCards/LikesCard/LikesCard";
-import PlaylistsCard from "../../components/MainCards/AddPlayList/AddPlayList";
+
 import SongCard from "../../components/SongCard/SongCard";
+
 import { useGetSongsQuery } from "../../services/songApi";
+
 import SettingsIcon from "@mui/icons-material/Settings";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 

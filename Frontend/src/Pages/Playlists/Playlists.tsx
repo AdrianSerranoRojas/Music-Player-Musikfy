@@ -1,14 +1,14 @@
+import { useState } from "react";
+
 import Box from "@mui/material/Box";
-import { styled } from "@mui/material/styles";
+import { Typography } from "@mui/material";
 
 import withLayout from "../../hoc/withLayout";
 
 import AddPlayList from "../../components/MainCards/AddPlayList/AddPlayList";
 import SongListOfPlaylist from "../../components/SongListOfPlaylist/SongListOfPlaylist";
-import { useState } from "react";
+
 import { useGetPlaylistQuery } from "../../services/playlistApi";
-import { Spinner } from "../../components/Spinner/Spinner";
-import { Typography } from "@mui/material";
 
 function Playlists() {
   const [listSelect, setListSelect] = useState();

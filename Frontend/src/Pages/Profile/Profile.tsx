@@ -1,16 +1,22 @@
-import { useContext, useState, useEffect, useCallback } from "react";
+import { useContext, useState, useCallback } from "react";
 import { Link } from "react-router-dom";
-import withLayout from "../../hoc/withLayout";
 import Image from "react-bootstrap/Image";
 import { useDropzone } from "react-dropzone";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+
+import withLayout from "../../hoc/withLayout";
+
 import { useGetUserQuery, useUpdateUserMutation } from "../../services/userApi";
+
 import AuthContext from "../../context/AuthContext";
+
 import EditInfo from "../../components/EditInfo/EditInfo";
-// import "./profile.scss";
-import { Box, Button, Card, Container, createTheme, Paper, ThemeProvider } from "@mui/material";
-import LockIcon from "@mui/icons-material/Lock";
+
+import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
+
+import LockIcon from "@mui/icons-material/Lock";
+
+// import "./profile.scss";
 
 const Widget = styled("div")(({ theme }) => ({
   overflowX: "hidden",

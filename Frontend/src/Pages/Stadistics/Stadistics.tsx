@@ -1,4 +1,3 @@
-import { useState, useContext } from "react";
 // import { Link } from "react-router-dom";
 // import "./Login.scss";
 // import { FcGoogle } from "react-icons/fc";

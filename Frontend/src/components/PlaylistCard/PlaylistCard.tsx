@@ -4,22 +4,21 @@ import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import CardHeader from '@mui/material/CardHeader';
 import { Button, CardActionArea} from "@mui/material";
-import ShareIcon from '@mui/icons-material/Share';
+
 import FavIconPlaylist from "../FavIcon/FavIconPlaylist";
+import ShareIcon from '@mui/icons-material/Share';
 import DeleteIcon from '@mui/icons-material/Delete';
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+
 import {
-    useGetPlaylistsQuery,
     useGetPlaylistQuery,
     useDeletePlaylistMutation,
-    useUpdatePlaylistMutation,
-    useCreatePlaylistMutation,
   } from "../../services/playlistApi";
-  import { useDispatch, useSelector } from "react-redux";
-  import {
-    addCurrentSong,
+
+import { useDispatch, useSelector } from "react-redux";
+
+import {
     addFirstCurrentSong,
-    songsSelector,
     addPlayQueue,
   } from "../../features/song/songsSlice";
 

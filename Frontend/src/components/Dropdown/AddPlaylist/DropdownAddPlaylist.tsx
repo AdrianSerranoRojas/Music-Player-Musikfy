@@ -1,5 +1,7 @@
 import React from "react";
+
 import { useNavigate } from "react-router-dom";
+
 import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,11 +9,12 @@ import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
+import { Button } from "@mui/material";
+
 import {
   useGetPlaylistsQuery,
   useUpdatePlaylistMutation,
 } from "../../../services/playlistApi";
-import { Button } from "@mui/material";
 
 const ITEM_HEIGHT = 48;
 const ITEM_PADDING_TOP = 8;

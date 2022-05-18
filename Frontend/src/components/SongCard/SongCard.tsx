@@ -1,50 +1,62 @@
-import React, { useState, useContext, useEffect } from "react";
-import { useTheme } from "@mui/material/styles";
-import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import SkipPreviousIcon from "@mui/icons-material/SkipPrevious";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-import SkipNextIcon from "@mui/icons-material/SkipNext";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import QueueMusicIcon from "@mui/icons-material/QueueMusic";
-import AddIcon from "@mui/icons-material/Add";
-import {
-  addCurrentSong,
-  addFirstCurrentSong,
-  songsSelector,
-  addPlayQueue,
-} from "../../features/song/songsSlice";
+import React, { useContext, useEffect, useState } from 'react';
+
 import { useDispatch, useSelector } from "react-redux";
-import DropdownAddPlaylist from "../Dropdown/AddPlaylist/DropdownAddPlaylist";
-import ListItemButton from "@mui/material/ListItemButton";
-import List from "@mui/material/List";
-import Collapse from "@mui/material/Collapse";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import FavIcon from "../FavIcon/FavIcon";
-import DeleteIcon from "@mui/icons-material/Delete";
+
+import { styled } from '@mui/material/styles';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Collapse from '@mui/material/Collapse';
+import Avatar from '@mui/material/Avatar';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import { useTheme } from "@mui/material/styles";
+
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import AddIcon from "@mui/icons-material/Add";
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+
+import DropdownAddPlaylist from '../Dropdown/AddPlaylist/DropdownAddPlaylist';
+
 import {
   useLikeSongMutation,
   useGetSongQuery,
   useNotLikeSongMutation,
 } from "../../services/songApi";
-import { useGetUserQuery } from "../../services/userApi";
-import {
-  useGetSongsCounterQuery,
-  useGetSongsCounterByUserQuery,
-  useCreateActionMutation,
-  useGetSongCounterByUserQuery,
-} from "../../services/stadisticsApi";
-import { TrendingUpSharp } from "@mui/icons-material";
-import AuthContext from "../../context/AuthContext";
-import CloseIcon from "@mui/icons-material/Close";
-import "./SongCard.scss";
 
-function SongCard({ song, id }) {
+import {
+  addCurrentSong,
+  addFirstCurrentSong,
+  addPlayQueue,
+  songsSelector,
+} from "../../features/song/songsSlice";
+
+import { useGetUserQuery } from '../../services/userApi';
+
+import AuthContext from '../../context/AuthContext';
+import { useCreateActionMutation, useGetSongsCounterQuery } from '../../services/stadisticsApi';
+
+const ExpandMore = styled((props) => {
+  const { expand, ...other } = props;
+  return <IconButton {...other} sx={{mr:"100%"}}/>;
+})(({ theme, expand }) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+  marginLeft: 'auto',
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest,
+  }),
+}));
+
+export default function SongCard2({ song, id  }) {
+  const [expanded, setExpanded] = React.useState(false);
+
+  const handleExpandClick = () => {
+    setExpanded(!expanded);
+  };
+
   const songName = song?.songData?.title;
   const songArtist = song?.songData?.artist;
   const songUrl = song?.songFile?.url;
@@ -136,70 +148,50 @@ function SongCard({ song, id }) {
   };
 
   return (
-    <>
-      <Card variant="outlined" sx={{ display: "flex", height: 65 }}>
-        <CardMedia
-          component="img"
-          sx={{ width: 65, height: 65 }}
-          image={songImage}
-          alt="alt"
-        />
-        <Box sx={{ display: "flex", flexDirection: "row" }}>
-          <CardContent sx={{ flex: "1 0 auto" }}>
-            <Typography component="div" >
-              {songName}
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              component="div"
-            >
-              {songArtist}
-            </Typography>
-            <Typography
-              variant="subtitle2"
-              color="text.secondary"
-              component="div"
-            >
-              Rep: {songCounter?.total}
-            </Typography>
-          </CardContent>
-        </Box>
-        <Box sx={{ display: "flex", alignItems: "center", pl: 1, pb: 1 }}>
-          <IconButton aria-label="play/pause" onClick={handlePlay}>
-            <PlayArrowIcon sx={{ height: 20, width: 20 }} />
-          </IconButton>
-          <IconButton aria-label="play/pause" onClick={handleQueue}>
-            <QueueMusicIcon sx={{ height: 20, width: 20 }} />
-          </IconButton>
-          {/* <FavIcon onClick={handleLike} /> */}
-          <IconButton onClick={handleLike} aria-label="save as favorite">
-            {fav === true ? (
-              <FavoriteIcon sx={{ height: 20, width: 20 }} />
-            ) : (
-              <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
-            )}
-          </IconButton>
-          <IconButton>
-            <DeleteIcon sx={{ height: 20, width: 20 }} />
-          </IconButton>
-          <IconButton onClick={handleOpen}>
-            <AddIcon sx={{ height: 20, width: 20 }} />
-          </IconButton>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            <List component="div" disablePadding>
-              <ListItemButton>
-                <DropdownAddPlaylist id={id} />
-                <ListItemButton onClick={handleClose}>
-                  <CloseIcon />
-                </ListItemButton>
-              </ListItemButton>
-            </List>
-          </Collapse>
-        </Box>
-      </Card>
-    </>
+    <Card variant="outlined" sx={{ maxWidth: "100%" }}>
+      <Grid container spacing={12}>
+      <Grid item xs={0.5}>
+      <Avatar variant="square" src={songImage} sx={{ width: 56, height: 56 }}>
+      </Avatar>
+      </Grid>
+      <Grid item xs={8}>
+          <Typography sx={{ml:"1%"}} variant="subtitle1">
+            {songName}
+          </Typography>
+          <Typography sx={{ml:"1%"}} variant="subtitle2">
+            {songArtist}
+            Rep: {isSuccess && songCounter.total}
+          </Typography>
+        </Grid>
+        </Grid>
+      <CardActions disableSpacing>
+        <IconButton aria-label="play/pause" onClick={handlePlay}>
+          <PlayArrowIcon />
+        </IconButton>
+        <IconButton aria-label="play/pause" onClick={handleQueue}>
+          <QueueMusicIcon />
+        </IconButton>
+        <IconButton onClick={handleLike} aria-label="save as favorite">
+      {fav === true ? (
+        <FavoriteIcon sx={{ height: 20, width: 20 }} />
+      ) : (
+        <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
+      )}
+    </IconButton>
+        <ExpandMore
+          expand={expanded}
+          onClick={handleExpandClick}
+          aria-expanded={expanded}
+          aria-label="show more"
+        >
+          <AddIcon />
+        </ExpandMore>
+      </CardActions>
+      <Collapse in={expanded} timeout="auto" unmountOnExit>
+        <CardContent>
+          <DropdownAddPlaylist id={id} />
+        </CardContent>
+      </Collapse>
+    </Card>
   );
 }
-
-export default SongCard;

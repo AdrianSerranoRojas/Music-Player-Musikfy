@@ -1,10 +1,14 @@
+import { useState } from "react";
+
+import { Button, TextField, Typography } from "@mui/material";
+
 import withLayout from "../../hoc/withLayout";
+
 import { Formik } from "formik";
+
 import { changePassword, reauthenticate } from "../../firebase/firebase";
-import { useState, useEffect } from "react";
 
 import "./ChangePassword.scss";
-import { Button, TextField, Typography } from "@mui/material";
 
 const ChangePassword = () => {
   const [message, setMessage] = useState("");
