@@ -153,7 +153,7 @@ useEffect(() => {
           </Typography>
           <Typography sx={{ml:"1%"}} variant="subtitle2">
             {songArtist}
-            Rep: {isSuccess && songCounter?.total}
+            {isSuccess && songCounter?.total}
           </Typography>
         </Grid>
         </Grid>
