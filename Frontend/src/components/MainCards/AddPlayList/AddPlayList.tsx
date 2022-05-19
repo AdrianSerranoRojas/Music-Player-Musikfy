@@ -42,25 +42,11 @@ function AddPlayList({ listSelectFunc, refetching }) {
 
   const [playlistName, setPlaylistName] = useState("List");
 
-  function handleSelectPlaylist(playlist) {
-    listSelectFunc(playlist);
-    console.log("dssssssssssssssssss",first);
-    
-    refetch();
-    setFirst(true)
 
-    // isSuccess
-    // setFirst(useGetPlaylistsQuery())
-  }
   async function handleCreatePlaylist() {
     await createPlaylist({ title: playlistName });
     refetch();
   }
-  // async function handleUpdatePlaylist(playlistName) {
-  //   await updatePlaylist(playlistName.playlist._id);
-  //   console.log("sfsfsdfsdfsdfsd");
-  //   refetch()
-  // }
 
   const handleChange = (e) => {
     setPlaylistName(e.target.value);

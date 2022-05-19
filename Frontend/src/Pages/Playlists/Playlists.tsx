@@ -21,14 +21,12 @@ function Playlists() {
   const listSelectFunc = async (list) => {
     await setListSelect(list);
     setplaylistId(list._id);
-    console.log("why nooot refetch!!!!" ,data)
     refetch()
   };
 
   let playlistSongThisList = [];
   if (isSuccess) {
     playlistSongThisList = data.data[0].songs;
-    console.log(playlistSongThisList);
   }
 
   return (

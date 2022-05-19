@@ -22,7 +22,6 @@ import DropdownAddPlaylist from '../Dropdown/AddPlaylist/DropdownAddPlaylist';
 
 import {
   useLikeSongMutation,
-  useGetSongQuery,
   useNotLikeSongMutation,
 } from "../../services/songApi";
 
@@ -49,7 +48,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function SongCard({ song, id  }) {
+export default function SongCard({ song, id }) {
   const [expanded, setExpanded] = React.useState(false);
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -60,6 +59,7 @@ export default function SongCard({ song, id  }) {
   const songUrl = song?.songFile?.url;
   const songId = song?._id;
   const songImage = song?.songImage?.imageUrl;
+
 
   const theme = useTheme();
   const { currentSong } = useSelector(songsSelector);
