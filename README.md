@@ -1,10 +1,10 @@
-# [React-music-player](#react-music-player)
+# [Musikfy](#Musikfy)
 
 ## 📔 Description
 
 **A Music player made with React and Node.js**
 
-Organize your favorite artists and bands, discover songs on other people playlists and bring them to yours!
+Listen to your favorite artists and bands, discover songs on other people playlists and bring them to yours!
 
 ## Table of Contents <!-- omit in toc -->
 
@@ -116,31 +116,15 @@ For the **secondary server** .env it is required to have the data related to the
 - [Validator](https://github.com/validatorjs/validator.js)
 - [Yup](https://github.com/jquense/yup)
 
-
-<!-- - [React-Spinners](https://github.com/davidhu2000/react-spinners)
-- [React-Toastify](https://github.com/fkhadra/react-toastify)
-- [React-easy-sort](https://github.com/ricardo-ch/react-easy-sort)
-- [Cross-env](https://github.com/kentcdodds/cross-env)
-- [Body-parser](https://github.com/expressjs/body-parser)
-- [Lodash](https://lodash.com/) -->
-
-
-
 ## Contents and Branches Naming Strategy
 
 This project has a naming strategy for its different elements to facilitate and unify the work between its Collaborators. These conventions are presented below.
 
 ### Branches
 
-Branches are always preceded by a Category Word and a Number.
-
-The category word tries to be descriptive and define the content of the branch: **F** for **Features**, **FIX** for **fixes** and **error handling**, **DOC** for **Documentation** or **ENH** for **Enhancements**.
-
-This category word is followed by a number, that always correspond with the **issue number** of the project. This is an easy an ordered system that allows the Collaborators to find and work easily on each task.
-
-After this featured code, you can find a short but descriptive name that is separated by hyphens.
-
-By this rule this is a real case of the Branch name that you can find in this same project: _F01/user-authentication_.
+Branches were created for different category main components and have been cleaned up.
+The category word tries to be descriptive and define the content of the branch: **Playlist** , **UITheme**, **MusicPlayer**.
+By this rule this is a real case of the Branch name that you can find in this same project: _origin/MusicPlayer_.
 
 ### Structural elements
 
@@ -148,7 +132,7 @@ Structural element names have a strict policy to be simple, clear and descriptiv
 
 ### Style elements
 
-Style elements, that includes all _scss_ files and _classes_ have the same rules: lowercase connected by hyphens. The names need to be **descriptive** but **short** and, in case they are nested components or classes, should have a reference of their **parent element** on the name.
+Style elements, that includes all _scss_ files and _classes_ have the same rules: lowercase. The names need to be **descriptive** but **short** and, in case they are nested components or classes, should have a reference of their **parent element** on the name.
 
 ## Main Features
 
@@ -165,8 +149,6 @@ Style elements, that includes all _scss_ files and _classes_ have the same rules
 [![Image from Gyazo](https://i.gyazo.com/ae675b20d2d3dbbd61ec93484364389b.gif)](https://gyazo.com/ae675b20d2d3dbbd61ec93484364389b)
 
 - Upload your own songs, only for your ears to enjoy.
-
-- Discover the latest hits, the most beloved music and the best of each genre on this incredible homepage.
 
 [![Image from Gyazo](https://i.gyazo.com/8e57d8d5bf262c6b4bd50f9e34dd10d8.gif)](https://gyazo.com/8e57d8d5bf262c6b4bd50f9e34dd10d8)
 
@@ -409,6 +391,5 @@ Style elements, that includes all _scss_ files and _classes_ have the same rules
 ![PHP](https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=PHP&logoColor=white)
 ![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=flat-square&logo=Firebase&logoColor=white)
 ![Cloudinary](https://img.shields.io/badge/Cloudinary-FFCA28?style=flat-square&logo=Firebase&logoColor=blue)
-
 
 </details>
