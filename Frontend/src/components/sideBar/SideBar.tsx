@@ -433,10 +433,7 @@ export default function SideNavbar({ ...props }) {
         </List>
       )}
       <ColorMode />
-      <IconButton
-        sx={{ borderRadius: 0, p: 3 }}
-        onClick={handleSignOut}
-      >
+      <IconButton sx={{ borderRadius: 0, p: 3 }} onClick={handleSignOut}>
         <ExitToAppIcon></ExitToAppIcon>
       </IconButton>
       <Box
@@ -503,6 +500,27 @@ export default function SideNavbar({ ...props }) {
 
   return (
     <Box sx={{ display: "flex" }}>
+            <Box
+        component="main"
+        sx={{
+          backgroundColor: "transparent",
+          padding: "8px",
+          margin: "auto",
+          top:"10px",
+          position: "relative",
+          zIndex:"200",
+          color:"red"
+        }}
+      >
+        <Typography></Typography>
+        <div className="switch">
+          <Switch
+            checked={open}
+            onChange={() => setOpen((prevOpen) => !prevOpen)}
+          
+          ></Switch>{" "}
+        </div>
+      </Box>
       <Drawer
         variant="permanent"
         open={open}
@@ -537,20 +555,7 @@ export default function SideNavbar({ ...props }) {
       >
         {drawerContent}
       </Drawer>
-      <Box
-        component="main"
-        sx={{
-          backgroundColor: "lightblue",
-          padding: "8px",
-          margin: "6px 14px",
-        }}
-      >
-        <Typography></Typography>
-        <Switch
-          checked={open}
-          onChange={() => setOpen((prevOpen) => !prevOpen)}
-        ></Switch>
-      </Box>
+
     </Box>
   );
 }
