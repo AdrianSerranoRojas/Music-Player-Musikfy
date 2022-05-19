@@ -1,24 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { styled } from '@mui/material/styles';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Grid from '@mui/material/Grid';
+import { styled } from "@mui/material/styles";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardActions from "@mui/material/CardActions";
+import Collapse from "@mui/material/Collapse";
+import Avatar from "@mui/material/Avatar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Grid from "@mui/material/Grid";
 import { useTheme } from "@mui/material/styles";
 
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import QueueMusicIcon from '@mui/icons-material/QueueMusic';
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import QueueMusicIcon from "@mui/icons-material/QueueMusic";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import AddIcon from "@mui/icons-material/Add";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 
-import DropdownAddPlaylist from '../Dropdown/AddPlaylist/DropdownAddPlaylist';
+import DropdownAddPlaylist from "../Dropdown/AddPlaylist/DropdownAddPlaylist";
 
 import {
   useLikeSongMutation,
@@ -32,18 +32,23 @@ import {
   songsSelector,
 } from "../../features/song/songsSlice";
 
-import { useGetUserQuery } from '../../services/userApi';
+import { useGetUserQuery } from "../../services/userApi";
 
-import AuthContext from '../../context/AuthContext';
-import { useCreateActionMutation, useGetSongsCounterQuery } from '../../services/stadisticsApi';
+import AuthContext from "../../context/AuthContext";
+import {
+  useCreateActionMutation,
+  useGetSongsCounterQuery,
+} from "../../services/stadisticsApi";
+
+import "./SongCard.scss";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
-  return <IconButton {...other} sx={{mr:"100%"}}/>;
+  return <IconButton {...other} sx={{ mr: "100%" }} />;
 })(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
+  transform: !expand ? "rotate(0deg)" : "rotate(180deg)",
+  marginLeft: "auto",
+  transition: theme.transitions.create("transform", {
     duration: theme.transitions.duration.shortest,
   }),
 }));
@@ -54,13 +59,11 @@ export default function SongCard({ song, id }) {
     setExpanded(!expanded);
   };
 
-
   const songName = song?.songData?.title;
   const songArtist = song?.songData?.artist;
   const songUrl = song?.songFile?.url;
   const songId = song?._id;
   const songImage = song?.songImage?.imageUrl;
-
 
   const theme = useTheme();
   const { currentSong } = useSelector(songsSelector);
@@ -70,7 +73,11 @@ export default function SongCard({ song, id }) {
   const [createAction, ActionResponse] = useCreateActionMutation();
 
   const [open, setOpen] = React.useState(false);
-  const { data: user, isSuccess:userIsSuccess, refetch } = useGetUserQuery(currentUser?.uid);
+  const {
+    data: user,
+    isSuccess: userIsSuccess,
+    refetch,
+  } = useGetUserQuery(currentUser?.uid);
   const [LikeSong, response] = useLikeSongMutation();
   const [NotLikeSong, response2] = useNotLikeSongMutation();
 
@@ -84,11 +91,11 @@ export default function SongCard({ song, id }) {
       setSongCounter(songCounterX);
     }
   }, [songsCounter]);
-const [fav, setFav] = useState(false)
+  const [fav, setFav] = useState(false);
 
-useEffect(() => {
-  setFav(user?.data?.myFavoriteSongs?.includes(songId))
-}, [user])
+  useEffect(() => {
+    setFav(user?.data?.myFavoriteSongs?.includes(songId));
+  }, [user]);
 
   const handlePlay = () => {
     if (currentUser) {
@@ -134,7 +141,7 @@ useEffect(() => {
     if (fav) {
       await NotLikeSong({ songId, fav });
       refetch();
-      } else {
+    } else {
       await LikeSong({ songId, fav });
       refetch();
     }
@@ -143,20 +150,23 @@ useEffect(() => {
   return (
     <Card sx={{ maxWidth: "100%", border: 1 }}>
       <Grid container spacing={12}>
-      <Grid item xs={0.5}>
-      <Avatar variant="square" src={songImage} sx={{ width: 56, height: 56 }}>
-      </Avatar>
-      </Grid>
-      <Grid item xs={8}>
-          <Typography sx={{ml:"1%"}} variant="subtitle1">
+        <Grid item xs={0.5}>
+          <Avatar
+            variant="square"
+            src={songImage}
+            sx={{ width: 56, height: 56 }}
+          ></Avatar>
+        </Grid>
+        <Grid item xs={8}>
+          <Typography sx={{ ml: "1%" }} variant="subtitle1">
             {songName}
           </Typography>
-          <Typography sx={{ml:"1%"}} variant="subtitle2">
+          <Typography sx={{ ml: "1%" }} variant="subtitle2">
             {songArtist}
             Rep: {isSuccess && songCounter?.total}
           </Typography>
         </Grid>
-        </Grid>
+      </Grid>
       <CardActions disableSpacing>
         <IconButton aria-label="play/pause" onClick={handlePlay}>
           <PlayArrowIcon />
@@ -165,12 +175,12 @@ useEffect(() => {
           <QueueMusicIcon />
         </IconButton>
         <IconButton onClick={handleLike} aria-label="save as favorite">
-      {fav === true ? (
-        <FavoriteIcon sx={{ height: 20, width: 20 }} />
-      ) : (
-        <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
-      )}
-    </IconButton>
+          {fav === true ? (
+            <FavoriteIcon sx={{ height: 20, width: 20 }} />
+          ) : (
+            <FavoriteBorderIcon sx={{ height: 20, width: 20 }} />
+          )}
+        </IconButton>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

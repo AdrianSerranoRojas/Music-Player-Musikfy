@@ -46,7 +46,6 @@ function SinglePlaylist() {
   return (
     <>
     {isSuccess &&
-    
       <DragDropContext
       // onDragEnd={(result) => {
       //   const {source, destination} = result;
