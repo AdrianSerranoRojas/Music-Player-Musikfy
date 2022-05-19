@@ -7,6 +7,7 @@ import withLayout from "../../hoc/withLayout";
 import { Spinner } from "../../components/Spinner/Spinner";
 import { styled } from "@mui/material/styles";
 import Paper from '@mui/material/Paper';
+import "./ListWebScrap.scss";
 
   const Scrollable = styled("div")(({ theme }) => ({
     overflowY: "hidden",
@@ -18,6 +19,7 @@ import Paper from '@mui/material/Paper';
 
 function ListWebScrap() {
   const [dataFetech40list, setDataFetech40list] = useState([]);
+  const [notWinners, setNotWinners] = useState([]);
 
   const handleFetchWebScrap = async () => {
     await fetch("http://localhost:4000/40lists")
@@ -25,6 +27,7 @@ function ListWebScrap() {
       .then((data) => {
         console.log(data);
         setDataFetech40list(data.data);
+        setNotWinners(data.data.slice(3,40));
         console.log(dataFetech40list);
       });
   };
@@ -43,33 +46,37 @@ function ListWebScrap() {
           direction={{ xs: 'column', sm: 'row' }}
           spacing={2}
         >
-          <Card sx={{width:300}}>
-            <Typography variant="h3">{dataFetech40list[0]}</Typography>
-            <img src="https://res.cloudinary.com/carapolla/image/upload/v1652960856/imagen_2022-05-19_134640629_ik4czo.png" alt="" />
+          <Card sx={{width:"33.3%"}}>
+            <Typography variant="h3" align="center">{dataFetech40list[0]}</Typography>
+            <div className="centerImg">
+              <img src="https://res.cloudinary.com/carapolla/image/upload/v1652994425/TIER1_1_b2nnk7.png" alt="" />
+            </div>
           </Card>
-          <Card sx={{width:300}}>
-            <Typography variant="h3">{dataFetech40list[1]}</Typography>
-            <img src="https://res.cloudinary.com/carapolla/image/upload/v1652960879/imagen_2022-05-19_134638268_newvpy.png" alt="" />
+          <Card sx={{width:"33.3%"}}>
+            <Typography variant="h3" align="center">{dataFetech40list[1]}</Typography>
+            <div className="centerImg">
+              <img src="https://res.cloudinary.com/carapolla/image/upload/v1652994599/TIER_2_w93vxf.png" alt="" />
+            </div>
           </Card>
-          <Card sx={{width:300}}>
-            <Typography variant="h3">{dataFetech40list[2]}</Typography>
-            <img src="https://res.cloudinary.com/carapolla/image/upload/v1652960902/imagen_2022-05-19_134526523_oivzbz.png" alt="" />
+          <Card sx={{width:"33.3%"}}>
+            <Typography variant="h3" align="center">{dataFetech40list[2]}</Typography>
+            <div className="centerImg">
+              <img src="https://res.cloudinary.com/carapolla/image/upload/v1652994651/TIER_3_ghu7je.png" alt="" />
+            </div>
           </Card>
         </Stack>
         <Stack
           direction={{ xs: 'column' }}
           spacing={2}
-          sx={{mt:2, maxWidth:"63.3%"}}
+          sx={{mt:2, maxWidth:"100%"}}
         >
       {dataFetech40list?.length > 0 ? (
-        dataFetech40list.map((song, index) => {
+        notWinners.map((song, index) => {
           return (
-            <>
-          <Card sx={{minWidth:300}}>
-            <Typography variant="subtitle1">4th</Typography>
+          <Card key={index} sx={{Width: "100%"}}>
+            <Typography variant="subtitle1">{index + 4}th</Typography>
             <Typography variant="h6">{song}</Typography>
           </Card>
-          </>
           );
         })
       ) : (
