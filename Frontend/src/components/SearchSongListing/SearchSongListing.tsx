@@ -13,7 +13,7 @@ import { songsSelector } from "../../features/song/songsSlice";
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "scroll",
   padding: 2,
-  height: "29vh",
+  height: "35vh",
   borderRadius: 0,
   width: "100%",
   maxWidth: "100%",
@@ -35,6 +35,7 @@ function SearchSongListing() {
         <Box sx={{ pt: 0 }}>
           <Widget
             sx={{
+              
               boxShadow: 4,
               p: 2,
               maxwidth: 750,
