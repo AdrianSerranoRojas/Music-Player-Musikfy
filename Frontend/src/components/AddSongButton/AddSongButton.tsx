@@ -58,7 +58,7 @@ function AddSongButton() {
     <>
       {/* DROPZONE */}
       <div>
-        <Widget className="dropzone" {...getRootProps()}>
+        <Widget sx={{ my: 4 }} className="dropzone" {...getRootProps()}>
           <input type="text" placeholder="as" {...getInputProps()} />
           {isDragActive ? "Drag active" : "Drop your files"}
         </Widget>

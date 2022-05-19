@@ -107,9 +107,10 @@ export default function SideNavbar({ ...props }) {
             display: { xs: "none", sm: "initial" },
             fontSize: "18px",
             fontWeight: 600,
-            color: theme.palette.mode === "dark"
-        ? theme.palette.mode.primary
-        : "text.primary",
+            color:
+              theme.palette.mode === "dark"
+                ? theme.palette.mode.primary
+                : "text.primary",
             width: "154px",
             marginLeft: open ? "0px" : "8px",
             paddingBottom: "3px",
@@ -132,9 +133,14 @@ export default function SideNavbar({ ...props }) {
           }}
         >
           <MenuIcon
-            sx={{ fontSize: "20px", color: open ? theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary" : "lightGray" }}
+            sx={{
+              fontSize: "20px",
+              color: open
+                ? theme.palette.mode === "dark"
+                  ? "text.primary"
+                  : "text.primary"
+                : "lightGray",
+            }}
           ></MenuIcon>
         </Button>
       </Box>
@@ -181,9 +187,13 @@ export default function SideNavbar({ ...props }) {
                         >
                           <key.icon
                             key={`5+${key.key + index}`}
-                            sx={{ fontSize: "20px", color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary" }}
+                            sx={{
+                              fontSize: "20px",
+                              color:
+                                theme.palette.mode === "dark"
+                                  ? "text.primary"
+                                  : "text.primary",
+                            }}
                           />
                         </Badge>
                       </ListItemIcon>
@@ -251,9 +261,13 @@ export default function SideNavbar({ ...props }) {
                       >
                         <key.icon
                           key={`12+${key.key + index}`}
-                          sx={{ fontSize: "20px", color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary" }}
+                          sx={{
+                            fontSize: "20px",
+                            color:
+                              theme.palette.mode === "dark"
+                                ? "text.primary"
+                                : "text.primary",
+                          }}
                         />
                       </Badge>
                     </ListItemIcon>
@@ -268,9 +282,10 @@ export default function SideNavbar({ ...props }) {
                         display: "inline",
                         margin: "0px",
                         overflowX: "hidden",
-                        color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary",
+                        color:
+                          theme.palette.mode === "dark"
+                            ? "text.primary"
+                            : "text.primary",
                         whiteSpace: "nowrap",
                         minWidth: "126px",
                       }}
@@ -336,9 +351,13 @@ export default function SideNavbar({ ...props }) {
                         >
                           <key.icon
                             key={`5+${key.key + index}`}
-                            sx={{ fontSize: "20px", color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary" }}
+                            sx={{
+                              fontSize: "20px",
+                              color:
+                                theme.palette.mode === "dark"
+                                  ? "text.primary"
+                                  : "text.primary",
+                            }}
                           />
                         </Badge>
                       </ListItemIcon>
@@ -353,9 +372,10 @@ export default function SideNavbar({ ...props }) {
                           fontSize: "0.875rem",
                           lineHeight: "11.43em",
                           "& .MuiInputBase-input": {
-                            color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary",
+                            color:
+                              theme.palette.mode === "dark"
+                                ? "text.primary"
+                                : "text.primary",
                             padding: 0,
                           },
                         }}
@@ -407,9 +427,13 @@ export default function SideNavbar({ ...props }) {
                       >
                         <key.icon
                           key={`12+${key.key + index}`}
-                          sx={{ fontSize: "20px", color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary" }}
+                          sx={{
+                            fontSize: "20px",
+                            color:
+                              theme.palette.mode === "dark"
+                                ? "text.primary"
+                                : "text.primary",
+                          }}
                         />
                       </Badge>
                     </ListItemIcon>
@@ -424,9 +448,10 @@ export default function SideNavbar({ ...props }) {
                         display: "inline",
                         margin: "0px",
                         overflowX: "hidden",
-                        color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary",
+                        color:
+                          theme.palette.mode === "dark"
+                            ? "text.primary"
+                            : "text.primary",
                         whiteSpace: "nowrap",
                         minWidth: "126px",
                       }}
@@ -489,9 +514,8 @@ export default function SideNavbar({ ...props }) {
               whiteSpace: "nowrap",
               lineHeight: "inherit",
               fontWeight: 500,
-              color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary",
+              color:
+                theme.palette.mode === "dark" ? "text.primary" : "text.primary",
             }}
           >
             {currentUser
@@ -508,9 +532,8 @@ export default function SideNavbar({ ...props }) {
               display: "block",
               whiteSpace: "nowrap",
               lineHeight: "inherit",
-              color: theme.palette.mode === "dark"
-        ? "text.primary"
-        : "text.primary",
+              color:
+                theme.palette.mode === "dark" ? "text.primary" : "text.primary",
             }}
           >
             {currentUser ? "Logged in" : ""}
@@ -522,26 +545,21 @@ export default function SideNavbar({ ...props }) {
 
   return (
     <Box sx={{ display: "flex" }}>
-            <Box
+      <Box
         component="main"
         sx={{
           backgroundColor: "transparent",
           padding: "8px",
-          margin: "auto",
-          top:"10px",
-          position: "relative",
-          zIndex:"200",
-          color:"red"
+          margin: "10px 5px ",
+          top: "0",
+          position: "absolute",
+          zIndex: "200",
         }}
       >
-        <Typography></Typography>
-        <div className="switch">
-          <Switch
-            checked={open}
-            onChange={() => setOpen((prevOpen) => !prevOpen)}
-          
-          ></Switch>{" "}
-        </div>
+        <Switch
+          checked={open}
+          onChange={() => setOpen((prevOpen) => !prevOpen)}
+        ></Switch>
       </Box>
       <Drawer
         variant="permanent"
@@ -577,7 +595,6 @@ export default function SideNavbar({ ...props }) {
       >
         {drawerContent}
       </Drawer>
-
     </Box>
   );
 }
