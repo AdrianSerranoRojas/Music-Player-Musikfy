@@ -7,7 +7,7 @@ import SongCard from "../SongCard/SongCard";
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
   maxWidth: "100%",
-  height: "35vh",
+  height: "27vh",
   zIndex: 1,
   overflow: "scroll",
 }));
@@ -17,26 +17,24 @@ function SongListOfPlaylist({ listSelect, list }) {
 
   return (
     <>
+      <Box sx={{ mt: 7 }}>
+        <Typography
+          variant="h4"
+          align="center"
+          fontFamily="Vollkorn, serif"
+        >
+            {list.title}
+        </Typography>
+        <Typography
+          variant="h5"
+          align="center"
+          fontFamily="Vollkorn, serif"
+        >
+            {listSelect.length} songs
+        </Typography>
+      </Box>
     <Widget>
       <Box>
-        <Box>
-          <Box sx={{ mt: 7 }}>
-            <Typography
-              variant="h2"
-              align="center"
-              fontFamily="Vollkorn, serif"
-            >
-              {list.title}
-            </Typography>
-            <Typography
-              variant="h4"
-              align="center"
-              fontFamily="Vollkorn, serif"
-            >
-              {listSelect.length} songs
-            </Typography>
-          </Box>
-        </Box>
         <Box sx={{ mt: 1 }}>
           {listSelect.map((song, index) => {
             return (
