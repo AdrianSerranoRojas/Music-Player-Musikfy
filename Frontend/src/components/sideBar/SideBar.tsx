@@ -48,7 +48,6 @@ const drawerWidthClose =
 export default function SideNavbar({ ...props }) {
   async function handleSignOut() {
     await userSignOut();
-    
   }
   const dispatch = useDispatch();
   const { filterSong } = useSelector(songsSelector);
@@ -435,6 +434,9 @@ export default function SideNavbar({ ...props }) {
       )}
 
       <ColorMode />
+      <IconButton sx={{ color: "lightgrey" }} onClick={handleSignOut}>
+        <ExitToAppIcon></ExitToAppIcon>
+      </IconButton>
       <Box
         sx={{
           display: "flex",
@@ -493,9 +495,6 @@ export default function SideNavbar({ ...props }) {
             {currentUser ? "Logged in" : ""}
           </Typography>
         </Box>
-        <IconButton sx={{ color: "ligthgray" }} onClick={handleSignOut}>
-          <ExitToAppIcon></ExitToAppIcon>
-        </IconButton>
       </Box>
     </>
   );
