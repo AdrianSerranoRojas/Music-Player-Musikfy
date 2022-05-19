@@ -40,7 +40,6 @@ import {
   useGetSongsCounterQuery,
 } from "../../services/stadisticsApi";
 
-import "./SongCard.scss";
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -148,7 +147,18 @@ export default function SongCard({ song, id }) {
   };
 
   return (
-    <Card sx={{ maxWidth: "100%", border: 0, my:0.5 }}>
+    <Card
+      sx={{
+        maxWidth: "100%",
+        border: 0,
+        my: 0.5,
+        display: "flex",
+        [theme.breakpoints.down("md")]: {
+          display: "flex",
+          flexDirection: "column",
+        },
+      }}
+    >
       <Grid container spacing={12}>
         <Grid item xs={0.5}>
           <Avatar
@@ -163,7 +173,7 @@ export default function SongCard({ song, id }) {
           </Typography>
           <Typography sx={{ ml: "1%" }} variant="subtitle2">
             {songArtist}
-            Rep: {isSuccess && songCounter?.total}
+            {isSuccess && songCounter?.total}
           </Typography>
         </Grid>
       </Grid>

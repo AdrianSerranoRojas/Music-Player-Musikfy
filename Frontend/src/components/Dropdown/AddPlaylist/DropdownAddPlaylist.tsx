@@ -49,7 +49,7 @@ function DropdownAddPlaylist({ id }) {
   };
   return (
     <div>
-      <FormControl variant="standard" sx={{ m: 1, width: 450 }}>
+      <FormControl variant="standard" sx={{ m: 1, width: 200 }}>
         <InputLabel id="demo-multiple-checkbox-label">Select Playlist</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
@@ -64,10 +64,10 @@ function DropdownAddPlaylist({ id }) {
           {isSuccess &&
             data.data.map((name,index) => (
               <MenuItem key={index} value={name.title}>
-                <Checkbox key={name.title} checked={personName.indexOf(name.title) > -1} />
+
                 <Button
                   variant="outlined"
-                  sx={{ mr: 2 }}
+                  sx={{ mr: 1 }}
                   onClick={() => handleAddSongPlaylist(name)}
                 >
                   Select
