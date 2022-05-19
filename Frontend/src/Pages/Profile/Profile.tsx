@@ -37,7 +37,7 @@ function Profile() {
   const currentUser = useContext(AuthContext);
   const uid = currentUser.uid;
   const [updateUser, result] = useUpdateUserMutation();
-  const { data: user, isSuccess,refetch } = useGetUserQuery(currentUser.uid);
+  const { data: user, isSuccess, refetch } = useGetUserQuery(currentUser.uid);
   const [editUser, setEditUser] = useState({});
   const [image, setImage] = useState([]);
   const navigate = useNavigate();
@@ -64,7 +64,7 @@ function Profile() {
 
   const insertFile = async () => {
     updateUser({ uid, editUser, image });
-    refetch()
+    refetch();
     navigate("/");
   };
 
@@ -76,22 +76,21 @@ function Profile() {
           <hr />
           <h3>User name</h3>
           <EditInfo
-            value={editUser?.userName ? editUser.userName : user.data.userName}
+            value={editUser ? "UserName" : user.data.userName}
             setEditUser={setEditUser}
             control="userName"
             editUser={undefined}
           />
           <hr />
           <h3>Image</h3>
-          {user?.data?.image?.url &&
-            (image.length > 0 && (
-              <Image
-                className="profileImg"
-                roundedCircle={true}
-                src={image.length > 0 ? image : user?.data?.image?.url}
-                alt="profile image"
-              />
-            ))}
+          {user?.data?.image?.url && image.length > 0 && (
+            <Image
+              className="profileImg"
+              roundedCircle={true}
+              src={image.length > 0 ? image : user?.data?.image?.url}
+              alt="profile image"
+            />
+          )}
           <div>
             <Widget className="dropzone" {...getRootProps()}>
               <input type="text" placeholder="as" {...getInputProps()} />
@@ -99,7 +98,7 @@ function Profile() {
             </Widget>
           </div>
           <hr />
-          <h3>Submit</h3>
+          <h3>Submit Image</h3>
           <Button variant="contained" color="primary" onClick={insertFile}>
             Submit
           </Button>

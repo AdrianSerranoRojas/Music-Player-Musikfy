@@ -51,7 +51,7 @@ function FavoriteSongs() {
                 align="center"
                 fontFamily="Vollkorn, serif"
               >
-                LIKED!!!
+                My Liked Songs
               </Typography>
               {isSuccess &&
                 data.data.myFavoriteSongs.map((song, index) => {

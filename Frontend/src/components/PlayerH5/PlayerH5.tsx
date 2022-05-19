@@ -28,7 +28,7 @@ const PlayerH5 = ({ layoutDisplay, src, title, ...otherProps }) => {
   // make a reduxstate
   return (
     <AudioPlayer
-      style={{ borderRadius: "1rem", textAlign: "center" }}
+      style={{ borderRadius: "0.5rem", textAlign: "center" }}
       autoPlay
       src={currentSong[trackIndex].audio}
       onPlay={(e) => console.log("onPlay")}
