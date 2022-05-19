@@ -43,18 +43,19 @@ function AddPlayList({ listSelectFunc, refetching }) {
 
   function handleSelectPlaylist(playlist) {
     listSelectFunc(playlist);
-    refetching();
+    console.log("dssssssssssssssssss");
+    
+    refetch();
   }
   async function handleCreatePlaylist() {
     await createPlaylist({ title: playlistName });
     refetch();
   }
-  async function handleUpdatePlaylist(playlistName) {
-    await updatePlaylist(playlistName.playlist._id);
-    console.log("sfsfsdfsdfsdfsd");
-    
-    
-  }
+  // async function handleUpdatePlaylist(playlistName) {
+  //   await updatePlaylist(playlistName.playlist._id);
+  //   console.log("sfsfsdfsdfsdfsd");
+  //   refetch()
+  // }
 
   const handleChange = (e) => {
     setPlaylistName(e.target.value);
@@ -97,7 +98,7 @@ function AddPlayList({ listSelectFunc, refetching }) {
     {isSuccess &&
           data.data.map((playlist, index) => {
             return (
-              <PlaylistCard key={index} playlist={playlist} refetch={refetch}  handleSelectPlaylist={handleSelectPlaylist}/>
+              <PlaylistCard key={index} playlist={playlist} refetch={refetch} handleSelectPlaylist={handleSelectPlaylist} />
   )
   })}
   </Box>
