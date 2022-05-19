@@ -66,11 +66,6 @@ const Slider = () => {
                 <div className="content">
                   <h2>{slide.heading}</h2>
                   <p>{slide.desc}</p>
-                  {/* <SongCard /> */}
-
-                  <IconButton >
-                  <PlayCircleFilledWhiteIcon  fontSize="large"  />
-                  </IconButton>
                   <hr />
                 </div>
               </div>
