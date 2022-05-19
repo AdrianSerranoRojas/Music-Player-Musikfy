@@ -1,6 +1,7 @@
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
+import { useGetPlaylistsQuery } from "../../services/playlistApi";
 
 import SongCard from "../SongCard/SongCard";
 
@@ -12,8 +13,10 @@ const Widget = styled("div")(({ theme }) => ({
   overflow: "scroll",
 }));
 
-function SongListOfPlaylist({ listSelect, list }) {
+function SongListOfPlaylist({ listSelect, list, data }) {
   const id = listSelect?._id;
+
+console.log(listSelect.length)
 
   return (
     <>

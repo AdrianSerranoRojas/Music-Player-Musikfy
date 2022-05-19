@@ -20,6 +20,7 @@ import {
 } from "../../../services/playlistApi";
 
 import "./AddPlayList.scss";
+import { useNavigate } from "react-router-dom";
 
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
@@ -30,6 +31,8 @@ const Widget = styled("div")(({ theme }) => ({
 }));
 
 function AddPlayList({ listSelectFunc, refetching }) {
+
+  let navigate = useNavigate();
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -55,6 +58,7 @@ function AddPlayList({ listSelectFunc, refetching }) {
   async function handleCreatePlaylist() {
     await createPlaylist({ title: playlistName });
     refetch();
+    handleClose();
   }
   // async function handleUpdatePlaylist(playlistName) {
   //   await updatePlaylist(playlistName.playlist._id);

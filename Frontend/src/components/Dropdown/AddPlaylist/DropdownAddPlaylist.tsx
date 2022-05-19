@@ -2,14 +2,13 @@ import React from "react";
 
 import { useNavigate } from "react-router-dom";
 
-import OutlinedInput from "@mui/material/OutlinedInput";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import ListItemText from "@mui/material/ListItemText";
 import Select from "@mui/material/Select";
 import Checkbox from "@mui/material/Checkbox";
-import { Button } from "@mui/material";
+import { Button, Input } from "@mui/material";
 
 import {
   useGetPlaylistsQuery,
@@ -50,7 +49,7 @@ function DropdownAddPlaylist({ id }) {
   };
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 450 }}>
+      <FormControl variant="standard" sx={{ m: 1, width: 450 }}>
         <InputLabel id="demo-multiple-checkbox-label">Select Playlist</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"
@@ -58,7 +57,7 @@ function DropdownAddPlaylist({ id }) {
           multiple
           value={personName}
           onChange={handleChange}
-          input={<OutlinedInput label="Tag" />}
+          input={<Input label="Select" />}
           renderValue={(selected) => selected.join(", ")}
           MenuProps={MenuProps}
         >
