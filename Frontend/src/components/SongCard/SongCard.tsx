@@ -39,11 +39,7 @@ import {
   useCreateActionMutation,
   useGetSongsCounterQuery,
 } from "../../services/stadisticsApi";
-<<<<<<< HEAD
-=======
 
-import "./SongCard.scss";
->>>>>>> bbf83a1ed519a9e7c67e485a1638edcaf7bd0b2c
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
