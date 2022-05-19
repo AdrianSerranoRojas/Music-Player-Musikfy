@@ -76,7 +76,7 @@ function Profile() {
           <hr />
           <h3>User name</h3>
           <EditInfo
-            value={editUser?.userName ? editUser.userName : user.data.userName}
+            value={editUser ? "UserName" : user.data.userName}
             setEditUser={setEditUser}
             control="userName"
             editUser={undefined}
