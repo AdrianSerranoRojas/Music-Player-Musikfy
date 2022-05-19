@@ -55,7 +55,6 @@ export default function StyledAvatar({ currentUser, imageURL }) {
           alt="Remy Sharp"
           sx={{ width: "32px", height: "32px" }}
         >
-          
         </Avatar>
       </StyledBadge>
     </Box>
