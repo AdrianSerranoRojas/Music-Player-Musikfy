@@ -87,8 +87,8 @@ export default function SongCard({ song, id  }) {
       setSongCounter(songCounterX);
     }
   }, [songsCounter]);
-
-  const fav = user?.data?.myFavoriteSongs?.includes(songId);
+const [fav, setFav] = useState(user?.data?.myFavoriteSongs?.includes(songId))
+  // const fav = user?.data?.myFavoriteSongs?.includes(songId);
 
   const handlePlay = () => {
     if (currentUser) {
@@ -130,18 +130,19 @@ export default function SongCard({ song, id  }) {
     );
   };
 
-  const [open1, setOpen1] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  //  const handleOpen = () => setOpen(true);
+  // const handleClose = () => setOpen(false);
 
   const handleLike = () => {
     console.log(fav);
     if (fav) {
       NotLikeSong({ songId, fav });
       refetch();
+      setFav(!fav)
     } else {
       LikeSong({ songId, fav });
       refetch();
+      setFav(!fav)
     }
     refetch();
   };

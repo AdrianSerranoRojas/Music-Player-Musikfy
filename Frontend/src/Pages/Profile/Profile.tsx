@@ -37,7 +37,7 @@ function Profile() {
   const currentUser = useContext(AuthContext);
   const uid = currentUser.uid;
   const [updateUser, result] = useUpdateUserMutation();
-  const { data: user, isSuccess } = useGetUserQuery(currentUser.uid);
+  const { data: user, isSuccess,refetch } = useGetUserQuery(currentUser.uid);
   const [editUser, setEditUser] = useState({});
   const [image, setImage] = useState([]);
   const navigate = useNavigate();
@@ -64,6 +64,7 @@ function Profile() {
 
   const insertFile = async () => {
     updateUser({ uid, editUser, image });
+    refetch()
     navigate("/");
   };
 
