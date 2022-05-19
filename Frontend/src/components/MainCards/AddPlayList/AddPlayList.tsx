@@ -24,7 +24,7 @@ import "./AddPlayList.scss";
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
   maxWidth: "100%",
-  height: "35vh",
+  height: "25vh",
   zIndex: 1,
   overflow: "scroll",
 }));
@@ -69,10 +69,11 @@ function AddPlayList({ listSelectFunc, refetching }) {
   const playlistTxt = "Playlist title: "
 
   return (
-    <Widget>
+    <>
     <Typography variant="h4" align="center" fontFamily="Vollkorn, serif" >
         All the Playlists!
     </Typography>
+    <Widget>
     <Box>
     <Card className='playlistBg'>
     <CardHeader
@@ -108,6 +109,7 @@ function AddPlayList({ listSelectFunc, refetching }) {
   })}
   </Box>
   </Widget>
+  </>
   );
 }
 
