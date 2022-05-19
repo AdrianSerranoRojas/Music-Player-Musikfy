@@ -141,7 +141,7 @@ useEffect(() => {
   };
 
   return (
-    <Card sx={{ maxWidth: "100%", border: 1 }}>
+    <Card sx={{ maxWidth: "100%", border: 0, my:0.5 }}>
       <Grid container spacing={12}>
       <Grid item xs={0.5}>
       <Avatar variant="square" src={songImage} sx={{ width: 56, height: 56 }}>

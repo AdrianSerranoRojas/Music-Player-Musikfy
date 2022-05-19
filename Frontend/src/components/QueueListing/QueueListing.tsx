@@ -10,9 +10,7 @@ const QueueListing = () => {
 
     return(
         <div className="QueueListContainer">
-            <Typography variant="body2">
-                Songs Queue
-            </Typography>
+
                 {currentSong[0].audio !== "" &&
                     currentSong.map((song, index) => {
                         return(
