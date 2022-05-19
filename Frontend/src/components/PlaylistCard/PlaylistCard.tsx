@@ -23,16 +23,16 @@ import {
     addPlayQueue,
   } from "../../features/song/songsSlice";
 
-const PlaylistCard = ({playlist, refetch, handleSelectPlaylist }) => {
+const PlaylistCard = ({ key,playlist, refetch,  listSelectFunc}) => {
     const dispatch = useDispatch();
-    const currentSong = useSelector((state) => state.songs.currentSong);
+    // const currentSong = useSelector((state) => state.songs.currentSong);
     const [deletePlaylist, resultDelete] = useDeletePlaylistMutation();
-    const { data } = useGetPlaylistQuery(playlist._id);
+    const { data, refetch:refetchPlyalist } = useGetPlaylistQuery(playlist._id);
     
-    // function handleSelectPlaylist(playlist) {
-    //       listSelectFunc(playlist);
-    //       refetching();
-    // }
+    function handleSelectPlaylist(playlist) {
+          listSelectFunc(playlist);
+          refetchPlyalist();
+    }
 
     async function handleDeletePlaylist() {
         await deletePlaylist(playlist._id);

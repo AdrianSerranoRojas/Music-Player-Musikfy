@@ -34,6 +34,7 @@ function AddPlayList({ listSelectFunc, refetching }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  const [first, setFirst] = useState(false)
 
   const { data, isLoading, isSuccess, refetch } = useGetPlaylistsQuery();
   const [createPlaylist, result] = useCreatePlaylistMutation();
@@ -43,9 +44,13 @@ function AddPlayList({ listSelectFunc, refetching }) {
 
   function handleSelectPlaylist(playlist) {
     listSelectFunc(playlist);
-    console.log("dssssssssssssssssss");
+    console.log("dssssssssssssssssss",first);
     
     refetch();
+    setFirst(true)
+
+    // isSuccess
+    // setFirst(useGetPlaylistsQuery())
   }
   async function handleCreatePlaylist() {
     await createPlaylist({ title: playlistName });
@@ -99,7 +104,7 @@ function AddPlayList({ listSelectFunc, refetching }) {
     {isSuccess &&
           data.data.map((playlist, index) => {
             return (
-              <PlaylistCard key={index} playlist={playlist} refetch={refetch} handleSelectPlaylist={handleSelectPlaylist} />
+              <PlaylistCard key={index} playlist={playlist} refetch={refetch} listSelectFunc={listSelectFunc} />
   )
   })}
   </Box>

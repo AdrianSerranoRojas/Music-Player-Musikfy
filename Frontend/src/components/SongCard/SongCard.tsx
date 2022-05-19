@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react';
-
 import { useDispatch, useSelector } from "react-redux";
 
 import { styled } from '@mui/material/styles';
@@ -52,8 +51,6 @@ const ExpandMore = styled((props) => {
 
 export default function SongCard({ song, id  }) {
   const [expanded, setExpanded] = React.useState(false);
-// console.log("SongCard",id);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
@@ -72,8 +69,7 @@ export default function SongCard({ song, id  }) {
   const [createAction, ActionResponse] = useCreateActionMutation();
 
   const [open, setOpen] = React.useState(false);
-  // const { data: song } = useGetSongQuery(songId);
-  const { data: user, refetch } = useGetUserQuery(currentUser?.uid);
+  const { data: user, isSuccess:userIsSuccess, refetch } = useGetUserQuery(currentUser?.uid);
   const [LikeSong, response] = useLikeSongMutation();
   const [NotLikeSong, response2] = useNotLikeSongMutation();
 
@@ -87,8 +83,11 @@ export default function SongCard({ song, id  }) {
       setSongCounter(songCounterX);
     }
   }, [songsCounter]);
+const [fav, setFav] = useState(false)
 
-  const fav = user?.data?.myFavoriteSongs?.includes(songId);
+useEffect(() => {
+  setFav(user?.data?.myFavoriteSongs?.includes(songId))
+}, [user])
 
   const handlePlay = () => {
     if (currentUser) {
@@ -130,20 +129,14 @@ export default function SongCard({ song, id  }) {
     );
   };
 
-  const [open1, setOpen1] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  const handleLike = () => {
-    console.log(fav);
+  const handleLike = async () => {
     if (fav) {
-      NotLikeSong({ songId, fav });
+      await NotLikeSong({ songId, fav });
       refetch();
-    } else {
-      LikeSong({ songId, fav });
+      } else {
+      await LikeSong({ songId, fav });
       refetch();
     }
-    refetch();
   };
 
   return (
