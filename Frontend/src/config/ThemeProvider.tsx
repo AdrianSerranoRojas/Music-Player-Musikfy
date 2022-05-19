@@ -51,7 +51,7 @@ export default function ToggleColorMode({ children }) {
                   paper: "#212121",
                 },
                 text: {
-                  primary: "#e600f5",
+                  primary: "#ffff",
                   secondary: grey[500],
                 },
               }),
