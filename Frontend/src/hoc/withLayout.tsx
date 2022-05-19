@@ -1,12 +1,12 @@
 import SideBar from "../components/sideBar/SideBar";
 
 // import PlayerH5 from "../components/PlayerH5/PlayerH5";
+import Switch from "@mui/material/Switch";
 
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
 
 import "./withLayout.scss";
-
 
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
@@ -25,7 +25,7 @@ const Widget = styled("div")(({ theme }) => ({
 }));
 
 const WallPaper = styled("div")(({ theme }) => ({
-  zIndex: 0,
+  zIndex: -999,
   position: "absolute",
   overflow: "hidden",
   width: "100%",
@@ -33,10 +33,10 @@ const WallPaper = styled("div")(({ theme }) => ({
   top: 0,
   left: 0,
   background:
-  theme.palette.mode === "dark"
+    theme.palette.mode === "dark"
       ? "linear-gradient(#0f0 0%, #e600f5 100%)"
       : "linear-gradient(rgb(255, 38, 142) 0%, rgb(255, 105, 79) 100%)",
-  
+
   transition: "all 500ms cubic-bezier(0.175, 0.885, 0.32, 1.275) 0s",
   "&:before": {
     content: '""',
@@ -72,9 +72,9 @@ function withLayout(WrappedComponent: any) {
     return (
       <>
         <Card className="transparent">
-        <Widget>
-          <WrappedComponent {...props} />
-        </Widget>
+          <Widget>
+            <WrappedComponent {...props} />
+          </Widget>
         </Card>
         <SideBar />
         <WallPaper />
