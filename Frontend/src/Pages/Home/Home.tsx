@@ -27,7 +27,7 @@ import "./Home.scss";
 const Home = () => {
   return (
     <Box sx={{ display: "flex", flexDirection: "column" }}>
-      <Slider />
+      {/* <Slider /> */}
       <SearchSongListing />
       {/* <PlaylistsCard /> */}
     </Box>

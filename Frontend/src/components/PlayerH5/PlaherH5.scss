@@ -1,11 +1,12 @@
 @use "../../styles/Colors.scss";
 
 .rhap_container{
-    background: Colors.$base-color !important;
+    // background: Colors.$base-color !important;
+    background:  rgba(0, 0, 0, 0)!important;
 }
 .rhap_progress-bar{
-    background-color: black;
+    background-color: rgb(255, 255, 255);
 }
 .rhap_button-clear{
-    color: black;
+    color: rgba(0, 0, 0, 0.679);
 }

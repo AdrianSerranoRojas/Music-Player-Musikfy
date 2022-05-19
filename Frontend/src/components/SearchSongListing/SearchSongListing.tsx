@@ -12,8 +12,8 @@ import { songsSelector } from "../../features/song/songsSlice";
 
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "scroll",
-  padding: 2,
-  height: "35vh",
+  padding: 0,
+  height: "70.5vh",
   borderRadius: 0,
   width: "100%",
   maxWidth: "100%",
@@ -21,8 +21,8 @@ const Widget = styled("div")(({ theme }) => ({
   position: "relative",
   zIndex: 1,
   backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
-  backdropFilter: "blur(40px)",
+    theme.palette.mode === "dark" ? "#0000000" : "#0000000",
+  // backdropFilter: "blur(40px)",
 }));
 
 function SearchSongListing() {
@@ -35,18 +35,13 @@ function SearchSongListing() {
         <Box sx={{ pt: 0 }}>
           <Widget
             sx={{
-              boxShadow: 4,
+              boxShadow: 0,
               p: 2,
               maxwidth: 750,
               maxheight: 200,
             }}
           >
             <Box>
-              <Typography
-                variant="h5"
-                align="center"
-                fontFamily="Vollkorn, serif"
-              ></Typography>
               {isSuccess &&
                 data.data.map((song, index) => {
                   return <SongCard key={index} song={song}/>;
