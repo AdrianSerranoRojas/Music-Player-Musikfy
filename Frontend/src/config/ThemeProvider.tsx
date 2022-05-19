@@ -28,7 +28,7 @@ export default function ToggleColorMode({ children }) {
             ? {
                 // palette values for light mode
                 primary: {
-                  main: pink[200]
+                  main: pink[200],
                 },
                 secondary: deepOrange,
                 divider: amber[200],
@@ -51,7 +51,7 @@ export default function ToggleColorMode({ children }) {
                   paper: "#212121",
                 },
                 text: {
-                  primary: "#fff",
+                  primary: "#e600f5",
                   secondary: grey[500],
                 },
               }),

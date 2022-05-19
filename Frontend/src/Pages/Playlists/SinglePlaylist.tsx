@@ -8,8 +8,6 @@ import { useGetSongsQuery } from "../../services/songApi";
 
 import withLayout from "../../hoc/withLayout";
 
-import PlaylistModal from "../../components/PlaylistModal/PlaylistModal";
-
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 import "../MySongs/MySongs.scss";
@@ -47,22 +45,7 @@ function SinglePlaylist() {
     <>
     {isSuccess &&
       <DragDropContext
-      // onDragEnd={(result) => {
-      //   const {source, destination} = result;
-      //   if (!destination) {
-      //     return;
-      //   }
-      //   if (
-      //     source.index === destination.index &&
-      //     source.droppableId === destination.droppableId
-      //     ) {
-      //       return;
-      //     }
-
-      //   setSongs((prevSongs) =>
-      //     reorder(prevSongs, source.index, destination.index));
-      // }}
-      >
+      onDragEnd={(result) => console.log(result)}>
         <Box>
           <Widget
             sx={{
@@ -101,7 +84,6 @@ function SinglePlaylist() {
                 >
                   Created by alonso22
                 </Typography>
-                <PlaylistModal />
               </Box>
             </Box>
             <Droppable droppableId="songs">

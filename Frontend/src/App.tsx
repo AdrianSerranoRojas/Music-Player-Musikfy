@@ -27,6 +27,7 @@ import Box from "@mui/material/Box";
 import FavoriteSongs from "./Pages/FavoriteSongs/FavoriteSongs";
 
 import "./App.scss";
+import SinglePlaylist from "./Pages/Playlists/SinglePlaylist";
 
 export default function App() {
   const Widget2 = styled("div")(({ theme }) => ({
@@ -94,6 +95,10 @@ export default function App() {
           <Route
             path="/playlist"
             element={currentUser ? <Playlists /> : <Home />}
+          />
+          <Route
+            path="/playlist2"
+            element={currentUser ? <SinglePlaylist /> : <Home />}
           />
           <Route path="/stadistics" element={<Stadistics />} />
           <Route path="/40list" element={<ListWebScrap />} />
