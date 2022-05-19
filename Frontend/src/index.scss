@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Permanent+Marker&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@300&display=swap');
+*{
+    font-family: 'Zilla Slab', normal !important;
+}
 body {
   margin: 0;
   // font-family: 'Lobster', cursive !important;
@@ -7,9 +9,7 @@ font-family: 'Permanent Marker', cursive !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-*{
-  font-family: 'Permanent Marker', cursive !important;
-}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
