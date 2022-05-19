@@ -7,6 +7,7 @@ import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
 import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
 
 import "./Slider.scss";
+import { Navigate } from "react-router-dom";
 
 const Slider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -62,11 +63,10 @@ const Slider = () => {
                 <div className="content">
                   <h2>{slide.heading}</h2>
                   <p>{slide.desc}</p>
-                  <p>{slide.desc2}</p>
 
                   {/* <SongCard /> */}
+                  <PlayCircleFilledWhiteIcon  fontSize="large" />
                   <hr />
-                  <PlayCircleFilledWhiteIcon fontSize="large" />
                 </div>
               </div>
             )}

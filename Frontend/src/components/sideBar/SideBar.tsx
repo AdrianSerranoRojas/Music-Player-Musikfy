@@ -26,7 +26,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 
 import navbarList, { navbarListLogout } from "./SideBarData";
-
 import StyledAvatar from "./StyledAvatar";
 
 import ColorMode from "../ColorMode/ColorMode";
@@ -49,6 +48,7 @@ const drawerWidthClose =
 export default function SideNavbar({ ...props }) {
   async function handleSignOut() {
     await userSignOut();
+    
   }
   const dispatch = useDispatch();
   const { filterSong } = useSelector(songsSelector);
