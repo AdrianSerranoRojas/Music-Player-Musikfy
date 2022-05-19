@@ -309,8 +309,8 @@ Style elements, that includes all _scss_ files and _classes_ have the same rules
  ┃ ┣ 📜App.js
  ┃ ┣ 📜App.test.js
  ┃ ┣ 📜index.css
- ┃ ┣ 📜index.js
- ┃ ┣ 📜reportWebVitals.js
+ ┃ ┣ ndex.js
+ ┃ ┣ 📜re📜iportWebVitals.js
  ┃ ┗ 📜setupTests.js
  ┣ 📜.env.local
  ┣ 📜.gitignore

@@ -18,11 +18,11 @@ function Playlists() {
   const { data, isLoading, isSuccess, refetch } =
   useGetPlaylistQuery(playlistId);
   
-  const listSelectFunc = (list) => {
-    setListSelect(list);
+  const listSelectFunc = async (list) => {
+    await setListSelect(list);
     setplaylistId(list._id);
-    // console.log(data.data)
-    // refetch()
+    console.log("why nooot refetch!!!!" ,data)
+    refetch()
   };
 
   let playlistSongThisList = [];
