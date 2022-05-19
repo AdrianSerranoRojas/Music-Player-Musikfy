@@ -5,12 +5,11 @@ import IconButton from "@mui/material/IconButton";
 import CardHeader from "@mui/material/CardHeader";
 import { Button, CardActionArea, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-
 import FavIconPlaylist from "../FavIcon/FavIconPlaylist";
 import ShareIcon from "@mui/icons-material/Share";
 import DeleteIcon from "@mui/icons-material/Delete";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
-
+import { useTheme } from "@mui/material/styles";
 import {
   useGetPlaylistQuery,
   useDeletePlaylistMutation,
@@ -23,9 +22,9 @@ import {
   addPlayQueue,
 } from "../../features/song/songsSlice";
 
-const PlaylistCard = ({  playlist, refetch, listSelectFunc }) => {
+const PlaylistCard = ({ playlist, refetch, listSelectFunc }) => {
   const dispatch = useDispatch();
-
+  const theme = useTheme();
   const [deletePlaylist, resultDelete] = useDeletePlaylistMutation();
   const { data, refetch: refetchPlyalist } = useGetPlaylistQuery(playlist._id);
 
@@ -66,42 +65,48 @@ const PlaylistCard = ({  playlist, refetch, listSelectFunc }) => {
     });
   }
 
-
   return (
-    <Card sx={{ mt: 0.2 }} className="playlistBg">
-      <Grid container>
-        <Grid item xs={12}>
-          <CardActions sx={{ py: 0, my: 0, px: 0, mx: 0 }}>
-            <button
-              className="imgButtonPlaylist"
-              onClick={() => handleSelectPlaylist(playlist)}
-            >
-              <Typography
-                sx={{ py: 0, my: 0, fontSize: 20 }}
-                className="hoverPlaylist"
-              >
-                {playlist.title}
-              </Typography>
-            </button>
-          </CardActions>
-        </Grid>
-        <Grid item xs={4} sx={{ ml: 4 }}>
-          <CardActions disableSpacing sx={{ py: 0, my: 0, px: 0, mx: 0 }}>
-            <FavIconPlaylist />
-            <IconButton aria-label="share">
-              <ShareIcon />
-            </IconButton>
-            <IconButton aria-label="delete" onClick={handleDeletePlaylist}>
-              <DeleteIcon />
-            </IconButton>
-            <IconButton
-              aria-label="share"
-              onClick={() => handlePlayPlaylist({ playlist })}
-            >
-              <PlayArrowIcon />
-            </IconButton>
-          </CardActions>
-        </Grid>
+    <Card
+      sx={{
+        maxWidth: "100%",
+        border: 0,
+        my: 0.5,
+        display: "flex",
+        justifyContent: "space-between",
+        alignText: "center",
+        [theme.breakpoints.down("md")]: {
+          display: "flex",
+          flexDirection: "column",
+        },
+      }}
+      className="playlistBg"
+    >
+      <CardActions sx={{ py: 0, my: 0, px: 0, mx: 0, alignText: "center" }}>
+        <button
+          className="imgButtonPlaylist"
+          onClick={() => handleSelectPlaylist(playlist)}
+        >
+          <Typography
+            sx={{ py: 0, my: 0, fontSize: 20 }}
+            className="hoverPlaylist"
+          >
+            {playlist.title}
+          </Typography>
+        </button>
+      </CardActions>
+      <Grid>
+        <CardActions disableSpacing sx={{ py: 0, my: 0, px: 0, mx: 0 }}>
+          <IconButton
+            aria-label="share"
+            onClick={() => handlePlayPlaylist({ playlist })}
+          >
+            <PlayArrowIcon />
+          </IconButton>
+          <IconButton aria-label="delete" onClick={handleDeletePlaylist}>
+            <DeleteIcon />
+          </IconButton>
+          <FavIconPlaylist />
+        </CardActions>
       </Grid>
     </Card>
   );

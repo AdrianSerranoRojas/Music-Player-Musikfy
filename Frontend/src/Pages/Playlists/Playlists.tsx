@@ -39,7 +39,7 @@ function Playlists() {
 
         />
       ) : (
-        <Typography sx={{ mx: "auto", mt: 12 }} variant="h3">
+        <Typography sx={{ mx: "auto", mt: 5, textAlign: "center" }} variant="h3">
           Select a list
         </Typography>
       )}
