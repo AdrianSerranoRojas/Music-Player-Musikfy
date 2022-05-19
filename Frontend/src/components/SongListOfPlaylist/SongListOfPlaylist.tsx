@@ -7,7 +7,7 @@ import SongCard from "../SongCard/SongCard";
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
   maxWidth: "100%",
-  height: "40vh",
+  height: "35vh",
   zIndex: 1,
   overflow: "scroll",
 }));
@@ -47,7 +47,7 @@ function SongListOfPlaylist({ listSelect, list }) {
           })}
         </Box>
       </Box>
-      </Widget>
+    </Widget>
     </>
   );
 }

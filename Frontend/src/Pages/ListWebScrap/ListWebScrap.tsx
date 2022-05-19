@@ -38,7 +38,7 @@ function ListWebScrap() {
       <Box sx={{ width: '100%' }}>
       <Stack
           direction={{ xs: 'column', sm: 'row' }}
-          spacing={{ xs: 1, sm: 2, md: 4 }}
+          spacing={2}
         >
           <Item>Item 1</Item>
           <Item>Item 2</Item>

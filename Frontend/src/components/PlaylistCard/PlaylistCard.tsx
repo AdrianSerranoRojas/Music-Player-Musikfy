@@ -3,7 +3,7 @@ import Card from "@mui/material/Card";
 import CardActions from '@mui/material/CardActions';
 import IconButton from '@mui/material/IconButton';
 import CardHeader from '@mui/material/CardHeader';
-import { Button, CardActionArea} from "@mui/material";
+import { Button, CardActionArea, Typography} from "@mui/material";
 import Grid from '@mui/material/Grid';
 
 import FavIconPlaylist from "../FavIcon/FavIconPlaylist";
@@ -65,23 +65,23 @@ const PlaylistCard = ({playlist, refetch, handleSelectPlaylist }) => {
     }
     return(
   <Card sx={{mt:0.2}} className="playlistBg">
-    <Box >
         <Grid container>
             <Grid item xs={12}>
-                <CardActions>
+                <CardActions sx={{py:0, my:0, px:0, mx:0}}>
                 <button
                 className='imgButtonPlaylist'
                 onClick={() => handleSelectPlaylist(playlist)}>
-                <CardHeader
-                title={playlist.title}
-                sx={{py:0, my:0}}
+                <Typography
+                sx={{py:0, my:0, fontSize: 20}}
                 className="hoverPlaylist"
-                />
+                >
+                {playlist.title}
+                </Typography>
                 </button>
                 </CardActions>
             </Grid>
-            <Grid item xs={8} sx={{ml:4}}>
-                <CardActions disableSpacing>
+            <Grid item xs={4} sx={{ml:4}}>
+                <CardActions disableSpacing sx={{py:0, my:0, px:0, mx:0}}>
                 <FavIconPlaylist />
                 <IconButton aria-label="share">
                     <ShareIcon />
@@ -97,7 +97,6 @@ const PlaylistCard = ({playlist, refetch, handleSelectPlaylist }) => {
                 </CardActions>
             </Grid>
         </Grid>
-    </Box>
   </Card>
     );
 }

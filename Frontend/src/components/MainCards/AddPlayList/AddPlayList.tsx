@@ -24,7 +24,7 @@ import "./AddPlayList.scss";
 const Widget = styled("div")(({ theme }) => ({
   overflowY: "hidden",
   maxWidth: "100%",
-  height: "40vh",
+  height: "35vh",
   zIndex: 1,
   overflow: "scroll",
 }));
@@ -75,7 +75,7 @@ function AddPlayList({ listSelectFunc, refetching }) {
       sx={{pt:2, pb:0, my:0}}
     />
     <IconButton aria-label="add" onClick={handleOpen} sx={{ml: 9}}>
-      <AddCircleIcon sx={{ height: 55, width: 55 }}/>
+      <AddCircleIcon sx={{ height: 35, width: 35 }}/>
     </IconButton>
     <Modal
         open={open}

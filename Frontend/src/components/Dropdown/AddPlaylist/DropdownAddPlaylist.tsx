@@ -50,7 +50,7 @@ function DropdownAddPlaylist({ id }) {
   };
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 240 }}>
+      <FormControl sx={{ m: 1, width: 450 }}>
         <InputLabel id="demo-multiple-checkbox-label">Select Playlist</InputLabel>
         <Select
           labelId="demo-multiple-checkbox-label"

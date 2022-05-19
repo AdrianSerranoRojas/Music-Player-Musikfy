@@ -14,10 +14,12 @@ import AddSongButton from "../../components/AddSongButton/AddSongButton";
 
 function FavoriteSongs() {
   const Widget = styled("div")(({ theme }) => ({
+    overflow: "scroll",
     padding: 16,
     borderRadius: 16,
     width: 830,
     maxWidth: "100%",
+    height: "60vh",
     margin: "auto",
     position: "relative",
     zIndex: 1,
@@ -34,7 +36,7 @@ function FavoriteSongs() {
   return (
     <>
       {isSuccess && (
-        <Box sx={{ pt: 15 }}>
+        <Box sx={{ pt: 5 }}>
           <Widget
             sx={{
               boxShadow: 4,

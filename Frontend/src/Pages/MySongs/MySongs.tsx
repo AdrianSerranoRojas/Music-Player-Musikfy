@@ -18,11 +18,13 @@ import "../MySongs/MySongs.scss";
 
 function MySongs() {
   const Widget = styled("div")(({ theme }) => ({
+    overflowY: "scroll",
     padding: 16,
     borderRadius: 16,
-    width: 830,
+    width: 900,
     maxWidth: "100%",
     margin: "auto",
+    height: "60vh",
     position: "relative",
     zIndex: 1,
     backgroundColor:
@@ -42,7 +44,7 @@ function MySongs() {
   return (
     <>
       {isSuccess && (
-        <Box sx={{ pt: 15 }}>
+        <Box sx={{ pt: 7 }}>
           <Widget
             sx={{
               boxShadow: 4,
