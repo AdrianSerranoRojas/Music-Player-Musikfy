@@ -35,6 +35,7 @@ function SearchSongListing() {
         <Box sx={{ pt: 0 }}>
           <Widget
             sx={{
+              
               boxShadow: 4,
               p: 2,
               maxwidth: 750,

@@ -8,7 +8,6 @@ import { useDropzone } from "react-dropzone";
 
 import { useCreateSongMutation } from "../../services/songApi";
 
-
 const Widget = styled("div")(({ theme }) => ({
   overflowX: "hidden",
   padding: 16,
@@ -19,7 +18,8 @@ const Widget = styled("div")(({ theme }) => ({
   marginLeft: "12.5%",
   position: "relative",
   zIndex: 1,
-  backgroundColor:theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
+  backgroundColor:
+    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
   backdropFilter: "blur(40px)",
 }));
 
@@ -68,7 +68,9 @@ function AddSongButton() {
               <CardMedia
                 component="img"
                 height="140"
-                image={image}
+                image={
+                  "https://res.cloudinary.com/carapolla/image/upload/v1652948128/Images/music_placeholder.png_brqcmo.png"
+                }
                 key={index}
                 alt="green iguana"
               />
