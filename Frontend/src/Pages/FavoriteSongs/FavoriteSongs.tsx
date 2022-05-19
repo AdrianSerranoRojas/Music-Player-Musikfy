@@ -30,8 +30,11 @@ function FavoriteSongs() {
     backdropFilter: "blur(40px)",
   }));
 
-  const { data, isLoading, isSuccess } = useGetMyLikedSongsQuery();
+  const { data, isLoading, isSuccess, refetch } = useGetMyLikedSongsQuery();
   // const { data, isLoading, isSuccess } = useGetSongsFilteredQuery("basote");
+  useEffect(() => {
+    refetch();
+  }, [])
 
   return (
     <>
