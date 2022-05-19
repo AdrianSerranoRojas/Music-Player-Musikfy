@@ -28,7 +28,7 @@ function MySongs() {
     position: "relative",
     zIndex: 1,
     backgroundColor:
-      theme.palette.mode === "dark"
+      theme.palette.mode === "light-dark"
         ? "rgba(0,0,0,0.6)"
         : "rgba(255,255,255,0.4)",
     backdropFilter: "blur(40px)",

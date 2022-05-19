@@ -432,9 +432,11 @@ export default function SideNavbar({ ...props }) {
           <Divider key={123} variant="middle" light={true} />
         </List>
       )}
-
       <ColorMode />
-      <IconButton sx={{ color: "lightgrey" }} onClick={handleSignOut}>
+      <IconButton
+        sx={{ borderRadius: 0, p: 3 }}
+        onClick={handleSignOut}
+      >
         <ExitToAppIcon></ExitToAppIcon>
       </IconButton>
       <Box
