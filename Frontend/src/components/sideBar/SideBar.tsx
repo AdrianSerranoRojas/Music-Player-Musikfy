@@ -107,7 +107,9 @@ export default function SideNavbar({ ...props }) {
             display: { xs: "none", sm: "initial" },
             fontSize: "18px",
             fontWeight: 600,
-            color: "lightgray",
+            color: theme.palette.mode === "dark"
+        ? theme.palette.mode.primary
+        : "text.primary",
             width: "154px",
             marginLeft: open ? "0px" : "8px",
             paddingBottom: "3px",
@@ -130,7 +132,9 @@ export default function SideNavbar({ ...props }) {
           }}
         >
           <MenuIcon
-            sx={{ fontSize: "20px", color: open ? "lightgray" : "lightGray" }}
+            sx={{ fontSize: "20px", color: open ? theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary" : "lightGray" }}
           ></MenuIcon>
         </Button>
       </Box>
@@ -177,7 +181,9 @@ export default function SideNavbar({ ...props }) {
                         >
                           <key.icon
                             key={`5+${key.key + index}`}
-                            sx={{ fontSize: "20px", color: "lightgray" }}
+                            sx={{ fontSize: "20px", color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary" }}
                           />
                         </Badge>
                       </ListItemIcon>
@@ -245,7 +251,9 @@ export default function SideNavbar({ ...props }) {
                       >
                         <key.icon
                           key={`12+${key.key + index}`}
-                          sx={{ fontSize: "20px", color: "lightgray" }}
+                          sx={{ fontSize: "20px", color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary" }}
                         />
                       </Badge>
                     </ListItemIcon>
@@ -260,7 +268,9 @@ export default function SideNavbar({ ...props }) {
                         display: "inline",
                         margin: "0px",
                         overflowX: "hidden",
-                        color: "lightgray",
+                        color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary",
                         whiteSpace: "nowrap",
                         minWidth: "126px",
                       }}
@@ -326,7 +336,9 @@ export default function SideNavbar({ ...props }) {
                         >
                           <key.icon
                             key={`5+${key.key + index}`}
-                            sx={{ fontSize: "20px", color: "lightgray" }}
+                            sx={{ fontSize: "20px", color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary" }}
                           />
                         </Badge>
                       </ListItemIcon>
@@ -341,7 +353,9 @@ export default function SideNavbar({ ...props }) {
                           fontSize: "0.875rem",
                           lineHeight: "11.43em",
                           "& .MuiInputBase-input": {
-                            color: "lightgray",
+                            color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary",
                             padding: 0,
                           },
                         }}
@@ -393,7 +407,9 @@ export default function SideNavbar({ ...props }) {
                       >
                         <key.icon
                           key={`12+${key.key + index}`}
-                          sx={{ fontSize: "20px", color: "lightgray" }}
+                          sx={{ fontSize: "20px", color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary" }}
                         />
                       </Badge>
                     </ListItemIcon>
@@ -408,7 +424,9 @@ export default function SideNavbar({ ...props }) {
                         display: "inline",
                         margin: "0px",
                         overflowX: "hidden",
-                        color: "lightgray",
+                        color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary",
                         whiteSpace: "nowrap",
                         minWidth: "126px",
                       }}
@@ -471,7 +489,9 @@ export default function SideNavbar({ ...props }) {
               whiteSpace: "nowrap",
               lineHeight: "inherit",
               fontWeight: 500,
-              color: "lightgray",
+              color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary",
             }}
           >
             {currentUser
@@ -488,7 +508,9 @@ export default function SideNavbar({ ...props }) {
               display: "block",
               whiteSpace: "nowrap",
               lineHeight: "inherit",
-              color: "lightgray",
+              color: theme.palette.mode === "dark"
+        ? "text.primary"
+        : "text.primary",
             }}
           >
             {currentUser ? "Logged in" : ""}
