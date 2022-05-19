@@ -3,17 +3,20 @@ import { useSelector } from "react-redux";
 import QueueCard from "../QueueCard/QueueCard";
 
 import Card from '@mui/material/Card';
+import Typography from "@mui/material/Typography";
 
 const QueueListing = () => {
     const currentSong = useSelector((state) => state.songs.currentSong);
-    console.log(currentSong);
 
     return(
         <div className="QueueListContainer">
+            <Typography variant="body2">
+                Songs Queue
+            </Typography>
                 {currentSong[0].audio !== "" &&
                     currentSong.map((song, index) => {
                         return(
-                            <QueueCard key={index} songName={song.songName} />
+                            <QueueCard key={index} songName={song.songName} songArtist={song.songArtist}/>
                         );
                     })
                 }

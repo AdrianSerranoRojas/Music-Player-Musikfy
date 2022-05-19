@@ -54,6 +54,7 @@ export default function SongCard({ song, id }) {
     setExpanded(!expanded);
   };
 
+
   const songName = song?.songData?.title;
   const songArtist = song?.songData?.artist;
   const songUrl = song?.songFile?.url;
@@ -140,7 +141,7 @@ useEffect(() => {
   };
 
   return (
-    <Card variant="outlined" sx={{ maxWidth: "100%" }}>
+    <Card sx={{ maxWidth: "100%", border: 1 }}>
       <Grid container spacing={12}>
       <Grid item xs={0.5}>
       <Avatar variant="square" src={songImage} sx={{ width: 56, height: 56 }}>

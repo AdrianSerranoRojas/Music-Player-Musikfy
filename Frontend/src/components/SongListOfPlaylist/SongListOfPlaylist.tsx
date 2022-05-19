@@ -11,8 +11,10 @@ const Widget = styled("div")(({ theme }) => ({
   overflow: "scroll",
 }));
 
-function SongListOfPlaylist({ listSelect, list }) {
+function SongListOfPlaylist({ listSelect, list, data }) {
   const id = listSelect?._id;
+
+console.log(listSelect.length)
 
   return (
     <>
