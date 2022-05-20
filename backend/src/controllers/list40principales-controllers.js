@@ -5,7 +5,7 @@ export async function listWebScraping(req, res) {
   let titles;
   try {
     (async () => {
-      const browser = await puppeteer.launch({headless:false});
+      const browser = await puppeteer.launch();
       //{headless:false} añadiendolo se abre el navegador y veo lo que pasa
       const page = await browser.newPage();
 

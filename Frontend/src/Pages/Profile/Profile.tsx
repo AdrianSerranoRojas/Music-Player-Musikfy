@@ -2,9 +2,10 @@ import { useContext, useState, useCallback } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Image from "react-bootstrap/Image";
 import { useDropzone } from "react-dropzone";
-
+import Typography from "@mui/material/Typography";
 import withLayout from "../../hoc/withLayout";
-
+import Divider from "@mui/material/Divider";
+import Box from "@mui/material/Box";
 import { useGetUserQuery, useUpdateUserMutation } from "../../services/userApi";
 
 import AuthContext from "../../context/AuthContext";
@@ -15,8 +16,7 @@ import { Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 
 import LockIcon from "@mui/icons-material/Lock";
-
-// import "./profile.scss";
+import "./profile.scss";
 
 const Widget = styled("div")(({ theme }) => ({
   overflowX: "hidden",
@@ -29,8 +29,8 @@ const Widget = styled("div")(({ theme }) => ({
   position: "relative",
   zIndex: 1,
   backgroundColor:
-    theme.palette.mode === "dark" ? "rgba(0,0,0,0.6)" : "rgba(255,255,255,0.4)",
-  backdropFilter: "blur(40px)",
+    theme.palette.mode === "dark" ? "#0000000" : "#ffffff0",
+
 }));
 
 function Profile() {
@@ -72,17 +72,31 @@ function Profile() {
     <>
       {isSuccess && (
         <Widget>
-          <h1>Profile</h1>
+          <Typography align="center" variant="h3">
+            Profile
+          </Typography>
           <hr />
-          <h3>User name</h3>
+          <Typography align="center" variant="h4">
+            User name
+          </Typography>
+
+          <div className="centerdiv">
           <EditInfo
-            value={editUser ? "UserName" : user.data.userName}
-            setEditUser={setEditUser}
-            control="userName"
-            editUser={undefined}
-          />
+              value={editUser ? "UserName" : user.data.userName}
+              setEditUser={setEditUser}
+              control="userName"
+              editUser={undefined}
+              //
+            />
+          </div>
+         
+
+
           <hr />
-          <h3>Image</h3>
+          <Typography align="center" variant="h4">
+            Image
+          </Typography>
+
           {user?.data?.image?.url && image.length > 0 && (
             <Image
               className="profileImg"
@@ -98,20 +112,26 @@ function Profile() {
             </Widget>
           </div>
           <hr />
-          <h3>Submit Image</h3>
-          <Button variant="contained" color="primary" onClick={insertFile}>
-            Submit
-          </Button>
-          <hr />
-          <h3>Password</h3>
-          <section>
+          <Typography align="center" variant="h4">
+            Password
+          </Typography>
+          <Box sx={{ my: 1 }}textAlign="center">
             <Button variant="contained" color="primary">
               <Link style={{ textDecoration: "none" }} to="/changePassword">
                 <LockIcon />
                 Change Password
               </Link>
             </Button>
-          </section>
+          </Box>
+          <hr />
+          <Typography align="center" variant="h4">
+            Submit changed information
+          </Typography>
+          <Box sx={{ my: 1 }} textAlign="center">
+          <Button variant="contained" color="primary" onClick={insertFile}>
+            Submit
+          </Button>
+          </Box>
         </Widget>
       )}
     </>

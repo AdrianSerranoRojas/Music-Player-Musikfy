@@ -40,6 +40,7 @@ export default function App() {
     maxWidth: "100%",
     height: "15.8%",
     marginLeft: "12.5%",
+    marginTop: "5%",
     position: "absolute",
     zIndex: 1,
     backgroundColor:

@@ -1,9 +1,7 @@
 import { useEffect } from "react";
-
 import Box from "@mui/material/Box";
 import { styled } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-
 import SongCard from "../../components/SongCard/SongCard";
 
 import {
@@ -29,9 +27,9 @@ function MySongs() {
     zIndex: 1,
     backgroundColor:
       theme.palette.mode === "light-dark"
-        ? "rgba(0,0,0,0.6)"
-        : "rgba(255,255,255,0.4)",
-    backdropFilter: "blur(40px)",
+        ? "#0000000"
+        : "#ffffff0",
+
   }));
 
   const { data, isLoading, isSuccess } = useGetMySongsQuery();
@@ -47,7 +45,7 @@ function MySongs() {
         <Box sx={{ pt: 7 }}>
           <Widget
             sx={{
-              boxShadow: 4,
+             
               p: 2,
               maxwidth: 750,
               maxheight: 440,
@@ -58,6 +56,7 @@ function MySongs() {
                 variant="h5"
                 align="center"
                 fontFamily="Vollkorn, serif"
+                sx={{mb: 2 }}
               >
                 My Songs!!!
                 <AddSongButton />
