@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-
+import { useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 import Typography from "@mui/material/Typography";
@@ -12,7 +12,6 @@ import PlaylistCard from "../../PlaylistCard/PlaylistCard";
 import styled from "@mui/material/styles/styled";
 
 import AddCircleIcon from "@mui/icons-material/AddCircle";
-
 import {
   useGetPlaylistsQuery,
   useUpdatePlaylistMutation,
@@ -32,7 +31,7 @@ const Widget = styled("div")(({ theme }) => ({
 
 function AddPlayList({ listSelectFunc, refetching }) {
   let navigate = useNavigate();
-
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -70,12 +69,28 @@ function AddPlayList({ listSelectFunc, refetching }) {
                 <AddCircleIcon sx={{ height: 35, width: 35 }} />
               </IconButton>
             </div>
+
             <Modal open={open} onClose={handleClose}>
-              <Box
+              <Card
                 component="form"
                 noValidate
                 autoComplete="off"
-                className="boxModal"
+                sx={{
+                  position: "absolute" as "absolute",
+                  top: "30%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: 400,
+                  // bgcolor: "background.paper",
+                  border: "2px solid #000",
+                  boxShadow: 24,
+                  p: 4,
+
+                  bgcolor:
+                    theme.palette.mode === "dark"
+                      ? theme.palette.mode.primary
+                      : "primary",
+                }}
               >
                 <Typography
                   variant="h5"
@@ -92,14 +107,12 @@ function AddPlayList({ listSelectFunc, refetching }) {
                   sx={{ textAlign: "center" }}
                 />
                 <br></br>
-                <Button
-                  onClick={handleCreatePlaylist}
-                  variant="contained"
-                  sx={{ mt: 1, ml: "53px" }}
-                >
-                  Create
-                </Button>
-              </Box>
+                <Box sx={{ my: 1 }} textAlign="center">
+                  <Button onClick={handleCreatePlaylist} variant="contained">
+                    Create
+                  </Button>
+                </Box>
+              </Card>
             </Modal>
           </Card>
           {isSuccess &&

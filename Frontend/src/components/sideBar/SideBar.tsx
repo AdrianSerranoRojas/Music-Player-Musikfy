@@ -554,11 +554,15 @@ export default function SideNavbar({ ...props }) {
           top: "0",
           position: "absolute",
           zIndex: "200",
+          color: "white",
         }}
       >
         <Switch
+         color="green"
           checked={open}
           onChange={() => setOpen((prevOpen) => !prevOpen)}
+          // sx={{        color: "red",
+          // }}
         ></Switch>
       </Box>
       <Drawer
