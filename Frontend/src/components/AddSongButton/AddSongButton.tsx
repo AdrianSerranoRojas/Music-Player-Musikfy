@@ -23,7 +23,7 @@ const Widget = styled("div")(({ theme }) => ({
   backdropFilter: "blur(40px)",
 }));
 
-function AddSongButton() {
+function AddSongButton({refetch}) {
   const [image, setImage] = useState([]);
 
   const onDrop = useCallback((acceptedFiles, rejectFiles) => {
@@ -52,6 +52,7 @@ function AddSongButton() {
 
   const insertFile = async () => {
     await createSong(image);
+    refetch();
   };
 
   return (
