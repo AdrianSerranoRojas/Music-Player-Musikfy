@@ -52,7 +52,7 @@ export default function ToggleColorMode({ children }) {
                 },
                 text: {
                   primary: "#ffff",
-                  secondary: grey[500],
+                  secondary: "#212121",
                 },
               }),
         },

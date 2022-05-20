@@ -43,89 +43,102 @@ function SinglePlaylist() {
 
   return (
     <>
-    {isSuccess &&
-      <DragDropContext
-      onDragEnd={(result) => console.log(result)}>
-        <Box>
-          <Widget
-            sx={{
-              boxShadow: 4,
-              p: 2,
-              maxwidth: 750,
-              maxheight: 440,
-            }}
-          >
-            <Box
-              sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+      {isSuccess && (
+        <DragDropContext  onDragEnd={(result) => {
+        const {source, destination} = result;
+        if (!destination) {
+          return;
+        }
+        if (
+          source.index === destination.index &&
+          source.droppableId === destination.droppableId
+          ) {
+            return;
+          }
+        setSongs((prevSongs) =>
+          reorder(prevSongs, source.index, destination.index));
+      }}>
+          
+          <Box>
+            <Widget
+              sx={{
+                boxShadow: 4,
+                p: 2,
+                maxwidth: 750,
+                maxheight: 440,
+              }}
             >
-              <img
-                src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg"
-                alt="hola"
-              />
-              <Box sx={{ mt: 15 }}>
-                <Typography
-                  variant="h2"
-                  align="center"
-                  fontFamily="Vollkorn, serif"
-                >
-                  Name Playlist
-                </Typography>
-                <Typography
-                  variant="h4"
-                  align="center"
-                  fontFamily="Vollkorn, serif"
-                >
-                  31 Songs
-                </Typography>
-                <Typography
-                  variant="h6"
-                  align="center"
-                  fontFamily="Vollkorn, serif"
-                >
-                  Created by alonso22
-                </Typography>
-              </Box>
-            </Box>
-            <Droppable droppableId="songs">
-              {(droppableProvided) => (
-                <Box
-                  sx={{ mt: 1 }}
-                  {...droppableProvided.droppableProps}
-                  ref={droppableProvided.innerRef}
-                >
-                  {isSuccess &&
-                    data.data.map((song, index) => {
-                      return (
-                        <Draggable
-                          key={index}
-                          draggableId={song._id}
-                          index={index}
-                        >
-                          {(draggableProvided) => (
-                            <Box
-                              {...draggableProvided.draggableProps}
-                              ref={draggableProvided.innerRef}
-                              {...draggableProvided.dragHandleProps}
-                            >
-                              <SongCard
-                                song={song}
-                                songName={song.songName}
-                                songUrl={song.songUrl}
-                                songUser={song.songUser.email}
-                              />
-                            </Box>
-                          )}
-                        </Draggable>
-                      );
-                    })}
-                  {droppableProvided.placeholder}
+              <Box
+                sx={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)" }}
+              >
+                <img
+                  src="https://m.media-amazon.com/images/I/81hF73Kv9GL._SY355_.jpg"
+                  alt="hola"
+                />
+                <Box sx={{ mt: 15 }}>
+                  <Typography
+                    variant="h2"
+                    align="center"
+                    fontFamily="Vollkorn, serif"
+                  >
+                    Name Playlist
+                  </Typography>
+                  <Typography
+                    variant="h4"
+                    align="center"
+                    fontFamily="Vollkorn, serif"
+                  >
+                    31 Songs
+                  </Typography>
+                  <Typography
+                    variant="h6"
+                    align="center"
+                    fontFamily="Vollkorn, serif"
+                  >
+                    Created by alonso22
+                  </Typography>
                 </Box>
-              )}
-            </Droppable>
-          </Widget>
-        </Box>
-      </DragDropContext>
-    }
+              </Box>
+              <Droppable droppableId="songs">
+                {(droppableProvided) => (
+                  <Box
+                    sx={{ mt: 1 }}
+                    {...droppableProvided.droppableProps}
+                    ref={droppableProvided.innerRef}
+                  >
+                    {isSuccess &&
+                      data.data.map((song, index) => {
+                        return (
+                          <Draggable
+                            key={index}
+                            draggableId={song._id}
+                            index={index}
+                          >
+                            {(draggableProvided) => (
+                              <Box
+                                {...draggableProvided.draggableProps}
+                                ref={draggableProvided.innerRef}
+                                {...draggableProvided.dragHandleProps}
+                              >
+                                <SongCard
+                                  song={song}
+                                  songName={song.songName}
+                                  songUrl={song.songUrl}
+                                  songUser={song.songUser.email}
+                                />
+                              </Box>
+                            )}
+                          </Draggable>
+                        );
+                      })}
+                    {droppableProvided.placeholder}
+                  </Box>
+                )}
+              </Droppable>
+            </Widget>
+          </Box>
+        </DragDropContext>
+      )}
     </>
   );
 }
