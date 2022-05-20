@@ -32,7 +32,7 @@ function MySongs() {
 
   }));
 
-  const { data, isLoading, isSuccess } = useGetMySongsQuery();
+  const { data, isLoading, isSuccess, refetch } = useGetMySongsQuery();
   // const { data, isLoading, isSuccess } = useGetSongsFilteredQuery("basote");
 
   useEffect(() => {
@@ -59,7 +59,7 @@ function MySongs() {
                 sx={{mb: 2 }}
               >
                 My Songs!!!
-                <AddSongButton />
+                <AddSongButton refetch={refetch}/>
               </Typography>
               {isSuccess &&
                 data.data.map((song, index) => {
