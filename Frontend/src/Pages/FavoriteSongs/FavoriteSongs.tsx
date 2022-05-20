@@ -17,17 +17,17 @@ function FavoriteSongs() {
     overflow: "scroll",
     padding: 16,
     borderRadius: 16,
-    width: 830,
-    maxWidth: "100%",
+    width: "100%",
+    // maxWidth: "100%",
     height: "60vh",
     margin: "auto",
     position: "relative",
     zIndex: 1,
     backgroundColor:
       theme.palette.mode === "dark"
-        ? "rgba(0,0,0,0.6)"
-        : "rgba(255,255,255,0.4)",
-    backdropFilter: "blur(40px)",
+        ? "#0000000"
+        : "#ffffff0",
+    // backdropFilter: "blur(40px)",
   }));
 
   const { data, isLoading, isSuccess, refetch } = useGetMyLikedSongsQuery();
@@ -42,10 +42,11 @@ function FavoriteSongs() {
         <Box sx={{ pt: 5 }}>
           <Widget
             sx={{
-              boxShadow: 4,
+              
               p: 2,
-              maxwidth: 750,
-              maxheight: 440,
+              // maxwidth: 950,
+              // maxheight: 440,
+              // width: "80%",
             }}
           >
             <Box>

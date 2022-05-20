@@ -558,7 +558,6 @@ export default function SideNavbar({ ...props }) {
         }}
       >
         <Switch
-         color="green"
           checked={open}
           onChange={() => setOpen((prevOpen) => !prevOpen)}
           // sx={{        color: "red",
