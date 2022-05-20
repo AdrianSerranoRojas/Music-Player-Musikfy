@@ -49,19 +49,19 @@ function ListWebScrap() {
           <Card sx={{width:"33.3%"}}>
             <Typography variant="h3" align="center">{dataFetech40list[0]}</Typography>
             <div className="centerImg">
-              <img src="https://res.cloudinary.com/carapolla/image/upload/v1652994425/TIER1_1_b2nnk7.png" alt="" />
+              <img src="" alt="1" />
             </div>
           </Card>
           <Card sx={{width:"33.3%"}}>
             <Typography variant="h3" align="center">{dataFetech40list[1]}</Typography>
             <div className="centerImg">
-              <img src="https://res.cloudinary.com/carapolla/image/upload/v1652994599/TIER_2_w93vxf.png" alt="" />
+              <img src="" alt="2" />
             </div>
           </Card>
           <Card sx={{width:"33.3%"}}>
             <Typography variant="h3" align="center">{dataFetech40list[2]}</Typography>
             <div className="centerImg">
-              <img src="https://res.cloudinary.com/carapolla/image/upload/v1652994651/TIER_3_ghu7je.png" alt="" />
+              <img src="" alt="3" />
             </div>
           </Card>
         </Stack>
